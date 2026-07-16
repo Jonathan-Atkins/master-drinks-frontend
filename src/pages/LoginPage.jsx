@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { API_URL } from "../config/api";
+import { Link } from "react-router-dom";
+
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -51,6 +53,10 @@ function LoginPage() {
 
         <button type="submit">Log In</button>
       </form>
+
+      <p>
+        Don&apos;t have an account? <Link to="/register">Create one</Link>
+      </p>
     </main>
   );
 }
