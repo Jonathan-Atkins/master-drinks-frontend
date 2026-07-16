@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config/api";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
