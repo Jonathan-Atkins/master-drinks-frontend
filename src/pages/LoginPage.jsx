@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { API_URL } from "../config/api";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -22,6 +23,16 @@ function LoginPage() {
     });
 
     const data = await response.json();
+
+     if (response.ok) {
+      navigate("/personal");
+    } else {
+      alert(
+        data.errors?.join(", ") ||
+        data.error ||
+        "Login Error, please try again."
+      );
+    }
 
     console.log(data);
   };
