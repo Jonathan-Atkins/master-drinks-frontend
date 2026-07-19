@@ -5,6 +5,7 @@ import DrinksPage from "./pages/DrinksPage";
 import RecipesPage from "./pages/RecipesPage";
 import RegisterPage from "./pages/RegisterPage";
 import PersonalPage from "./pages/PersonalPage";
+import DrinkMakerPage from "./pages/PersonalPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/recipes" element={<RecipesPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/personal" element={<PersonalPage />} />
+        <Route path="/drink-maker" element={<DrinkMakerPage />} />
       </Routes>
     </BrowserRouter>
   );
