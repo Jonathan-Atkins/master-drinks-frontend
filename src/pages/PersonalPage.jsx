@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import MyDrinksCard from "../components/MyDrinksCard";
+import MyRecipesCard from "../components/MyRecipesCard";
 
 function PersonalPage() {
   const navigate = useNavigate();
@@ -14,6 +16,9 @@ function PersonalPage() {
       <button type="button" onClick={handleCreateDrink}>
         Create a Drink
       </button>
+
+      <MyDrinksCard />
+      <MyRecipesCard />
     </main>
   );
 }
