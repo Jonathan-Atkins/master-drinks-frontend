@@ -5,7 +5,9 @@ import DrinksPage from "./pages/DrinksPage";
 import RecipesPage from "./pages/RecipesPage";
 import RegisterPage from "./pages/RegisterPage";
 import PersonalPage from "./pages/PersonalPage";
-import DrinkMakerPage from "./pages/PersonalPage";
+import DrinkMakerPage from "./pages/DrinkMakerPage";
+import CreateRecipePage from "./pages/CreateRecipePage";
+import DrinkRecipesPage from "./pages/DrinkRecipesPage";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/personal" element={<PersonalPage />} />
         <Route path="/drink-maker" element={<DrinkMakerPage />} />
+        <Route path="/drinks/:drinkId/recipes/new"element={<CreateRecipePage />}
+        />
+        <Route path="/drinks/:drinkId/recipes" element={<DrinkRecipesPage />}/>
       </Routes>
     </BrowserRouter>
   );

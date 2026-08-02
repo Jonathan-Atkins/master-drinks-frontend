@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function MyRecipesCard() {
+function RecipesCollection() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -57,4 +57,4 @@ function MyRecipesCard() {
   );
 }
 
-export default MyRecipesCard;
+export default RecipesCollection;

@@ -1,73 +1,102 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError("");
+    setSubmitting(true);
 
-    const response = await fetch(`${API_URL}/api/v1/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+    try {
+      const response = await fetch(`${API_URL}/api/v1/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-     if (response.ok) {
-      navigate("/personal");
-    } else {
-      alert(
+      if (response.ok) {
+        navigate("/personal");
+        return;
+      }
+
+      setError(
         data.errors?.join(", ") ||
-        data.error ||
-        "Login Error, please try again."
+          data.error ||
+          "Login failed. Please try again."
       );
+    } catch {
+      setError("The server could not be reached.");
+    } finally {
+      setSubmitting(false);
     }
-
-    console.log(data);
   };
 
   return (
-    <main>
-      <h1>Login</h1>
+    <main className="auth-page">
+      <section className="auth-card">
+        <h1>Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </div>
+        {error && (
+          <p className="form-error" role="alert">
+            {error}
+          </p>
+        )}
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Log In</button>
-      </form>
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+          </div>
 
-      <p>
-        Don&apos;t have an account? <Link to="/register">Create one</Link>
-      </p>
+          <button
+            className="primary-button"
+            type="submit"
+            disabled={submitting}
+          >
+            {submitting ? "Logging in..." : "Log In"}
+          </button>
+        </form>
+
+        <p className="auth-footer">
+          Don&apos;t have an account?{" "}
+          <Link to="/register">Create one</Link>
+        </p>
+      </section>
     </main>
   );
 }

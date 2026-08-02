@@ -1,24 +1,45 @@
 import { useNavigate } from "react-router-dom";
 import MyDrinksCard from "../components/MyDrinksCard";
-import MyRecipesCard from "../components/MyRecipesCard";
 
 function PersonalPage() {
   const navigate = useNavigate();
 
-  const handleCreateDrink = () => {
-    navigate("/drink-maker");
-  };
-
   return (
-    <main>
-      <h1>My Dashboard</h1>
+    <main className="dashboard-page">
+      <header className="dashboard-header">
+        <div>
+          <h1>My Dashboard</h1>
+          <p>Manage your drinks and recipes.</p>
+        </div>
 
-      <button type="button" onClick={handleCreateDrink}>
-        Create a Drink
-      </button>
+        <div className="dashboard-actions">
+          <button
+            className="primary-button"
+            type="button"
+            onClick={() => navigate("/drink-maker")}
+          >
+            Create a Drink
+          </button>
+
+          <button
+            className="primary-button"
+            type="button"
+            onClick={() => navigate("/my-recipes")}
+          >
+            My Recipes
+          </button>
+
+          <button
+            className="primary-button"
+            type="button"
+            onClick={() => navigate("/recipes")}
+          >
+            Community Recipes
+          </button>
+        </div>
+      </header>
 
       <MyDrinksCard />
-      <MyRecipesCard />
     </main>
   );
 }
