@@ -285,7 +285,7 @@ code {
   color: var(--text-h);
 }
 
-.form-field input,
+.form-field input:not([type="checkbox"]),
 .form-field select,
 .form-field textarea {
   width: 100%;
@@ -295,6 +295,12 @@ code {
   border-radius: 8px;
   background: var(--bg);
   color: var(--text-h);
+}
+
+.form-field input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-height: auto;
 }
 
 .form-field textarea {
@@ -328,6 +334,33 @@ code {
 .field-help {
   margin-top: 4px;
   font-size: 0.875rem;
+  text-align: left;
+}
+
+.ingredient-row {
+  display: grid;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.ingredient-search {
+  min-width: 0;
+}
+
+.ingredient-results {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ingredient-results button {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
   text-align: left;
 }
 
@@ -390,6 +423,13 @@ code {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .ingredient-row {
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: end;
   }
 }
 

@@ -57,13 +57,16 @@ function DrinkRecipesPage() {
 
   return (
     <main>
+      <button
+        type="button"
+        onClick={() => navigate("/personal")}
+      >
+        Back to Dashboard
+      </button>
+
       <h1>{drink.name} Recipes</h1>
 
       <div className="dashboard-actions">
-        <button type="button" onClick={() => navigate("/personal")}>
-          Home
-        </button>
-
         <button
           type="button"
           onClick={() =>

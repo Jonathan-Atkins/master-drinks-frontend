@@ -337,6 +337,13 @@ function CreateRecipePage() {
 
   return (
     <main>
+      <button
+        type="button"
+        onClick={() => navigate("/personal")}
+      >
+        Back to Dashboard
+      </button>
+
       <h1>Create a Recipe for {drink.name}</h1>
 
       {error && (
