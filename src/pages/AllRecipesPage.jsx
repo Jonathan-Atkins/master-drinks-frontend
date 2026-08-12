@@ -3,16 +3,10 @@ import RecipesCollection from "../components/RecipesCollection";
 
 function AllRecipesPage() {
   const navigate = useNavigate();
-  
+
   return (
     <main>
       <h1>Recipes Page</h1>
-      
-      <button 
-        type="button" onClick={() => navigate("/personal")}
-      >
-        Back to Home    
-      </button>
 
       <button
         type="button"

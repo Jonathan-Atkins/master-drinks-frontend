@@ -168,7 +168,7 @@ function DrinkForm() {
           type="submit"
           disabled={submitting}
         >
-          {submitting ? "Creating drink..." : "Create Drink"}
+          {submitting ? "Submiting..." : "Build Drink"}
         </button>
 
         <button

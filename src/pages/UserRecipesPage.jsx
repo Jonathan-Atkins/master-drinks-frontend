@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import DrinkForm from "../components/DrinkForm";
+import UserRecipesCollection from "../components/UserRecipesCollection";
 
-function DrinkMakerPage() {
+function UserRecipesPage() {
   const navigate = useNavigate();
 
   return (
     <main>
-      <h1>Create a Drink</h1>
+      <h1>My Recipes</h1>
 
       <button
         type="button"
@@ -15,9 +15,9 @@ function DrinkMakerPage() {
         Back
       </button>
 
-      <DrinkForm />
+      <UserRecipesCollection />
     </main>
   );
 }
 
-export default DrinkMakerPage;
+export default UserRecipesPage;

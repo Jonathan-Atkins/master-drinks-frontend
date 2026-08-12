@@ -47,14 +47,20 @@ function RecipesCollection() {
       ) : (
         recipes.map((recipe) => (
           <article key={recipe.id}>
+            <h2>{recipe.owned_by_current_user
+              ? "This is Your Recipe"
+              : `Created by: ${recipe.drink.username}`}
+            </h2>
             <h3>{recipe.name}</h3>
             <p>{recipe.instructions}</p>
-            <p>
-              {recipe.publicly_visible ? "Public" : "Private"}
-            </p>
+            {!recipe.owned_by_current_user && (
+              <p>
+                Saved: {recipe.saved_by_current_user ? "True" : "False"}
+              </p>
+            )}
           </article>
         ))
-      )}
+      )};
     </section>
   );
 }
