@@ -8,7 +8,7 @@ function RecipesCollection() {
   useEffect(() => {
     const fetchMyRecipes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/my_recipes", {
+        const response = await fetch("http://localhost:3000/api/v1/recipes", {
           credentials: "include",
         });
 
@@ -38,8 +38,10 @@ function RecipesCollection() {
 
   return (
     <section>
-      <h2>My Recipes</h2>
+      <h2>All Recipes</h2>
 
+      {console.log("Data:", recipes)}
+      
       {recipes.length === 0 ? (
         <p>No Saved Recipes</p>
       ) : (

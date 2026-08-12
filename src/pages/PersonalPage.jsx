@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import MyDrinksCard from "../components/MyDrinksCard";
+import SignOutButton from "../components/SignOutButton";
 
 function PersonalPage() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function PersonalPage() {
           >
             Community Recipes
           </button>
+          <SignOutButton />
         </div>
       </header>
 

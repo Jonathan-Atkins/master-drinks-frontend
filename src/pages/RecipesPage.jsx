@@ -14,6 +14,13 @@ function RecipesPage() {
         Back to Home    
       </button>
 
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+      >
+        Back
+      </button>
+
       <RecipesCollection />
     </main>
   );

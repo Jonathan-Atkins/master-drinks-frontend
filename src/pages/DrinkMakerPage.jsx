@@ -12,7 +12,14 @@ function DrinkMakerPage() {
         type="button"
         onClick={() => navigate("/personal")}
       >
-        Back to Home
+        Dashboard
+      </button>
+
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+      >
+        Back
       </button>
 
       <DrinkForm />
