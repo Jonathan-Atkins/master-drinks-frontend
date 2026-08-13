@@ -1,34 +1,31 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import UsersPage from "./pages/UsersPage";
 import DrinksPage from "./pages/DrinksPage";
 import AllRecipesPage from "./pages/AllRecipesPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
-import RegisterPage from "./pages/RegisterPage";
 import PersonalPage from "./pages/PersonalPage";
 import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import DrinkRecipesPage from "./pages/DrinkRecipesPage";
 
-import NavBar from "./components/NavBar";
+import ProtectedLayout from "./components/ProtectedLayout";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
 
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/drinks" element={<DrinksPage />} />
-
-        <Route path="/recipes" element={<AllRecipesPage />} />
-        <Route path="/my-recipes" element={<UserRecipesPage />} />
-
-        <Route path="/register" element={<RegisterPage />} />
+      <Route element={<ProtectedLayout />}>
         <Route path="/personal" element={<PersonalPage />} />
+        <Route path="/my-recipes" element={<UserRecipesPage />} />
+        <Route path="/recipes" element={<AllRecipesPage />} />
+        <Route path="/drinks" element={<DrinksPage />} />
+        <Route path="/users" element={<UsersPage />} />
         <Route path="/drink-maker" element={<DrinkMakerPage />} />
 
         <Route
@@ -40,8 +37,8 @@ function App() {
           path="/drinks/:drinkId/recipes"
           element={<DrinkRecipesPage />}
         />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+    </Routes>
   );
 }
 

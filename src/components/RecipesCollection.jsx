@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { groupRecipesByCategory } from "../utils/recipeUtils";
+import RecipeCard from "./RecipeCard";
 
 function RecipesCollection() {
   const [recipes, setRecipes] = useState([]);
@@ -6,11 +8,14 @@ function RecipesCollection() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchMyRecipes = async () => {
+    const fetchRecipes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/recipes", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          "http://localhost:3000/api/v1/recipes",
+          {
+            credentials: "include",
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Unable to load recipes");
@@ -25,8 +30,10 @@ function RecipesCollection() {
       }
     };
 
-    fetchMyRecipes();
+    fetchRecipes();
   }, []);
+
+    const recipesByCategory = groupRecipesByCategory(recipes);
 
   if (loading) {
     return <p>Loading recipes...</p>;
@@ -40,27 +47,23 @@ function RecipesCollection() {
     <section>
       <h2>All Recipes</h2>
 
-      {console.log("Data:", recipes)}
+      {Object.entries(recipesByCategory).map(
+        ([category, categoryRecipes]) => (
+          <section key={category}>
+            <h2>{category}</h2>
+
+            <div className="recipe-grid">
+              {categoryRecipes.map((recipe) => (
+                <RecipeCard
+                  key={recipe.id}
+                  recipe={recipe}
+                />
+              ))}
+            </div>
+          </section>
+        )
+      )}
       
-      {recipes.length === 0 ? (
-        <p>No Saved Recipes</p>
-      ) : (
-        recipes.map((recipe) => (
-          <article key={recipe.id}>
-            <h2>{recipe.owned_by_current_user
-              ? "This is Your Recipe"
-              : `Created by: ${recipe.drink.username}`}
-            </h2>
-            <h3>{recipe.name}</h3>
-            <p>{recipe.instructions}</p>
-            {!recipe.owned_by_current_user && (
-              <p>
-                Saved: {recipe.saved_by_current_user ? "True" : "False"}
-              </p>
-            )}
-          </article>
-        ))
-      )};
     </section>
   );
 }

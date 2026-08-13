@@ -369,6 +369,17 @@ code {
   text-align: center;
 }
 
+.recipe-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+}
+
 /* Dark mode */
 
 @media (prefers-color-scheme: dark) {
@@ -452,3 +463,4 @@ code {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+

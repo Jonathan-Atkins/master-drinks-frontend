@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
+import { AuthContext } from "../context/AuthContext";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -8,10 +9,12 @@ function LoginPage() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     setError("");
     setSubmitting(true);
 
@@ -31,6 +34,7 @@ function LoginPage() {
       const data = await response.json();
 
       if (response.ok) {
+        setUser(data.user);
         navigate("/personal");
         return;
       }
@@ -61,6 +65,7 @@ function LoginPage() {
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-field">
             <label htmlFor="email">Email</label>
+
             <input
               id="email"
               type="email"
@@ -73,6 +78,7 @@ function LoginPage() {
 
           <div className="form-field">
             <label htmlFor="password">Password</label>
+
             <input
               id="password"
               type="password"

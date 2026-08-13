@@ -33,6 +33,52 @@ function UserRecipesCollection() {
     fetchUserRecipes();
   }, []);
 
+  const handleDeleteRecipe = async (recipeId) => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/v1/recipes/${recipeId}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to delete recipe");
+      }
+
+      setRecipes((currentRecipes) =>
+        currentRecipes.filter((recipe) => recipe.id !== recipeId)
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleRemoveSavedRecipe = async (userRecipeId) => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/v1/user_recipes/${userRecipeId}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to remove saved recipe");
+      }
+
+      setRecipes((currentRecipes) =>
+        currentRecipes.filter(
+          (recipe) => recipe.user_recipe_id !== userRecipeId
+        )
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   if (loading) {
     return <p>Loading recipes...</p>;
   }
@@ -51,6 +97,24 @@ function UserRecipesCollection() {
         <article key={recipe.id}>
           <h2>{recipe.name}</h2>
           <p>{recipe.instructions}</p>
+
+          {recipe.owned_by_current_user ? (
+            <button
+              type="button"
+              onClick={() => handleDeleteRecipe(recipe.id)}
+            >
+              Delete Recipe
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() =>
+                handleRemoveSavedRecipe(recipe.user_recipe_id)
+              }
+            >
+              Remove from My Recipes
+            </button>
+          )}
         </article>
       ))}
     </section>
