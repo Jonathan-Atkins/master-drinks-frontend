@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { API_URL } from "../config/api";
-import { useNavigate } from "react-router-dom";
 
 function PasswordSettingsForm() {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +46,7 @@ function PasswordSettingsForm() {
         );
         return;
       }
-
+      
       setMessage(data.message);
 
       setCurrentPassword("");
