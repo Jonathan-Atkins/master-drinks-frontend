@@ -10,6 +10,7 @@ import PersonalPage from "./pages/PersonalPage";
 import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import DrinkRecipesPage from "./pages/DrinkRecipesPage";
+import SettingsPage from "./pages/SettingsPage";
 
 import ProtectedLayout from "./components/ProtectedLayout";
 
@@ -27,17 +28,13 @@ function App() {
         <Route path="/drinks" element={<DrinksPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/drink-maker" element={<DrinkMakerPage />} />
-
-        <Route
-          path="/drinks/:drinkId/recipes/new"
-          element={<CreateRecipePage />}
-        />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/drinks/:drinkId/recipes/new" element={<CreateRecipePage />} />
 
         <Route
           path="/drinks/:drinkId/recipes"
           element={<DrinkRecipesPage />}
-        />
-      </Route>
+        /></Route>
     </Routes>
   );
 }

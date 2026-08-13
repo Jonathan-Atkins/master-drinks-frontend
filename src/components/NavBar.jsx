@@ -34,6 +34,13 @@ function NavBar() {
         Create a Drink
       </button>
 
+      <button
+        type="button"
+        onClick={() => navigate("/settings")}
+      >
+        Settings
+      </button>
+      
       <SignOutButton />
     </nav>
   );
