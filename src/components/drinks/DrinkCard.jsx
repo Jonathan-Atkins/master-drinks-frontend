@@ -55,7 +55,7 @@ function DrinkCard({ drink, onDelete }) {
         type="button"
         onClick={handleEdit}
       >
-        Edit
+        Edit Drink
       </button>
 
       <button

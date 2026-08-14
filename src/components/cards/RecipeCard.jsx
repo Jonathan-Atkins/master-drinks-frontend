@@ -85,7 +85,7 @@ function RecipeCard({ recipe, editing = false, onDelete }) {
             type="button"
             onClick={handleEdit}
           >
-            Edit
+            Edit Recipe
           </button>
 
           <button

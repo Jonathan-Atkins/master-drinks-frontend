@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../config/api";
+import RecipeCard from "../cards/RecipeCard";
 
 function UserRecipesCollection() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserRecipes = async () => {
@@ -97,42 +96,15 @@ function UserRecipesCollection() {
   return (
     <section>
       {recipes.map((recipe) => (
-        <article key={recipe.id}>
-          <h2>{recipe.name}</h2>
-          <p>{recipe.instructions}</p>
-
-          {recipe.owned_by_current_user ? (
-            <>
-              <button
-                type="button"
-                onClick={() =>
-                  navigate(`/recipes/${recipe.id}/edit`)
-                }
-              >
-                Edit Recipe
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleDeleteRecipe(recipe.id)}
-              >
-                Delete Recipe
-              </button>
-            </>
-          ) : (
-            <button
-              type="button"
-              onClick={() =>
-                handleRemoveSavedRecipe(recipe.user_recipe_id)
-              }
-            >
-              Remove from My Recipes
-            </button>
-          )}
-        </article>
+        <RecipeCard
+          key={recipe.id}
+          recipe={recipe}
+          onDelete={handleDeleteRecipe}
+          onRemoveSaved={handleRemoveSavedRecipe}
+        />
       ))}
     </section>
-  );
+);
 }
 
 export default UserRecipesCollection;

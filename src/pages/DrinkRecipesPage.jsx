@@ -62,7 +62,7 @@ function DrinkRecipesPage() {
         type="button"
         onClick={() => navigate("/personal")}
       >
-        Dashboard
+        Back to Dashboard
       </button>
 
       <button
