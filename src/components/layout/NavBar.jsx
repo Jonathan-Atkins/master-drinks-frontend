@@ -8,7 +8,7 @@ function NavBar() {
     <nav>
       <button
         type="button"
-        onClick={() => navigate("/personal")}
+        onClick={() => navigate("/dashboard")}
       >
         Home
       </button>

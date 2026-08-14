@@ -6,7 +6,7 @@ import UsersPage from "./pages/UsersPage";
 import DrinksPage from "./pages/DrinksPage";
 import AllRecipesPage from "./pages/AllRecipesPage";
 import UserRecipesPage from "./pages/UserRecipesPage";
-import PersonalPage from "./pages/PersonalPage";
+import Dashboard from "./pages/Dashboard";
 import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import DrinkRecipesPage from "./pages/DrinkRecipesPage";
@@ -24,7 +24,7 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
 
       <Route element={<ProtectedLayout />}>
-        <Route path="/personal" element={<PersonalPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/my-recipes" element={<UserRecipesPage />} />
         <Route path="/recipes" element={<AllRecipesPage />} />
         <Route path="/drinks" element={<DrinksPage />} />

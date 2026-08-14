@@ -1,20 +1,23 @@
 import DrinksCollection from "../components/drinks/DrinksCollection";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-function PersonalPage() {
+function Dashboard() {
+  const { user } = useContext(AuthContext);
+  
   return (
     <main className="dashboard-page">
       <header className="dashboard-header">
         <div>
-          <h1>My Dashboard</h1>
-          <p>Manage your drinks and recipes.</p>
+          <h1>{ user.username}'s Dashboard</h1>
+          <p>Manage your Drinks here.</p>
         </div>
       </header>
         <section>
-          <h2>My Drinks</h2>
           <DrinksCollection />
         </section>
     </main>
   );
 }
 
-export default PersonalPage;
+export default Dashboard;

@@ -152,7 +152,7 @@ function CreateRecipePage() {
     <main>
       <button
         type="button"
-        onClick={() => navigate("/personal")}
+        onClick={() => navigate("/dashboard")}
       >
         Back to Dashboard
       </button>

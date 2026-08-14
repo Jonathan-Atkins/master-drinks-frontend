@@ -53,7 +53,7 @@ function DrinkForm({ drink = null }) {
         );
       }
 
-      navigate("/personal");
+      navigate("/dashboard");
     } catch (error) {
       setError(error.message);
     } finally {
@@ -154,7 +154,7 @@ function DrinkForm({ drink = null }) {
 
         <button
           type="button"
-          onClick={() => navigate("/personal")}
+          onClick={() => navigate("/dashboard")}
         >
           Cancel
         </button>

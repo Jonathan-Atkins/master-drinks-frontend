@@ -35,7 +35,7 @@ function LoginPage() {
 
       if (response.ok) {
         setUser(data.user);
-        navigate("/personal");
+        navigate("/dashboard");
         return;
       }
 
