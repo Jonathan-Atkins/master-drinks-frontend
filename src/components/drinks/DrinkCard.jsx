@@ -1,12 +1,25 @@
 import { useNavigate } from "react-router-dom";
 
-function DrinkCard({ drink }) {
+function DrinkCard({ drink, onDelete }) {
   const navigate = useNavigate();
 
   const handleEdit = (event) => {
     event.stopPropagation();
-
     navigate(`/drinks/${drink.id}/edit`);
+  };
+
+  const handleDelete = (event) => {
+    event.stopPropagation();
+
+    const confirmed = window.confirm(
+      `Are you sure you want to delete ${drink.name}?`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    onDelete(drink.id);
   };
 
   return (
@@ -43,6 +56,13 @@ function DrinkCard({ drink }) {
         onClick={handleEdit}
       >
         Edit
+      </button>
+
+      <button
+        type="button"
+        onClick={handleDelete}
+      >
+        Delete
       </button>
     </article>
   );
