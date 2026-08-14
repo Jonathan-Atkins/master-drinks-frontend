@@ -10,7 +10,7 @@ function Dashboard() {
       <header className="dashboard-header">
         <div>
           <h1>{ user.username}'s Dashboard</h1>
-          <p>Manage your Drinks here.</p>
+          <p>Manage your Drinks here!</p>
         </div>
       </header>
         <section>
