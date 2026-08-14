@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../config/api";
 import { drinkCategories } from "../utils/drinkCategories";
+import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
 function DrinkForm({ drink = null }) {
   const [name, setName] = useState(drink?.name || "");
@@ -14,34 +15,33 @@ function DrinkForm({ drink = null }) {
   );
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const isEditing = drink !== null;
+  const { isEditing, url, method } =
+  getDrinkRequestConfig(drink);
+
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    const drinkPayload = {
+      name,
+      category,
+      alcoholic,
+      publicly_visible: publiclyVisible,
+    };
+
     event.preventDefault();
     setError("");
     setSubmitting(true);
 
     try {
-      const response = await fetch(
-        isEditing
-          ? `${API_URL}/api/v1/drinks/${drink.id}`
-          : `${API_URL}/api/v1/drinks`,
-        {
-          method: isEditing ? "PATCH" : "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            name,
-            category,
-            alcoholic,
-            publicly_visible: publiclyVisible,
-          }),
-        }
-      );
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(drinkPayload),
+      });
 
       const data = await response.json();
 

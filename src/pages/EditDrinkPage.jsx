@@ -26,6 +26,8 @@ function EditDrinkPage() {
         }
 
         const data = await response.json();
+          console.log(data);
+          console.log("CATEGORY FROM API:", data.category);
         setDrink(data);
       } catch (error) {
         setError(error.message);
@@ -44,6 +46,7 @@ function EditDrinkPage() {
   if (error) {
     return <p>{error}</p>;
   }
+
 
   return (
     <main>
