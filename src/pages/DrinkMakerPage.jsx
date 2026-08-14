@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import DrinkForm from "../components/DrinkForm";
+import DrinkForm from "../components/forms/DrinkForm";
 
 function DrinkMakerPage() {
   const navigate = useNavigate();

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../config/api";
+import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 function UserRecipesCollection() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserRecipes = async () => {
@@ -99,12 +102,23 @@ function UserRecipesCollection() {
           <p>{recipe.instructions}</p>
 
           {recipe.owned_by_current_user ? (
-            <button
-              type="button"
-              onClick={() => handleDeleteRecipe(recipe.id)}
-            >
-              Delete Recipe
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={() =>
+                  navigate(`/recipes/${recipe.id}/edit`)
+                }
+              >
+                Edit Recipe
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDeleteRecipe(recipe.id)}
+              >
+                Delete Recipe
+              </button>
+            </>
           ) : (
             <button
               type="button"

@@ -1,4 +1,4 @@
-function RecipeCard({ recipe }) {
+function RecipeCard({ recipe, editing = false }) {
   return (
     <article className="recipe-card">
       <h2>
@@ -7,7 +7,14 @@ function RecipeCard({ recipe }) {
           : `Created by: ${recipe.drink.username}`}
       </h2>
 
-      <h3>{recipe.name}</h3>
+      {editing ? (
+        <input
+          type="text"
+          defaultValue={recipe.name}
+        />
+      ) : (
+        <h3>{recipe.name}</h3>
+      )}
 
       <p>
         <strong>Drink:</strong> {recipe.drink.name}
@@ -17,9 +24,22 @@ function RecipeCard({ recipe }) {
         <strong>Category:</strong> {recipe.drink.category}
       </p>
 
-      <p>
-        <strong>Instructions:</strong> {recipe.instructions}
-      </p>
+      {editing ? (
+        <div>
+          <label htmlFor="recipe-instructions">
+            Instructions
+          </label>
+
+          <textarea
+            id="recipe-instructions"
+            defaultValue={recipe.instructions}
+          />
+        </div>
+      ) : (
+        <p>
+          <strong>Instructions:</strong> {recipe.instructions}
+        </p>
+      )}
 
       <div>
         <strong>Ingredients:</strong>

@@ -1,5 +1,5 @@
-import ProfileSettingsForm from "../components/ProfileSettingsForm";
-import PasswordSettingsForm from "../components/PasswordSettingsForm";
+import ProfileSettingsForm from "../components/forms/ProfileSettingsForm";
+import PasswordSettingsForm from "../components/forms/PasswordSettingsForm";
 import { useNavigate } from "react-router-dom";
 
 function SettingsPage() {

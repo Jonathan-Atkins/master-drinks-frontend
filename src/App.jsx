@@ -11,8 +11,10 @@ import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import DrinkRecipesPage from "./pages/DrinkRecipesPage";
 import SettingsPage from "./pages/SettingsPage";
+import EditRecipePage from "./pages/EditRecipePage";
+import EditDrinkPage from "./pages/EditDrinkPage";
 
-import ProtectedLayout from "./components/ProtectedLayout";
+import ProtectedLayout from "./components/layout/ProtectedLayout";
 
 function App() {
   return (
@@ -30,11 +32,16 @@ function App() {
         <Route path="/drink-maker" element={<DrinkMakerPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/drinks/:drinkId/recipes/new" element={<CreateRecipePage />} />
+        <Route path="/drinks/:drinkId/edit"element={<EditDrinkPage />} />
 
         <Route
           path="/drinks/:drinkId/recipes"
           element={<DrinkRecipesPage />}
         /></Route>
+        <Route
+          path="/recipes/:recipeId/edit"
+        element={<EditRecipePage />}
+      />
     </Routes>
   );
 }

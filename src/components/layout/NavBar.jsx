@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import SignOutButton from "./SignOutButton";
+import SignOutButton from "../ui/SignOutButton";
 
 function NavBar() {
   const navigate = useNavigate();

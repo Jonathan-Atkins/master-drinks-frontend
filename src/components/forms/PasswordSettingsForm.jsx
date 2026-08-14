@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { API_URL } from "../config/api";
+import { AuthContext } from "../../context/AuthContext";
+import { API_URL } from "../../config/api";
 
 function PasswordSettingsForm() {
   const { user } = useContext(AuthContext);
-
+ 
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");

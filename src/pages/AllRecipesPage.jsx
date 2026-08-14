@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import RecipesCollection from "../components/RecipesCollection";
+import RecipesCollection from "../components/recipes/RecipesCollection";
 
 function AllRecipesPage() {
   const navigate = useNavigate();

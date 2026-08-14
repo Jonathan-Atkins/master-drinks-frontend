@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { API_URL } from "../config/api";
+import { AuthContext } from "../../context/AuthContext";
+import { API_URL } from "../../config/api";
 
 function ProfileSettingsForm() {
   const { user, setUser } = useContext(AuthContext);

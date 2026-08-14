@@ -1,4 +1,4 @@
-import MyDrinksCard from "../components/MyDrinksCard";
+import DrinksCollection from "../components/drinks/DrinksCollection";
 
 function PersonalPage() {
   return (
@@ -9,8 +9,10 @@ function PersonalPage() {
           <p>Manage your drinks and recipes.</p>
         </div>
       </header>
-
-      <MyDrinksCard />
+        <section>
+          <h2>My Drinks</h2>
+          <DrinksCollection />
+        </section>
     </main>
   );
 }
