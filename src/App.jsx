@@ -2,10 +2,9 @@ import { Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import UsersPage from "./pages/UsersPage";
 import DrinksPage from "./pages/DrinksPage";
 import AllRecipesPage from "./pages/AllRecipesPage";
-import UserRecipesPage from "./pages/UserRecipesPage";
+import RecipesPage from "./pages/RecipesPage";
 import Dashboard from "./pages/Dashboard";
 import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
@@ -25,10 +24,9 @@ function App() {
 
       <Route element={<ProtectedLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/my-recipes" element={<UserRecipesPage />} />
+        <Route path="/my-recipes" element={<RecipesPage />} />
         <Route path="/recipes" element={<AllRecipesPage />} />
         <Route path="/drinks" element={<DrinksPage />} />
-        <Route path="/users" element={<UsersPage />} />
         <Route path="/drink-maker" element={<DrinkMakerPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/drinks/:drinkId/recipes/new" element={<CreateRecipePage />} />
