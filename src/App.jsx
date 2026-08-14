@@ -33,15 +33,8 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/drinks/:drinkId/recipes/new" element={<CreateRecipePage />} />
         <Route path="/drinks/:drinkId/edit"element={<EditDrinkPage />} />
-
-        <Route
-          path="/drinks/:drinkId/recipes"
-          element={<DrinkRecipesPage />}
-        /></Route>
-        <Route
-          path="/recipes/:recipeId/edit"
-        element={<EditRecipePage />}
-      />
+        <Route path="/recipes/:recipeId/edit"element={<EditRecipePage />}/>
+        <Route path="/drinks/:drinkId/recipes"element={<DrinkRecipesPage />}/></Route>
     </Routes>
   );
 }

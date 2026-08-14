@@ -1,3 +1,5 @@
+import IngredientRows from "../recipes/IngredientRows";
+
 function RecipeForm({
   name,
   setName,
@@ -5,6 +7,9 @@ function RecipeForm({
   setInstructions,
   publiclyVisible,
   setPubliclyVisible,
+  ingredientRows,
+  setIngredientRows,
+  setError,
   onSubmit,
   submitting,
   submitLabel,
@@ -33,6 +38,12 @@ function RecipeForm({
           required
         />
       </div>
+
+      <IngredientRows
+        ingredientRows={ingredientRows}
+        setIngredientRows={setIngredientRows}
+        setError={setError}
+      />
 
       <div>
         <label htmlFor="publicly-visible">

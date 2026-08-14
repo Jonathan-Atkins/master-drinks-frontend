@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import IngredientRows, {
   createEmptyIngredientRow,
 } from "../components/recipes/IngredientRows";
 import { API_URL } from "../config/api";
 
+
+
 function CreateRecipePage() {
   const { drinkId } = useParams();
   const navigate = useNavigate();
 
-  const searchTimers = useRef({});
 
   const [drink, setDrink] = useState(null);
   const [name, setName] = useState("");
@@ -49,173 +50,6 @@ function CreateRecipePage() {
 
     fetchDrink();
   }, [drinkId]);
-
-  useEffect(() => {
-    return () => {
-      Object.values(searchTimers.current).forEach((timer) => {
-        clearTimeout(timer);
-      });
-    };
-  }, []);
-
-  const updateIngredientRow = (index, updates) => {
-    setIngredientRows((currentRows) =>
-      currentRows.map((row, rowIndex) =>
-        rowIndex === index
-          ? {
-              ...row,
-              ...updates,
-            }
-          : row
-      )
-    );
-  };
-
-  const searchIngredients = async (index, searchTerm) => {
-    updateIngredientRow(index, {
-      searching: true,
-    });
-
-    try {
-      const response = await fetch(
-        `${API_URL}/api/v1/ingredients?search=${encodeURIComponent(
-          searchTerm
-        )}`,
-        {
-          credentials: "include",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Unable to search ingredients.");
-      }
-
-      const matches = await response.json();
-
-      updateIngredientRow(index, {
-        matches,
-        searching: false,
-      });
-    } catch (requestError) {
-      updateIngredientRow(index, {
-        matches: [],
-        searching: false,
-      });
-
-      setError(requestError.message);
-    }
-  };
-
-  const handleIngredientSearchChange = (index, value) => {
-    updateIngredientRow(index, {
-      search_term: value,
-      ingredient_id: "",
-      ingredient_name: "",
-      matches: [],
-    });
-
-    clearTimeout(searchTimers.current[index]);
-
-    const trimmedValue = value.trim();
-
-    if (trimmedValue.length < 2) {
-      return;
-    }
-
-    searchTimers.current[index] = setTimeout(() => {
-      searchIngredients(index, trimmedValue);
-    }, 300);
-  };
-
-  const selectIngredient = (index, ingredient) => {
-    updateIngredientRow(index, {
-      ingredient_id: ingredient.id,
-      ingredient_name: ingredient.name,
-      search_term: ingredient.name,
-      matches: [],
-    });
-  };
-
-  const createIngredient = async (index) => {
-    const ingredientName =
-      ingredientRows[index].search_term.trim();
-
-    if (!ingredientName) {
-      return;
-    }
-
-    updateIngredientRow(index, {
-      creating: true,
-    });
-
-    setError("");
-
-    try {
-      const response = await fetch(
-        `${API_URL}/api/v1/ingredients`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            name: ingredientName,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.errors?.join(", ") ||
-            data.error ||
-            "Ingredient could not be created."
-        );
-      }
-
-      updateIngredientRow(index, {
-        ingredient_id: data.id,
-        ingredient_name: data.name,
-        search_term: data.name,
-        matches: [],
-        creating: false,
-      });
-    } catch (requestError) {
-      updateIngredientRow(index, {
-        creating: false,
-      });
-
-      setError(requestError.message);
-    }
-  };
-
-  const addIngredientRow = () => {
-    setIngredientRows((currentRows) => [
-      ...currentRows,
-      createEmptyIngredientRow(),
-    ]);
-  };
-
-  const removeIngredientRow = (index) => {
-    clearTimeout(searchTimers.current[index]);
-
-    setIngredientRows((currentRows) =>
-      currentRows.filter((_, rowIndex) => rowIndex !== index)
-    );
-  };
-
-  const hasExactMatch = (ingredientRow) => {
-    const normalizedSearchTerm =
-      ingredientRow.search_term.trim().toLowerCase();
-
-    return ingredientRow.matches.some(
-      (ingredient) =>
-        ingredient.name.trim().toLowerCase() ===
-        normalizedSearchTerm
-    );
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -373,6 +207,7 @@ function CreateRecipePage() {
         <IngredientRows
           ingredientRows={ingredientRows}
           setIngredientRows={setIngredientRows}
+          setError={setError}
         />
 
         <div className="form-field">

@@ -14,6 +14,7 @@ function EditRecipePage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [ingredientRows, setIngredientRows] = useState([]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -34,6 +35,21 @@ function EditRecipePage() {
         setName(data.name);
         setInstructions(data.instructions);
         setPubliclyVisible(data.publicly_visible);
+
+        setIngredientRows(
+          data.ingredients.map((ingredient) => ({
+            recipe_ingredient_id: ingredient.recipe_ingredient_id,
+            ingredient_id: ingredient.ingredient_id,
+            ingredient_name: ingredient.name,
+            search_term: ingredient.name,
+            matches: [],
+            amount: ingredient.amount,
+            measurement_unit: ingredient.measurement_unit,
+            searching: false,
+            creating: false,
+          }))
+        );
+
       } catch (error) {
         setError(error.message);
       } finally {
@@ -102,13 +118,16 @@ function EditRecipePage() {
 
       {error && <p>{error}</p>}
 
-      <RecipeForm
+     <RecipeForm
         name={name}
         setName={setName}
         instructions={instructions}
         setInstructions={setInstructions}
         publiclyVisible={publiclyVisible}
         setPubliclyVisible={setPubliclyVisible}
+        ingredientRows={ingredientRows}
+        setIngredientRows={setIngredientRows}
+        setError={setError}
         onSubmit={handleSubmit}
         submitting={submitting}
         submitLabel="Save Changes"

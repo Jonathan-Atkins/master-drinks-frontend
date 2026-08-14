@@ -1,4 +1,24 @@
-function RecipeCard({ recipe, editing = false }) {
+import { useNavigate } from "react-router-dom";
+
+function RecipeCard({ recipe, editing = false, onDelete }) {
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate(`/recipes/${recipe.id}/edit`);
+  };
+
+  const handleDelete = () => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete ${recipe.name}?`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    onDelete(recipe.id);
+  };
+
   return (
     <article className="recipe-card">
       <h2>
@@ -46,7 +66,9 @@ function RecipeCard({ recipe, editing = false }) {
 
         {recipe.ingredients.map((ingredient, index) => (
           <p key={index}>
-            {ingredient.amount} {ingredient.measurement_unit} {ingredient.name}
+            {ingredient.amount}{" "}
+            {ingredient.measurement_unit}{" "}
+            {ingredient.name}
           </p>
         ))}
       </div>
@@ -55,6 +77,24 @@ function RecipeCard({ recipe, editing = false }) {
         <p>
           Saved: {recipe.saved_by_current_user ? "True" : "False"}
         </p>
+      )}
+
+      {recipe.owned_by_current_user && !editing && (
+        <>
+          <button
+            type="button"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+
+          <button
+            type="button"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </>
       )}
     </article>
   );

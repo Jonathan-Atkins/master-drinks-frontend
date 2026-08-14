@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import RecipeCard from "../components/cards/RecipeCard";
 import { API_URL } from "../config/api";
 
 function DrinkRecipesPage() {
@@ -86,21 +87,14 @@ function DrinkRecipesPage() {
 
       {recipes.length === 0 ? (
         <p>No recipes yet.</p>
-        ) : (
-          recipes.map((recipe) => (
-            <div key={recipe.id}>
-              <h2>{recipe.name}</h2>
-              
-              {recipe.ingredients.map((ingredient, index) => (
-                <p key={index}>
-                  {ingredient.amount} {ingredient.measurement_unit} {ingredient.name}
-                </p>
-              ))}
-
-              <p>{recipe.instructions}</p>
-            </div>
-          ))
-        )}
+      ) : (
+        recipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            recipe={recipe}
+          />
+        ))
+      )}
     </main>
   );
 }
