@@ -36,6 +36,13 @@ function NavBar() {
 
       <button
         type="button"
+        onClick={() => navigate("/ingredients")}
+      >
+        Ingredients
+      </button>
+
+      <button
+        type="button"
         onClick={() => navigate("/settings")}
       >
         Settings

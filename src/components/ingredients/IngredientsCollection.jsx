@@ -47,7 +47,7 @@ function IngredientsCollection() {
   return (
     <section>
       {ingredients.map((ingredient) => (
-        <p key={ingredient.id}>{ingredient.name}, {ingredient.recipe_count}</p>
+        <p key={ingredient.id}>Ingredient Name: {ingredient.name} | Associated Recipes: {ingredient.recipe_count}</p>
       ))}
     </section>
   );
