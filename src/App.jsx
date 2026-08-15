@@ -12,6 +12,7 @@ import DrinkRecipesPage from "./pages/DrinkRecipesPage";
 import SettingsPage from "./pages/SettingsPage";
 import EditRecipePage from "./pages/EditRecipePage";
 import EditDrinkPage from "./pages/EditDrinkPage";
+import IngredientsPage from "./pages/IngredientsPage";
 
 import ProtectedLayout from "./components/layout/ProtectedLayout";
 
@@ -32,7 +33,9 @@ function App() {
         <Route path="/drinks/:drinkId/recipes/new" element={<CreateRecipePage />} />
         <Route path="/drinks/:drinkId/edit"element={<EditDrinkPage />} />
         <Route path="/recipes/:recipeId/edit"element={<EditRecipePage />}/>
-        <Route path="/drinks/:drinkId/recipes"element={<DrinkRecipesPage />}/></Route>
+        <Route path="/drinks/:drinkId/recipes" element={<DrinkRecipesPage />} />
+        <Route path="/ingredients"element={<IngredientsPage />} />
+      </Route>
     </Routes>
   );
 }
