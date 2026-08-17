@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { API_URL } from "../../config/api";
+import { createEmptyIngredientRow } from "../utils/ingredientUtils";
 
 const measurementUnits = [
   "oz",
@@ -14,16 +15,6 @@ const measurementUnits = [
   "pieces",
 ];
 
-export const createEmptyIngredientRow = () => ({
-  ingredient_id: "",
-  ingredient_name: "",
-  search_term: "",
-  matches: [],
-  amount: "",
-  measurement_unit: "",
-  searching: false,
-  creating: false,
-});
 
 function IngredientRows({
   ingredientRows,
@@ -32,13 +23,15 @@ function IngredientRows({
 }) {
   const searchTimers = useRef({});
 
-  useEffect(() => {
-    return () => {
-      Object.values(searchTimers.current).forEach((timer) => {
-        clearTimeout(timer);
-      });
-    };
-  }, []);
+useEffect(() => {
+  const timers = searchTimers.current;
+
+  return () => {
+    Object.values(timers).forEach((timer) => {
+      clearTimeout(timer);
+    });
+  };
+}, []);
 
   const updateIngredientRow = (index, updates) => {
     setIngredientRows((currentRows) =>

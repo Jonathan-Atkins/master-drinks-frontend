@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../../config/api";
 import { drinkCategories } from "../utils/drinkCategories";
 import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
