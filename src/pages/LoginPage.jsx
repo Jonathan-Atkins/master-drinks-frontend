@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
+import AuthLayout from "../components/layout/AuthLayout";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -52,58 +53,60 @@ function LoginPage() {
   };
 
   return (
-    <main className="auth-page">
-      <section className="auth-card">
-        <h1>Login</h1>
+    <AuthLayout>
+      <main className="auth-page">
+        <section className="auth-card">
+          <h1>Login</h1>
 
-        {error && (
-          <p className="form-error" role="alert">
-            {error}
+          {error && (
+            <p className="form-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="form-field">
+              <label htmlFor="email">Email</label>
+
+              <input
+                id="email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="password">Password</label>
+
+              <input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+            </div>
+
+            <button
+              className="primary-button"
+              type="submit"
+              disabled={submitting}
+            >
+              {submitting ? "Logging in..." : "Log In"}
+            </button>
+          </form>
+
+          <p className="auth-footer">
+            Don&apos;t have an account?{" "}
+            <Link to="/register">Create one</Link>
           </p>
-        )}
-
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-
-            <input
-              id="email"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-field">
-            <label htmlFor="password">Password</label>
-
-            <input
-              id="password"
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
-          </div>
-
-          <button
-            className="primary-button"
-            type="submit"
-            disabled={submitting}
-          >
-            {submitting ? "Logging in..." : "Log In"}
-          </button>
-        </form>
-
-        <p className="auth-footer">
-          Don&apos;t have an account?{" "}
-          <Link to="/register">Create one</Link>
-        </p>
-      </section>
-    </main>
+        </section>
+        </main>
+    </AuthLayout>
   );
 }
 
