@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import UserRecipesCollection from "../components/recipes/UserRecipesCollection";
 
-function RecipesPage() {
+function UserRecipesPage() {
   const navigate = useNavigate();
 
   return (
@@ -20,4 +20,4 @@ function RecipesPage() {
   );
 }
 
-export default RecipesPage;
+export default UserRecipesPage;

@@ -73,7 +73,7 @@ function DrinkRecipesPage() {
       </button>
 
       <h1>{drink.name} Recipes</h1>
-      <h2>Manage Your Recipes here!</h2>
+      <h2>Manage Your Recipes here</h2>
 
       <div className="dashboard-actions">
         <button

@@ -6,7 +6,7 @@ function AllRecipesPage() {
 
   return (
     <main>
-      <h1>Recipes Page</h1>
+      <h1>Community Recipes</h1>
 
       <button
         type="button"

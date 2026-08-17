@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import SaveRecipeButton from "../ui/SaveRecipeButton";
 
-function RecipeCard({ recipe, editing = false, onDelete }) {
+function RecipeCard({ recipe, onDelete, onToggleSaved }) {
   const navigate = useNavigate();
 
   const handleEdit = () => {
@@ -16,7 +17,7 @@ function RecipeCard({ recipe, editing = false, onDelete }) {
       return;
     }
 
-    onDelete(recipe.id);
+    onDelete?.(recipe.id);
   };
 
   return (
@@ -27,14 +28,7 @@ function RecipeCard({ recipe, editing = false, onDelete }) {
           : `Created by: ${recipe.drink.username}`}
       </h2>
 
-      {editing ? (
-        <input
-          type="text"
-          defaultValue={recipe.name}
-        />
-      ) : (
-        <h3>{recipe.name}</h3>
-      )}
+      <h3>{recipe.name}</h3>
 
       <p>
         <strong>Drink:</strong> {recipe.drink.name}
@@ -44,22 +38,9 @@ function RecipeCard({ recipe, editing = false, onDelete }) {
         <strong>Category:</strong> {recipe.drink.category}
       </p>
 
-      {editing ? (
-        <div>
-          <label htmlFor="recipe-instructions">
-            Instructions
-          </label>
-
-          <textarea
-            id="recipe-instructions"
-            defaultValue={recipe.instructions}
-          />
-        </div>
-      ) : (
-        <p>
-          <strong>Instructions:</strong> {recipe.instructions}
-        </p>
-      )}
+      <p>
+        <strong>Instructions:</strong> {recipe.instructions}
+      </p>
 
       <div>
         <strong>Ingredients:</strong>
@@ -74,12 +55,23 @@ function RecipeCard({ recipe, editing = false, onDelete }) {
       </div>
 
       {!recipe.owned_by_current_user && (
-        <p>
-          Saved: {recipe.saved_by_current_user ? "True" : "False"}
-        </p>
+        <>
+          <p>
+            Saved: {recipe.saved_by_current_user ? "True" : "False"}
+          </p>
+
+          <SaveRecipeButton
+            recipeId={recipe.id}
+            saved={recipe.saved_by_current_user}
+            userRecipeId={recipe.user_recipe_id}
+            onToggle={(savedData) =>
+              onToggleSaved?.(recipe.id, savedData)
+            }
+          />
+        </>
       )}
 
-      {recipe.owned_by_current_user && !editing && (
+      {recipe.owned_by_current_user && (
         <>
           <button
             type="button"

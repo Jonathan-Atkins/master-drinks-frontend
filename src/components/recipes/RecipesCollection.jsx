@@ -6,6 +6,23 @@ function RecipesCollection() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
+  const handleToggleSaved = (
+    recipeId,
+    { saved, userRecipeId }
+  ) => {
+  setRecipes((currentRecipes) =>
+    currentRecipes.map((recipe) =>
+      recipe.id === recipeId
+        ? {
+            ...recipe,
+            saved_by_current_user: saved,
+            user_recipe_id: userRecipeId,
+          }
+        : recipe
+    )
+  );
+};
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -45,7 +62,7 @@ function RecipesCollection() {
 
   return (
     <section>
-      <h2>All Recipes</h2>
+      <h2>Recipes created by other bartenders</h2>
 
       {Object.entries(recipesByCategory).map(
         ([category, categoryRecipes]) => (
@@ -57,6 +74,7 @@ function RecipesCollection() {
                 <RecipeCard
                   key={recipe.id}
                   recipe={recipe}
+                  onToggleSaved={handleToggleSaved}
                 />
               ))}
             </div>
