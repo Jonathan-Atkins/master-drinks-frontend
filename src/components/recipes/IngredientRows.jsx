@@ -15,7 +15,6 @@ const measurementUnits = [
   "pieces",
 ];
 
-
 function IngredientRows({
   ingredientRows,
   setIngredientRows,
@@ -23,15 +22,15 @@ function IngredientRows({
 }) {
   const searchTimers = useRef({});
 
-useEffect(() => {
-  const timers = searchTimers.current;
+  useEffect(() => {
+    const timers = searchTimers.current;
 
-  return () => {
-    Object.values(timers).forEach((timer) => {
-      clearTimeout(timer);
-    });
-  };
-}, []);
+    return () => {
+      Object.values(timers).forEach((timer) => {
+        clearTimeout(timer);
+      });
+    };
+  }, []);
 
   const updateIngredientRow = (index, updates) => {
     setIngredientRows((currentRows) =>
@@ -175,7 +174,7 @@ useEffect(() => {
 
   const removeIngredientRow = (index) => {
     clearTimeout(searchTimers.current[index]);
-    
+
     setIngredientRows((currentRows) =>
       currentRows.filter((_, rowIndex) => rowIndex !== index)
     );
