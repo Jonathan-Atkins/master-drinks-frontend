@@ -68,7 +68,9 @@ function RegisterPage() {
 
   return (
     <AuthLayout>
-      <main className="auth-page">
+      <main className="auth-page register-page">
+        <h1>Register</h1>
+        
         <section className="auth-card">
           <video
             className="auth-card-video"
@@ -81,8 +83,6 @@ function RegisterPage() {
           </video>
 
           <div className="auth-card-content">
-            <h1>Create Account</h1>
-
             {error && (
               <p className="form-error" role="alert">
                 {error}
@@ -176,7 +176,7 @@ function RegisterPage() {
                 type="submit"
                 disabled={submitting}
               >
-                {submitting ? "Creating account..." : "Create Account"}
+                {submitting ? "Building!..." : "Create Recipe Book"}
               </button>
             </form>
 

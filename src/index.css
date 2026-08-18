@@ -1,4 +1,4 @@
-/* @import "tailwindcss"; */
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
 
 :root {
   --text: #6b6375;
@@ -6,25 +6,30 @@
   --bg: #ffffff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
+
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
+
   --social-bg: rgba(244, 243, 236, 0.5);
+
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --sans: "Amatic SC", sans-serif;
+  --heading: "Amatic SC", sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 16px/145% var(--sans);
+  font: 18px/145% var(--sans);
+
   letter-spacing: 0.18px;
   color: var(--text);
   background: var(--bg);
-  color-scheme: light dark;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,6 +48,10 @@ body {
   min-width: 320px;
   min-height: 100svh;
   margin: 0;
+
+  font-family: var(--sans);
+  font-weight: 400;
+
   background: var(--bg);
 }
 
@@ -50,9 +59,12 @@ body {
   width: 100%;
   max-width: 1126px;
   min-height: 100svh;
+
   margin: 0 auto;
+
   display: flex;
   flex-direction: column;
+
   border-inline: 1px solid var(--border);
 }
 
@@ -82,30 +94,26 @@ h1,
 h2,
 h3 {
   font-family: var(--heading);
+  font-weight: 700;
   color: var(--text-h);
-}
-
-h1,
-h2 {
-  font-weight: 500;
 }
 
 h1 {
   margin: 20px 0;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1.1;
   letter-spacing: -1px;
 }
 
 h2 {
   margin: 0 0 8px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 21px;
 }
 
 p {
@@ -120,6 +128,7 @@ code,
 .counter {
   display: inline-flex;
   border-radius: 4px;
+
   font-family: var(--mono);
   color: var(--text-h);
 }
@@ -127,20 +136,28 @@ code,
 code {
   padding: 4px 8px;
   background: var(--code-bg);
-  font-size: 15px;
+
+  font-size: 17px;
   line-height: 135%;
 }
 
-/* Buttons */
+
+/* =========================
+   Buttons
+========================= */
 
 .primary-button {
   width: 100%;
   min-height: 44px;
+
   padding: 12px 20px;
+
   border: 0;
   border-radius: 8px;
+
   background: var(--accent);
   color: #ffffff;
+
   cursor: pointer;
 }
 
@@ -158,7 +175,10 @@ code {
   opacity: 0.65;
 }
 
-/* Dashboard */
+
+/* =========================
+   Dashboard
+========================= */
 
 .dashboard-page {
   display: flex;
@@ -170,7 +190,9 @@ code {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
   gap: 16px;
+
   text-align: left;
 }
 
@@ -181,7 +203,9 @@ code {
 .dashboard-actions {
   display: flex;
   flex-direction: column;
+
   gap: 12px;
+
   width: 100%;
 }
 
@@ -194,7 +218,10 @@ code {
   margin-bottom: 16px;
 }
 
-/* Drink cards */
+
+/* =========================
+   Drink Cards
+========================= */
 
 .drink-grid {
   display: grid;
@@ -204,11 +231,16 @@ code {
 
 .drink-card {
   min-width: 0;
+
   padding: 20px;
+
   overflow-wrap: anywhere;
+
   border: 1px solid var(--border);
   border-radius: 12px;
+
   background: var(--bg);
+
   box-shadow: var(--shadow);
 }
 
@@ -230,7 +262,7 @@ code {
 }
 
 .drink-details dt {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-h);
 }
 
@@ -242,19 +274,61 @@ code {
 
 .empty-state {
   padding: 32px 16px;
+
   border: 1px dashed var(--border);
   border-radius: 12px;
+
   text-align: center;
 }
 
-/* Authentication pages */
+
+/* =========================
+   Authentication
+========================= */
+
+.auth-layout {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
 .auth-page {
   min-height: 100dvh;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 1rem;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(90, 15, 25, 0.22),
+      rgba(0, 0, 0, 0) 55%
+    ),
+    #080808;
 }
+
+.login-page {
+  flex-direction: column;
+}
+
+.login-page > h1 {
+  margin: 0 0 12px;
+
+  text-align: center;
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 52px;
+  font-weight: 400;
+  font-style: normal;
+
+  color: #ffffff;
+}
+
+
+/* Authentication Card */
 
 .auth-card {
   position: relative;
@@ -263,6 +337,8 @@ code {
   width: 100%;
   max-width: 28rem;
   min-height: 32rem;
+
+  clip-path: url("#wine-glass-shape");
 }
 
 .auth-card::before {
@@ -270,10 +346,13 @@ code {
   position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
   z-index: 1;
 }
-
 
 .auth-card-video {
   position: absolute;
@@ -281,6 +360,7 @@ code {
 
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 
   z-index: 0;
@@ -289,7 +369,12 @@ code {
 .auth-card-content {
   position: relative;
   z-index: 2;
+
+  padding: 94px 58px 52px;
 }
+
+
+/* Authentication Form */
 
 .auth-form {
   display: grid;
@@ -299,11 +384,14 @@ code {
 .form-field {
   display: grid;
   gap: 8px;
+
   text-align: left;
 }
 
 .form-field label {
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
+
   color: var(--text-h);
 }
 
@@ -312,9 +400,12 @@ code {
 .form-field textarea {
   width: 100%;
   min-height: 44px;
+
   padding: 12px;
+
   border: 1px solid var(--border);
   border-radius: 8px;
+
   background: var(--bg);
   color: var(--text-h);
 }
@@ -322,6 +413,7 @@ code {
 .form-field input[type="checkbox"] {
   width: 20px;
   height: 20px;
+
   min-height: auto;
 }
 
@@ -340,28 +432,88 @@ code {
 .form-error {
   margin-bottom: 16px;
   padding: 12px;
+
   border: 1px solid #dc2626;
   border-radius: 8px;
+
   color: #dc2626;
+
   text-align: left;
 }
 
 .field-error {
   margin-top: 4px;
+
   color: #dc2626;
+
   font-size: 0.875rem;
   text-align: left;
 }
 
 .field-help {
   margin-top: 4px;
+
   font-size: 0.875rem;
   text-align: left;
 }
 
+.login-page,
+.register-page {
+  flex-direction: column;
+}
+
+.login-page > h1,
+.register-page > h1 {
+  margin: 0 0 12px;
+  text-align: center;
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 52px;
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+.auth-page .form-field label {
+  width: fit-content;
+
+  padding: 1px 5px;
+
+  color: #fff4e6;
+  background: rgba(0, 0, 0, 0.28);
+
+  font-size: 28px;
+  font-weight: 700;
+
+  border-radius: 3px;
+}
+
+.login-page .form-field input,
+.register-page .form-field input {
+  font-size: 35px;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-page .primary-button {
+  font-size: 35px;
+}
+
+.auth-page .auth-footer {
+  font-size: 28px;
+}
+
+/* =========================
+   Ingredients
+========================= */
+
 .ingredient-row {
   display: grid;
   gap: 16px;
+
   padding: 16px 0;
 }
 
@@ -371,25 +523,31 @@ code {
 
 .ingredient-results {
   width: 100%;
+
   margin: 0;
   padding: 0;
+
   list-style: none;
+
   border: 1px solid var(--border);
   border-radius: 8px;
+
   overflow: hidden;
 }
 
 .ingredient-results button {
   width: 100%;
   min-height: 44px;
+
   padding: 12px;
+
   text-align: left;
 }
 
-.auth-footer {
-  margin-top: 20px;
-  text-align: center;
-}
+
+/* =========================
+   Recipe Cards
+========================= */
 
 .recipe-grid {
   display: grid;
@@ -397,12 +555,16 @@ code {
 }
 
 .recipe-card {
+  padding: 16px;
+
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 16px;
 }
 
-/* Dark mode */
+
+/* =========================
+   Dark Mode
+========================= */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -411,17 +573,24 @@ code {
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
+
     --accent: #c084fc;
+
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
+
     --social-bg: rgba(47, 48, 58, 0.5);
+
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px,
       rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 }
 
-/* Tablet */
+
+/* =========================
+   Tablet
+========================= */
 
 @media (min-width: 640px) {
   .auth-card {
@@ -431,6 +600,7 @@ code {
   .dashboard-actions {
     flex-direction: row;
     flex-wrap: wrap;
+
     width: auto;
   }
 
@@ -444,27 +614,48 @@ code {
     padding: 24px;
   }
 
+  h1 {
+    margin: 32px 0;
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
   .drink-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .ingredient-row {
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .login-page > h1 {
+    margin-bottom: 12px;
+    font-size: 56px;
+  }
 }
 
-/* Larger tablets and desktops */
+
+/* =========================
+   Larger Tablets
+========================= */
 
 @media (min-width: 900px) {
   .dashboard-header {
     flex-direction: row;
+
     justify-content: space-between;
     align-items: center;
   }
 }
 
-@media (min-width: 768px) {
-  .ingredient-row {
-    grid-template-columns: 2fr 1fr 1fr auto;
-    align-items: end;
-  }
-}
+
+/* =========================
+   Desktop
+========================= */
 
 @media (min-width: 1024px) {
   main {
@@ -473,35 +664,21 @@ code {
 
   h1 {
     margin: 32px 0;
-    font-size: 56px;
+
+    font-size: 60px;
     letter-spacing: -1.68px;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .drink-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
 
-.auth-layout {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.beer-background {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.auth-layout > *:not(.beer-background) {
-  position: relative;
-  z-index: 1;
+  .login-page > h1 {
+    margin-bottom: 12px;
+    font-size: 60px;
+  }
 }
