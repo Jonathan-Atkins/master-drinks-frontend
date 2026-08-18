@@ -70,108 +70,120 @@ function RegisterPage() {
     <AuthLayout>
       <main className="auth-page">
         <section className="auth-card">
-          <h1>Create Account</h1>
+          <video
+            className="auth-card-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/beer_background.mp4" type="video/mp4" />
+          </video>
 
-          {error && (
-            <p className="form-error" role="alert">
-              {error}
+          <div className="auth-card-content">
+            <h1>Create Account</h1>
+
+            {error && (
+              <p className="form-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <form className="auth-form" onSubmit={handleSubmit}>
+              <div className="form-field">
+                <label htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  autoComplete="name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="username">Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                    setUsernameError("");
+                  }}
+                  aria-invalid={Boolean(usernameError)}
+                  aria-describedby={
+                    usernameError ? "username-error" : undefined
+                  }
+                  required
+                />
+
+                {usernameError && (
+                  <p
+                    id="username-error"
+                    className="field-error"
+                    role="alert"
+                  >
+                    {usernameError}
+                  </p>
+                )}
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="passwordConfirmation">
+                  Password Confirmation
+                </label>
+                <input
+                  id="passwordConfirmation"
+                  type="password"
+                  autoComplete="new-password"
+                  value={passwordConfirmation}
+                  onChange={(event) =>
+                    setPasswordConfirmation(event.target.value)
+                  }
+                  required
+                />
+              </div>
+
+              <button
+                className="primary-button"
+                type="submit"
+                disabled={submitting}
+              >
+                {submitting ? "Creating account..." : "Create Account"}
+              </button>
+            </form>
+
+            <p className="auth-footer">
+              Already have an account? <Link to="/login">Log in</Link>
             </p>
-          )}
-
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="form-field">
-              <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                type="text"
-                autoComplete="name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="username">Username</label>
-              <input
-                id="username"
-                type="text"
-                autoComplete="username"
-                value={username}
-                onChange={(event) => {
-                  setUsername(event.target.value);
-                  setUsernameError("");
-                }}
-                aria-invalid={Boolean(usernameError)}
-                aria-describedby={
-                  usernameError ? "username-error" : undefined
-                }
-                required
-              />
-
-              {usernameError && (
-                <p
-                  id="username-error"
-                  className="field-error"
-                  role="alert"
-                >
-                  {usernameError}
-                </p>
-              )}
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                autoComplete="new-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="passwordConfirmation">
-                Password Confirmation
-              </label>
-              <input
-                id="passwordConfirmation"
-                type="password"
-                autoComplete="new-password"
-                value={passwordConfirmation}
-                onChange={(event) =>
-                  setPasswordConfirmation(event.target.value)
-                }
-                required
-              />
-            </div>
-
-            <button
-              className="primary-button"
-              type="submit"
-              disabled={submitting}
-            >
-              {submitting ? "Creating account..." : "Create Account"}
-            </button>
-          </form>
-
-          <p className="auth-footer">
-            Already have an account? <Link to="/login">Log in</Link>
-          </p>
+          </div>
         </section>
       </main>
     </AuthLayout>
