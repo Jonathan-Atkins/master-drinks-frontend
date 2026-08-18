@@ -56,56 +56,68 @@ function LoginPage() {
     <AuthLayout>
       <main className="auth-page">
         <section className="auth-card">
-          <h1>Login</h1>
+          <video
+            className="auth-card-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/beer_background.mp4" type="video/mp4" />
+          </video>
 
-          {error && (
-            <p className="form-error" role="alert">
-              {error}
+          <div className="auth-card-content">
+            <h1>Login</h1>
+
+            {error && (
+              <p className="form-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <form className="auth-form" onSubmit={handleSubmit}>
+              <div className="form-field">
+                <label htmlFor="email">Email</label>
+
+                <input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="password">Password</label>
+
+                <input
+                  id="password"
+                  type="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                />
+              </div>
+
+              <button
+                className="primary-button"
+                type="submit"
+                disabled={submitting}
+              >
+                {submitting ? "Logging in..." : "Log In"}
+              </button>
+            </form>
+
+            <p className="auth-footer">
+              Don&apos;t have an account?{" "}
+              <Link to="/register">Create one</Link>
             </p>
-          )}
-
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="form-field">
-              <label htmlFor="email">Email</label>
-
-              <input
-                id="email"
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="password">Password</label>
-
-              <input
-                id="password"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
-            </div>
-
-            <button
-              className="primary-button"
-              type="submit"
-              disabled={submitting}
-            >
-              {submitting ? "Logging in..." : "Log In"}
-            </button>
-          </form>
-
-          <p className="auth-footer">
-            Don&apos;t have an account?{" "}
-            <Link to="/register">Create one</Link>
-          </p>
+          </div>
         </section>
-        </main>
+      </main>
     </AuthLayout>
   );
 }
