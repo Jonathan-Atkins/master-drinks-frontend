@@ -91,7 +91,7 @@ function LoginPage() {
             playsInline
             preload="auto"
           >
-            <source src="/beer_background.mp4" type="video/mp4" />
+            <source src="/beerVideo.mp4" type="video/mp4" />
           </video>
 
           <div className="auth-card-content">
