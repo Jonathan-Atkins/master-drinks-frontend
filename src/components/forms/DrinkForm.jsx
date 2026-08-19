@@ -5,32 +5,39 @@ import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
 function DrinkForm({ drink = null }) {
   const [name, setName] = useState(drink?.name || "");
-  const [category, setCategory] = useState(drink?.category || "");
+
+  const [category, setCategory] = useState(
+    drink?.categories?.[0]?.slug || ""
+  );
+
   const [alcoholic, setAlcoholic] = useState(
     drink?.alcoholic ?? true
   );
+
   const [publiclyVisible, setPubliclyVisible] = useState(
     drink?.publicly_visible ?? true
   );
+
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { isEditing, url, method } =
-  getDrinkRequestConfig(drink);
 
+  const { isEditing, url, method } =
+    getDrinkRequestConfig(drink);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setError("");
+    setSubmitting(true);
+
     const drinkPayload = {
       name,
       category_slugs: [category],
       alcoholic,
       publicly_visible: publiclyVisible,
     };
-
-    event.preventDefault();
-    setError("");
-    setSubmitting(true);
 
     try {
       const response = await fetch(url, {
