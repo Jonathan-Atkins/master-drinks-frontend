@@ -1,0 +1,57 @@
+/* =========================
+   Wine Glass Wrapper
+========================= */
+
+.wine-glass-outline {
+  position: relative;
+
+  width: min(100%, 28rem);
+}
+
+
+/* Creates the visible outer rim */
+
+.wine-glass-outline::before {
+  content: "";
+
+  position: absolute;
+
+  /* Makes the outline slightly larger than the card */
+  inset: -3px;
+
+  background: rgba(255, 244, 230, 0.9);
+
+  clip-path: url("#wine-glass-shape");
+
+  z-index: 0;
+}
+
+
+/* Actual video/card */
+
+.wine-glass-card {
+  position: relative;
+
+  width: 100%;
+
+  clip-path: url("#wine-glass-shape");
+
+  z-index: 1;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .wine-glass-outline {
+    width: 82vw;
+    max-width: 330px;
+  }
+
+  .login-page .wine-glass-card {
+    width: 100%;
+    max-width: none;
+  }
+}

@@ -81,7 +81,7 @@ function LoginPage() {
         <h1 className="animated-underline auto-underline">
           Recipe Book Login
         </h1>
-
+      <div className="wine-glass-outline">
         <section className="auth-card wine-glass-card">
           <video
             ref={videoRef}
@@ -143,7 +143,8 @@ function LoginPage() {
               <Link to="/register">Create one</Link>
             </p>
           </div>
-        </section>
+          </section>
+      </div>
       </main>
     </AuthLayout>
   );

@@ -387,17 +387,6 @@ code {
 
 
 /* =========================
-   Login Wine Glass Shape
-========================= */
-
-.wine-glass-card {
-  clip-path: url("#wine-glass-shape");
-
-  border-radius: 0;
-}
-
-
-/* =========================
    Authentication Video
 ========================= */
 

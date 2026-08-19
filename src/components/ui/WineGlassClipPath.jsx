@@ -1,3 +1,5 @@
+import "../../styles/WineGlass.css";
+
 function WineGlassClipPath() {
   return (
     <svg
