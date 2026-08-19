@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { drinkCategories } from "../utils/drinkCategories";
+import { API_URL } from "../../config/api";
 import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
 function DrinkForm({ drink = null }) {
   const [name, setName] = useState(drink?.name || "");
-
   const [category, setCategory] = useState(
     drink?.categories?.[0]?.slug || ""
   );
+  const [categories, setCategories] = useState([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   const [alcoholic, setAlcoholic] = useState(
     drink?.alcoholic ?? true
@@ -25,6 +26,33 @@ function DrinkForm({ drink = null }) {
     getDrinkRequestConfig(drink);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          `${API_URL}/api/v1/categories`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.errors?.join(", ") ||
+              "Categories could not be loaded."
+          );
+        }
+
+        setCategories(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -103,17 +131,20 @@ function DrinkForm({ drink = null }) {
             setCategory(event.target.value)
           }
           required
+          disabled={categoriesLoading}
         >
           <option value="">
-            Select a category
+            {categoriesLoading
+              ? "Loading categories..."
+              : "Select a category"}
           </option>
 
-          {drinkCategories.map((categoryOption) => (
+          {categories.map((categoryOption) => (
             <option
-              key={categoryOption.value}
-              value={categoryOption.value}
+              key={categoryOption.slug}
+              value={categoryOption.slug}
             >
-              {categoryOption.label}
+              {categoryOption.name}
             </option>
           ))}
         </select>
@@ -149,7 +180,7 @@ function DrinkForm({ drink = null }) {
         <button
           className="primary-button"
           type="submit"
-          disabled={submitting}
+          disabled={submitting || categoriesLoading}
         >
           {submitting
             ? "Submitting..."
