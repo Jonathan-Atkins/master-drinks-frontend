@@ -72,7 +72,6 @@ function RegisterPage() {
       <main className="auth-page register-page">
         <h1>Register</h1>
 
-        <BeerGlassClipPath />
         <section className="auth-card beer-glass-card">
           <video
             className="auth-card-video"
