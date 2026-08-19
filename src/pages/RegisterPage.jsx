@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BeerGlassClipPath from "../components/ui/BeerGlassClipPath";
 import { API_URL } from "../config/api";
 import AuthLayout from "../components/layout/AuthLayout";
 
@@ -70,8 +71,9 @@ function RegisterPage() {
     <AuthLayout>
       <main className="auth-page register-page">
         <h1>Register</h1>
-        
-        <section className="auth-card">
+
+        <BeerGlassClipPath />
+        <section className="auth-card beer-glass-card">
           <video
             className="auth-card-video"
             autoPlay
