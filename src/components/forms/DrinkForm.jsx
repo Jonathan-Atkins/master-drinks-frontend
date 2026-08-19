@@ -23,7 +23,7 @@ function DrinkForm({ drink = null }) {
   const handleSubmit = async (event) => {
     const drinkPayload = {
       name,
-      category,
+      category_slugs: [category],
       alcoholic,
       publicly_visible: publiclyVisible,
     };
