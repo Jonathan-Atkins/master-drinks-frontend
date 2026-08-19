@@ -232,7 +232,6 @@ code {
 
 .dashboard-section {
   width: 100%;
-
   text-align: left;
 }
 
@@ -269,7 +268,6 @@ code {
 
 .drink-card h3 {
   margin: 0 0 16px;
-
   color: var(--text-h);
 }
 
@@ -334,13 +332,7 @@ code {
 
   padding: 16px;
 
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(90, 15, 25, 0.22),
-      rgba(0, 0, 0, 0) 55%
-    ),
-    #080808;
+  background: #050505;
 }
 
 
@@ -375,6 +367,7 @@ code {
   overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
 
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.25),
@@ -382,21 +375,25 @@ code {
     inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
+
+/* Register Card */
+
 .register-page .auth-card {
   width: min(100%, 34rem);
+
+  clip-path: none;
+  border-radius: 20px;
 }
 
 
 /* =========================
-   Custom Glass Shapes
+   Login Wine Glass Shape
 ========================= */
 
 .wine-glass-card {
   clip-path: url("#wine-glass-shape");
-}
 
-.beer-glass-card {
-  clip-path: url("#beer-glass-shape");
+  border-radius: 0;
 }
 
 
@@ -451,6 +448,15 @@ code {
     clamp(48px, 10vw, 100px)
     clamp(24px, 7vw, 58px)
     clamp(32px, 8vw, 52px);
+}
+
+
+/* Register content */
+
+.register-page .auth-card-content {
+  padding:
+    clamp(32px, 7vw, 52px)
+    clamp(24px, 6vw, 48px);
 }
 
 
@@ -557,9 +563,6 @@ code {
 
   text-align: center;
 }
-
-
-/* Animated underline */
 
 .auth-page .auth-footer a {
   position: relative;
@@ -737,15 +740,14 @@ code {
   }
 
 
-  /* Login wine glass */
+  /* =========================
+     Login
+  ========================= */
 
   .login-page .auth-card {
     width: 82vw;
     max-width: 330px;
   }
-
-
-  /* Login form */
 
   .login-page .auth-form {
     width: 100%;
@@ -777,33 +779,44 @@ code {
     font-size: 30px;
   }
 
-
-  /* Register beer glass */
-
-  .register-page .auth-card {
-    width: 88vw;
-    max-width: 355px;
-  }
-
-
-  /* Auth card content */
-
-  .auth-card-content {
-    padding:
-      52px
-      30px
-      38px;
-  }
-
-
-  /* Custom shapes remain on mobile */
-
   .wine-glass-card {
     clip-path: url("#wine-glass-shape");
   }
 
-  .beer-glass-card {
-    clip-path: url("#beer-glass-shape");
+
+  /* =========================
+     Register
+  ========================= */
+
+  .register-page .auth-card {
+    width: 90vw;
+    max-width: 370px;
+
+    clip-path: none;
+
+    border-radius: 20px;
+  }
+
+  .register-page .auth-card-content {
+    padding: 32px 24px;
+  }
+
+  .register-page .form-field input:not([type="checkbox"]) {
+    font-size: 28px;
+  }
+
+  .register-page .primary-button {
+    font-size: 30px;
+  }
+
+
+  /* Login card content */
+
+  .login-page .auth-card-content {
+    padding:
+      52px
+      30px
+      38px;
   }
 }
 
@@ -817,7 +830,11 @@ code {
     padding-inline: 8px;
   }
 
-  .auth-card-content {
+  .login-page .auth-card-content {
+    padding-inline: 18px;
+  }
+
+  .register-page .auth-card-content {
     padding-inline: 18px;
   }
 }

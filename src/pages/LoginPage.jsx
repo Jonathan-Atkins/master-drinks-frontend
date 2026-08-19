@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
@@ -79,7 +78,9 @@ function LoginPage() {
       <WineGlassClipPath />
 
       <main className="auth-page login-page">
-        <h1>Recipe Book Login</h1>
+        <h1 className="animated-underline auto-underline">
+          Recipe Book Login
+        </h1>
 
         <section className="auth-card wine-glass-card">
           <video
