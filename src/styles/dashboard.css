@@ -19,6 +19,10 @@
   margin-bottom: 4px;
 }
 
+.dashboard-header p {
+  font-size: clamp(24px, 3vw, 36px);
+}
+
 .dashboard-actions {
   display: flex;
   flex-direction: column;
@@ -40,13 +44,10 @@
 
 .drink-grid {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
 
   gap: 38px;
-}
-
-.dashboard-header p {
-  font-size: clamp(24px, 3vw, 36px);
 }
 
 
@@ -73,6 +74,8 @@
 
   cursor: pointer;
 
+  font-size: 20px;
+
   transition:
     box-shadow 300ms ease-in-out,
     color 300ms ease-in-out;
@@ -96,7 +99,7 @@
   color: rgba(255, 255, 255, 0.82);
 
   font-family: "Amatic SC", sans-serif;
-  font-size: 44px;
+  font-size: 52px;
   font-weight: 400;
 
   opacity: 0;
@@ -111,7 +114,7 @@
 
 
 /* =========================
-   Button 1 Hover Animation
+   Hover Animation
 ========================= */
 
 .drink-card:hover {
@@ -123,9 +126,6 @@
 .drink-card:hover::after {
   opacity: 1;
 }
-
-
-/* Hide normal card content on hover */
 
 .drink-card:hover > h2,
 .drink-card:hover > p {
@@ -139,6 +139,8 @@
   position: relative;
 
   z-index: 4;
+
+  font-size: 22px;
 }
 
 
@@ -171,6 +173,8 @@
 
   color: var(--text-h);
 
+  font-size: 36px;
+
   transition:
     opacity 200ms ease-in-out;
 }
@@ -182,6 +186,8 @@
 }
 
 .drink-card p {
+  font-size: 22px;
+
   transition:
     opacity 200ms ease-in-out;
 }
@@ -196,7 +202,6 @@
 
 .drink-details div {
   display: flex;
-
   justify-content: space-between;
 
   gap: 16px;
@@ -215,6 +220,15 @@
   text-transform: capitalize;
 }
 
+.drink-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  margin-top: 20px;
+}
+
 
 /* =========================
    Empty State
@@ -227,6 +241,19 @@
   border-radius: 12px;
 
   text-align: center;
+}
+
+
+/* =========================
+   Dashboard Header Styling
+========================= */
+
+.dashboard-page .dashboard-header h1 {
+  color: #ffffff;
+
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.75);
 }
 
 
@@ -253,7 +280,6 @@
 @media (min-width: 900px) {
   .dashboard-header {
     flex-direction: row;
-
     justify-content: space-between;
     align-items: center;
   }
@@ -264,40 +290,4 @@
     grid-template-columns:
       repeat(3, minmax(0, 1fr));
   }
-}
-
-.drink-card {
-  font-size: 20px;
-}
-
-.drink-card h2 {
-  font-size: 36px;
-}
-
-.drink-card p {
-  font-size: 22px;
-}
-
-.drink-card button {
-  font-size: 22px;
-}
-
-.drink-card::after {
-  font-size: 52px;
-}
-
-.drink-card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-
-  margin-top: 20px;
-}
-
-.dashboard-page .dashboard-header h1 {
-  color: #ffffff;
-
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.9),
-    0 0 10px rgba(0, 0, 0, 0.75);
 }
