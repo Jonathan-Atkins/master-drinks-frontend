@@ -84,7 +84,7 @@ function LoginPage() {
         document.body
       )}
 
-      <AuthLayout>
+      <AuthLayout showDecorations>
         <WineGlassClipPath />
 
         <main
@@ -171,7 +171,10 @@ function LoginPage() {
           </div>
         </main>
 
-        <AboutMe showBackToTop />
+        <AboutMe
+          showBackToTop
+          transparentBackground
+        />
       </AuthLayout>
     </>
   );

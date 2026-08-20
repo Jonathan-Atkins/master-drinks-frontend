@@ -29,11 +29,11 @@
 
 /* Feature/page-level styles */
 @import "./styles/auth.css";
+@import "./styles/auth-decorations.css";
 @import "./styles/dashboard.css";
 @import "./styles/ingredients.css";
 @import "./styles/recipes.css";
 @import "./styles/NavBar.css";
 @import "./styles/layout.css";
-@import "./styles/auth.css";
 @import "./styles/about.css";
 @import "./styles/handwritten-greeting.css";

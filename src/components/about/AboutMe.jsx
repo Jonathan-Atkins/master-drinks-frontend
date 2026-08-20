@@ -2,6 +2,7 @@ function AboutMe({
   showBackToLogin = false,
   onBackToLogin,
   showBackToTop = false,
+  transparentBackground = false,
 }) {
   const handleBackToTop = () => {
     document
@@ -14,7 +15,11 @@ function AboutMe({
 
   return (
     <section
-      className="about-me"
+      className={`about-me ${
+        transparentBackground
+          ? "about-me-transparent"
+          : ""
+      }`}
       id="about-me"
       aria-labelledby="about-me-title"
     >
@@ -33,7 +38,8 @@ function AboutMe({
             <h2>I. What Is Bar Buddy?</h2>
 
             <p>
-              The most comprehensive Bar Recipe Book! Add, collect and share recipes with other users around the world
+              A bar recipe book built to keep cocktail recipes
+              organized and accessible.
             </p>
           </section>
 
@@ -41,7 +47,8 @@ function AboutMe({
             <h2>II. Who Is It For?</h2>
 
             <p>
-              The professional and hobbyist bartenders alike!
+              Designed for professional bartenders and cocktail
+              hobbyists.
             </p>
           </section>
 
@@ -49,7 +56,8 @@ function AboutMe({
             <h2>III. Why Bar Buddy?</h2>
 
             <p>
-              With so many uniquly crafted cocktails its impossible to keep track of all of them. Buddy Bar is here to help you and your friends organize them all!
+              Modern bars and restaurants create unique and intricate
+              recipes that can be difficult to remember and organize.
             </p>
           </section>
 
