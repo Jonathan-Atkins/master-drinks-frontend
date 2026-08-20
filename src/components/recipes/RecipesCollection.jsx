@@ -1,34 +1,37 @@
 import { useEffect, useState } from "react";
+
+import { API_URL } from "../../config/api";
 import { groupRecipesByCategory } from "../utils/recipeUtils";
+
 import RecipeCard from "./RecipeCard";
 
 function RecipesCollection() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  
+
   const handleToggleSaved = (
     recipeId,
     { saved, userRecipeId }
   ) => {
-  setRecipes((currentRecipes) =>
-    currentRecipes.map((recipe) =>
-      recipe.id === recipeId
-        ? {
-            ...recipe,
-            saved_by_current_user: saved,
-            user_recipe_id: userRecipeId,
-          }
-        : recipe
-    )
-  );
-};
+    setRecipes((currentRecipes) =>
+      currentRecipes.map((recipe) =>
+        recipe.id === recipeId
+          ? {
+              ...recipe,
+              saved_by_current_user: saved,
+              user_recipe_id: userRecipeId,
+            }
+          : recipe
+      )
+    );
+  };
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/v1/recipes",
+          `${API_URL}/api/v1/recipes`,
           {
             credentials: "include",
           }
@@ -39,6 +42,7 @@ function RecipesCollection() {
         }
 
         const data = await response.json();
+
         setRecipes(data);
       } catch (error) {
         setError(error.message);
@@ -50,7 +54,8 @@ function RecipesCollection() {
     fetchRecipes();
   }, []);
 
-    const recipesByCategory = groupRecipesByCategory(recipes);
+  const recipesByCategory =
+    groupRecipesByCategory(recipes);
 
   if (loading) {
     return <p>Loading recipes...</p>;
@@ -81,7 +86,6 @@ function RecipesCollection() {
           </section>
         )
       )}
-      
     </section>
   );
 }
