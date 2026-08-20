@@ -7,15 +7,17 @@ function Dashboard() {
   
   return (
     <main className="dashboard-page">
-      <header className="dashboard-header">
-        <div>
-          <h1>{ user.username}'s Dashboard</h1>
-          <p>Manage your Drinks here</p>
-        </div>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">
+          {user.username}&apos;s Dashboard
+        </h1>
+
+        <p className="page-header-description">Manage your Drinks here</p>
       </header>
-        <section>
-          <DrinksCollection />
-        </section>
+
+      <section>
+        <DrinksCollection />
+      </section>
     </main>
   );
 }

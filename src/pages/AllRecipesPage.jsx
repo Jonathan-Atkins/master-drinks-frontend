@@ -6,7 +6,13 @@ function AllRecipesPage() {
 
   return (
     <main>
-      <h1>Community Recipes</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">Community Recipes</h1>
+
+        <p className="page-header-description">
+          Explore recipes shared by the community.
+        </p>
+      </header>
 
       <button
         type="button"

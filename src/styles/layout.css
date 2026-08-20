@@ -9,20 +9,18 @@
 
   object-fit: contain;
 
+  z-index: 0;
+  opacity: 0.3;
+
   pointer-events: none;
 }
 
 .page-flower {
   right: 20px;
-
-  z-index: 50;
 }
 
 .page-babyangel {
   left: 20px;
-
-  z-index: 0;
-  opacity: 0.35;
 }
 
 @media (max-width: 480px) {

@@ -57,7 +57,13 @@ function EditDrinkPage() {
         Back
       </button>
 
-      <h1>Edit Drink</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">Edit Drink</h1>
+
+        <p className="page-header-description">
+          Update your drink details.
+        </p>
+      </header>
 
       <DrinkForm drink={drink} />
     </main>

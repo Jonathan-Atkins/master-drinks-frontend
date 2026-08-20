@@ -189,6 +189,7 @@ code {
 
 .dashboard-header h1 {
   color: #F2D6A2;
+  font-size: clamp(76px, 6vw, 84px);
 }
 
 .dashboard-actions {

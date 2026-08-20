@@ -163,7 +163,15 @@ function CreateRecipePage() {
         Back
       </button>
 
-      <h1>Create a Recipe for {drink.name}</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">
+          Create a Recipe for {drink.name}
+        </h1>
+
+        <p className="page-header-description">
+          Add a new recipe to this drink.
+        </p>
+      </header>
 
       {error && (
         <p className="form-error" role="alert">

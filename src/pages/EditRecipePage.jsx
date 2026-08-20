@@ -114,11 +114,17 @@ function EditRecipePage() {
         Back
       </button>
 
-      <h1>Edit Recipe</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">Edit Recipe</h1>
+
+        <p className="page-header-description">
+          Adjust this recipe and its ingredients.
+        </p>
+      </header>
 
       {error && <p>{error}</p>}
 
-     <RecipeForm
+      <RecipeForm
         name={name}
         setName={setName}
         instructions={instructions}

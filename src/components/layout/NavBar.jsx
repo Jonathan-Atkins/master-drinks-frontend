@@ -1,15 +1,38 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import {
+  NavLink,
+  useLocation,
+} from "react-router-dom";
+
 import SignOutButton from "../ui/SignOutButton";
+
 import "../../styles/NavBar.css";
 
 const navItems = [
-  { label: "Home", path: "/dashboard" },
-  { label: "My Recipes", path: "/my-recipes" },
-  { label: "Community Recipes", path: "/recipes" },
-  { label: "Create a Drink", path: "/drink-maker" },
-  { label: "Ingredients", path: "/ingredients" },
-  { label: "Settings", path: "/settings" },
+  {
+    label: "Home",
+    path: "/dashboard",
+  },
+  {
+    label: "My Recipes",
+    path: "/my-recipes",
+  },
+  {
+    label: "Community Recipes",
+    path: "/recipes",
+  },
+  {
+    label: "Create a Drink",
+    path: "/drink-maker",
+  },
+  {
+    label: "Ingredients",
+    path: "/ingredients",
+  },
+  {
+    label: "Settings",
+    path: "/settings",
+  },
 ];
 
 function NavBar() {
@@ -36,8 +59,11 @@ function NavBar() {
     }
 
     previousIndex.current = activeIndex;
-    setMenuOpen(false);
   }, [activeIndex]);
+
+  const handleMenuToggle = () => {
+    setMenuOpen((currentMenuState) => !currentMenuState);
+  };
 
   return (
     <nav className="main-nav">
@@ -46,13 +72,19 @@ function NavBar() {
           className="nav-menu-button"
           type="button"
           aria-expanded={menuOpen}
-          aria-label="Toggle navigation"
-          onClick={() => setMenuOpen(!menuOpen)}
+          aria-controls="main-navigation-menu"
+          aria-label={
+            menuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          onClick={handleMenuToggle}
         >
           Menu
         </button>
 
         <div
+          id="main-navigation-menu"
           className={`nav-menu ${
             menuOpen ? "nav-menu-open" : ""
           }`}
@@ -62,9 +94,14 @@ function NavBar() {
               <NavLink
                 key={item.path}
                 to={item.path}
+                onClick={() => {
+                  setMenuOpen(false);
+                }}
                 className={({ isActive }) =>
                   `nav-link ${
-                    isActive ? "nav-link-active" : ""
+                    isActive
+                      ? "nav-link-active"
+                      : ""
                   }`
                 }
               >

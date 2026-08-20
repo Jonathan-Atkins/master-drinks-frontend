@@ -72,8 +72,13 @@ function DrinkRecipesPage() {
         Back
       </button>
 
-      <h1>{drink.name} Recipes</h1>
-      <h2>Manage Your Recipes here</h2>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">{drink.name} Recipes</h1>
+
+        <p className="page-header-description">
+          Manage your recipes for this drink.
+        </p>
+      </header>
 
       <div className="dashboard-actions">
         <button

@@ -13,17 +13,21 @@ function IngredientsPage() {
         Back
       </button>
 
-      <div className="page-header">
-        <h1>Ingredients</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">Ingredients</h1>
 
-        <button
-          type="button"
-          className="primary-button"
-          onClick={() => navigate("/ingredients/new")}
-        >
-          Add Ingredient
-        </button>
-      </div>
+        <p className="page-header-description">
+          Search and manage the ingredients you use in recipes.
+        </p>
+      </header>
+
+      <button
+        type="button"
+        className="primary-button"
+        onClick={() => navigate("/ingredients/new")}
+      >
+        Add Ingredient
+      </button>
 
       <IngredientsCollection />
     </main>

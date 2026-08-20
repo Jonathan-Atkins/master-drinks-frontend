@@ -6,7 +6,13 @@ function UserRecipesPage() {
 
   return (
     <main>
-      <h1>My Recipes</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">My Recipes</h1>
+
+        <p className="page-header-description">
+          Browse and manage your saved recipes.
+        </p>
+      </header>
 
       <button
         type="button"

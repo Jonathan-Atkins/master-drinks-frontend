@@ -14,7 +14,13 @@ function SettingsPage() {
         Back
       </button>
 
-      <h1>Settings</h1>
+      <header className="page-header-section">
+        <h1 className="page-header animated-underline auto-underline">Settings</h1>
+
+        <p className="page-header-description">
+          Update your profile and account details.
+        </p>
+      </header>
 
       <ProfileSettingsForm />
       <br />
