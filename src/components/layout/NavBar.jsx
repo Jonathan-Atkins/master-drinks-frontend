@@ -30,6 +30,10 @@ const navItems = [
     path: "/ingredients",
   },
   {
+    label: "About Me",
+    path: "/about",
+  },
+  {
     label: "Settings",
     path: "/settings",
   },
@@ -122,7 +126,7 @@ function NavBar() {
                   viewBox="0 0 100 20"
                   preserveAspectRatio="none"
                 >
-                  <path d="M 0 10 H 30 C 35 10, 35 7, 40 10 C 45 13, 45 7, 50 10 C 55 13, 55 7, 60 10 C 65 13, 65 10, 70 10 H 100" />
+                  <path d="M 30 10 C 35 10, 35 7, 40 10 C 45 13, 45 7, 50 10 C 55 13, 55 7, 60 10 C 65 13, 65 10, 70 10" />
                 </svg>
               </div>
             )}

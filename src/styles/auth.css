@@ -1,8 +1,14 @@
+/* =========================
+   Auth Layout
+========================= */
+
 .auth-layout {
   position: relative;
 
   width: 100%;
   min-height: 100dvh;
+
+  background: #050505;
 }
 
 .auth-page {
@@ -11,7 +17,6 @@
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
@@ -22,100 +27,36 @@
 
 
 /* =========================
-   Bar Buddy Greeting
+   Login About Link
 ========================= */
 
-.bar-buddy-greeting {
-  width: min(92vw, 560px);
-  margin: 0 0 8px;
+.login-about-link {
+  position: absolute;
+
+  top: 20px;
+  right: 65px;
+
+  padding: 6px 10px;
+
+  border: 0;
+
+  background: transparent;
+  color: rgba(235, 4, 4, 0.65);
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  z-index: 100;
+
+  transition: color 180ms ease;
 }
 
-.bar-buddy-greeting svg {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  overflow: visible;
-}
-
-.bar-buddy-letter {
-  fill: transparent;
-
-  stroke: #ffffff;
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-}
-
-/*
-  WRITE:
-  - stroke draws forward
-  - white fill comes in during the same animation window
-  - each character starts after the previous one
-*/
-.bar-buddy-svg.is-writing .bar-buddy-letter {
-  animation:
-    bar-buddy-draw 0.22s linear forwards var(--write-delay),
-    bar-buddy-fill-in 0.22s linear forwards var(--write-delay);
-}
-
-/*
-  ERASE:
-  - starts from the final "!" and works backward
-  - stroke retracts while fill disappears at the same time
-  - intentionally faster than the write animation
-*/
-.bar-buddy-svg.is-erasing .bar-buddy-letter {
-  fill: #ffffff;
-  stroke-dashoffset: 0;
-
-  animation:
-    bar-buddy-undraw 0.13s linear forwards var(--erase-delay),
-    bar-buddy-fill-out 0.13s linear forwards var(--erase-delay);
-}
-
-@keyframes bar-buddy-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes bar-buddy-undraw {
-  from {
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: 1;
-  }
-}
-
-@keyframes bar-buddy-fill-in {
-  from {
-    fill: transparent;
-  }
-
-  to {
-    fill: #ffffff;
-  }
-}
-
-@keyframes bar-buddy-fill-out {
-  from {
-    fill: #ffffff;
-  }
-
-  to {
-    fill: transparent;
-  }
+.login-about-link:hover,
+.login-about-link:focus-visible {
+  color: #ffffff;
 }
 
 
@@ -162,12 +103,13 @@
   width: min(100%, 34rem);
 
   clip-path: none;
+
   border-radius: 20px;
 }
 
 
 /* =========================
-   Auth Video
+   Auth Background Video
 ========================= */
 
 .auth-card-video {
@@ -180,6 +122,34 @@
   object-fit: cover;
 
   z-index: 0;
+}
+
+.video-playback-notice {
+  position: absolute;
+
+  top: 12px;
+  left: 50%;
+
+  width: calc(100% - 32px);
+
+  margin: 0;
+  padding: 8px 10px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+
+  background: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+
+  z-index: 3;
+
+  pointer-events: none;
 }
 
 
@@ -313,6 +283,11 @@
 ========================= */
 
 @media (max-width: 480px) {
+  .auth-layout,
+  .auth-page {
+    min-height: 100svh;
+  }
+
   .auth-page {
     justify-content: flex-start;
 
@@ -322,10 +297,11 @@
       max(24px, env(safe-area-inset-bottom));
   }
 
-  .bar-buddy-greeting {
-    width: min(94vw, 440px);
+  .login-about-link {
+    top: 12px;
+    right: 12px;
 
-    margin: 16px 0 4px;
+    font-size: 26px;
   }
 
   .login-page > h1,
@@ -333,6 +309,14 @@
     margin: 0 0 32px;
 
     font-size: 46px;
+  }
+
+  .video-playback-notice {
+    top: 8px;
+
+    width: calc(100% - 20px);
+
+    font-size: 16px;
   }
 
   .login-page .auth-card {
@@ -413,10 +397,13 @@
     padding-inline: 8px;
   }
 
-  .login-page .auth-card-content {
-    padding-inline: 18px;
+  .login-about-link {
+    right: 8px;
+
+    font-size: 24px;
   }
 
+  .login-page .auth-card-content,
   .register-page .auth-card-content {
     padding-inline: 18px;
   }

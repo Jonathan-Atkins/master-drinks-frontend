@@ -1,0 +1,172 @@
+.about-me {
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    clamp(48px, 8vw, 96px)
+    clamp(16px, 5vw, 48px);
+
+  background: #050505;
+  color: #ffffff;
+}
+
+.about-me-content {
+  width: min(100%, 900px);
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   About Heading
+========================= */
+
+.about-me-heading {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.about-me-heading .page-header {
+  width: fit-content;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+
+/* =========================
+   About Sections
+========================= */
+
+.about-me-sections {
+  display: grid;
+
+  gap: clamp(28px, 5vw, 48px);
+
+  justify-items: center;
+
+  text-align: center;
+}
+
+.about-me-section {
+  display: grid;
+
+  width: 100%;
+
+  gap: clamp(8px, 1.5vw, 14px);
+
+  justify-items: center;
+}
+
+.about-me-section h2 {
+  margin: 0;
+
+  color: #f2d6a2;
+
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.about-me-section p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: clamp(28px, 2.5vw, 35px);
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+/* =========================
+   Back to Login
+========================= */
+
+.about-back-button {
+  display: block;
+
+  margin:
+    clamp(40px, 6vw, 64px)
+    auto
+    0;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   Back to Top
+========================= */
+
+.about-top-button {
+  display: block;
+
+  margin:
+    clamp(36px, 6vw, 56px)
+    auto
+    0;
+
+  padding: 4px 10px;
+
+  border: 0;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: clamp(36px, 5vw, 48px);
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.about-top-button:hover,
+.about-top-button:focus-visible {
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .about-me {
+    align-items: flex-start;
+
+    padding:
+      48px
+      20px
+      64px;
+  }
+
+  .about-me-content {
+    width: 100%;
+  }
+
+  .about-me-section p {
+    max-width: 100%;
+  }
+}

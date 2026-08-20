@@ -6,6 +6,8 @@
 
 html {
   min-width: 320px;
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -30,6 +32,12 @@ body {
 
 main {
   position: relative;
+
+  width: min(100%, 1440px);
+
+  margin: 0 auto;
+  padding: 16px;
+
   z-index: 1;
 }
 
@@ -46,15 +54,37 @@ button {
 
 img {
   display: block;
+
   max-width: 100%;
   height: auto;
 }
+
+
+/* =========================
+   Accessibility
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* =========================
+   Tablet
+========================= */
 
 @media (min-width: 768px) {
   main {
     padding: 24px;
   }
 }
+
+
+/* =========================
+   Desktop
+========================= */
 
 @media (min-width: 1024px) {
   main {

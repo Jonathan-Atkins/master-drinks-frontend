@@ -34,3 +34,6 @@
 @import "./styles/recipes.css";
 @import "./styles/NavBar.css";
 @import "./styles/layout.css";
+@import "./styles/auth.css";
+@import "./styles/about.css";
+@import "./styles/handwritten-greeting.css";

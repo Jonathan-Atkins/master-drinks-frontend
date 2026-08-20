@@ -6,6 +6,8 @@
   position: relative;
 
   width: min(100%, 28rem);
+
+  margin-inline: auto;
 }
 
 

@@ -1,10 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
 
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
 
+import AboutMe from "../components/about/AboutMe";
 import AuthLayout from "../components/layout/AuthLayout";
+import AuthBackgroundVideo from "../components/ui/AuthBackgroundVideo";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
@@ -16,7 +19,6 @@ function LoginPage() {
 
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const videoRef = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,17 +27,20 @@ function LoginPage() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/v1/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${API_URL}/api/v1/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -57,101 +62,118 @@ function LoginPage() {
     }
   };
 
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    video.muted = true;
-
-    const playVideo = async () => {
-      try {
-        await video.play();
-      } catch (error) {
-        console.error("Video autoplay failed:", error);
-      }
-    };
-
-    playVideo();
-  }, []);
+  const scrollToAbout = () => {
+    document
+      .getElementById("about-me")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
 
   return (
-    <AuthLayout>
-      <WineGlassClipPath />
+    <>
+      {createPortal(
+        <button
+          className="login-about-link"
+          type="button"
+          onClick={scrollToAbout}
+        >
+          About Me
+        </button>,
+        document.body
+      )}
 
-      <main className="auth-page login-page">
-        <HandwrittenGreeting />
+      <AuthLayout>
+        <WineGlassClipPath />
 
-        <h1 className="animated-underline auto-underline">
-          Recipe Book Login
-        </h1>
+        <main
+          className="auth-page login-page"
+          id="login-top"
+        >
+          <HandwrittenGreeting />
 
-        <div className="wine-glass-outline">
-          <section className="auth-card wine-glass-card">
-            <video
-              ref={videoRef}
-              className="auth-card-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-            >
-              <source src="/beerVideo.mp4" type="video/mp4" />
-            </video>
+          <h1 className="animated-underline auto-underline">
+            Recipe Book Login
+          </h1>
 
-            <div className="auth-card-content">
-              {error && (
-                <p className="form-error" role="alert">
-                  {error}
-                </p>
-              )}
+          <div className="wine-glass-outline">
+            <section className="auth-card wine-glass-card">
+              <AuthBackgroundVideo />
 
-              <form className="auth-form" onSubmit={handleSubmit}>
-                <div className="form-field">
-                  <label htmlFor="email">Email</label>
+              <div className="auth-card-content">
+                {error && (
+                  <p
+                    className="form-error"
+                    role="alert"
+                  >
+                    {error}
+                  </p>
+                )}
 
-                  <input
-                    id="email"
-                    type="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="form-field">
-                  <label htmlFor="password">Password</label>
-
-                  <input
-                    id="password"
-                    type="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    required
-                  />
-                </div>
-
-                <button
-                  className="primary-button"
-                  type="submit"
-                  disabled={submitting}
+                <form
+                  className="auth-form"
+                  onSubmit={handleSubmit}
                 >
-                  {submitting ? "Logging in..." : "Log In"}
-                </button>
-              </form>
+                  <div className="form-field">
+                    <label htmlFor="email">
+                      Email
+                    </label>
 
-              <p className="auth-footer">
-                Don&apos;t have an account?{" "}
-                <Link to="/register">Create one</Link>
-              </p>
-            </div>
-          </section>
-        </div>
-      </main>
-    </AuthLayout>
+                    <input
+                      id="email"
+                      type="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={(event) =>
+                        setEmail(event.target.value)
+                      }
+                      required
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="password">
+                      Password
+                    </label>
+
+                    <input
+                      id="password"
+                      type="password"
+                      autoComplete="current-password"
+                      value={password}
+                      onChange={(event) =>
+                        setPassword(event.target.value)
+                      }
+                      required
+                    />
+                  </div>
+
+                  <button
+                    className="primary-button"
+                    type="submit"
+                    disabled={submitting}
+                  >
+                    {submitting
+                      ? "Logging in..."
+                      : "Log In"}
+                  </button>
+                </form>
+
+                <p className="auth-footer">
+                  Don&apos;t have an account?{" "}
+                  <Link to="/register">
+                    Create one
+                  </Link>
+                </p>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <AboutMe showBackToTop />
+      </AuthLayout>
+    </>
   );
 }
 

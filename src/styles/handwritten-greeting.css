@@ -1,0 +1,123 @@
+/* =========================
+   Bar Buddy Greeting
+========================= */
+
+.bar-buddy-greeting {
+  width: min(92vw, 560px);
+
+  margin: 0 0 8px;
+}
+
+.bar-buddy-greeting svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  overflow: visible;
+}
+
+
+/* =========================
+   SVG Letters
+========================= */
+
+.bar-buddy-letter {
+  fill: transparent;
+
+  stroke: #ffffff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+
+/* =========================
+   Writing Phase
+========================= */
+
+.bar-buddy-svg.is-writing .bar-buddy-letter {
+  animation:
+    bar-buddy-draw 0.22s linear forwards
+      var(--write-delay),
+    bar-buddy-fill-in 0.22s linear forwards
+      var(--write-delay);
+}
+
+
+/* =========================
+   Erasing Phase
+========================= */
+
+.bar-buddy-svg.is-erasing .bar-buddy-letter {
+  fill: #ffffff;
+
+  stroke-dashoffset: 0;
+
+  animation:
+    bar-buddy-undraw 0.13s linear forwards
+      var(--erase-delay),
+    bar-buddy-fill-out 0.13s linear forwards
+      var(--erase-delay);
+}
+
+
+/* =========================
+   Animation Keyframes
+========================= */
+
+@keyframes bar-buddy-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bar-buddy-undraw {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes bar-buddy-fill-in {
+  from {
+    fill: transparent;
+  }
+
+  to {
+    fill: #ffffff;
+  }
+}
+
+@keyframes bar-buddy-fill-out {
+  from {
+    fill: #ffffff;
+  }
+
+  to {
+    fill: transparent;
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .bar-buddy-greeting {
+    width: min(94vw, 440px);
+
+    margin: 16px 0 4px;
+  }
+}
