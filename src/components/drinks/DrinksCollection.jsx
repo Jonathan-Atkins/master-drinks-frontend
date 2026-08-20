@@ -46,7 +46,7 @@ function DrinksCollection() {
   }
 
   return (
-    <section>
+    <section className="drink-grid">
       {drinks.map((drink) => (
         <DrinkCard
           key={drink.id}

@@ -8,6 +8,11 @@ function DrinkCard({ drink, onDelete }) {
     navigate(`/drinks/${drink.id}/edit`);
   };
 
+  const handleAddRecipe = (event) => {
+    event.stopPropagation();
+    navigate(`/drinks/${drink.id}/recipes/new`);
+  };
+
   const handleDelete = (event) => {
     event.stopPropagation();
 
@@ -39,7 +44,10 @@ function DrinkCard({ drink, onDelete }) {
       <h2>{drink.name}</h2>
 
       <p>
-        <strong>Category:</strong> {drink.category}
+        <strong>Category:</strong>{" "}
+        {drink.categories
+          ?.map((category) => category.name)
+          .join(", ")}
       </p>
 
       <p>
@@ -50,6 +58,13 @@ function DrinkCard({ drink, onDelete }) {
       <p>
         <strong>Recipes:</strong> {drink.recipe_count}
       </p>
+
+      <button
+        type="button"
+        onClick={handleAddRecipe}
+      >
+        Add Recipe
+      </button>
 
       <button
         type="button"

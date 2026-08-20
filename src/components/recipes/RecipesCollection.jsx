@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { groupRecipesByCategory } from "../utils/recipeUtils";
-import RecipeCard from "../cards/RecipeCard";
+import RecipeCard from "./RecipeCard";
 
 function RecipesCollection() {
   const [recipes, setRecipes] = useState([]);

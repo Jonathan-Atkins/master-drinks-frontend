@@ -1,0 +1,756 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #ffffff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+
+  --social-bg: rgba(244, 243, 236, 0.5);
+
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: "Amatic SC", sans-serif;
+  --heading: "Amatic SC", sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+
+  margin: 0;
+
+  font-family: var(--sans);
+  font-weight: 400;
+
+  background: var(--bg);
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 44px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+h1 {
+  margin: 20px 0;
+
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+h2 {
+  margin: 0 0 8px;
+
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+code,
+.counter {
+  display: inline-flex;
+
+  border-radius: 4px;
+
+  font-family: var(--mono);
+  color: var(--text-h);
+}
+
+code {
+  padding: 4px 8px;
+
+  background: var(--code-bg);
+
+  font-size: 17px;
+  line-height: 135%;
+}
+
+.primary-button {
+  width: 100%;
+  min-height: 44px;
+
+  padding: 12px 20px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: var(--accent);
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  filter: brightness(0.95);
+}
+
+.primary-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  gap: 16px;
+
+  text-align: left;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 4px;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+.dashboard-section {
+  width: 100%;
+  text-align: left;
+}
+
+.dashboard-section h2 {
+  margin-bottom: 16px;
+}
+
+.drink-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 16px;
+}
+
+.drink-card {
+  min-width: 0;
+
+  padding: 20px;
+
+  overflow-wrap: anywhere;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--bg);
+
+  box-shadow: var(--shadow);
+}
+
+.drink-card h3 {
+  margin: 0 0 16px;
+  color: var(--text-h);
+}
+
+.drink-details {
+  display: grid;
+
+  gap: 12px;
+
+  margin: 0;
+}
+
+.drink-details div {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.drink-details dt {
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.drink-details dd {
+  margin: 0;
+
+  text-align: right;
+  text-transform: capitalize;
+}
+
+.empty-state {
+  padding: 32px 16px;
+
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+
+  text-align: center;
+}
+
+.auth-layout {
+  position: relative;
+
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.auth-page {
+  width: 100%;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background: #050505;
+}
+
+.login-page > h1,
+.register-page > h1 {
+  margin: 0 0 12px;
+
+  text-align: center;
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: clamp(42px, 10vw, 60px);
+  font-weight: 400;
+  font-style: normal;
+
+  color: #ffffff;
+}
+
+.auth-card {
+  position: relative;
+
+  width: min(100%, 28rem);
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.register-page .auth-card {
+  width: min(100%, 34rem);
+
+  clip-path: none;
+  border-radius: 20px;
+}
+
+.auth-card-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+.auth-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  z-index: 1;
+}
+
+.auth-card-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  padding:
+    clamp(48px, 10vw, 100px)
+    clamp(24px, 7vw, 58px)
+    clamp(32px, 8vw, 52px);
+}
+
+.register-page .auth-card-content {
+  padding:
+    clamp(32px, 7vw, 52px)
+    clamp(24px, 6vw, 48px);
+}
+
+.auth-form {
+  display: grid;
+
+  gap: clamp(14px, 4vw, 20px);
+}
+
+.form-field {
+  display: grid;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  text-align: left;
+}
+
+.auth-page .form-field label {
+  width: fit-content;
+
+  padding: 1px 5px;
+
+  color: #fff4e6;
+  background: rgba(0, 0, 0, 0.28);
+
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 700;
+
+  border-radius: 3px;
+}
+
+.form-field input:not([type="checkbox"]),
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.auth-page .form-field input:not([type="checkbox"]) {
+  font-size: clamp(26px, 7vw, 35px);
+}
+
+.form-field input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+
+  min-height: auto;
+}
+
+.form-field textarea {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.auth-page .primary-button {
+  width: 100%;
+
+  font-size: clamp(26px, 7vw, 35px);
+}
+
+.auth-page .auth-footer {
+  margin-top: 20px;
+
+  font-size: clamp(22px, 6vw, 28px);
+
+  text-align: center;
+}
+
+.auth-page .auth-footer a {
+  position: relative;
+
+  text-decoration: none;
+}
+
+.auth-page .auth-footer a::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+  height: 2px;
+
+  bottom: -2px;
+  left: 0;
+
+  background-color: currentColor;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.3s ease;
+}
+
+.auth-page .auth-footer a:hover::before {
+  transform: scaleX(1);
+}
+
+.form-error {
+  margin-bottom: 16px;
+
+  padding: 12px;
+
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+
+  color: #dc2626;
+
+  text-align: left;
+}
+
+.field-error {
+  margin-top: 4px;
+
+  color: #dc2626;
+
+  font-size: 0.875rem;
+
+  text-align: left;
+}
+
+.field-help {
+  margin-top: 4px;
+
+  font-size: 0.875rem;
+
+  text-align: left;
+}
+
+.ingredient-row {
+  display: grid;
+
+  gap: 16px;
+
+  padding: 16px 0;
+}
+
+.ingredient-search {
+  min-width: 0;
+}
+
+.ingredient-results {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.ingredient-results button {
+  width: 100%;
+  min-height: 44px;
+
+  padding: 12px;
+
+  text-align: left;
+}
+
+.recipe-grid {
+  display: grid;
+
+  gap: 16px;
+}
+
+.recipe-card {
+  padding: 16px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+
+    --accent: #c084fc;
+
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+
+    --social-bg: rgba(47, 48, 58, 0.5);
+
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px,
+      rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    justify-content: flex-start;
+
+    padding:
+      max(40px, env(safe-area-inset-top))
+      16px
+      max(24px, env(safe-area-inset-bottom));
+  }
+
+  .login-page > h1,
+  .register-page > h1 {
+    margin: 20px 0 16px;
+
+    font-size: 46px;
+  }
+
+  .login-page .auth-card {
+    width: 82vw;
+    max-width: 330px;
+  }
+
+  .login-page .auth-form {
+    width: 100%;
+  }
+
+  .login-page .form-field input:not([type="checkbox"]) {
+    width: 72%;
+    min-height: 44px;
+
+    margin-inline: auto;
+
+    padding: 6px 10px;
+
+    font-size: 28px;
+  }
+
+  .login-page .form-field label {
+    margin-left: 14%;
+  }
+
+  .login-page .primary-button {
+    width: 72%;
+    min-height: 44px;
+
+    margin-inline: auto;
+
+    padding: 8px 14px;
+
+    font-size: 30px;
+  }
+
+  .wine-glass-card {
+    clip-path: url("#wine-glass-shape");
+  }
+
+  .register-page .auth-card {
+    width: 90vw;
+    max-width: 370px;
+
+    clip-path: none;
+
+    border-radius: 20px;
+  }
+
+  .register-page .auth-card-content {
+    padding: 32px 24px;
+  }
+
+  .register-page .form-field input:not([type="checkbox"]) {
+    font-size: 28px;
+  }
+
+  .register-page .primary-button {
+    font-size: 30px;
+  }
+
+  .login-page .auth-card-content {
+    padding:
+      52px
+      30px
+      38px;
+  }
+}
+
+@media (max-width: 340px) {
+  .auth-page {
+    padding-inline: 8px;
+  }
+
+  .login-page .auth-card-content {
+    padding-inline: 18px;
+  }
+
+  .register-page .auth-card-content {
+    padding-inline: 18px;
+  }
+}
+
+@media (min-width: 640px) {
+  .dashboard-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 24px;
+  }
+
+  h1 {
+    margin: 32px 0;
+
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .drink-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ingredient-row {
+    grid-template-columns: 2fr 1fr 1fr auto;
+
+    align-items: end;
+  }
+}
+
+@media (min-width: 900px) {
+  .dashboard-header {
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 32px;
+  }
+
+  h1 {
+    margin: 32px 0;
+
+    font-size: 60px;
+
+    letter-spacing: -1.68px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .drink-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -4,10 +4,11 @@ import { API_URL } from "../../config/api";
 
 function PasswordSettingsForm() {
   const { user } = useContext(AuthContext);
- 
+
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] =
+    useState("");
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -46,7 +47,7 @@ function PasswordSettingsForm() {
         );
         return;
       }
-      
+
       setMessage(data.message);
 
       setCurrentPassword("");
@@ -60,8 +61,14 @@ function PasswordSettingsForm() {
   };
 
   return (
-    <section>
-      <h2>Security</h2>
+    <section className="settings-card">
+      <div className="settings-card-header">
+        <h2>Security</h2>
+
+        <p className="settings-description">
+          Change your account password.
+        </p>
+      </div>
 
       {error && (
         <p className="form-error" role="alert">
@@ -75,8 +82,11 @@ function PasswordSettingsForm() {
         </p>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form
+        className="settings-form"
+        onSubmit={handleSubmit}
+      >
+        <div className="form-field">
           <label htmlFor="current-password">
             Current Password
           </label>
@@ -92,7 +102,7 @@ function PasswordSettingsForm() {
           />
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="new-password">
             New Password
           </label>
@@ -108,7 +118,7 @@ function PasswordSettingsForm() {
           />
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="password-confirmation">
             Confirm New Password
           </label>
@@ -124,8 +134,14 @@ function PasswordSettingsForm() {
           />
         </div>
 
-        <button type="submit" disabled={submitting}>
-          {submitting ? "Updating..." : "Change Password"}
+        <button
+          className="settings-button"
+          type="submit"
+          disabled={submitting}
+        >
+          {submitting
+            ? "Updating..."
+            : "Change Password"}
         </button>
       </form>
     </section>

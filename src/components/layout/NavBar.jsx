@@ -1,54 +1,101 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import SignOutButton from "../ui/SignOutButton";
+import "../../styles/NavBar.css";
+
+const navItems = [
+  { label: "Home", path: "/dashboard" },
+  { label: "My Recipes", path: "/my-recipes" },
+  { label: "Community Recipes", path: "/recipes" },
+  { label: "Create a Drink", path: "/drink-maker" },
+  { label: "Ingredients", path: "/ingredients" },
+  { label: "Settings", path: "/settings" },
+];
 
 function NavBar() {
-  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [direction, setDirection] = useState("right");
+
+  const previousIndex = useRef(0);
+
+  const activeIndex = navItems.findIndex(
+    (item) => item.path === location.pathname
+  );
+
+  useEffect(() => {
+    if (activeIndex === -1) {
+      return;
+    }
+
+    if (activeIndex < previousIndex.current) {
+      setDirection("left");
+    } else if (activeIndex > previousIndex.current) {
+      setDirection("right");
+    }
+
+    previousIndex.current = activeIndex;
+    setMenuOpen(false);
+  }, [activeIndex]);
 
   return (
-    <nav>
-      <button
-        type="button"
-        onClick={() => navigate("/dashboard")}
-      >
-        Home
-      </button>
+    <nav className="main-nav">
+      <div className="nav-inner">
+        <button
+          className="nav-menu-button"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          Menu
+        </button>
 
-      <button
-        type="button"
-        onClick={() => navigate("/my-recipes")}
-      >
-        My Recipes
-      </button>
+        <div
+          className={`nav-menu ${
+            menuOpen ? "nav-menu-open" : ""
+          }`}
+        >
+          <div className="nav-links">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `nav-link ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
 
-      <button
-        type="button"
-        onClick={() => navigate("/recipes")}
-      >
-        Community Recipes
-      </button>
+            {activeIndex !== -1 && (
+              <div
+                className={`nav-snake ${direction}`}
+                style={{
+                  "--active-index": activeIndex,
+                  "--nav-count": navItems.length,
+                }}
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 100 20"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M 0 10 H 30 C 35 10, 35 7, 40 10 C 45 13, 45 7, 50 10 C 55 13, 55 7, 60 10 C 65 13, 65 10, 70 10 H 100" />
+                </svg>
+              </div>
+            )}
+          </div>
 
-      <button
-        type="button"
-        onClick={() => navigate("/drink-maker")}
-      >
-        Create a Drink
-      </button>
-
-      <button
-        type="button"
-        onClick={() => navigate("/ingredients")}
-      >
-        Ingredients
-      </button>
-
-      <button
-        type="button"
-        onClick={() => navigate("/settings")}
-      >
-        Settings
-      </button>
-      
-      <SignOutButton />
+          <div className="nav-sign-out">
+            <SignOutButton />
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

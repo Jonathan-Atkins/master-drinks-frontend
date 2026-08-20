@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import RecipeCard from "../components/cards/RecipeCard";
+import RecipeCard from "../components/recipes/RecipeCard";
 import { API_URL } from "../config/api";
 
 function DrinkRecipesPage() {

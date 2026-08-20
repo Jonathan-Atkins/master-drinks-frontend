@@ -54,8 +54,14 @@ function ProfileSettingsForm() {
   };
 
   return (
-    <section>
-      <h2>Profile</h2>
+    <section className="settings-card">
+      <div className="settings-card-header">
+        <h2>Profile</h2>
+
+        <p className="settings-description">
+          Update your account information.
+        </p>
+      </div>
 
       {error && (
         <p className="form-error" role="alert">
@@ -69,32 +75,47 @@ function ProfileSettingsForm() {
         </p>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
+      <form
+        className="settings-form"
+        onSubmit={handleSubmit}
+      >
+        <div className="form-field">
+          <label htmlFor="username">
+            Username
+          </label>
 
           <input
             id="username"
             type="text"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) =>
+              setUsername(event.target.value)
+            }
             required
           />
         </div>
 
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="form-field">
+          <label htmlFor="email">
+            Email
+          </label>
 
           <input
             id="email"
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) =>
+              setEmail(event.target.value)
+            }
             required
           />
         </div>
 
-        <button type="submit" disabled={submitting}>
+        <button
+          className="settings-button"
+          type="submit"
+          disabled={submitting}
+        >
           {submitting ? "Saving..." : "Save Changes"}
         </button>
       </form>

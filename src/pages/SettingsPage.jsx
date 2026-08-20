@@ -17,6 +17,7 @@ function SettingsPage() {
       <h1>Settings</h1>
 
       <ProfileSettingsForm />
+      <br />
       <PasswordSettingsForm />
     </main>
   );

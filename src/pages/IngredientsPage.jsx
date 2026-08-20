@@ -13,7 +13,17 @@ function IngredientsPage() {
         Back
       </button>
 
-      <h1>Ingredients</h1>
+      <div className="page-header">
+        <h1>Ingredients</h1>
+
+        <button
+          type="button"
+          className="primary-button"
+          onClick={() => navigate("/ingredients/new")}
+        >
+          Add Ingredient
+        </button>
+      </div>
 
       <IngredientsCollection />
     </main>
