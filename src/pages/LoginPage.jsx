@@ -1,8 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
+
 import AuthLayout from "../components/layout/AuthLayout";
+import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
 function LoginPage() {
@@ -13,6 +16,7 @@ function LoginPage() {
 
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,8 +57,6 @@ function LoginPage() {
     }
   };
 
-  const videoRef = useRef(null);
-
   useEffect(() => {
     const video = videoRef.current;
 
@@ -78,73 +80,76 @@ function LoginPage() {
       <WineGlassClipPath />
 
       <main className="auth-page login-page">
+        <HandwrittenGreeting />
+
         <h1 className="animated-underline auto-underline">
           Recipe Book Login
         </h1>
-      <div className="wine-glass-outline">
-        <section className="auth-card wine-glass-card">
-          <video
-            ref={videoRef}
-            className="auth-card-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-          >
-            <source src="/beerVideo.mp4" type="video/mp4" />
-          </video>
 
-          <div className="auth-card-content">
-            {error && (
-              <p className="form-error" role="alert">
-                {error}
+        <div className="wine-glass-outline">
+          <section className="auth-card wine-glass-card">
+            <video
+              ref={videoRef}
+              className="auth-card-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            >
+              <source src="/beerVideo.mp4" type="video/mp4" />
+            </video>
+
+            <div className="auth-card-content">
+              {error && (
+                <p className="form-error" role="alert">
+                  {error}
+                </p>
+              )}
+
+              <form className="auth-form" onSubmit={handleSubmit}>
+                <div className="form-field">
+                  <label htmlFor="email">Email</label>
+
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="password">Password</label>
+
+                  <input
+                    id="password"
+                    type="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    required
+                  />
+                </div>
+
+                <button
+                  className="primary-button"
+                  type="submit"
+                  disabled={submitting}
+                >
+                  {submitting ? "Logging in..." : "Log In"}
+                </button>
+              </form>
+
+              <p className="auth-footer">
+                Don&apos;t have an account?{" "}
+                <Link to="/register">Create one</Link>
               </p>
-            )}
-
-            <form className="auth-form" onSubmit={handleSubmit}>
-              <div className="form-field">
-                <label htmlFor="email">Email</label>
-
-                <input
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="form-field">
-                <label htmlFor="password">Password</label>
-
-                <input
-                  id="password"
-                  type="password"
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  required
-                />
-              </div>
-
-              <button
-                className="primary-button"
-                type="submit"
-                disabled={submitting}
-              >
-                {submitting ? "Logging in..." : "Log In"}
-              </button>
-            </form>
-
-            <p className="auth-footer">
-              Don&apos;t have an account?{" "}
-              <Link to="/register">Create one</Link>
-            </p>
-          </div>
+            </div>
           </section>
-      </div>
+        </div>
       </main>
     </AuthLayout>
   );

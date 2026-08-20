@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import AuthLayout from "../components/layout/AuthLayout";
+import JitterText from "../components/ui/JitterText";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -69,7 +70,9 @@ function RegisterPage() {
   return (
     <AuthLayout>
       <main className="auth-page register-page">
-        <h1 className="animated-underline auto-underline">Register</h1>
+        <h1 className="animated-underline auto-underline jittery">
+          <JitterText>Create Account</JitterText>
+        </h1>
 
         <section className="auth-card beer-glass-card">
           <video
