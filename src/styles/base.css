@@ -29,9 +29,8 @@ body {
 }
 
 main {
-  width: min(100%, 1440px);
-  margin: 0 auto;
-  padding: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 button,

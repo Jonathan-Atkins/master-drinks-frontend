@@ -1,15 +1,33 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function DrinkCard({ drink, onDelete }) {
   const navigate = useNavigate();
 
+  const [isActivating, setIsActivating] =
+    useState(false);
+
+  const activateCard = () => {
+    if (isActivating) {
+      return;
+    }
+
+    setIsActivating(true);
+
+    window.setTimeout(() => {
+      navigate(`/drinks/${drink.id}/recipes`);
+    }, 300);
+  };
+
   const handleEdit = (event) => {
     event.stopPropagation();
+
     navigate(`/drinks/${drink.id}/edit`);
   };
 
   const handleAddRecipe = (event) => {
     event.stopPropagation();
+
     navigate(`/drinks/${drink.id}/recipes/new`);
   };
 
@@ -27,19 +45,28 @@ function DrinkCard({ drink, onDelete }) {
     onDelete(drink.id);
   };
 
+  const handleKeyDown = (event) => {
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+
+      activateCard();
+    }
+  };
+
   return (
     <article
-      className="drink-card"
-      onClick={() =>
-        navigate(`/drinks/${drink.id}/recipes`)
-      }
+      className={`drink-card ${
+        isActivating
+          ? "drink-card-activating"
+          : ""
+      }`}
+      onClick={activateCard}
+      onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
-      onKeyDown={(event) => {
-        if (event.key === "Enter") {
-          navigate(`/drinks/${drink.id}/recipes`);
-        }
-      }}
     >
       <h2>{drink.name}</h2>
 
@@ -56,29 +83,23 @@ function DrinkCard({ drink, onDelete }) {
       </p>
 
       <p>
-        <strong>Recipes:</strong> {drink.recipe_count}
+        <strong>Recipes:</strong>{" "}
+        {drink.recipe_count}
       </p>
 
-      <button
-        type="button"
-        onClick={handleAddRecipe}
-      >
-        Add Recipe
-      </button>
+      <div className="drink-card-actions">
+        <button type="button" onClick={handleAddRecipe}>
+          Add Recipe
+        </button>
 
-      <button
-        type="button"
-        onClick={handleEdit}
-      >
-        Edit Drink
-      </button>
+        <button type="button" onClick={handleEdit}>
+          Edit Drink
+        </button>
 
-      <button
-        type="button"
-        onClick={handleDelete}
-      >
-        Delete
-      </button>
+        <button type="button" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
     </article>
   );
 }

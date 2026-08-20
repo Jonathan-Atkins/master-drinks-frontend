@@ -49,10 +49,33 @@
 
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
+}
+
+/*
+  WRITE:
+  - stroke draws forward
+  - white fill comes in during the same animation window
+  - each character starts after the previous one
+*/
+.bar-buddy-svg.is-writing .bar-buddy-letter {
+  animation:
+    bar-buddy-draw 0.22s linear forwards var(--write-delay),
+    bar-buddy-fill-in 0.22s linear forwards var(--write-delay);
+}
+
+/*
+  ERASE:
+  - starts from the final "!" and works backward
+  - stroke retracts while fill disappears at the same time
+  - intentionally faster than the write animation
+*/
+.bar-buddy-svg.is-erasing .bar-buddy-letter {
+  fill: #ffffff;
+  stroke-dashoffset: 0;
 
   animation:
-    bar-buddy-draw 0.20s linear forwards var(--letter-delay),
-    bar-buddy-fill 0.04s linear forwards calc(var(--letter-delay) + 0.20s);
+    bar-buddy-undraw 0.13s linear forwards var(--erase-delay),
+    bar-buddy-fill-out 0.13s linear forwards var(--erase-delay);
 }
 
 @keyframes bar-buddy-draw {
@@ -65,13 +88,33 @@
   }
 }
 
-@keyframes bar-buddy-fill {
+@keyframes bar-buddy-undraw {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes bar-buddy-fill-in {
   from {
     fill: transparent;
   }
 
   to {
     fill: #ffffff;
+  }
+}
+
+@keyframes bar-buddy-fill-out {
+  from {
+    fill: #ffffff;
+  }
+
+  to {
+    fill: transparent;
   }
 }
 

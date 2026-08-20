@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+
 import { AuthContext } from "../../context/AuthContext";
 import NavBar from "./NavBar";
 
@@ -17,6 +18,21 @@ function ProtectedLayout() {
   return (
     <>
       <NavBar />
+
+      <img
+        className="page-flower"
+        src="/flower.png"
+        alt=""
+        aria-hidden="true"
+      />
+
+      <img
+        className="page-babyangel"
+        src="/babyangel.jpg"
+        alt=""
+        aria-hidden="true"
+      />
+
       <Outlet />
     </>
   );

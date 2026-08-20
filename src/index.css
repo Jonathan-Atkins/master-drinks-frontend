@@ -13,6 +13,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
 
+
 /* Tokens first — everything else depends on these custom properties */
 @import "./styles/variables.css";
 
@@ -31,4 +32,5 @@
 @import "./styles/dashboard.css";
 @import "./styles/ingredients.css";
 @import "./styles/recipes.css";
-@import "./styles/NavBar.css"
+@import "./styles/NavBar.css";
+@import "./styles/layout.css";

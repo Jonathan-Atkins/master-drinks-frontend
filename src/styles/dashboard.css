@@ -30,6 +30,7 @@
 
 .dashboard-section {
   width: 100%;
+
   text-align: left;
 }
 
@@ -44,11 +45,19 @@
   gap: 38px;
 }
 
+
+/* =========================
+   Drink Card
+========================= */
+
 .drink-card {
+  position: relative;
+
   min-width: 0;
 
   padding: 20px;
 
+  overflow: hidden;
   overflow-wrap: anywhere;
 
   border: 1px solid var(--border);
@@ -57,11 +66,120 @@
   background: var(--bg);
 
   box-shadow: var(--shadow);
+
+  cursor: pointer;
+
+  transition:
+    box-shadow 300ms ease-in-out,
+    color 300ms ease-in-out;
+}
+
+
+/* =========================
+   Click Me Overlay
+========================= */
+
+.drink-card::after {
+  content: "Click For More!";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 3;
+
+  transition:
+    opacity 300ms ease-in-out;
+}
+
+
+/* =========================
+   Button 1 Hover Animation
+========================= */
+
+.drink-card:hover {
+  box-shadow:
+    0 0 40px 40px rgba(85, 0, 0, 0.82) inset,
+    var(--shadow);
+}
+
+.drink-card:hover::after {
+  opacity: 1;
+}
+
+
+/* Hide normal card content on hover */
+
+.drink-card:hover > h2,
+.drink-card:hover > p {
+  opacity: 0;
+}
+
+
+/* Keep action buttons visible */
+
+.drink-card button {
+  position: relative;
+
+  z-index: 4;
+}
+
+
+/* =========================
+   Click / Mobile Activation
+========================= */
+
+.drink-card-activating {
+  box-shadow:
+    0 0 40px 40px rgba(85, 0, 0, 0.82) inset,
+    var(--shadow);
+}
+
+.drink-card-activating::after {
+  opacity: 1;
+}
+
+.drink-card-activating > h2,
+.drink-card-activating > p {
+  opacity: 0;
+}
+
+
+/* =========================
+   Card Content
+========================= */
+
+.drink-card h2 {
+  margin-top: 0;
+
+  color: var(--text-h);
+
+  transition:
+    opacity 200ms ease-in-out;
 }
 
 .drink-card h3 {
   margin: 0 0 16px;
+
   color: var(--text-h);
+}
+
+.drink-card p {
+  transition:
+    opacity 200ms ease-in-out;
 }
 
 .drink-details {
@@ -82,6 +200,7 @@
 
 .drink-details dt {
   font-weight: 700;
+
   color: var(--text-h);
 }
 
@@ -92,6 +211,11 @@
   text-transform: capitalize;
 }
 
+
+/* =========================
+   Empty State
+========================= */
+
 .empty-state {
   padding: 32px 16px;
 
@@ -100,6 +224,11 @@
 
   text-align: center;
 }
+
+
+/* =========================
+   Responsive
+========================= */
 
 @media (min-width: 640px) {
   .dashboard-actions {
@@ -112,7 +241,8 @@
 
 @media (min-width: 768px) {
   .drink-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -127,6 +257,43 @@
 
 @media (min-width: 1024px) {
   .drink-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
+}
+
+.drink-card {
+  font-size: 20px;
+}
+
+.drink-card h2 {
+  font-size: 36px;
+}
+
+.drink-card p {
+  font-size: 22px;
+}
+
+.drink-card button {
+  font-size: 22px;
+}
+
+.drink-card::after {
+  font-size: 52px;
+}
+
+.drink-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  margin-top: 20px;
+}
+
+.dashboard-page .dashboard-header h1 {
+  color: #ffffff;
+
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.75);
 }

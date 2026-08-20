@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { API_URL } from "../../config/api";
 import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
 function DrinkForm({ drink = null }) {
   const [name, setName] = useState(drink?.name || "");
+
   const [category, setCategory] = useState(
     drink?.categories?.[0]?.slug || ""
   );
+
   const [categories, setCategories] = useState([]);
-  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [categoriesLoading, setCategoriesLoading] =
+    useState(true);
 
   const [alcoholic, setAlcoholic] = useState(
     drink?.alcoholic ?? true
@@ -96,7 +100,10 @@ function DrinkForm({ drink = null }) {
   };
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
+    <form
+      className="auth-form drink-form"
+      onSubmit={handleSubmit}
+    >
       {error && (
         <p className="form-error" role="alert">
           {error}
