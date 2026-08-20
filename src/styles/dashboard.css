@@ -234,13 +234,35 @@
    Empty State
 ========================= */
 
-.empty-state {
-  padding: 32px 16px;
+.empty-drinks-state {
+  width: 100%;
+  min-height: 50vh;
 
-  border: 1px dashed var(--border);
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
+  color: white;
+
+  font-size: clamp(40px, 5vw, 64px);
+}
+
+.empty-drinks-link {
+  margin-left: 12px;
+
+  color: #550000;
+  text-decoration: none;
+  font-weight: 700;
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.empty-drinks-link:hover {
+  color: #a84c5a;
+  transform: translateY(-1px);
 }
 
 

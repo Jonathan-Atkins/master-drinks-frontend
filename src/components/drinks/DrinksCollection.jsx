@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { API_URL } from "../../config/api";
-
 import DrinkCard from "./DrinkCard";
 
 function DrinksCollection() {
@@ -76,7 +76,17 @@ function DrinksCollection() {
   }
 
   if (drinks.length === 0) {
-    return <p>No drinks yet.</p>;
+    return (
+      <div className="empty-drinks-state">
+        No Drinks Yet, Let&apos;s
+        <Link
+          to="/drink-maker"
+          className="empty-drinks-link"
+        >
+          Create A Drink!
+        </Link>
+      </div>
+    );
   }
 
   return (

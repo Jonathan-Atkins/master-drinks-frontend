@@ -1,12 +1,14 @@
 export function groupRecipesByCategory(recipes) {
   return recipes.reduce((groups, recipe) => {
-    const category = recipe.drink.category;
+    const categories = recipe.drink.categories || [];
 
-    if (!groups[category]) {
-      groups[category] = [];
-    }
+    categories.forEach((category) => {
+      if (!groups[category]) {
+        groups[category] = [];
+      }
 
-    groups[category].push(recipe);
+      groups[category].push(recipe);
+    });
 
     return groups;
   }, {});

@@ -7,8 +7,10 @@ import { getDrinkRequestConfig } from "../utils/drinkRequest";
 function DrinkForm({ drink = null }) {
   const [name, setName] = useState(drink?.name || "");
 
-  const [category, setCategory] = useState(
-    drink?.categories?.[0]?.slug || ""
+  const [selectedCategories, setSelectedCategories] = useState(
+    drink?.categories?.length
+      ? drink.categories.map((category) => category.slug)
+      : [""]
   );
 
   const [categories, setCategories] = useState([]);
@@ -58,15 +60,71 @@ function DrinkForm({ drink = null }) {
     fetchCategories();
   }, []);
 
+  const handleCategoryChange = (index, slug) => {
+    setSelectedCategories((currentCategories) =>
+      currentCategories.map((categorySlug, categoryIndex) =>
+        categoryIndex === index ? slug : categorySlug
+      )
+    );
+  };
+
+  const handleAddCategory = () => {
+    const hasEmptyCategory =
+      selectedCategories.includes("");
+
+    if (hasEmptyCategory) {
+      setError(
+        "Select a category before adding another."
+      );
+      return;
+    }
+
+    if (
+      selectedCategories.length >= categories.length
+    ) {
+      return;
+    }
+
+    setError("");
+
+    setSelectedCategories((currentCategories) => [
+      ...currentCategories,
+      "",
+    ]);
+  };
+
+  const handleRemoveCategory = (index) => {
+    if (selectedCategories.length === 1) {
+      return;
+    }
+
+    setSelectedCategories((currentCategories) =>
+      currentCategories.filter(
+        (_, categoryIndex) => categoryIndex !== index
+      )
+    );
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     setError("");
+
+    const hasEmptyCategory =
+      selectedCategories.some(
+        (categorySlug) => !categorySlug
+      );
+
+    if (hasEmptyCategory) {
+      setError("Every drink requires a category.");
+      return;
+    }
+
     setSubmitting(true);
 
     const drinkPayload = {
       name,
-      category_slugs: [category],
+      category_slugs: selectedCategories,
       alcoholic,
       publicly_visible: publiclyVisible,
     };
@@ -127,34 +185,83 @@ function DrinkForm({ drink = null }) {
       </div>
 
       <div className="form-field">
-        <label htmlFor="drink-category">
-          Category
-        </label>
+        <label>Categories</label>
 
-        <select
-          id="drink-category"
-          value={category}
-          onChange={(event) =>
-            setCategory(event.target.value)
-          }
-          required
-          disabled={categoriesLoading}
-        >
-          <option value="">
-            {categoriesLoading
-              ? "Loading categories..."
-              : "Select a category"}
-          </option>
-
-          {categories.map((categoryOption) => (
-            <option
-              key={categoryOption.slug}
-              value={categoryOption.slug}
+        {selectedCategories.map(
+          (selectedCategory, index) => (
+            <div
+              className="drink-category-row"
+              key={index}
             >
-              {categoryOption.name}
-            </option>
-          ))}
-        </select>
+              <select
+                value={selectedCategory}
+                onChange={(event) =>
+                  handleCategoryChange(
+                    index,
+                    event.target.value
+                  )
+                }
+                required
+                disabled={categoriesLoading}
+              >
+                <option value="">
+                  {categoriesLoading
+                    ? "Loading categories..."
+                    : "Select a category"}
+                </option>
+
+                {categories.map(
+                  (categoryOption) => {
+                    const alreadySelected =
+                      selectedCategories.includes(
+                        categoryOption.slug
+                      );
+
+                    const selectedHere =
+                      selectedCategory ===
+                      categoryOption.slug;
+
+                    return (
+                      <option
+                        key={categoryOption.slug}
+                        value={categoryOption.slug}
+                        disabled={
+                          alreadySelected &&
+                          !selectedHere
+                        }
+                      >
+                        {categoryOption.name}
+                      </option>
+                    );
+                  }
+                )}
+              </select>
+
+              {selectedCategories.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleRemoveCategory(index)
+                  }
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+          )
+        )}
+
+        <button
+          type="button"
+          onClick={handleAddCategory}
+          disabled={
+            categoriesLoading ||
+            selectedCategories.length >=
+              categories.length
+          }
+        >
+          Add Category
+        </button>
       </div>
 
       <div className="form-field">
@@ -187,7 +294,13 @@ function DrinkForm({ drink = null }) {
         <button
           className="primary-button"
           type="submit"
-          disabled={submitting || categoriesLoading}
+          disabled={
+            submitting ||
+            categoriesLoading ||
+            selectedCategories.some(
+              (categorySlug) => !categorySlug
+            )
+          }
         >
           {submitting
             ? "Submitting..."

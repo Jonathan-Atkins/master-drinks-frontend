@@ -20,6 +20,9 @@ function RecipeCard({ recipe, onDelete, onToggleSaved }) {
     onDelete?.(recipe.id);
   };
 
+  const categories =
+    recipe.drink.categories?.join(", ") || "Uncategorized";
+
   return (
     <article className="recipe-card">
       <h2>
@@ -35,7 +38,7 @@ function RecipeCard({ recipe, onDelete, onToggleSaved }) {
       </p>
 
       <p>
-        <strong>Category:</strong> {recipe.drink.category}
+        <strong>Categories:</strong> {categories}
       </p>
 
       <p>
