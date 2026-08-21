@@ -2,48 +2,52 @@ import { useEffect, useState } from "react";
 
 function RotatingDrinkNames({ drinks }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] =
-    useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const shouldAnimate = drinks.length > 1;
 
-  const nextIndex =
+  const safeActiveIndex =
     drinks.length > 0
-      ? (activeIndex + 1) % drinks.length
+      ? activeIndex % drinks.length
       : 0;
 
-  const longestDrinkName =
-    drinks.reduce((longest, drink) => {
-      return drink.name.length > longest.length
+  const nextIndex =
+    drinks.length > 0
+      ? (safeActiveIndex + 1) % drinks.length
+      : 0;
+
+  const longestDrinkName = drinks.reduce(
+    (longest, drink) =>
+      drink.name.length > longest.length
         ? drink.name
-        : longest;
-    }, "");
+        : longest,
+    ""
+  );
 
   useEffect(() => {
     if (!shouldAnimate) {
-      setActiveIndex(0);
-      setIsAnimating(false);
-
       return undefined;
     }
 
-    const interval = setInterval(() => {
+    let timeoutId;
+
+    const intervalId = setInterval(() => {
       setIsAnimating(true);
 
-      const timeout = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setActiveIndex(
-          (currentIndex) =>
-            (currentIndex + 1) % drinks.length
+          (currentIndex) => currentIndex + 1
         );
 
         setIsAnimating(false);
       }, 600);
-
-      return () => clearTimeout(timeout);
     }, 2500);
 
-    return () => clearInterval(interval);
-  }, [drinks.length, shouldAnimate]);
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [shouldAnimate]);
 
   if (drinks.length === 0) {
     return null;
@@ -61,12 +65,12 @@ function RotatingDrinkNames({ drinks }) {
       <span className="rotating-drinks-underline">
         <span
           className={`rotating-drinks-current ${
-            isAnimating
+            shouldAnimate && isAnimating
               ? "rotating-drinks-exit"
               : ""
           }`}
         >
-          {drinks[activeIndex].name}
+          {drinks[safeActiveIndex].name}
         </span>
 
         {shouldAnimate && (
