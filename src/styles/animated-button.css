@@ -1,0 +1,266 @@
+.animated-button {
+  --button-color: #555555;
+  --button-shadow: transparent;
+  --button-active-shadow: rgba(255, 255, 255, 0.2);
+  --button-text: #ffffff;
+  --button-overlay: rgba(0, 0, 0, 0.7);
+
+  position: relative;
+
+  min-width: 180px;
+  min-height: 44px;
+
+  padding: 8px 24px;
+
+  overflow: hidden;
+
+  border: none;
+  border-radius: 999px;
+
+  background: var(--button-color);
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.22);
+
+  color: var(--button-text);
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  isolation: isolate;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+
+.animated-button-label {
+  position: relative;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+.animated-button-left,
+.animated-button-right {
+  position: absolute;
+  top: 0;
+
+  width: 66%;
+  height: 100%;
+
+  z-index: 2;
+}
+
+.animated-button-left {
+  right: 66%;
+}
+
+.animated-button-right {
+  left: 66%;
+}
+
+.animated-button::after,
+.animated-button-right::after {
+  content: var(--content);
+
+  position: absolute;
+
+  display: block;
+
+  padding: 40px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+.animated-button::after {
+  top: -30px;
+  left: -20px;
+
+  font-weight: 400;
+
+  opacity: 0;
+}
+
+.animated-button-right::after {
+  top: -30px;
+  left: calc(-66% - 20px);
+
+  background: var(--button-overlay);
+
+  color: transparent;
+
+  transition:
+    transform 400ms ease-out;
+
+  transform:
+    translateY(-90%)
+    rotate(0deg);
+}
+
+/* =========================
+   Hover / Press
+========================= */
+
+.animated-button:hover,
+.animated-button:active {
+  background: var(--button-interaction-color);
+
+  box-shadow:
+    2px 2px 22px var(--button-active-shadow);
+
+  filter: brightness(1.15);
+}
+
+.animated-button:hover
+  .animated-button-right::after {
+  transform:
+    translateY(-47%)
+    rotate(0deg);
+}
+
+.animated-button
+  .animated-button-right:hover::after {
+  transform:
+    translateY(-50%)
+    rotate(-7deg);
+}
+
+.animated-button
+  .animated-button-left:hover
+  ~ .animated-button-right::after {
+  transform:
+    translateY(-50%)
+    rotate(7deg);
+}
+
+.animated-button:active
+  .animated-button-right::after {
+  transform:
+    translateY(-50%)
+    rotate(-5deg);
+}
+
+.animated-button:active {
+  transform: scale(0.96);
+}
+
+/* =========================
+   Keyboard
+========================= */
+
+.animated-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* =========================
+   Bubbles
+========================= */
+
+.animated-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 300%;
+
+  pointer-events: none;
+
+  opacity: 0.45;
+
+  background:
+    radial-gradient(
+      circle at 20% 35%,
+      transparent 0,
+      transparent 2px,
+      var(--button-text) 3px,
+      var(--button-text) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 75% 44%,
+      transparent 0,
+      transparent 2px,
+      var(--button-text) 3px,
+      var(--button-text) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 46% 52%,
+      transparent 0,
+      transparent 4px,
+      var(--button-text) 5px,
+      var(--button-text) 6px,
+      transparent 6px
+    );
+
+  animation:
+    animated-button-bubbles
+    var(--bubble-duration, 5s)
+    linear
+    infinite;
+}
+
+@keyframes animated-button-bubbles {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-66.666%);
+  }
+}
+
+/* =========================
+   Variants
+========================= */
+
+.animated-button-add {
+  --button-color: #3f5142;
+  --button-interaction-color: #315d3a;
+  --button-active-shadow: rgba(76, 175, 80, 0.45);
+
+  --bubble-duration: 4.6s;
+}
+
+.animated-button-edit {
+  --button-color: #6f6339;
+  --button-interaction-color: #806d24;
+  --button-active-shadow: rgba(255, 193, 7, 0.45);
+
+  --bubble-duration: 5.4s;
+}
+
+.animated-button-delete {
+  --button-color: #633838;
+  --button-interaction-color: #7a2929;
+  --button-active-shadow: rgba(255, 77, 77, 0.45);
+
+  --bubble-duration: 6.2s;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .animated-button {
+    min-width: 155px;
+
+    padding: 7px 18px;
+
+    font-size: 22px;
+  }
+}

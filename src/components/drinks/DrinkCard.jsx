@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import AnimatedButton from "../ui/AnimatedButton";
+
 function DrinkCard({ drink, onDelete }) {
   const navigate = useNavigate();
 
@@ -28,7 +30,9 @@ function DrinkCard({ drink, onDelete }) {
   const handleAddRecipe = (event) => {
     event.stopPropagation();
 
-    navigate(`/drinks/${drink.id}/recipes/new`);
+    navigate(
+      `/drinks/${drink.id}/recipes/new`
+    );
   };
 
   const handleDelete = (event) => {
@@ -88,17 +92,26 @@ function DrinkCard({ drink, onDelete }) {
       </p>
 
       <div className="drink-card-actions">
-        <button type="button" onClick={handleAddRecipe}>
+        <AnimatedButton
+          variant="add"
+          onClick={handleAddRecipe}
+        >
           Add Recipe
-        </button>
+        </AnimatedButton>
 
-        <button type="button" onClick={handleEdit}>
+        <AnimatedButton
+          variant="edit"
+          onClick={handleEdit}
+        >
           Edit Drink
-        </button>
+        </AnimatedButton>
 
-        <button type="button" onClick={handleDelete}>
+        <AnimatedButton
+          variant="delete"
+          onClick={handleDelete}
+        >
           Delete
-        </button>
+        </AnimatedButton>
       </div>
     </article>
   );
