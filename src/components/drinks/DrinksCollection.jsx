@@ -69,7 +69,11 @@ function DrinksCollection() {
   };
 
   if (loading) {
-    return <p>Loading drinks...</p>;
+    return (
+      <div className="loading-state">
+        Loading Drinks...
+      </div>
+    );
   }
 
   if (error) {

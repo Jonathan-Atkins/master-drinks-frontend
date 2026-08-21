@@ -169,7 +169,6 @@
   content: "";
 
   position: absolute;
-
   top: 0;
   left: 0;
 
@@ -206,11 +205,13 @@
       transparent 6px
     );
 
-  animation:
-    animated-button-bubbles
-    var(--bubble-duration, 5s)
-    linear
-    infinite;
+  animation-name: animated-button-bubbles;
+  animation-duration: var(--bubble-duration, 5s);
+  animation-timing-function: linear;
+  animation-delay: var(--bubble-delay, 0s);
+  animation-iteration-count: infinite;
+
+  z-index: 1;
 }
 
 @keyframes animated-button-bubbles {
