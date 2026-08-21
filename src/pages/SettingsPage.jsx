@@ -1,21 +1,14 @@
 import ProfileSettingsForm from "../components/forms/ProfileSettingsForm";
 import PasswordSettingsForm from "../components/forms/PasswordSettingsForm";
-import { useNavigate } from "react-router-dom";
+import DeleteAccountSection from "../components/settings/DeleteAccountSection";
 
 function SettingsPage() {
-  const navigate = useNavigate();
-  
   return (
     <main className="settings-page">
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>
-
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">Settings</h1>
+        <h1 className="page-header animated-underline auto-underline">
+          Settings
+        </h1>
 
         <p className="page-header-description">
           Update your profile and account details.
@@ -23,8 +16,10 @@ function SettingsPage() {
       </header>
 
       <ProfileSettingsForm />
-      <br />
+
       <PasswordSettingsForm />
+
+      <DeleteAccountSection />
     </main>
   );
 }

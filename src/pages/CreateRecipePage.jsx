@@ -149,20 +149,6 @@ function CreateRecipePage() {
 
   return (
     <main>
-      <button
-        type="button"
-        onClick={() => navigate("/dashboard")}
-      >
-        Back to Dashboard
-      </button>
-
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>
-
       <header className="page-header-section">
         <h1 className="page-header animated-underline auto-underline">
           Create a Recipe for {drink.name}

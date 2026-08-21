@@ -1,0 +1,40 @@
+.jitter-text {
+  display: inline-flex;
+}
+
+.jitter-text-character {
+  display: inline-block;
+
+  animation: jitter-character 500ms ease-in-out infinite;
+}
+
+.jitter-text-character:nth-child(2n) {
+  animation-delay: 50ms;
+}
+
+.jitter-text-character:nth-child(3n) {
+  animation-delay: 100ms;
+}
+
+.jitter-text-character:nth-child(4n) {
+  animation-delay: 150ms;
+}
+
+@keyframes jitter-character {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-0.5px, 0.5px) rotate(-0.25deg);
+  }
+
+  50% {
+    transform: translate(0.5px, -0.5px) rotate(0.25deg);
+  }
+
+  75% {
+    transform: translate(-0.25px, 0) rotate(-0.15deg);
+  }
+}

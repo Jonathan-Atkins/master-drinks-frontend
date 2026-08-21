@@ -1,13 +1,15 @@
-function JitterText({ children, step = 0.08, className = "" }) {
-  const text = typeof children === "string" ? children : "";
+function JitterText({ children, className = "" }) {
+  const text = String(children);
 
   return (
-    <span className={`write-text ${className}`.trim()} aria-label={text}>
+    <span
+      className={`jitter-text ${className}`.trim()}
+      aria-label={text}
+    >
       {text.split("").map((character, index) => (
         <span
           key={`${character}-${index}`}
-          className="write-letter"
-          style={{ animationDelay: `${index * step}s` }}
+          className="jitter-text-character"
           aria-hidden="true"
         >
           {character === " " ? "\u00A0" : character}

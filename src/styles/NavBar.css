@@ -1,4 +1,7 @@
 .main-nav {
+  position: sticky;
+  top: 0;
+
   width: 100%;
 
   background: rgba(5, 5, 5, 0.72);
@@ -10,8 +13,6 @@
 
   font-family: "Amatic SC", sans-serif;
 
-  position: sticky;
-  top: 0;
   z-index: 1000;
 }
 
@@ -37,7 +38,6 @@
 
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-
   align-items: center;
 
   width: 100%;
@@ -55,10 +55,11 @@
 
   padding: 10px 6px;
 
-  color: #550000;
+  color: var(--nav-link-color);
 
   font-size: 24px;
   font-weight: 700;
+
   text-align: center;
   text-decoration: none;
 
@@ -70,18 +71,17 @@
 }
 
 .nav-link:hover {
-  color: #a84c5a;
+  color: var(--nav-link-hover-color);
 
   transform: translateY(-1px);
 }
 
 .nav-link-active {
-  color: #ffffff;
+  color: var(--nav-link-active-color);
 }
 
 .nav-snake {
   position: absolute;
-
   left: 0;
   bottom: 4px;
 
@@ -107,7 +107,7 @@
 .nav-snake path {
   fill: none;
 
-  stroke: #ffffff;
+  stroke: var(--nav-link-active-color);
   stroke-width: 2;
   stroke-linecap: round;
 
@@ -137,7 +137,8 @@
   border-radius: 8px;
 
   background: rgba(0, 0, 0, 0.18);
-  color: #550000;
+
+  color: var(--nav-link-color);
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -157,7 +158,7 @@
 }
 
 .nav-sign-out button:hover {
-  color: #ffffff;
+  color: var(--nav-link-active-color);
 
   border-color: rgba(255, 255, 255, 0.35);
 
@@ -167,7 +168,6 @@
 .nav-menu-button {
   display: none;
 }
-
 
 /* =========================
    Medium Desktop
@@ -195,7 +195,6 @@
   }
 }
 
-
 /* =========================
    Mobile / Tablet
 ========================= */
@@ -216,7 +215,8 @@
     border: 0;
 
     background: transparent;
-    color: #ffffff;
+
+    color: var(--nav-link-active-color);
 
     font-family: "Amatic SC", sans-serif;
     font-size: 28px;
@@ -250,6 +250,7 @@
     padding: 10px 8px;
 
     font-size: 28px;
+
     text-align: left;
   }
 
@@ -271,7 +272,6 @@
     text-align: left;
   }
 }
-
 
 /* =========================
    Small Mobile

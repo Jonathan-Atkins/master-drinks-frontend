@@ -11,6 +11,10 @@
 
   --social-bg: rgba(244, 243, 236, 0.5);
 
+  --nav-link-color: #ff4d4d;
+  --nav-link-hover-color: #a84c5a;
+  --nav-link-active-color: #ffffff;
+
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
@@ -20,7 +24,9 @@
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
+
   letter-spacing: 0.18px;
+
   color: var(--text);
   background: var(--bg);
 
@@ -40,7 +46,6 @@
     --code-bg: #1f2028;
 
     --accent: #c084fc;
-
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
 

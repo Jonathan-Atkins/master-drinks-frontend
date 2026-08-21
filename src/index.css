@@ -36,4 +36,8 @@
 @import "./styles/NavBar.css";
 @import "./styles/layout.css";
 @import "./styles/about.css";
+@import "./styles/settings.css";
 @import "./styles/handwritten-greeting.css";
+@import "./styles/jitter-text.css";
+@import "./styles/user-recipes.css";
+@import "./styles/rotating-drinks.css";

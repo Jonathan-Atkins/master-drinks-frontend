@@ -107,13 +107,6 @@ function EditRecipePage() {
 
   return (
     <main>
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>
-
       <header className="page-header-section">
         <h1 className="page-header animated-underline auto-underline">Edit Recipe</h1>
 

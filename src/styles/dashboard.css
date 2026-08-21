@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
 
+  min-height: 100svh;
+
   gap: 32px;
 }
 
@@ -44,12 +46,10 @@
 
 .drink-grid {
   display: grid;
-
   grid-template-columns: minmax(0, 1fr);
 
   gap: 38px;
 }
-
 
 /* =========================
    Drink Card
@@ -81,7 +81,6 @@
     color 300ms ease-in-out;
 }
 
-
 /* =========================
    Click Me Overlay
 ========================= */
@@ -90,6 +89,7 @@
   content: "Click For More!";
 
   position: absolute;
+
   inset: 0;
 
   display: flex;
@@ -108,10 +108,8 @@
 
   z-index: 3;
 
-  transition:
-    opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
-
 
 /* =========================
    Hover Animation
@@ -132,9 +130,6 @@
   opacity: 0;
 }
 
-
-/* Keep action buttons visible */
-
 .drink-card button {
   position: relative;
 
@@ -142,7 +137,6 @@
 
   font-size: 22px;
 }
-
 
 /* =========================
    Click / Mobile Activation
@@ -163,7 +157,6 @@
   opacity: 0;
 }
 
-
 /* =========================
    Card Content
 ========================= */
@@ -175,8 +168,7 @@
 
   font-size: 36px;
 
-  transition:
-    opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 
 .drink-card h3 {
@@ -188,8 +180,7 @@
 .drink-card p {
   font-size: 22px;
 
-  transition:
-    opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 
 .drink-details {
@@ -229,42 +220,44 @@
   margin-top: 20px;
 }
 
-
 /* =========================
    Empty State
 ========================= */
 
 .empty-drinks-state {
+  flex: 1;
+
   width: 100%;
-  min-height: 50vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  margin: 0;
+
   text-align: center;
+
   color: white;
 
   font-size: clamp(40px, 5vw, 64px);
 }
 
 .empty-drinks-link {
+  display: inline-block;
+
   margin-left: 12px;
 
-  color: #550000;
+  color: var(--nav-link-color);
+
   text-decoration: none;
   font-weight: 700;
 
-  transition:
-    color 220ms ease,
-    transform 220ms ease;
+  transition: color 220ms ease;
 }
 
 .empty-drinks-link:hover {
-  color: #a84c5a;
-  transform: translateY(-1px);
+  color: var(--nav-link-hover-color);
 }
-
 
 /* =========================
    Dashboard Header Styling
@@ -277,7 +270,6 @@
     0 2px 4px rgba(0, 0, 0, 0.9),
     0 0 10px rgba(0, 0, 0, 0.75);
 }
-
 
 /* =========================
    Responsive

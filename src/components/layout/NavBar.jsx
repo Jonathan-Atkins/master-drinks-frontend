@@ -14,6 +14,10 @@ const navItems = [
     path: "/dashboard",
   },
   {
+    label: "Create A Drink",
+    path: "/drink-maker",
+  },
+  {
     label: "My Recipes",
     path: "/my-recipes",
   },
@@ -22,20 +26,16 @@ const navItems = [
     path: "/recipes",
   },
   {
-    label: "Create a Drink",
-    path: "/drink-maker",
-  },
-  {
     label: "Ingredients",
     path: "/ingredients",
   },
   {
-    label: "About Me",
-    path: "/about",
-  },
-  {
     label: "Settings",
     path: "/settings",
+  },
+  {
+    label: "About Me",
+    path: "/about",
   },
 ];
 

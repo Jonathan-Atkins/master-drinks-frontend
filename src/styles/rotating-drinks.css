@@ -1,0 +1,116 @@
+.empty-recipes-rotate-line {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin: 0;
+
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+.rotating-drinks {
+  display: inline-grid;
+
+  min-width: 160px;
+}
+
+.rotating-drinks-sizer,
+.rotating-drinks-underline {
+  grid-area: 1 / 1;
+}
+
+.rotating-drinks-sizer {
+  padding-inline: 8px;
+
+  visibility: hidden;
+
+  white-space: nowrap;
+}
+
+.rotating-drinks-underline {
+  position: relative;
+
+  width: 100%;
+  height: 1.2em;
+
+  overflow: hidden;
+
+  border-bottom: 2px solid currentColor;
+}
+
+.rotating-drinks-current,
+.rotating-drinks-next {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: 8px;
+
+  white-space: nowrap;
+}
+
+.rotating-drinks-current {
+  transform: translateY(0);
+}
+
+.rotating-drinks-next {
+  transform: translateY(100%);
+}
+
+.rotating-drinks-exit {
+  animation: drink-name-exit 600ms ease-in-out
+    forwards;
+}
+
+.rotating-drinks-enter {
+  animation: drink-name-enter 600ms ease-in-out
+    forwards;
+}
+
+@keyframes drink-name-exit {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes drink-name-enter {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-recipes-rotate-line {
+    gap: 6px;
+
+    font-size: clamp(18px, 5.5vw, 28px);
+  }
+
+  .rotating-drinks {
+    min-width: 110px;
+  }
+
+  .rotating-drinks-current,
+  .rotating-drinks-next,
+  .rotating-drinks-sizer {
+    padding-inline: 4px;
+  }
+}

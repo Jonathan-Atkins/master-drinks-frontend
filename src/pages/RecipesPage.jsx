@@ -1,9 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import UserRecipesCollection from "../components/recipes/UserRecipesCollection";
 
 function UserRecipesPage() {
-  const navigate = useNavigate();
-
   return (
     <main>
       <header className="page-header-section">
@@ -13,13 +10,6 @@ function UserRecipesPage() {
           Browse and manage your saved recipes.
         </p>
       </header>
-
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>
 
       <UserRecipesCollection />
     </main>
