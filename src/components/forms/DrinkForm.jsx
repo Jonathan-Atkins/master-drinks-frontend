@@ -5,28 +5,42 @@ import { API_URL } from "../../config/api";
 import { getDrinkRequestConfig } from "../utils/drinkRequest";
 
 function DrinkForm({ drink = null }) {
-  const [name, setName] = useState(drink?.name || "");
+  const [name, setName] = useState(
+    drink?.name || ""
+  );
 
-  const [selectedCategories, setSelectedCategories] = useState(
+  const [
+    selectedCategories,
+    setSelectedCategories,
+  ] = useState(
     drink?.categories?.length
-      ? drink.categories.map((category) => category.slug)
+      ? drink.categories.map(
+          (category) => category.slug
+        )
       : [""]
   );
 
-  const [categories, setCategories] = useState([]);
-  const [categoriesLoading, setCategoriesLoading] =
-    useState(true);
+  const [categories, setCategories] =
+    useState([]);
 
-  const [alcoholic, setAlcoholic] = useState(
-    drink?.alcoholic ?? true
-  );
+  const [
+    categoriesLoading,
+    setCategoriesLoading,
+  ] = useState(true);
 
-  const [publiclyVisible, setPubliclyVisible] = useState(
+  const [alcoholic, setAlcoholic] =
+    useState(drink?.alcoholic ?? true);
+
+  const [
+    publiclyVisible,
+    setPubliclyVisible,
+  ] = useState(
     drink?.publicly_visible ?? true
   );
 
   const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting, setSubmitting] =
+    useState(false);
 
   const { isEditing, url, method } =
     getDrinkRequestConfig(drink);
@@ -60,11 +74,21 @@ function DrinkForm({ drink = null }) {
     fetchCategories();
   }, []);
 
-  const handleCategoryChange = (index, slug) => {
-    setSelectedCategories((currentCategories) =>
-      currentCategories.map((categorySlug, categoryIndex) =>
-        categoryIndex === index ? slug : categorySlug
-      )
+  const handleCategoryChange = (
+    index,
+    slug
+  ) => {
+    setSelectedCategories(
+      (currentCategories) =>
+        currentCategories.map(
+          (
+            categorySlug,
+            categoryIndex
+          ) =>
+            categoryIndex === index
+              ? slug
+              : categorySlug
+        )
     );
   };
 
@@ -76,32 +100,40 @@ function DrinkForm({ drink = null }) {
       setError(
         "Select a category before adding another."
       );
+
       return;
     }
 
     if (
-      selectedCategories.length >= categories.length
+      selectedCategories.length >=
+      categories.length
     ) {
       return;
     }
 
     setError("");
 
-    setSelectedCategories((currentCategories) => [
-      ...currentCategories,
-      "",
-    ]);
+    setSelectedCategories(
+      (currentCategories) => [
+        ...currentCategories,
+        "",
+      ]
+    );
   };
 
-  const handleRemoveCategory = (index) => {
+  const handleRemoveCategory = (
+    index
+  ) => {
     if (selectedCategories.length === 1) {
       return;
     }
 
-    setSelectedCategories((currentCategories) =>
-      currentCategories.filter(
-        (_, categoryIndex) => categoryIndex !== index
-      )
+    setSelectedCategories(
+      (currentCategories) =>
+        currentCategories.filter(
+          (_, categoryIndex) =>
+            categoryIndex !== index
+        )
     );
   };
 
@@ -116,7 +148,10 @@ function DrinkForm({ drink = null }) {
       );
 
     if (hasEmptyCategory) {
-      setError("Every drink requires a category.");
+      setError(
+        "Every drink requires a category."
+      );
+
       return;
     }
 
@@ -124,19 +159,24 @@ function DrinkForm({ drink = null }) {
 
     const drinkPayload = {
       name,
-      category_slugs: selectedCategories,
+      category_slugs:
+        selectedCategories,
       alcoholic,
-      publicly_visible: publiclyVisible,
+      publicly_visible:
+        publiclyVisible,
     };
 
     try {
       const response = await fetch(url, {
         method,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":
+            "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(drinkPayload),
+        body: JSON.stringify(
+          drinkPayload
+        ),
       });
 
       const data = await response.json();
@@ -163,7 +203,10 @@ function DrinkForm({ drink = null }) {
       onSubmit={handleSubmit}
     >
       {error && (
-        <p className="form-error" role="alert">
+        <p
+          className="form-error"
+          role="alert"
+        >
           {error}
         </p>
       )}
@@ -188,7 +231,10 @@ function DrinkForm({ drink = null }) {
         <label>Categories</label>
 
         {selectedCategories.map(
-          (selectedCategory, index) => (
+          (
+            selectedCategory,
+            index
+          ) => (
             <div
               className="drink-category-row"
               key={index}
@@ -202,7 +248,9 @@ function DrinkForm({ drink = null }) {
                   )
                 }
                 required
-                disabled={categoriesLoading}
+                disabled={
+                  categoriesLoading
+                }
               >
                 <option value="">
                   {categoriesLoading
@@ -223,25 +271,35 @@ function DrinkForm({ drink = null }) {
 
                     return (
                       <option
-                        key={categoryOption.slug}
-                        value={categoryOption.slug}
+                        key={
+                          categoryOption.slug
+                        }
+                        value={
+                          categoryOption.slug
+                        }
                         disabled={
                           alreadySelected &&
                           !selectedHere
                         }
                       >
-                        {categoryOption.name}
+                        {
+                          categoryOption.name
+                        }
                       </option>
                     );
                   }
                 )}
               </select>
 
-              {selectedCategories.length > 1 && (
+              {selectedCategories.length >
+                1 && (
                 <button
+                  className="drink-form-secondary-button"
                   type="button"
                   onClick={() =>
-                    handleRemoveCategory(index)
+                    handleRemoveCategory(
+                      index
+                    )
                   }
                 >
                   Remove
@@ -252,8 +310,11 @@ function DrinkForm({ drink = null }) {
         )}
 
         <button
+          className="primary-button drink-form-primary-button"
           type="button"
-          onClick={handleAddCategory}
+          onClick={
+            handleAddCategory
+          }
           disabled={
             categoriesLoading ||
             selectedCategories.length >=
@@ -270,9 +331,12 @@ function DrinkForm({ drink = null }) {
             type="checkbox"
             checked={alcoholic}
             onChange={(event) =>
-              setAlcoholic(event.target.checked)
+              setAlcoholic(
+                event.target.checked
+              )
             }
           />
+
           Alcoholic
         </label>
       </div>
@@ -283,22 +347,26 @@ function DrinkForm({ drink = null }) {
             type="checkbox"
             checked={publiclyVisible}
             onChange={(event) =>
-              setPubliclyVisible(event.target.checked)
+              setPubliclyVisible(
+                event.target.checked
+              )
             }
           />
+
           Publicly visible
         </label>
       </div>
 
-      <div className="dashboard-actions">
+      <div className="drink-form-actions">
         <button
-          className="primary-button"
+          className="primary-button drink-form-primary-button"
           type="submit"
           disabled={
             submitting ||
             categoriesLoading ||
             selectedCategories.some(
-              (categorySlug) => !categorySlug
+              (categorySlug) =>
+                !categorySlug
             )
           }
         >
@@ -310,8 +378,11 @@ function DrinkForm({ drink = null }) {
         </button>
 
         <button
+          className="drink-form-secondary-button"
           type="button"
-          onClick={() => navigate("/dashboard")}
+          onClick={() =>
+            navigate("/dashboard")
+          }
         >
           Cancel
         </button>

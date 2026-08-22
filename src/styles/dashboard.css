@@ -44,6 +44,10 @@
   margin-bottom: 16px;
 }
 
+/* =========================
+   Drink Grid
+========================= */
+
 .drink-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -68,7 +72,7 @@
   border: 1px solid var(--border);
   border-radius: 12px;
 
-  background: var(--bg);
+  background: var(--card-bg);
 
   box-shadow: var(--shadow);
 
@@ -81,32 +85,98 @@
     color 300ms ease-in-out;
 }
 
-.loading-state {
-  width: 100%;
-  min-height: 50svh;
+/* =========================
+   Drink Card Content
+========================= */
 
+.drink-card h2 {
+  margin-top: 0;
+
+  color: #ffffff;
+
+  font-size: 36px;
+
+  transition: opacity 200ms ease-in-out;
+}
+
+.drink-card h3 {
+  margin: 0 0 16px;
+
+  color: #ffffff;
+}
+
+.drink-card p {
+  color: #ffffff;
+
+  font-size: 22px;
+
+  transition: opacity 200ms ease-in-out;
+}
+
+.drink-card p strong {
+  color: #6b6375;
+}
+
+.drink-details {
+  display: grid;
+
+  gap: 12px;
+
+  margin: 0;
+}
+
+.drink-details div {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  text-align: center;
+  gap: 16px;
+}
 
-  color: var(--text);
+.drink-details dt {
+  color: #6b6375;
 
-  font-family: "Amatic SC", sans-serif;
-  font-size: clamp(36px, 8vw, 64px);
-  line-height: 1.1;
+  font-weight: 700;
+}
+
+.drink-details dd {
+  margin: 0;
+
+  color: #ffffff;
+
+  text-align: right;
+  text-transform: capitalize;
 }
 
 /* =========================
-   Click Me Overlay
+   Drink Card Actions
+========================= */
+
+.drink-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 16px;
+
+  margin-top: 20px;
+}
+
+.drink-card button {
+  position: relative;
+
+  z-index: 4;
+
+  font-size: 22px;
+}
+
+/* =========================
+   Click For More Overlay
 ========================= */
 
 .drink-card::after {
   content: "Click For More!";
 
   position: absolute;
-
   top: 34%;
   left: 50%;
 
@@ -120,15 +190,18 @@
   font-size: clamp(22px, 3vw, 34px);
   font-weight: 400;
   line-height: 1;
+
   text-align: center;
 
   opacity: 0;
+
   pointer-events: none;
 
   z-index: 3;
 
   transition: opacity 300ms ease-in-out;
 }
+
 /* =========================
    Hover Animation
 ========================= */
@@ -146,14 +219,6 @@
 .drink-card:hover > h2,
 .drink-card:hover > p {
   opacity: 0;
-}
-
-.drink-card button {
-  position: relative;
-
-  z-index: 4;
-
-  font-size: 22px;
 }
 
 /* =========================
@@ -176,67 +241,24 @@
 }
 
 /* =========================
-   Card Content
+   Loading State
 ========================= */
 
-.drink-card h2 {
-  margin-top: 0;
+.loading-state {
+  width: 100%;
+  min-height: 50svh;
 
-  color: var(--text-h);
-
-  font-size: 36px;
-
-  transition: opacity 200ms ease-in-out;
-}
-
-.drink-card h3 {
-  margin: 0 0 16px;
-
-  color: var(--text-h);
-}
-
-.drink-card p {
-  font-size: 22px;
-
-  transition: opacity 200ms ease-in-out;
-}
-
-.drink-details {
-  display: grid;
-
-  gap: 12px;
-
-  margin: 0;
-}
-
-.drink-details div {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 
-  gap: 16px;
-}
+  text-align: center;
 
-.drink-details dt {
-  font-weight: 700;
+  color: var(--text);
 
-  color: var(--text-h);
-}
-
-.drink-details dd {
-  margin: 0;
-
-  text-align: right;
-  text-transform: capitalize;
-}
-
-.drink-card-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  gap: 16px;
-
-  margin-top: 20px;
+  font-family: "Amatic SC", sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1.1;
 }
 
 /* =========================
@@ -256,7 +278,7 @@
 
   text-align: center;
 
-  color: white;
+  color: #ffffff;
 
   font-size: clamp(40px, 5vw, 64px);
 }
@@ -269,6 +291,7 @@
   color: var(--nav-link-color);
 
   text-decoration: none;
+
   font-weight: 700;
 
   transition: color 220ms ease;
@@ -279,7 +302,7 @@
 }
 
 /* =========================
-   Dashboard Header Styling
+   Dashboard Header
 ========================= */
 
 .dashboard-page .dashboard-header h1 {
@@ -305,8 +328,10 @@
 
 @media (min-width: 768px) {
   .drink-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
   }
 }
 
@@ -320,7 +345,9 @@
 
 @media (min-width: 1024px) {
   .drink-grid {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
   }
 }

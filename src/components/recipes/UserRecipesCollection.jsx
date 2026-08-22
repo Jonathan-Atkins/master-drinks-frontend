@@ -161,15 +161,13 @@ function UserRecipesCollection() {
   }
 
   return (
-    <section>
+    <section className="my-recipes-grid">
       {recipes.map((recipe) => (
         <RecipeCard
           key={recipe.id}
           recipe={recipe}
           onDelete={handleDeleteRecipe}
-          onRemoveSaved={
-            handleRemoveSavedRecipe
-          }
+          onRemoveSaved={handleRemoveSavedRecipe}
         />
       ))}
     </section>

@@ -8,27 +8,53 @@
   text-align: left;
 }
 
-.form-field input:not([type="checkbox"]),
+.form-field
+  input:not([type="checkbox"]),
 .form-field select,
 .form-field textarea {
   width: 100%;
-
   min-width: 0;
   min-height: 48px;
 
   padding: 10px 12px;
 
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid
+    var(--form-border);
+  border-radius:
+    var(--form-radius);
 
-  background: var(--bg);
-  color: var(--text-h);
+  background: var(--form-bg);
+
+  color: var(--form-text);
+
+  font-family: var(--sans);
+  font-size: clamp(
+    20px,
+    2.5vw,
+    22px
+  );
+  line-height: 1.4;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--form-placeholder);
+
+  opacity: 1;
+}
+
+.form-field select {
+  appearance: none;
 }
 
 .form-field input[type="checkbox"] {
   width: 20px;
   height: 20px;
-
   min-height: auto;
 }
 
@@ -41,8 +67,16 @@
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: none;
+
+  border-color:
+    rgba(170, 181, 196, 0.9);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(161, 171, 184, 0.2);
+
+  background: #171a1d;
 }
 
 .form-error {
@@ -76,13 +110,107 @@
   text-align: left;
 }
 
-
 /* =========================
    Drink Form
 ========================= */
 
-.drink-form .form-field input:not([type="checkbox"]),
+.drink-form
+  .form-field
+  input:not([type="checkbox"]),
 .drink-form .form-field select,
 .drink-form .form-field textarea {
-  border: 2px solid #ffffff;
+  border: 1px solid
+    var(--form-border);
+
+  background: var(--form-bg);
+}
+
+/* =========================
+   Category Rows
+========================= */
+
+.drink-category-row {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.drink-category-row select {
+  width: 100%;
+}
+
+/* =========================
+   Primary Drink Form Buttons
+========================= */
+
+.drink-form-primary-button {
+  width: fit-content;
+  min-width: 140px;
+  min-height: 44px;
+
+  padding: 8px 20px;
+
+  border-radius: 8px;
+
+  font-family: var(--sans);
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* =========================
+   Secondary Drink Form Buttons
+========================= */
+
+.drink-form-secondary-button {
+  width: fit-content;
+  min-height: 44px;
+
+  padding: 8px 18px;
+
+  font-family: var(--sans);
+  font-size: 26px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* =========================
+   Drink Form Actions
+========================= */
+
+.drink-form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+.drink-form-actions button {
+  width: fit-content;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (min-width: 640px) {
+  .drink-category-row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .drink-category-row select {
+    flex: 1;
+  }
+
+  .drink-form-actions {
+    flex-direction: row;
+    align-items: center;
+  }
 }
