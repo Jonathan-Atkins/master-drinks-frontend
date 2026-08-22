@@ -169,6 +169,28 @@
   display: none;
 }
 
+@keyframes menu-underline {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  50.01% {
+    transform: scaleX(1);
+    transform-origin: right center;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+}
+
 /* =========================
    Medium Desktop
 ========================= */
@@ -205,13 +227,15 @@
   }
 
   .nav-menu-button {
+    position: relative;
+
     display: block;
 
     width: fit-content;
     min-height: 64px;
 
     margin: 0 auto;
-    padding: 8px 12px;
+    padding: 8px 12px 18px;
 
     border: 0;
 
@@ -226,6 +250,27 @@
     text-align: center;
 
     cursor: pointer;
+  }
+
+  .nav-menu-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10%;
+    bottom: 8px;
+
+    width: 80%;
+    height: 3px;
+
+    background: #ffffff;
+
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    animation:
+      menu-underline 2.4s
+      ease-in-out infinite;
   }
 
   .nav-menu {
@@ -283,21 +328,6 @@
   }
 }
 
-@media (max-width: 480px) {
-  .nav-inner {
-    padding: 0 12px;
-  }
-
-  .nav-menu-button {
-    font-size: 40px;
-  }
-
-  .nav-link,
-  .nav-sign-out button {
-    font-size: 26px;
-  }
-}
-
 /* =========================
    Small Mobile
 ========================= */
@@ -307,7 +337,10 @@
     padding: 0 12px;
   }
 
-  .nav-menu-button,
+  .nav-menu-button {
+    font-size: 40px;
+  }
+
   .nav-link,
   .nav-sign-out button {
     font-size: 26px;

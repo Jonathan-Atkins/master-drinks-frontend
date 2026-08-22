@@ -27,10 +27,14 @@ function getCategoryLabel(recipe) {
 }
 
 function RecipesCollection() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] =
+    useState([]);
+
   const [loading, setLoading] =
     useState(true);
-  const [error, setError] = useState("");
+
+  const [error, setError] =
+    useState("");
 
   const [sortBy, setSortBy] =
     useState("category");
@@ -358,7 +362,13 @@ function RecipesCollection() {
               className="community-category-section"
               key={category}
             >
-              <h2>
+              <h2
+                className="
+                  community-category-heading
+                  animated-underline
+                  auto-underline
+                "
+              >
                 {category}
               </h2>
 
