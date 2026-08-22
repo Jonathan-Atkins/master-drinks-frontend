@@ -268,13 +268,14 @@
 .empty-drinks-state {
   flex: 1;
   width: 100%;
+  min-height: 60svh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 12px;
+  gap: 28px;
 
   margin: 0;
 
@@ -283,10 +284,12 @@
   color: #ffffff;
 
   font-size: clamp(
-    40px,
-    5vw,
-    64px
+    52px,
+    10vw,
+    78px
   );
+
+  line-height: 1.05;
 }
 
 .empty-drinks-link {
