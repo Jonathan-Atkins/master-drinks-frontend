@@ -125,25 +125,32 @@ function UserRecipesCollection() {
   if (drinks.length === 0) {
     return (
       <div className="empty-recipes-state">
-        <h2 className="page-header empty-recipes-heading">
-          We need to{" "}
-          <Link
-            to="/drink-maker"
-            className="empty-recipes-link"
-          >
-            <JitterText>Create a Drink</JitterText>
-          </Link>
-        </h2>
+        <div className="empty-recipes-message">
+          <p className="empty-recipes-line">
+            We Need to{" "}
+            <Link
+              to="/drink-maker"
+              className="empty-recipes-link"
+            >
+              <JitterText>
+                Create A Drink
+              </JitterText>
+            </Link>{" "}
+            for our recipes
+          </p>
 
-        <p className="page-header-description empty-recipes-description">
-          for our Recipes, or Add one from the{" "}
-          <Link
-            to="/recipes"
-            className="empty-recipes-link"
-          >
-            <JitterText>Community!</JitterText>
-          </Link>
-        </p>
+          <p className="empty-recipes-line">
+            Or Add One From the{" "}
+            <Link
+              to="/recipes"
+              className="empty-recipes-link"
+            >
+              <JitterText>
+                Community!
+              </JitterText>
+            </Link>
+          </p>
+        </div>
       </div>
     );
   }
@@ -152,9 +159,13 @@ function UserRecipesCollection() {
     return (
       <div className="empty-recipes-state">
         <p className="empty-recipes-rotate-line">
-          <span>Let&apos;s add a Recipe to</span>
+          <span>
+            Let&apos;s add a Recipe to
+          </span>
 
-          <RotatingDrinkNames drinks={drinks} />
+          <RotatingDrinkNames
+            drinks={drinks}
+          />
         </p>
       </div>
     );
@@ -167,7 +178,9 @@ function UserRecipesCollection() {
           key={recipe.id}
           recipe={recipe}
           onDelete={handleDeleteRecipe}
-          onRemoveSaved={handleRemoveSavedRecipe}
+          onRemoveSaved={
+            handleRemoveSavedRecipe
+          }
         />
       ))}
     </section>
