@@ -220,7 +220,7 @@
     color: var(--nav-link-active-color);
 
     font-family: "Amatic SC", sans-serif;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
 
     text-align: center;
@@ -280,6 +280,21 @@
     width: 100%;
 
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-inner {
+    padding: 0 12px;
+  }
+
+  .nav-menu-button {
+    font-size: 40px;
+  }
+
+  .nav-link,
+  .nav-sign-out button {
+    font-size: 26px;
   }
 }
 

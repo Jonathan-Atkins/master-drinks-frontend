@@ -267,12 +267,14 @@
 
 .empty-drinks-state {
   flex: 1;
-
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  gap: 12px;
 
   margin: 0;
 
@@ -280,18 +282,21 @@
 
   color: #ffffff;
 
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(
+    40px,
+    5vw,
+    64px
+  );
 }
 
 .empty-drinks-link {
   display: inline-block;
 
-  margin-left: 12px;
+  margin-left: 0;
 
   color: var(--nav-link-color);
 
   text-decoration: none;
-
   font-weight: 700;
 
   transition: color 220ms ease;
@@ -299,18 +304,6 @@
 
 .empty-drinks-link:hover {
   color: var(--nav-link-hover-color);
-}
-
-/* =========================
-   Dashboard Header
-========================= */
-
-.dashboard-page .dashboard-header h1 {
-  color: #ffffff;
-
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.9),
-    0 0 10px rgba(0, 0, 0, 0.75);
 }
 
 /* =========================
