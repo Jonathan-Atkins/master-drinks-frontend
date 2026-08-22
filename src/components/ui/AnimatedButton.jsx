@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 function AnimatedButton({
   children,
   variant = "default",
@@ -7,16 +5,11 @@ function AnimatedButton({
   onClick,
   disabled = false,
 }) {
-  const animationTiming = useMemo(() => {
-    const duration = 4.5 + Math.random() * 2.5;
-    const delay = Math.random() * -5;
-
-    return {
-      "--content": `"${children}"`,
-      "--bubble-duration": `${duration}s`,
-      "--bubble-delay": `${delay}s`,
-    };
-  }, [children]);
+  const animationTiming = {
+    "--content": `"${children}"`,
+    "--bubble-duration": "6s",
+    "--bubble-delay": "-2.5s",
+  };
 
   return (
     <button
