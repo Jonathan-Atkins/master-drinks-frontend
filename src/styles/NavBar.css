@@ -175,18 +175,28 @@
     transform-origin: left center;
   }
 
-  50% {
+  20% {
     transform: scaleX(1);
     transform-origin: left center;
   }
 
-  50.01% {
+  40% {
     transform: scaleX(1);
     transform-origin: right center;
   }
 
-  100% {
+  60% {
     transform: scaleX(0);
+    transform-origin: right center;
+  }
+
+  80% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+
+  100% {
+    transform: scaleX(1);
     transform-origin: right center;
   }
 }
@@ -252,7 +262,7 @@
     cursor: pointer;
   }
 
-  .nav-menu-button::after {
+ .nav-menu-button::after {
     content: "";
 
     position: absolute;
@@ -266,23 +276,22 @@
     background: #ffffff;
 
     transform: scaleX(0);
-    transform-origin: left center;
 
     animation:
-      menu-underline 2.4s
-      ease-in-out infinite;
+      menu-underline 8s
+      ease-in-out infinite alternate;
   }
 
-  .nav-menu {
-    display: none;
+    .nav-menu {
+      display: none;
 
-    min-height: 0;
+      min-height: 0;
 
-    padding-bottom: 20px;
-  }
+      padding-bottom: 20px;
+    }
 
-  .nav-menu-open {
-    display: block;
+    .nav-menu-open {
+      display: block;
   }
 
   .nav-links {
