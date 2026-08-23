@@ -1,3 +1,7 @@
+/* =========================
+   Shared Form Fields
+========================= */
+
 .form-field {
   display: grid;
 
@@ -8,8 +12,19 @@
   text-align: left;
 }
 
-.form-field
-  input:not([type="checkbox"]),
+.form-field label {
+  color: var(--text-h);
+
+  font-family: var(--sans);
+  font-size: clamp(
+    22px,
+    3vw,
+    28px
+  );
+  font-weight: 700;
+}
+
+.form-field input:not([type="checkbox"]),
 .form-field select,
 .form-field textarea {
   width: 100%;
@@ -18,13 +33,10 @@
 
   padding: 10px 12px;
 
-  border: 1px solid
-    var(--form-border);
-  border-radius:
-    var(--form-radius);
+  border: 1px solid var(--form-border);
+  border-radius: var(--form-radius);
 
   background: var(--form-bg);
-
   color: var(--form-text);
 
   font-family: var(--sans);
@@ -56,6 +68,8 @@
   width: 20px;
   height: 20px;
   min-height: auto;
+
+  margin-right: 8px;
 }
 
 .form-field textarea {
@@ -79,8 +93,21 @@
   background: #171a1d;
 }
 
+.form-field input:disabled,
+.form-field select:disabled,
+.form-field textarea:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+
+/* =========================
+   Form Errors
+========================= */
+
 .form-error {
-  margin-bottom: 16px;
+  margin: 0 0 16px;
 
   padding: 12px;
 
@@ -105,47 +132,56 @@
 .field-help {
   margin-top: 4px;
 
+  color: var(--text);
+
   font-size: 0.875rem;
 
   text-align: left;
 }
 
+
 /* =========================
-   Drink Form
+   Shared Form Layout
 ========================= */
 
-.drink-form
-  .form-field
-  input:not([type="checkbox"]),
-.drink-form .form-field select,
-.drink-form .form-field textarea {
-  border: 1px solid
-    var(--form-border);
+.drink-form,
+.ingredient-form {
+  width: 100%;
+  max-width: 720px;
 
-  background: var(--form-bg);
+  margin: 0 auto;
+
+  display: grid;
+
+  gap: 20px;
 }
 
+
 /* =========================
-   Category Rows
+   Shared Select Rows
 ========================= */
 
-.drink-category-row {
+.form-select-row {
   display: flex;
   flex-direction: column;
 
   gap: 10px;
-}
 
-.drink-category-row select {
   width: 100%;
 }
 
+.form-select-row select {
+  width: 100%;
+}
+
+
 /* =========================
-   Primary Drink Form Buttons
+   Shared Primary Form Button
 ========================= */
 
-.drink-form-primary-button {
+.form-primary-button {
   width: fit-content;
+
   min-width: 140px;
   min-height: 44px;
 
@@ -160,28 +196,62 @@
   cursor: pointer;
 }
 
+.form-primary-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+
 /* =========================
-   Secondary Drink Form Buttons
+   Shared Secondary Button
 ========================= */
 
-.drink-form-secondary-button {
+.form-secondary-button {
   width: fit-content;
+
   min-height: 44px;
 
   padding: 8px 18px;
+
+  border: 1px solid var(--form-border);
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--form-text);
 
   font-family: var(--sans);
   font-size: 26px;
   line-height: 1;
 
   cursor: pointer;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
+.form-secondary-button:hover,
+.form-secondary-button:focus-visible {
+  border-color: var(--accent-border);
+
+  background:
+    rgba(255, 255, 255, 0.05);
+}
+
+.form-secondary-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+
 /* =========================
-   Drink Form Actions
+   Shared Form Actions
 ========================= */
 
-.drink-form-actions {
+.form-actions {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -191,25 +261,44 @@
   width: 100%;
 }
 
-.drink-form-actions button {
+.form-actions button {
   width: fit-content;
 }
+
+
+/* =========================
+   Checkbox Labels
+========================= */
+
+.form-field label:has(
+  input[type="checkbox"]
+) {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  width: fit-content;
+
+  cursor: pointer;
+}
+
 
 /* =========================
    Responsive
 ========================= */
 
 @media (min-width: 640px) {
-  .drink-category-row {
+  .form-select-row {
     flex-direction: row;
     align-items: center;
   }
 
-  .drink-category-row select {
+  .form-select-row select {
     flex: 1;
   }
 
-  .drink-form-actions {
+  .form-actions {
     flex-direction: row;
     align-items: center;
   }

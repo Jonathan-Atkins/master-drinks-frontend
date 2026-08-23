@@ -15,16 +15,32 @@ import SettingsPage from "./pages/SettingsPage";
 import EditRecipePage from "./pages/EditRecipePage";
 import EditDrinkPage from "./pages/EditDrinkPage";
 import IngredientsPage from "./pages/IngredientsPage";
+import NewIngredientPage from "./pages/NewIngredientPage";
 
 import ProtectedLayout from "./components/layout/ProtectedLayout";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/about" element={<AboutPage />} />
+      <Route
+        path="/"
+        element={<LoginPage />}
+      />
+
+      <Route
+        path="/login"
+        element={<LoginPage />}
+      />
+
+      <Route
+        path="/register"
+        element={<RegisterPage />}
+      />
+
+      <Route
+        path="/about"
+        element={<AboutPage />}
+      />
 
       <Route element={<ProtectedLayout />}>
         <Route
@@ -80,6 +96,11 @@ function App() {
         <Route
           path="/ingredients"
           element={<IngredientsPage />}
+        />
+
+        <Route
+          path="/ingredients/new"
+          element={<NewIngredientPage />}
         />
       </Route>
     </Routes>

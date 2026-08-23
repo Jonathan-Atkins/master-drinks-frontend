@@ -124,7 +124,9 @@ function DrinkForm({ drink = null }) {
   const handleRemoveCategory = (
     index
   ) => {
-    if (selectedCategories.length === 1) {
+    if (
+      selectedCategories.length === 1
+    ) {
       return;
     }
 
@@ -213,7 +215,7 @@ function DrinkForm({ drink = null }) {
 
       <div className="form-field">
         <label htmlFor="drink-name">
-          Drink name
+          Drink Name
         </label>
 
         <input
@@ -236,7 +238,7 @@ function DrinkForm({ drink = null }) {
             index
           ) => (
             <div
-              className="drink-category-row"
+              className="form-select-row"
               key={index}
             >
               <select
@@ -294,7 +296,7 @@ function DrinkForm({ drink = null }) {
               {selectedCategories.length >
                 1 && (
                 <button
-                  className="drink-form-secondary-button"
+                  className="form-secondary-button"
                   type="button"
                   onClick={() =>
                     handleRemoveCategory(
@@ -310,7 +312,7 @@ function DrinkForm({ drink = null }) {
         )}
 
         <button
-          className="primary-button drink-form-primary-button"
+          className="primary-button form-primary-button"
           type="button"
           onClick={
             handleAddCategory
@@ -353,13 +355,13 @@ function DrinkForm({ drink = null }) {
             }
           />
 
-          Publicly visible
+          Publicly Visible
         </label>
       </div>
 
-      <div className="drink-form-actions">
+      <div className="form-actions">
         <button
-          className="primary-button drink-form-primary-button"
+          className="primary-button form-primary-button"
           type="submit"
           disabled={
             submitting ||
@@ -378,7 +380,7 @@ function DrinkForm({ drink = null }) {
         </button>
 
         <button
-          className="drink-form-secondary-button"
+          className="form-secondary-button"
           type="button"
           onClick={() =>
             navigate("/dashboard")
