@@ -118,7 +118,7 @@ function IngredientsCollection() {
   }
 
   return (
-    <section>
+    <section className="ingredients-table-wrapper">
       {deleteError && (
         <p className="field-error">
           {deleteError}
@@ -133,10 +133,16 @@ function IngredientsCollection() {
             </th>
 
             <th>
-              Associated Recipes
+              Type
             </th>
 
-            <th aria-label="Actions"></th>
+            <th>
+              Flavor Profile
+            </th>
+
+            <th aria-label="Actions">
+              Actions
+            </th>
           </tr>
         </thead>
 
@@ -144,16 +150,29 @@ function IngredientsCollection() {
           {ingredients.map(
             (ingredient) => (
               <tr key={ingredient.id}>
-                <td>
+                <td data-label="Ingredient">
                   {ingredient.name}
                 </td>
 
-                <td>
-                  {ingredient.recipe_count}
+                <td data-label="Type">
+                  {ingredient.ingredient_type ||
+                    "—"}
                 </td>
 
-                <td className="ingredients-table-actions">
-                  {ingredient.owned_by_current_user && (
+                <td data-label="Flavor Profile">
+                  {ingredient.flavor_profiles
+                    ?.length
+                    ? ingredient.flavor_profiles.join(
+                        ", "
+                      )
+                    : "—"}
+                </td>
+
+                <td
+                  data-label="Actions"
+                  className="ingredients-table-actions"
+                >
+                  {ingredient.owned_by_current_user ? (
                     <>
                       <button
                         type="button"
@@ -188,6 +207,10 @@ function IngredientsCollection() {
                           : "Delete"}
                       </button>
                     </>
+                  ) : (
+                    <span className="ingredients-no-actions">
+                      —
+                    </span>
                   )}
                 </td>
               </tr>

@@ -1,90 +1,77 @@
-.ingredient-row {
-  display: grid;
-
-  gap: 16px;
-
-  padding: 16px 0;
-}
-
-.ingredient-search {
-  min-width: 0;
-}
-
-.ingredient-results {
+.ingredients-table-wrapper {
   width: 100%;
 
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-
-  border: 1px solid var(--border);
-  border-radius: 8px;
-
-  overflow: hidden;
-}
-
-.ingredient-results button {
-  width: 100%;
-  min-height: 44px;
-
-  padding: 12px;
-
-  text-align: left;
-}
-
-.page-header {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-
-  gap: 12px;
-
-  margin-bottom: 16px;
-}
-
-.page-header h1 {
-  margin: 0;
-}
-
-.page-header .primary-button {
-  width: auto;
+  margin-top: 24px;
 }
 
 .ingredients-table {
   width: 100%;
 
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 
   border: 1px solid var(--border);
   border-radius: 12px;
 
   overflow: hidden;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
 }
 
 .ingredients-table th,
 .ingredients-table td {
-  padding: 12px 16px;
+  padding: 16px;
 
   text-align: left;
+  vertical-align: middle;
 
   border-bottom: 1px solid var(--border);
 }
 
 .ingredients-table th {
-  color: var(--text-h);
+  color: #f4b6b2;
 
+  font-size: 26px;
   font-weight: 700;
 
-  background: var(--code-bg);
+  background: rgba(
+    255,
+    255,
+    255,
+    0.04
+  );
+}
+
+.ingredients-table td {
+  color: #ffffff;
+
+  font-size: 22px;
 }
 
 .ingredients-table tbody tr:last-child td {
   border-bottom: 0;
 }
 
+.ingredients-table tbody tr {
+  transition:
+    background-color 180ms ease;
+}
+
+.ingredients-table tbody tr:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.03
+    );
+}
+
 .ingredients-table-actions {
   display: flex;
+  align-items: center;
 
   gap: 8px;
 
@@ -92,48 +79,136 @@
 }
 
 .ingredients-table-actions button {
-  min-height: 36px;
+  min-height: 40px;
 
-  padding: 6px 12px;
+  padding: 6px 14px;
 
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
 
-  background: var(--bg);
-  color: var(--text-h);
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family: var(--sans);
+  font-size: 22px;
 
   cursor: pointer;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .ingredients-table-actions button:hover {
-  border-color: var(--accent-border);
+  border-color:
+    var(--accent-border);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
 }
 
 .ingredients-table-actions button:disabled {
   cursor: not-allowed;
+
   opacity: 0.6;
 }
 
-@media (max-width: 480px) {
+.ingredients-no-actions {
+  color: #6b6375;
+
+  opacity: 0.7;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 700px) {
   .ingredients-table {
     display: block;
-    overflow-x: auto;
+
+    border: 0;
+
+    background: transparent;
+
+    box-shadow: none;
   }
-}
 
-@media (min-width: 640px) {
-  .page-header {
-    flex-direction: row;
+  .ingredients-table thead {
+    display: none;
+  }
 
+  .ingredients-table tbody {
+    display: grid;
+
+    gap: 18px;
+  }
+
+  .ingredients-table tr {
+    display: block;
+
+    padding: 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card-bg);
+
+    box-shadow: var(--shadow);
+  }
+
+  .ingredients-table td {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    width: 100%;
+
+    padding: 10px 0;
+
+    border-bottom:
+      1px solid var(--border);
+
+    font-size: 22px;
+
+    text-align: right;
+  }
+
+  .ingredients-table td::before {
+    content:
+      attr(data-label);
+
+    flex-shrink: 0;
+
+    color: #f4b6b2;
+
+    font-weight: 700;
+
+    text-align: left;
+  }
+
+  .ingredients-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .ingredients-table-actions {
+    display: flex;
     align-items: center;
     justify-content: space-between;
+
+    white-space: normal;
   }
-}
 
-@media (min-width: 768px) {
-  .ingredient-row {
-    grid-template-columns: 2fr 1fr 1fr auto;
-
-    align-items: end;
+  .ingredients-table-actions
+    button {
+    font-size: 20px;
   }
 }
