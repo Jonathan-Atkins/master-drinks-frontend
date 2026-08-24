@@ -15,7 +15,7 @@ import SettingsPage from "./pages/SettingsPage";
 import EditRecipePage from "./pages/EditRecipePage";
 import EditDrinkPage from "./pages/EditDrinkPage";
 import IngredientsPage from "./pages/IngredientsPage";
-import NewIngredientPage from "./pages/NewIngredientPage";
+import NewIngredientPage from "./pages/NewIngredientsPage";
 
 import ProtectedLayout from "./components/layout/ProtectedLayout";
 
