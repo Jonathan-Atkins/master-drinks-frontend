@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// src/features/ingredients/components/IngredientsTable.jsx
 
 function IngredientsTable({
   ingredients,
@@ -93,24 +93,5 @@ function IngredientsTable({
     </div>
   );
 }
-
-IngredientsTable.propTypes = {
-  ingredients: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      ingredient_type: PropTypes.string,
-      flavor_profiles:
-        PropTypes.arrayOf(
-          PropTypes.string
-        ),
-      owned_by_current_user:
-        PropTypes.bool,
-    })
-  ).isRequired,
-  deletingId: PropTypes.number,
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
 
 export default IngredientsTable;

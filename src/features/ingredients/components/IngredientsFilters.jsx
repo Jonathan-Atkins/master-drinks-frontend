@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// src/features/ingredients/components/IngredientsFilters.jsx
 
 function IngredientsFilters({
   search,
@@ -103,23 +103,5 @@ function IngredientsFilters({
     </div>
   );
 }
-
-IngredientsFilters.propTypes = {
-  search: PropTypes.string.isRequired,
-  ingredientType: PropTypes.string.isRequired,
-  flavorProfile: PropTypes.string.isRequired,
-  ingredientTypes: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
-  flavorProfiles: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
-  onSearchChange: PropTypes.func.isRequired,
-  onIngredientTypeChange:
-    PropTypes.func.isRequired,
-  onFlavorProfileChange:
-    PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-};
 
 export default IngredientsFilters;

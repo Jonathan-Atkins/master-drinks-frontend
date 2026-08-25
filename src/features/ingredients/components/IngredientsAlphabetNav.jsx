@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// src/features/ingredients/components/IngredientsAlphabetNav.jsx
 
 const ALPHABET =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -34,11 +34,5 @@ function IngredientsAlphabetNav({
     </nav>
   );
 }
-
-IngredientsAlphabetNav.propTypes = {
-  availableLetters:
-    PropTypes.instanceOf(Set).isRequired,
-  onLetterJump: PropTypes.func.isRequired,
-};
 
 export default IngredientsAlphabetNav;
