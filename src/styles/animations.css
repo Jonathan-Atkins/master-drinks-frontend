@@ -13,7 +13,7 @@
   width: 100%;
   height: 2px;
 
-  background-color: #f4b6b2;
+  background-color: var(--nav-link-color);
 
   transform: scaleX(0);
   transform-origin: left;
