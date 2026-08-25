@@ -1,0 +1,231 @@
+.community-section {
+  width: 100%;
+}
+
+/* =========================
+   Search
+========================= */
+
+.community-search {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  margin-bottom: 32px;
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+}
+
+.community-search-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+/* =========================
+   Status
+========================= */
+
+.community-status {
+  width: 100%;
+
+  margin: 32px 0;
+
+  color: #ffffff;
+
+  font-size: 28px;
+  text-align: center;
+}
+
+.community-error {
+  color: #f4b6b2;
+}
+
+/* =========================
+   User Grid
+========================= */
+
+.community-user-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+/* =========================
+   User Card
+========================= */
+
+.community-user-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 22px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+
+  text-align: center;
+}
+
+.community-user-avatar {
+  width: 88px;
+  height: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  color: #ffffff;
+
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.community-username {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 34px;
+}
+
+/* =========================
+   Stats
+========================= */
+
+.community-user-stats {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+.community-user-stats p {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin: 0;
+
+  color: #ffffff;
+}
+
+.community-user-stats strong {
+  color: #7f9d65;
+
+  font-size: 32px;
+}
+
+.community-user-stats span {
+  font-size: 22px;
+}
+
+/* =========================
+   Pagination
+========================= */
+
+.community-pagination {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 32px;
+}
+
+.community-pagination button:last-child {
+  justify-self: end;
+}
+
+.community-page-number {
+  color: #ffffff;
+
+  font-size: 24px;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (min-width: 600px) {
+  .community-user-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+/* =========================
+   Desktop
+========================= */
+
+@media (min-width: 1000px) {
+  .community-search {
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .community-search .form-field {
+    flex: 1;
+  }
+
+  .community-search-actions {
+    width: auto;
+    grid-template-columns: auto auto;
+  }
+
+  .community-user-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+}

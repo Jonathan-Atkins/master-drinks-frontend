@@ -14,6 +14,10 @@ const navItems = [
     path: "/dashboard",
   },
   {
+    label: "Community",
+    path: "/community",
+  },
+  {
     label: "Create A Drink",
     path: "/drink-maker",
   },

@@ -16,6 +16,7 @@ import EditRecipePage from "./pages/EditRecipePage";
 import EditDrinkPage from "./pages/EditDrinkPage";
 import IngredientsPage from "./pages/IngredientsPage";
 import NewIngredientPage from "./pages/NewIngredientsPage";
+import CommunityPage from "./pages/CommunityPage";
 
 import ProtectedLayout from "./components/layout/ProtectedLayout";
 
@@ -46,6 +47,11 @@ function App() {
         <Route
           path="/dashboard"
           element={<Dashboard />}
+        />
+
+        <Route
+          path="/community"
+          element={<CommunityPage />}
         />
 
         <Route
