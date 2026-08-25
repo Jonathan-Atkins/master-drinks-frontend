@@ -279,6 +279,14 @@ function IngredientsCollection() {
         onClear={handleClearFilters}
       />
 
+      <button
+        type="button"
+        className="primary-button ingredients-add-button"
+        onClick={() => navigate("/ingredients/new")}
+      >
+        Add Ingredient
+      </button>
+
       <IngredientsAlphabetNav
         availableLetters={availableLetters}
         onLetterJump={handleLetterJump}

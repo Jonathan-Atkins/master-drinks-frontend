@@ -39,6 +39,10 @@
   align-self: end;
 }
 
+.ingredients-add-button {
+  margin-bottom: 40px;
+}
+
 /* =========================
    Alphabet Navigation
 ========================= */

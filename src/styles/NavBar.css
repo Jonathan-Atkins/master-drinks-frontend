@@ -252,7 +252,7 @@
     cursor: pointer;
   }
 
- .nav-menu-button::after {
+  .nav-menu-button::after {
     content: "";
 
     position: absolute;
@@ -263,7 +263,7 @@
     width: 80%;
     height: 3px;
 
-    background: #ffffff;
+    background: #68a040;
 
     transform: scaleX(0);
 
@@ -272,16 +272,16 @@
       ease-in-out infinite alternate;
   }
 
-    .nav-menu {
-      display: none;
+  .nav-menu {
+    display: none;
 
-      min-height: 0;
+    min-height: 0;
 
-      padding-bottom: 20px;
-    }
+    padding-bottom: 20px;
+  }
 
-    .nav-menu-open {
-      display: block;
+  .nav-menu-open {
+    display: block;
   }
 
   .nav-links {
