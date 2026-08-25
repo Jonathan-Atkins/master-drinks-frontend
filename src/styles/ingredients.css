@@ -1,6 +1,5 @@
 .ingredients-section {
   width: 100%;
-
   margin-top: 24px;
 }
 
@@ -10,6 +9,7 @@
 
 :root {
   --ingredient-label-green: #7f9d65;
+  --ingredient-rose: #c61f4d;
 }
 
 /* =========================
@@ -18,14 +18,12 @@
 
 .ingredients-filters {
   display: grid;
-
-  gap: 16px;
+  gap: 18px;
 
   width: 100%;
 
   margin-bottom: 24px;
-
-  padding: 18px;
+  padding: 20px;
 
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -35,12 +33,64 @@
   box-shadow: var(--shadow);
 }
 
+.ingredients-filters label {
+  font-size: 30px;
+}
+
+.ingredients-filters input,
+.ingredients-filters select {
+  width: 100%;
+
+  min-height: 56px;
+
+  padding: 10px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  outline: none;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.ingredients-filters input::placeholder {
+  font-size: 28px;
+}
+
+.ingredients-filters input:focus,
+.ingredients-filters select:focus {
+  border-color: rgba(127, 157, 101, 0.9);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(127, 157, 101, 0.16);
+}
+
 .ingredients-clear-button {
   align-self: end;
+
+  min-height: 56px;
+
+  font-size: 28px;
 }
 
 .ingredients-add-button {
+  min-height: 56px;
+
   margin-bottom: 40px;
+
+  font-size: 30px;
 }
 
 /* =========================
@@ -63,8 +113,7 @@
 
   border-radius: 10px;
 
-  background:
-    rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.7);
 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -78,8 +127,7 @@
 }
 
 .ingredients-alphabet-nav-scrubbing {
-  background:
-    rgba(10, 10, 10, 0.88);
+  background: rgba(10, 10, 10, 0.88);
 }
 
 .ingredients-alphabet-letter {
@@ -87,10 +135,11 @@
   align-items: center;
   justify-content: center;
 
-  width: 24px;
-  min-width: 24px;
-  height: 20px;
-  min-height: 20px;
+  width: 30px;
+  min-width: 30px;
+
+  height: 24px;
+  min-height: 24px;
 
   padding: 0;
 
@@ -101,7 +150,7 @@
   color: #ffffff;
 
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1;
 
   cursor: pointer;
@@ -123,13 +172,7 @@
 }
 
 .ingredients-alphabet-letter:disabled {
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.2
-    );
+  color: rgba(255, 255, 255, 0.2);
 
   cursor: default;
 }
@@ -144,21 +187,19 @@
   align-items: center;
   justify-content: center;
 
-  width: 88px;
-  height: 88px;
+  width: 96px;
+  height: 96px;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
   border-radius: 18px;
 
-  background:
-    rgba(20, 20, 20, 0.88);
+  background: rgba(20, 20, 20, 0.88);
 
   color: var(--ingredient-label-green);
 
   font-family: var(--sans);
-  font-size: 54px;
+  font-size: 60px;
   font-weight: 700;
 
   pointer-events: none;
@@ -192,14 +233,17 @@
 
   overflow: hidden;
 
-  background: var(--card-bg);
+  background: rgba(27, 29, 31, 0.36);
 
   box-shadow: var(--shadow);
+
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .ingredients-table th,
 .ingredients-table td {
-  padding: 16px;
+  padding: 18px;
 
   text-align: left;
   vertical-align: middle;
@@ -208,24 +252,27 @@
 }
 
 .ingredients-table th {
-  color: var(--ingredient-label-green);
+  color: var(--ingredient-rose);
 
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 700;
+  letter-spacing: 0.4px;
 
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.04
-    );
+  background: rgba(8, 9, 11, 0.97);
+
+  border-bottom: 1px solid rgba(198, 31, 77, 0.35);
+
+  box-shadow:
+    inset 0 -1px 0 rgba(198, 31, 77, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .ingredients-table td {
   color: #ffffff;
 
-  font-size: 22px;
+  font-size: 28px;
+
+  background: rgba(27, 29, 31, 0.18);
 }
 
 .ingredients-table tbody tr:last-child td {
@@ -237,14 +284,8 @@
     background-color 180ms ease;
 }
 
-.ingredients-table tbody tr:hover {
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.03
-    );
+.ingredients-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* =========================
@@ -255,15 +296,15 @@
   display: flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 10px;
 
   white-space: nowrap;
 }
 
 .ingredients-table-actions button {
-  min-height: 40px;
+  min-height: 44px;
 
-  padding: 6px 14px;
+  padding: 8px 16px;
 
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -273,7 +314,7 @@
   color: #ffffff;
 
   font-family: var(--sans);
-  font-size: 22px;
+  font-size: 28px;
 
   cursor: pointer;
 
@@ -283,16 +324,9 @@
 }
 
 .ingredients-table-actions button:hover {
-  border-color:
-    var(--accent-border);
+  border-color: var(--accent-border);
 
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.05
-    );
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .ingredients-table-actions button:disabled {
@@ -303,6 +337,8 @@
 
 .ingredients-no-actions {
   color: #6b6375;
+
+  font-size: 28px;
 
   opacity: 0.7;
 }
@@ -329,12 +365,13 @@
   }
 
   .ingredients-alphabet-letter {
-    width: 28px;
-    min-width: 28px;
-    height: 22px;
-    min-height: 22px;
+    width: 32px;
+    min-width: 32px;
 
-    font-size: 17px;
+    height: 25px;
+    min-height: 25px;
+
+    font-size: 19px;
   }
 }
 
@@ -344,7 +381,25 @@
 
 @media (max-width: 700px) {
   .ingredients-section {
-    padding-right: 20px;
+    padding-right: 22px;
+  }
+
+  .ingredients-filters label {
+    font-size: 28px;
+  }
+
+  .ingredients-filters input,
+  .ingredients-filters select,
+  .ingredients-filters input::placeholder {
+    font-size: 26px;
+  }
+
+  .ingredients-clear-button {
+    font-size: 26px;
+  }
+
+  .ingredients-add-button {
+    font-size: 28px;
   }
 
   .ingredients-alphabet-nav {
@@ -354,19 +409,20 @@
   }
 
   .ingredients-alphabet-letter {
-    width: 20px;
-    min-width: 20px;
-    height: 18px;
-    min-height: 18px;
+    width: 23px;
+    min-width: 23px;
 
-    font-size: 13px;
+    height: 20px;
+    min-height: 20px;
+
+    font-size: 15px;
   }
 
   .ingredients-alphabet-preview {
-    width: 76px;
-    height: 76px;
+    width: 84px;
+    height: 84px;
 
-    font-size: 46px;
+    font-size: 52px;
   }
 
   .ingredient-jump-target {
@@ -381,6 +437,9 @@
     background: transparent;
 
     box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .ingredients-table thead {
@@ -396,18 +455,22 @@
   .ingredients-table tr {
     display: block;
 
-    padding: 18px;
+    padding: 20px;
 
     border: 1px solid var(--border);
     border-radius: 12px;
 
-    background: var(--card-bg);
+    background: rgba(27, 29, 31, 0.36);
 
     box-shadow: var(--shadow);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 
   .ingredients-table td {
     display: flex;
+
     align-items: flex-start;
     justify-content: space-between;
 
@@ -415,24 +478,25 @@
 
     width: 100%;
 
-    padding: 10px 0;
+    padding: 12px 0;
 
-    border-bottom:
-      1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
-    font-size: 22px;
+    background: transparent;
+
+    font-size: 28px;
 
     text-align: right;
   }
 
   .ingredients-table td::before {
-    content:
-      attr(data-label);
+    content: attr(data-label);
 
     flex-shrink: 0;
 
-    color: var(--ingredient-label-green);
+    color: var(--ingredient-rose);
 
+    font-size: 28px;
     font-weight: 700;
 
     text-align: left;
@@ -444,6 +508,7 @@
 
   .ingredients-table-actions {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -451,6 +516,6 @@
   }
 
   .ingredients-table-actions button {
-    font-size: 20px;
+    font-size: 27px;
   }
 }
