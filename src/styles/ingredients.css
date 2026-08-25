@@ -39,13 +39,11 @@
   position: fixed;
 
   top: 50%;
-  right: 3px;
+  right: 2px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 0;
 
   transform: translateY(-50%);
 
@@ -54,17 +52,32 @@
   border-radius: 10px;
 
   background:
-    rgba(10, 10, 10, 0.78);
+    rgba(10, 10, 10, 0.7);
 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-  z-index: 20;
+  z-index: 30;
+
+  touch-action: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ingredients-alphabet-nav-scrubbing {
+  background:
+    rgba(10, 10, 10, 0.88);
 }
 
 .ingredients-alphabet-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 24px;
   min-width: 24px;
+  height: 20px;
   min-height: 20px;
 
   padding: 0;
@@ -80,11 +93,21 @@
   line-height: 1;
 
   cursor: pointer;
+
+  transition:
+    color 100ms ease,
+    transform 100ms ease;
 }
 
 .ingredients-alphabet-letter:hover,
 .ingredients-alphabet-letter:focus-visible {
   color: #f4b6b2;
+}
+
+.ingredients-alphabet-letter-active {
+  color: #f4b6b2;
+
+  transform: scale(1.35);
 }
 
 .ingredients-alphabet-letter:disabled {
@@ -93,10 +116,45 @@
       255,
       255,
       255,
-      0.22
+      0.2
     );
 
   cursor: default;
+}
+
+.ingredients-alphabet-preview {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 88px;
+  height: 88px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 18px;
+
+  background:
+    rgba(20, 20, 20, 0.88);
+
+  color: #ffffff;
+
+  font-family: var(--sans);
+  font-size: 54px;
+  font-weight: 700;
+
+  pointer-events: none;
+
+  z-index: 40;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .ingredient-jump-target {
@@ -261,6 +319,7 @@
   .ingredients-alphabet-letter {
     width: 28px;
     min-width: 28px;
+    height: 22px;
     min-height: 22px;
 
     font-size: 17px;
@@ -273,21 +332,29 @@
 
 @media (max-width: 700px) {
   .ingredients-section {
-    padding-right: 18px;
+    padding-right: 20px;
   }
 
   .ingredients-alphabet-nav {
-    right: 2px;
+    right: 1px;
 
-    padding: 3px 1px;
+    padding: 2px 1px;
   }
 
   .ingredients-alphabet-letter {
     width: 20px;
     min-width: 20px;
+    height: 18px;
     min-height: 18px;
 
     font-size: 13px;
+  }
+
+  .ingredients-alphabet-preview {
+    width: 76px;
+    height: 76px;
+
+    font-size: 46px;
   }
 
   .ingredient-jump-target {
