@@ -5,6 +5,14 @@
 }
 
 /* =========================
+   Ingredient Colors
+========================= */
+
+:root {
+  --ingredient-label-green: #7f9d65;
+}
+
+/* =========================
    Filters
 ========================= */
 
@@ -101,11 +109,11 @@
 
 .ingredients-alphabet-letter:hover,
 .ingredients-alphabet-letter:focus-visible {
-  color: #f4b6b2;
+  color: var(--ingredient-label-green);
 }
 
 .ingredients-alphabet-letter-active {
-  color: #f4b6b2;
+  color: var(--ingredient-label-green);
 
   transform: scale(1.35);
 }
@@ -143,7 +151,7 @@
   background:
     rgba(20, 20, 20, 0.88);
 
-  color: #ffffff;
+  color: var(--ingredient-label-green);
 
   font-family: var(--sans);
   font-size: 54px;
@@ -196,7 +204,7 @@
 }
 
 .ingredients-table th {
-  color: #f4b6b2;
+  color: var(--ingredient-label-green);
 
   font-size: 26px;
   font-weight: 700;
@@ -419,7 +427,7 @@
 
     flex-shrink: 0;
 
-    color: #f4b6b2;
+    color: var(--ingredient-label-green);
 
     font-weight: 700;
 
