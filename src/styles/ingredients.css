@@ -1,7 +1,38 @@
-.ingredients-table-wrapper {
+.ingredients-section {
   width: 100%;
 
   margin-top: 24px;
+}
+
+/* =========================
+   Filters
+========================= */
+
+.ingredients-filters {
+  display: grid;
+
+  gap: 16px;
+
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+}
+
+.ingredients-clear-button {
+  align-self: end;
+}
+
+.ingredients-table-wrapper {
+  width: 100%;
 }
 
 .ingredients-table {
@@ -36,12 +67,13 @@
   font-size: 26px;
   font-weight: 700;
 
-  background: rgba(
-    255,
-    255,
-    255,
-    0.04
-  );
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
 }
 
 .ingredients-table td {
@@ -126,6 +158,22 @@
 }
 
 /* =========================
+   Tablet / Desktop
+========================= */
+
+@media (min-width: 760px) {
+  .ingredients-filters {
+    grid-template-columns:
+      minmax(220px, 2fr)
+      minmax(170px, 1fr)
+      minmax(190px, 1fr)
+      auto;
+
+    align-items: end;
+  }
+}
+
+/* =========================
    Mobile
 ========================= */
 
@@ -207,8 +255,7 @@
     white-space: normal;
   }
 
-  .ingredients-table-actions
-    button {
+  .ingredients-table-actions button {
     font-size: 20px;
   }
 }
