@@ -1,6 +1,6 @@
-import ProfileSettingsForm from "../components/forms/ProfileSettingsForm";
-import PasswordSettingsForm from "../components/forms/PasswordSettingsForm";
-import DeleteAccountSection from "../components/settings/DeleteAccountSection";
+import ProfileSettingsForm from "../features/settings/components/ProfileSettingsForm";
+import PasswordSettingsForm from "../features/settings/components/PasswordSettingsForm";
+import DeleteAccountSection from "../features/settings/components/DeleteAccountSection";
 
 function SettingsPage() {
   return (

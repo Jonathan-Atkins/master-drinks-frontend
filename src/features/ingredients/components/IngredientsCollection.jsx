@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { API_URL } from "../../config/api";
+import { API_URL } from "../../../config/api";
 
 function IngredientsCollection() {
   const navigate = useNavigate();

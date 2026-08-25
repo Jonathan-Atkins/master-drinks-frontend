@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { API_URL } from "../../config/api";
-import { createEmptyIngredientRow } from "../utils/ingredientUtils";
+import { API_URL } from "../../../config/api";
+import { createEmptyIngredientRow } from "../../ingredients/utils/ingredientUtils";
 
 const measurementUnits = [
   "oz",

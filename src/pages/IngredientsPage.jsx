@@ -1,4 +1,4 @@
-import IngredientsCollection from "../components/ingredients/IngredientsCollection";
+import IngredientsCollection from "../features/ingredients/components/IngredientsCollection";
 import { useNavigate } from "react-router-dom";
 
 function IngredientsPage() {

@@ -1,4 +1,4 @@
-import RecipesCollection from "../components/recipes/RecipesCollection";
+import RecipesCollection from "../features/recipes/components/RecipesCollection";
 
 function AllRecipesPage() {
   return (

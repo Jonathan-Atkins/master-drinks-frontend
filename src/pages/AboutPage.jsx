@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../context/AuthContext";
-import AboutMe from "../components/about/AboutMe";
+import AboutMe from "../features/about/components/AboutMe";
 import AuthLayout from "../components/layout/AuthLayout";
 import NavBar from "../components/layout/NavBar";
 

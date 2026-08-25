@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 
 import AuthLayout from "../components/layout/AuthLayout";
-import AuthBackgroundVideo from "../components/ui/AuthBackgroundVideo";
+import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
 import JitterText from "../components/ui/JitterText";
 
 function RegisterPage() {

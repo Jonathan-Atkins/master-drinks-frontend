@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import IngredientRows from "../components/recipes/IngredientRows";
-import { createEmptyIngredientRow } from "../components/utils/ingredientUtils";
+import IngredientRows from "../features/recipes/components/IngredientRows";
+import { createEmptyIngredientRow } from "../features/ingredients/utils/ingredientUtils";
 import { API_URL } from "../config/api";
 
 

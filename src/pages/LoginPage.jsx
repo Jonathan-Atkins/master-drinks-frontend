@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
 
-import AboutMe from "../components/about/AboutMe";
+import AboutMe from "../features/about/components/AboutMe";
 import AuthLayout from "../components/layout/AuthLayout";
-import AuthBackgroundVideo from "../components/ui/AuthBackgroundVideo";
+import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 

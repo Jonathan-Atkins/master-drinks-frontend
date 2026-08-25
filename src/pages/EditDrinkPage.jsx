@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { API_URL } from "../config/api";
-import IngredientForm from "../components/forms/IngredientForm";
+import IngredientForm from "../features/ingredients/forms/IngredientForm";
 
 function EditIngredientPage() {
   const { ingredientId } = useParams();

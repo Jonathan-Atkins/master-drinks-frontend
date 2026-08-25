@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import JitterText from "../ui/JitterText";
+import JitterText from "../../../components/ui/JitterText";
 
-import { API_URL } from "../../config/api";
+import { API_URL } from "../../../config/api";
 import DrinkCard from "./DrinkCard";
 
 function DrinksCollection() {

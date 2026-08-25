@@ -1,4 +1,4 @@
-import DrinksCollection from "../components/drinks/DrinksCollection";
+import DrinksCollection from "../features/drinks/components/DrinksCollection";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 

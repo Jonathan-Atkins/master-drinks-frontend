@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import SaveRecipeButton from "../ui/SaveRecipeButton";
-import AnimatedButton from "../ui/AnimatedButton";
+import SaveRecipeButton from "../../../components/ui/SaveRecipeButton";
+import AnimatedButton from "../../../components/ui/AnimatedButton";
 
 function getCategoryLabel(recipe) {
   const categories =

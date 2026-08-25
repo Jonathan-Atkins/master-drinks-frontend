@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AnimatedButton from "../ui/AnimatedButton";
+import AnimatedButton from "../../../components/ui/AnimatedButton";
 
 function DrinkCard({ drink, onDelete }) {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import DrinkForm from "../components/forms/DrinkForm";
+import DrinkForm from "../features/drinks/forms/DrinkForm";
 
 function DrinkMakerPage() {
   return (

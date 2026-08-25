@@ -1,4 +1,4 @@
-import UserRecipesCollection from "../components/recipes/UserRecipesCollection";
+import UserRecipesCollection from "../features/recipes/components/UserRecipesCollection";
 
 function UserRecipesPage() {
   return (

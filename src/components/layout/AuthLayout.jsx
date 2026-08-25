@@ -1,4 +1,4 @@
-import AuthDecorations from "../ui/AuthDecorations";
+import AuthDecorations from "../../features/auth/components/AuthDecorations";
 
 function AuthLayout({
   children,

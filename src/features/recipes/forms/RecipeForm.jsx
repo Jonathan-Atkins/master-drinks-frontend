@@ -1,4 +1,4 @@
-import IngredientRows from "../recipes/IngredientRows";
+import IngredientRows from "../components/IngredientRows";
 
 function RecipeForm({
   name,

@@ -1,4 +1,4 @@
-import IngredientForm from "../components/forms/IngredientForm";
+import IngredientForm from "../features/ingredients/forms/IngredientForm";
 
 function NewIngredientPage() {
   return (

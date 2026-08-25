@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { API_URL } from "../../config/api";
+import { API_URL } from "../../../config/api";
 
-import JitterText from "../ui/JitterText";
+import JitterText from "../../../components/ui/JitterText";
 import RecipeCard from "./RecipeCard";
-import RotatingDrinkNames from "../drinks/RotatingDrinkNames";
+import RotatingDrinkNames from "../../drinks/components/RotatingDrinkNames";
 
 function UserRecipesCollection() {
   const [recipes, setRecipes] = useState([]);
