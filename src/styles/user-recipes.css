@@ -53,19 +53,24 @@
 .empty-recipes-link {
   display: inline-flex;
 
-  color: var(--nav-link-color);
+  color: var(--rose-link-red);
 
   text-decoration: none;
 
   transition: color 220ms ease;
 }
 
+.empty-recipes-link .jitter-text,
+.empty-recipes-link .jitter-text-character {
+  color: inherit;
+}
+
 .empty-recipes-link:hover {
-  color: var(--nav-link-hover-color);
+  color: var(--rose-link-hover);
 }
 
 .empty-recipes-link:focus-visible {
-  outline: 2px solid var(--nav-link-color);
+  outline: 2px solid var(--rose-link-red);
   outline-offset: 4px;
 
   border-radius: 4px;

@@ -1,0 +1,248 @@
+.community-profile {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding-top: 12px;
+}
+
+/* =========================
+   Back Link
+========================= */
+
+.community-profile-back-link {
+  width: fit-content;
+
+  color: var(--nav-link-color);
+
+  font-size: 28px;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.community-profile-back-link:hover {
+  color: var(--nav-link-hover-color);
+}
+
+.community-profile-back-link:focus-visible {
+  outline: 2px solid var(--nav-link-color);
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+/* =========================
+   Profile Card
+========================= */
+
+.community-profile-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 28px 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background:
+    rgba(
+      27,
+      29,
+      31,
+      0.72
+    );
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-align: center;
+}
+
+/* =========================
+   Avatar
+========================= */
+
+.community-profile-avatar {
+  width: 120px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  color: #ffffff;
+
+  font-size: 64px;
+  font-weight: 700;
+}
+
+/* =========================
+   Header
+========================= */
+
+.community-profile-header {
+  width: 100%;
+}
+
+.community-profile-username {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(
+      48px,
+      14vw,
+      72px
+    );
+
+  line-height: 1;
+}
+
+/* =========================
+   Stats
+========================= */
+
+.community-profile-stats {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+.community-profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 16px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
+}
+
+.community-profile-stat strong {
+  color: #7f9d65;
+
+  font-size: 40px;
+  line-height: 1;
+}
+
+.community-profile-stat span {
+  color: #ffffff;
+
+  font-size: 26px;
+}
+
+/* =========================
+   Loading / Error
+========================= */
+
+.community-profile-status,
+.community-profile-error {
+  width: 100%;
+
+  margin: 40px 0;
+
+  color: #ffffff;
+
+  font-size: 30px;
+
+  text-align: center;
+}
+
+.community-profile-error {
+  color: #f4b6b2;
+}
+
+.community-profile-state {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (min-width: 700px) {
+  .community-profile {
+    width: min(100%, 760px);
+
+    margin: 0 auto;
+  }
+
+  .community-profile-card {
+    padding: 40px;
+  }
+
+  .community-profile-avatar {
+    width: 140px;
+    height: 140px;
+
+    font-size: 72px;
+  }
+
+  .community-profile-stat strong {
+    font-size: 46px;
+  }
+
+  .community-profile-stat span {
+    font-size: 28px;
+  }
+}
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .community-profile-back-link {
+    transition: none;
+  }
+}

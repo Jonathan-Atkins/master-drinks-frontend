@@ -17,6 +17,7 @@ import EditDrinkPage from "./pages/EditDrinkPage";
 import IngredientsPage from "./pages/IngredientsPage";
 import NewIngredientPage from "./pages/NewIngredientsPage";
 import CommunityPage from "./pages/CommunityPage";
+import CommunityProfilePage from "./pages/CommunityProfilePage";
 
 import ProtectedLayout from "./components/layout/ProtectedLayout";
 
@@ -52,6 +53,11 @@ function App() {
         <Route
           path="/community"
           element={<CommunityPage />}
+        />
+
+        <Route
+          path="/community/:username"
+          element={<CommunityProfilePage />}
         />
 
         <Route

@@ -9,7 +9,6 @@
 
 :root {
   --ingredient-label-green: #7f9d65;
-  --ingredient-rose: #c61f4d;
 }
 
 /* =========================
@@ -45,10 +44,10 @@
 
   padding: 10px 14px;
 
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 8px;
+  border: 1px solid var(--filter-border);
+  border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(10, 12, 14, 0.42);
 
   color: #ffffff;
 
@@ -63,18 +62,25 @@
 }
 
 .ingredients-filters input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+
   font-size: 28px;
+}
+
+.ingredients-filters input:hover,
+.ingredients-filters select:hover {
+  border-color: var(--filter-border-hover);
 }
 
 .ingredients-filters input:focus,
 .ingredients-filters select:focus {
-  border-color: rgba(127, 157, 101, 0.9);
+  border-color: var(--rose-red);
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(10, 12, 14, 0.6);
 
   box-shadow:
     0 0 0 2px
-    rgba(127, 157, 101, 0.16);
+    rgba(198, 31, 77, 0.14);
 }
 
 .ingredients-clear-button {
@@ -91,6 +97,22 @@
   margin-bottom: 40px;
 
   font-size: 30px;
+}
+
+/* =========================
+   Links
+========================= */
+
+.ingredients-section a {
+  color: var(--rose-red);
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.ingredients-section a:hover {
+  color: var(--rose-red-hover);
 }
 
 /* =========================
@@ -252,7 +274,7 @@
 }
 
 .ingredients-table th {
-  color: var(--ingredient-rose);
+  color: var(--rose-red);
 
   font-size: 32px;
   font-weight: 700;
@@ -260,7 +282,9 @@
 
   background: rgba(8, 9, 11, 0.97);
 
-  border-bottom: 1px solid rgba(198, 31, 77, 0.35);
+  border-bottom:
+    1px solid
+    rgba(198, 31, 77, 0.35);
 
   box-shadow:
     inset 0 -1px 0 rgba(198, 31, 77, 0.2),
@@ -494,7 +518,7 @@
 
     flex-shrink: 0;
 
-    color: var(--ingredient-rose);
+    color: var(--rose-red);
 
     font-size: 28px;
     font-weight: 700;

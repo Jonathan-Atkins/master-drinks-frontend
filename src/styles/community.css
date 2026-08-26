@@ -25,11 +25,68 @@
   box-shadow: var(--shadow);
 }
 
+.community-search input {
+  width: 100%;
+  min-height: 56px;
+
+  padding: 12px 16px;
+
+  border: 1px solid var(--filter-border);
+  border-radius: 10px;
+
+  background: rgba(10, 12, 14, 0.42);
+
+  color: #ffffff;
+
+  font-size: 26px;
+
+  outline: none;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.community-search input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.community-search input:hover {
+  border-color: var(--filter-border-hover);
+}
+
+.community-search input:focus {
+  border-color: var(--rose-red);
+
+  background: rgba(10, 12, 14, 0.6);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(198, 31, 77, 0.14);
+}
+
 .community-search-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
   gap: 12px;
+}
+
+/* =========================
+   Links
+========================= */
+
+.community-section a {
+  color: var(--rose-red);
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.community-section a:hover {
+  color: var(--rose-red-hover);
 }
 
 /* =========================
@@ -44,6 +101,7 @@
   color: #ffffff;
 
   font-size: 28px;
+
   text-align: center;
 }
 
@@ -69,15 +127,11 @@
 ========================= */
 
 .community-user-card {
+  position: relative;
+
   width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 18px;
-
-  padding: 22px;
+  overflow: hidden;
 
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -86,8 +140,199 @@
 
   box-shadow: var(--shadow);
 
+  cursor: pointer;
+
+  isolation: isolate;
+
+  outline: none;
+
+  transition:
+    transform 140ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.community-user-card:hover {
+  border-color:
+    rgba(213, 181, 104, 0.3);
+}
+
+.community-user-card:focus-visible {
+  border-color:
+    rgba(226, 197, 125, 0.75);
+
+  box-shadow:
+    var(--shadow),
+    0 0 0 2px
+    rgba(226, 197, 125, 0.18);
+}
+
+.community-user-card-pressed {
+  transform: scale(0.99);
+}
+
+.community-user-card-primed {
+  border-color:
+    rgba(226, 197, 125, 0.7);
+
+  box-shadow:
+    var(--shadow),
+    0 0 18px
+    rgba(213, 181, 104, 0.14);
+}
+
+.community-user-card-content {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 18px;
+
+  width: 100%;
+
+  padding: 22px;
+
   text-align: center;
 }
+
+/* =========================
+   Particle Layer
+========================= */
+
+.community-card-particles {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.community-particle {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  width: var(--particle-size);
+  height: var(--particle-size);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation:
+    community-gold-particle
+    var(--particle-duration)
+    ease-out
+    var(--particle-delay)
+    forwards;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.community-particle-dust {
+  border-radius: 50%;
+
+  background:
+    rgba(
+      236,
+      207,
+      137,
+      0.9
+    );
+
+  box-shadow:
+    0 0 6px
+    rgba(
+      236,
+      207,
+      137,
+      0.28
+    );
+}
+
+.community-particle-sparkle {
+  background:
+    rgba(
+      245,
+      218,
+      151,
+      0.95
+    );
+
+  clip-path:
+    polygon(
+      50% 0%,
+      61% 38%,
+      100% 50%,
+      61% 62%,
+      50% 100%,
+      39% 62%,
+      0% 50%,
+      39% 38%
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(
+      245,
+      218,
+      151,
+      0.34
+    );
+}
+
+@keyframes community-gold-particle {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(0deg)
+      scale(0.5);
+  }
+
+  18% {
+    opacity: 0.9;
+  }
+
+  70% {
+    opacity: 0.55;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        var(--particle-x),
+        var(--particle-y),
+        0
+      )
+      rotate(
+        var(--particle-rotate)
+      )
+      scale(0.9);
+  }
+}
+
+/* =========================
+   Avatar
+========================= */
 
 .community-user-avatar {
   width: 88px;
@@ -130,7 +375,8 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns:
+    repeat(2, 1fr);
 
   gap: 12px;
 }
@@ -189,6 +435,26 @@
 }
 
 /* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .community-card-particles {
+    display: none;
+  }
+
+  .community-user-card {
+    transition:
+      border-color 120ms ease,
+      box-shadow 120ms ease;
+  }
+
+  .community-user-card-pressed {
+    transform: none;
+  }
+}
+
+/* =========================
    Tablet
 ========================= */
 
@@ -218,7 +484,9 @@
 
   .community-search-actions {
     width: auto;
-    grid-template-columns: auto auto;
+
+    grid-template-columns:
+      auto auto;
   }
 
   .community-user-grid {

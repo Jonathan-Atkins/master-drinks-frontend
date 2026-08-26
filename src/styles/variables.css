@@ -13,6 +13,12 @@
   --form-focus-ring: rgba(161, 171, 184, 0.8);
   --form-radius: 8px;
 
+  --filter-border-strong: rgba(255, 255, 255, 0.32);
+  --filter-border-hover: rgba(255, 255, 255, 0.5);
+
+  --rose-link-red: #c61f4d;
+  --rose-link-hover: #e13561;
+
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
@@ -24,7 +30,8 @@
   --nav-link-active-color: #ffffff;
 
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --sans: "Amatic SC", sans-serif;
   --heading: "Amatic SC", sans-serif;
@@ -60,6 +67,7 @@
     --social-bg: rgba(47, 48, 58, 0.5);
 
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px,
+      rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 }
