@@ -1,293 +1,63 @@
-const particles = [
-  {
-    type: "sparkle",
-    x: -48,
-    y: 42,
-    size: 5,
-    delay: 0,
-    duration: 720,
-    rotate: 80,
-  },
-  {
-    type: "dust",
-    x: -72,
-    y: 54,
-    size: 2,
-    delay: 20,
-    duration: 760,
-    rotate: 15,
-  },
-  {
-    type: "dust",
-    x: -92,
-    y: 68,
-    size: 3,
-    delay: 45,
-    duration: 820,
-    rotate: 20,
-  },
-  {
-    type: "dust",
-    x: -118,
-    y: 76,
-    size: 2,
-    delay: 55,
-    duration: 850,
-    rotate: 30,
-  },
-  {
-    type: "dust",
-    x: -145,
-    y: 94,
-    size: 4,
-    delay: 80,
-    duration: 890,
-    rotate: 45,
-  },
-  {
-    type: "dust",
-    x: -165,
-    y: 105,
-    size: 2,
-    delay: 95,
-    duration: 920,
-    rotate: 55,
-  },
-  {
-    type: "sparkle",
-    x: -205,
-    y: 125,
-    size: 5,
-    delay: 120,
-    duration: 960,
-    rotate: 130,
-  },
-  {
-    type: "dust",
-    x: -218,
-    y: 136,
-    size: 3,
-    delay: 128,
-    duration: 980,
-    rotate: 40,
-  },
-  {
-    type: "dust",
-    x: -238,
-    y: 145,
-    size: 2,
-    delay: 138,
-    duration: 990,
-    rotate: 25,
-  },
-  {
-    type: "dust",
-    x: -255,
-    y: 160,
-    size: 3,
-    delay: 150,
-    duration: 1020,
-    rotate: 35,
-  },
-  {
-    type: "dust",
-    x: -88,
-    y: 172,
-    size: 2,
-    delay: 90,
-    duration: 900,
-    rotate: 70,
-  },
-  {
-    type: "dust",
-    x: -110,
-    y: 185,
-    size: 3,
-    delay: 100,
-    duration: 940,
-    rotate: 60,
-  },
-  {
-    type: "dust",
-    x: -132,
-    y: 198,
-    size: 2,
-    delay: 130,
-    duration: 980,
-    rotate: 75,
-  },
-  {
-    type: "sparkle",
-    x: -180,
-    y: 215,
-    size: 4,
-    delay: 185,
-    duration: 1080,
-    rotate: 150,
-  },
-  {
-    type: "dust",
-    x: -198,
-    y: 220,
-    size: 2,
-    delay: 190,
-    duration: 1090,
-    rotate: 85,
-  },
-  {
-    type: "dust",
-    x: -225,
-    y: 228,
-    size: 3,
-    delay: 200,
-    duration: 1100,
-    rotate: 55,
-  },
-  {
-    type: "dust",
-    x: -285,
-    y: 235,
-    size: 2,
-    delay: 210,
-    duration: 1120,
-    rotate: 45,
-  },
-  {
-    type: "dust",
-    x: -305,
-    y: 242,
-    size: 3,
-    delay: 218,
-    duration: 1140,
-    rotate: 35,
-  },
-  {
-    type: "dust",
-    x: -70,
-    y: 255,
-    size: 3,
-    delay: 160,
-    duration: 1040,
-    rotate: 90,
-  },
-  {
-    type: "dust",
-    x: -95,
-    y: 265,
-    size: 2,
-    delay: 172,
-    duration: 1060,
-    rotate: 105,
-  },
-  {
-    type: "dust",
-    x: -122,
-    y: 275,
-    size: 3,
-    delay: 185,
-    duration: 1080,
-    rotate: 110,
-  },
-  {
-    type: "sparkle",
-    x: -230,
-    y: 285,
-    size: 4,
-    delay: 240,
-    duration: 1160,
-    rotate: 180,
-  },
-  {
-    type: "dust",
-    x: -248,
-    y: 292,
-    size: 2,
-    delay: 248,
-    duration: 1170,
-    rotate: 95,
-  },
-  {
-    type: "dust",
-    x: -270,
-    y: 300,
-    size: 3,
-    delay: 255,
-    duration: 1180,
-    rotate: 70,
-  },
-  {
-    type: "dust",
-    x: -320,
-    y: 310,
-    size: 3,
-    delay: 280,
-    duration: 1200,
-    rotate: 75,
-  },
-  {
-    type: "dust",
-    x: -338,
-    y: 318,
-    size: 2,
-    delay: 290,
-    duration: 1220,
-    rotate: 85,
-  },
-  {
-    type: "dust",
-    x: -140,
-    y: 325,
-    size: 2,
-    delay: 260,
-    duration: 1150,
-    rotate: 120,
-  },
-  {
-    type: "dust",
-    x: -165,
-    y: 336,
-    size: 3,
-    delay: 268,
-    duration: 1170,
-    rotate: 135,
-  },
-  {
-    type: "dust",
-    x: -195,
-    y: 345,
-    size: 2,
-    delay: 278,
-    duration: 1180,
-    rotate: 145,
-  },
-  {
-    type: "dust",
-    x: -225,
-    y: 356,
-    size: 3,
-    delay: 288,
-    duration: 1200,
-    rotate: 160,
-  },
-  {
-    type: "sparkle",
-    x: -275,
-    y: 368,
-    size: 4,
-    delay: 300,
-    duration: 1240,
-    rotate: 195,
-  },
-  {
-    type: "dust",
-    x: -300,
-    y: 378,
-    size: 2,
-    delay: 312,
-    duration: 1260,
-    rotate: 170,
-  },
+const PARTICLE_COUNT = 90;
+
+const directions = [
+  { x: -1, y: -1 },
+  { x: 0, y: -1 },
+  { x: 1, y: -1 },
+  { x: -1, y: 0 },
+  { x: 1, y: 0 },
+  { x: -1, y: 1 },
+  { x: 0, y: 1 },
+  { x: 1, y: 1 },
 ];
+
+const particles = Array.from(
+  { length: PARTICLE_COUNT },
+  (_, index) => {
+    const direction =
+      directions[index % directions.length];
+
+    const distance =
+      70 + ((index * 23) % 260);
+
+    const spreadX =
+      ((index * 17) % 80) - 40;
+
+    const spreadY =
+      ((index * 29) % 80) - 40;
+
+    const isSparkle =
+      index % 14 === 0;
+
+    return {
+      type: isSparkle
+        ? "sparkle"
+        : "dust",
+
+      x:
+        direction.x * distance +
+        spreadX,
+
+      y:
+        direction.y * distance +
+        spreadY,
+
+      size: isSparkle
+        ? 4 + (index % 2)
+        : 1 + (index % 3),
+
+      delay:
+        (index * 13) % 260,
+
+      duration:
+        750 +
+        ((index * 31) % 500),
+
+      rotate:
+        (index * 47) % 360,
+    };
+  },
+);
 
 function CommunityCardParticles() {
   return (
@@ -295,20 +65,33 @@ function CommunityCardParticles() {
       className="community-card-particles"
       aria-hidden="true"
     >
-      {particles.map((particle, index) => (
-        <span
-          key={`${particle.type}-${index}`}
-          className={`community-particle community-particle-${particle.type}`}
-          style={{
-            "--particle-x": `${particle.x}px`,
-            "--particle-y": `${particle.y}px`,
-            "--particle-size": `${particle.size}px`,
-            "--particle-delay": `${particle.delay}ms`,
-            "--particle-duration": `${particle.duration}ms`,
-            "--particle-rotate": `${particle.rotate}deg`,
-          }}
-        />
-      ))}
+      {particles.map(
+        (particle, index) => (
+          <span
+            key={`${particle.type}-${index}`}
+            className={`community-particle community-particle-${particle.type}`}
+            style={{
+              "--particle-x":
+                `${particle.x}px`,
+
+              "--particle-y":
+                `${particle.y}px`,
+
+              "--particle-size":
+                `${particle.size}px`,
+
+              "--particle-delay":
+                `${particle.delay}ms`,
+
+              "--particle-duration":
+                `${particle.duration}ms`,
+
+              "--particle-rotate":
+                `${particle.rotate}deg`,
+            }}
+          />
+        ),
+      )}
     </div>
   );
 }
