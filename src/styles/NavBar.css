@@ -253,25 +253,22 @@
     cursor: pointer;
   }
 
-  .nav-menu-button::after {
-    content: "";
+.nav-menu-button::after {
+  content: "";
 
-    position: absolute;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
 
-    left: 10%;
-    bottom: 8px;
+  width: 12px;
+  height: 4px;
 
-    width: 80%;
-    height: 3px;
+  transform: translateX(-50%);
 
-    background: #68a040;
+  border-radius: 999px;
 
-    transform: scaleX(0);
-
-    animation:
-      menu-underline 8s
-      ease-in-out infinite alternate;
-  }
+  background: #536e38;
+}
 
   .nav-menu {
     display: none;

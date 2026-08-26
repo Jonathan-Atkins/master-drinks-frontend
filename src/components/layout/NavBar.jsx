@@ -14,10 +14,6 @@ const navItems = [
     path: "/dashboard",
   },
   {
-    label: "Community",
-    path: "/community",
-  },
-  {
     label: "Create A Drink",
     path: "/drink-maker",
   },
@@ -26,8 +22,12 @@ const navItems = [
     path: "/my-recipes",
   },
   {
-    label: "Community Recipes",
+    label: "Browse Recipes",
     path: "/recipes",
+  },
+  {
+    label: "Community",
+    path: "/community",
   },
   {
     label: "Ingredients",
@@ -38,7 +38,7 @@ const navItems = [
     path: "/settings",
   },
   {
-    label: "About Me",
+    label: "About BarBuddy",
     path: "/about",
   },
 ];
