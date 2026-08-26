@@ -170,6 +170,10 @@
   display: none;
 }
 
+/* =========================
+   Menu Underline Animation
+========================= */
+
 @keyframes menu-underline {
   0% {
     transform: scaleX(0);
@@ -183,10 +187,7 @@
     transform: scaleX(1);
   }
 
-  85% {
-    transform: scaleX(0);
-  }
-
+  85%,
   100% {
     transform: scaleX(0);
   }
@@ -253,22 +254,30 @@
     cursor: pointer;
   }
 
-.nav-menu-button::after {
-  content: "";
+  .nav-menu-button::after {
+    content: "";
 
-  position: absolute;
-  left: 50%;
-  bottom: 0;
+    position: absolute;
+    left: 10%;
+    bottom: 8px;
 
-  width: 12px;
-  height: 4px;
+    width: 80%;
+    height: 3px;
 
-  transform: translateX(-50%);
+    border-radius: 999px;
 
-  border-radius: 999px;
+    background: #536e38;
 
-  background: #536e38;
-}
+    transform: scaleX(0);
+    transform-origin: center;
+
+    animation:
+      menu-underline
+      8s
+      ease-in-out
+      infinite
+      alternate;
+  }
 
   .nav-menu {
     display: none;
