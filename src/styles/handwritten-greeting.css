@@ -166,9 +166,9 @@
 
 @media (max-width: 480px) {
   .bar-buddy-greeting {
-    width: min(94vw, 440px);
+    width: min(82vw, 360px);
 
-    margin: 16px 0 4px;
+    margin: 12px 0 12px;
   }
 
   .bar-buddy-letter {

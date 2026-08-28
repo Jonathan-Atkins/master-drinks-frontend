@@ -321,7 +321,7 @@
     justify-content: flex-start;
 
     padding:
-      max(32px, env(safe-area-inset-top))
+      max(72px, env(safe-area-inset-top))
       16px
       max(24px, env(safe-area-inset-bottom));
   }
@@ -330,22 +330,21 @@
     top: 12px;
     right: 12px;
 
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .login-page > h1,
   .register-page > h1 {
-    margin: 0 0 32px;
+    max-width: 340px;
 
-    font-size: 46px;
+    margin: 8px 0 40px;
+
+    font-size: 38px;
+    line-height: 1.05;
   }
 
   .video-playback-notice {
-    top: 8px;
-
-    width: calc(100% - 20px);
-
-    font-size: 16px;
+    display: none;
   }
 
   .login-page .auth-card {
