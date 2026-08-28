@@ -188,6 +188,23 @@
    Auth Content
 ========================= */
 
+.login-page .auth-card-title {
+  width: 100%;
+
+  margin: 0 0 24px;
+
+  color: #ffffff;
+
+  font-size: clamp(38px, 7vw, 72px);
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.login-page .auth-card-content {
+  padding-top: 16px;
+}
+
 .auth-card-content {
   position: relative;
 

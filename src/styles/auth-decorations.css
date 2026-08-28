@@ -5,21 +5,46 @@
 .auth-decorations {
   position: fixed;
   inset: 0;
+
   width: 100%;
   height: 100dvh;
+
   overflow: hidden;
+
   pointer-events: none;
+
   z-index: 0;
 }
 
 .auth-decoration {
   position: absolute;
+
   width: 90px;
   height: 90px;
+
   object-fit: contain;
+
   opacity: 0.38;
+
   user-select: none;
-  filter: brightness(1.6);
+
+  filter:
+    brightness(1.45)
+    drop-shadow(
+      0 0 2px
+      rgba(214, 181, 104, 0.15)
+    );
+
+  animation:
+    auth-decoration-glow
+    10s
+    ease-in-out
+    infinite
+    alternate;
+
+  will-change:
+    filter,
+    opacity;
 }
 
 /* Helps keep them visible even with extensions like Dark Reader */
@@ -29,91 +54,179 @@
 }
 
 /* =========================
+   Staggered Glow Timing
+========================= */
+
+.auth-decoration:nth-child(2n) {
+  animation-delay: -1.5s;
+}
+
+.auth-decoration:nth-child(3n) {
+  animation-delay: -3s;
+}
+
+.auth-decoration:nth-child(4n) {
+  animation-delay: -4.5s;
+}
+
+.auth-decoration:nth-child(5n) {
+  animation-duration: 12s;
+}
+
+.auth-decoration:nth-child(7n) {
+  animation-duration: 14s;
+}
+
+/* =========================
+   Glow Animation
+========================= */
+
+@keyframes auth-decoration-glow {
+  0% {
+    opacity: 0.3;
+
+    filter:
+      brightness(1.35)
+      drop-shadow(
+        0 0 2px
+        rgba(214, 181, 104, 0.12)
+      )
+      drop-shadow(
+        0 0 5px
+        rgba(214, 181, 104, 0.08)
+      );
+  }
+
+  50% {
+    opacity: 0.42;
+
+    filter:
+      brightness(1.55)
+      drop-shadow(
+        0 0 5px
+        rgba(236, 207, 137, 0.3)
+      )
+      drop-shadow(
+        0 0 10px
+        rgba(214, 181, 104, 0.18)
+      );
+  }
+
+  100% {
+    opacity: 0.5;
+
+    filter:
+      brightness(1.7)
+      drop-shadow(
+        0 0 8px
+        rgba(245, 218, 151, 0.42)
+      )
+      drop-shadow(
+        0 0 16px
+        rgba(214, 181, 104, 0.24)
+      );
+  }
+}
+
+/* =========================
    Individual Positions
 ========================= */
 
 .auth-decoration-1 {
   top: 5%;
   left: 4%;
+
   transform: rotate(-10deg);
 }
 
 .auth-decoration-2 {
   top: 8%;
   right: 6%;
+
   transform: rotate(8deg);
 }
 
 .auth-decoration-3 {
   top: 21%;
   left: 10%;
+
   transform: rotate(6deg);
 }
 
 .auth-decoration-4 {
   top: 25%;
   right: 8%;
+
   transform: rotate(-7deg);
 }
 
 .auth-decoration-5 {
   top: 38%;
   left: 5%;
+
   transform: rotate(9deg);
 }
 
 .auth-decoration-6 {
   top: 43%;
   right: 11%;
+
   transform: rotate(-8deg);
 }
 
 .auth-decoration-7 {
   top: 57%;
   left: 9%;
+
   transform: rotate(5deg);
 }
 
 .auth-decoration-8 {
   top: 63%;
   right: 6%;
+
   transform: rotate(-6deg);
 }
 
 .auth-decoration-9 {
   top: 75%;
   left: 14%;
+
   transform: rotate(7deg);
 }
 
 .auth-decoration-10 {
   top: 80%;
   right: 12%;
+
   transform: rotate(-9deg);
 }
 
 .auth-decoration-11 {
   top: 14%;
   left: 26%;
+
   transform: rotate(6deg);
 }
 
 .auth-decoration-12 {
   top: 30%;
   right: 24%;
+
   transform: rotate(-5deg);
 }
 
-/* new image positions */
 .auth-decoration-13 {
   top: 56%;
   left: 24%;
+
   transform: rotate(10deg);
 }
 
 .auth-decoration-14 {
   top: 72%;
   right: 24%;
+
   transform: rotate(-10deg);
 }
 
@@ -125,7 +238,10 @@
   .auth-decoration {
     width: 54px;
     height: 54px;
+
     opacity: 0.14;
+
+    animation-duration: 10s;
   }
 
   .auth-decoration-1 {

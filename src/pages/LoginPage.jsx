@@ -6,8 +6,8 @@ import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
 
 import AboutMe from "../features/about/components/AboutMe";
-import AuthLayout from "../components/layout/AuthLayout";
 import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
+import AuthLayout from "../components/layout/AuthLayout";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
@@ -79,7 +79,7 @@ function LoginPage() {
           type="button"
           onClick={scrollToAbout}
         >
-          About Me
+          About BarBuddy
         </button>,
         document.body
       )}
@@ -94,7 +94,7 @@ function LoginPage() {
           <HandwrittenGreeting />
 
           <h1 className="animated-underline auto-underline">
-            Recipe Book Login
+            The World&apos;s Most Comprehensive Social Cocktail Library
           </h1>
 
           <div className="wine-glass-outline">
@@ -102,7 +102,10 @@ function LoginPage() {
               <AuthBackgroundVideo />
 
               <div className="auth-card-content">
-                {error && (
+                <h2 className="auth-card-title">
+                  Log In
+                </h2>
+                {error && (                  
                   <p
                     className="form-error"
                     role="alert"
@@ -171,10 +174,7 @@ function LoginPage() {
           </div>
         </main>
 
-        <AboutMe
-          showBackToTop
-          transparentBackground
-        />
+        <AboutMe showBackToTop />
       </AuthLayout>
     </>
   );
