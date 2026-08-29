@@ -1,3 +1,5 @@
+import BarSpoonDivider from "../../../components/ui/BarSpoonDivider";
+
 function AboutMe({
   showBackToLogin = false,
   onBackToLogin,
@@ -38,31 +40,51 @@ function AboutMe({
             <h2>I. What Is Bar Buddy?</h2>
 
             <p>
-              BarBuddy is a social cocktail library for discovering, creating, saving, and sharing drinks—from simple classics to original signature cocktails.
+              BarBuddy is a social drink library for
+              discovering, creating, saving, and sharing
+              everything from classic cocktails and
+              mocktails to original signature drinks.
             </p>
           </section>
+
+          <BarSpoonDivider />
 
           <section className="about-me-section">
             <h2>II. Who Is It For?</h2>
 
             <p>
-              Home bartenders, professional bartenders, and cocktail enthusiasts who enjoy discovering, creating, and sharing drinks.
+              Home bartenders, professional bartenders,
+              and drink enthusiasts alike. Whether you
+              prefer cocktails or non-alcoholic creations,
+              there is a place for you here.
             </p>
           </section>
+
+          <BarSpoonDivider />
 
           <section className="about-me-section">
             <h2>III. Why Bar Buddy?</h2>
 
             <p>
-              Great cocktails are everywhere, but many are hard to find outside the bar or restaurant where they were created. BarBuddy makes cocktail discovery simple, interactive, and community-driven.
+              Great drinks are everywhere, but many are
+              hard to find outside the places where they
+              were created. BarBuddy makes discovery
+              simple, interactive, and community-driven.
             </p>
           </section>
+
+          <BarSpoonDivider />
 
           <section className="about-me-section">
             <h2>IV. The Goal</h2>
 
             <p>
-              Build the world’s most extensive community-driven cocktail library while preserving cocktail culture and encouraging creativity. Eventually, BarBuddy will use AI and flavor profiles to create new drinks based on what users are in the mood for.
+              Build the world&apos;s most extensive
+              community-driven drink library while
+              preserving cocktail culture and encouraging
+              creativity. Eventually, BarBuddy will use AI
+              and flavor profiles to create new drinks
+              based on what users are in the mood for.
             </p>
           </section>
         </div>

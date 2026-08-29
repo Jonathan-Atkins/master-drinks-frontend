@@ -314,7 +314,7 @@ function RecipesCollection() {
 
         <div className="community-recipe-filter">
           <label htmlFor="alcohol-filter">
-            Alcohol
+            Spirit based?
           </label>
 
           <select
