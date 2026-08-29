@@ -25,14 +25,72 @@
   font-size: clamp(24px, 3vw, 36px);
 }
 
-.dashboard-actions {
-  display: flex;
-  flex-direction: column;
 
-  gap: 12px;
+/* =========================
+   Dashboard Quick Actions
+========================= */
+
+.dashboard-quick-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 16px;
 
   width: 100%;
 }
+
+.dashboard-action-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 100%;
+
+  padding: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.dashboard-action-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--rose-link-red);
+}
+
+.dashboard-action-title {
+  color: #ffffff;
+
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dashboard-action-description {
+  color: #c9c9c9;
+
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+
+/* =========================
+   Dashboard Sections
+========================= */
 
 .dashboard-section {
   width: 100%;
@@ -40,9 +98,116 @@
   text-align: left;
 }
 
-.dashboard-section h2 {
+.dashboard-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
   margin-bottom: 16px;
 }
+
+.dashboard-section-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+}
+
+.dashboard-section-link {
+  flex-shrink: 0;
+
+  color: var(--rose-link-red);
+
+  font-size: 20px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.dashboard-section-link:hover {
+  color: var(--rose-link-hover);
+}
+
+
+/* =========================
+   Recently Added
+========================= */
+
+.dashboard-recent-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 16px;
+}
+
+.dashboard-recent-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+}
+
+.dashboard-recent-card h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 30px;
+
+  overflow-wrap: anywhere;
+}
+
+.dashboard-recent-card p {
+  margin: 0;
+
+  color: #c9c9c9;
+
+  font-size: 18px;
+
+  text-transform: capitalize;
+}
+
+.dashboard-recent-link {
+  width: fit-content;
+
+  margin-top: auto;
+
+  color: var(--rose-link-red);
+
+  font-size: 20px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.dashboard-recent-link:hover {
+  color: var(--rose-link-hover);
+}
+
+.dashboard-recent-status {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 22px;
+}
+
 
 /* =========================
    Drink Grid
@@ -54,6 +219,7 @@
 
   gap: 38px;
 }
+
 
 /* =========================
    Drink Card
@@ -84,6 +250,7 @@
     box-shadow 300ms ease-in-out,
     color 300ms ease-in-out;
 }
+
 
 /* =========================
    Drink Card Content
@@ -147,6 +314,7 @@
   text-transform: capitalize;
 }
 
+
 /* =========================
    Drink Card Actions
 ========================= */
@@ -168,6 +336,7 @@
 
   font-size: 22px;
 }
+
 
 /* =========================
    Click For More Overlay
@@ -202,6 +371,7 @@
   transition: opacity 300ms ease-in-out;
 }
 
+
 /* =========================
    Hover Animation
 ========================= */
@@ -221,6 +391,7 @@
   opacity: 0;
 }
 
+
 /* =========================
    Click / Mobile Activation
 ========================= */
@@ -239,6 +410,7 @@
 .drink-card-activating > p {
   opacity: 0;
 }
+
 
 /* =========================
    Loading State
@@ -260,6 +432,7 @@
   font-size: clamp(36px, 8vw, 64px);
   line-height: 1.1;
 }
+
 
 /* =========================
    Empty State
@@ -322,16 +495,26 @@
   border-radius: 4px;
 }
 
+
 /* =========================
    Responsive
 ========================= */
 
 @media (min-width: 640px) {
-  .dashboard-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .dashboard-quick-actions {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
 
-    width: auto;
+  .dashboard-recent-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
   }
 }
 
@@ -346,6 +529,14 @@
 }
 
 @media (min-width: 900px) {
+  .dashboard-recent-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
   .dashboard-header {
     flex-direction: row;
     justify-content: space-between;
@@ -360,5 +551,40 @@
         3,
         minmax(0, 1fr)
       );
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .dashboard-page {
+    gap: 28px;
+  }
+
+  .dashboard-action-card {
+    padding: 18px;
+  }
+
+  .dashboard-action-title {
+    font-size: 32px;
+  }
+
+  .dashboard-action-description {
+    font-size: 17px;
+  }
+
+  .dashboard-section-link {
+    font-size: 18px;
+  }
+
+  .dashboard-recent-card {
+    padding: 18px;
+  }
+
+  .dashboard-recent-card h3 {
+    font-size: 28px;
   }
 }
