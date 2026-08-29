@@ -48,7 +48,7 @@ function RecentRecipes() {
   return (
     <section className="dashboard-section">
       <div className="dashboard-section-header">
-        <h2>Recently Added</h2>
+        <h2>Recently Added from Community</h2>
 
         <Link
           to="/recipes"

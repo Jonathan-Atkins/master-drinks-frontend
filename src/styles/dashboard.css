@@ -564,6 +564,19 @@
     gap: 28px;
   }
 
+  .dashboard-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-header h1 {
+    text-align: center;
+  }
+
+  .dashboard-header p {
+    text-align: center;
+  }
+
   .dashboard-action-card {
     padding: 18px;
   }
