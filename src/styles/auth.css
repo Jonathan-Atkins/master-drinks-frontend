@@ -90,6 +90,10 @@
   color: #ffffff;
 }
 
+.login-page > h1 {
+  color: #a94f00;
+}
+
 
 /* =========================
    Auth Card
@@ -189,16 +193,39 @@
 ========================= */
 
 .login-page .auth-card-title {
-  width: 100%;
+  position: relative;
 
-  margin: 0 0 24px;
+  width: fit-content;
 
-  color: #ffffff;
+  margin: 0 auto 34px;
+
+  color: #000000;
 
   font-size: clamp(38px, 7vw, 72px);
   font-weight: 700;
 
   text-align: center;
+}
+
+.login-page .auth-card-title::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 70%;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  background: #000000;
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 0 6px rgba(230, 200, 117, 0.35);
 }
 
 .login-page .auth-card-content {
@@ -409,9 +436,13 @@
 
   .login-page .auth-card-content {
     padding:
-      52px
+      34px
       30px
       38px;
+  }
+
+  .login-page .auth-card-title {
+    margin-bottom: 34px;
   }
 }
 

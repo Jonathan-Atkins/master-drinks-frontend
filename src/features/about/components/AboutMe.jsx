@@ -38,8 +38,7 @@ function AboutMe({
             <h2>I. What Is Bar Buddy?</h2>
 
             <p>
-              A bar recipe book built to keep cocktail recipes
-              organized and accessible.
+              BarBuddy is a social cocktail library for discovering, creating, saving, and sharing drinks—from simple classics to original signature cocktails.
             </p>
           </section>
 
@@ -47,8 +46,7 @@ function AboutMe({
             <h2>II. Who Is It For?</h2>
 
             <p>
-              Designed for professional bartenders and cocktail
-              hobbyists.
+              Home bartenders, professional bartenders, and cocktail enthusiasts who enjoy discovering, creating, and sharing drinks.
             </p>
           </section>
 
@@ -56,8 +54,7 @@ function AboutMe({
             <h2>III. Why Bar Buddy?</h2>
 
             <p>
-              Modern bars and restaurants create unique and intricate
-              recipes that can be difficult to remember and organize.
+              Great cocktails are everywhere, but many are hard to find outside the bar or restaurant where they were created. BarBuddy makes cocktail discovery simple, interactive, and community-driven.
             </p>
           </section>
 
@@ -65,9 +62,7 @@ function AboutMe({
             <h2>IV. The Goal</h2>
 
             <p>
-              Build one of the most extensive bar recipe collections
-              available, so the recipe you need is always only a click
-              away.
+              Build the world’s most extensive community-driven cocktail library while preserving cocktail culture and encouraging creativity. Eventually, BarBuddy will use AI and flavor profiles to create new drinks based on what users are in the mood for.
             </p>
           </section>
         </div>
