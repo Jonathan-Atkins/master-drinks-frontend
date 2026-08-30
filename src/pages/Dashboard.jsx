@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 import DashboardQuickActions from "../features/dashboard/components/DashboardQuickActions";
+import FunFactTicker from "../features/dashboard/components/FunFactTicker";
 import RecentRecipes from "../features/dashboard/components/RecentRecipes";
 import DrinksCollection from "../features/drinks/components/DrinksCollection";
 
@@ -20,6 +21,8 @@ function Dashboard() {
           What are we drinking today?
         </p>
       </header>
+
+      <FunFactTicker />
 
       <DashboardQuickActions />
 
