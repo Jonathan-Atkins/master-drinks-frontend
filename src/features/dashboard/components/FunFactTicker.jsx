@@ -1,54 +1,56 @@
-import { useEffect, useState } from "react";
-
-import { API_URL } from "../../../config/api";
+import useFunFactTicker from "../hooks/useFunFactTicker";
 
 function FunFactTicker() {
-  const [facts, setFacts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const {
+    currentFact,
+    nextFact,
+    loading,
+    error,
+    isInitialEntry,
+    isTransitioning,
+  } = useFunFactTicker();
 
-  useEffect(() => {
-    const fetchFunFacts = async () => {
-      try {
-        const response = await fetch(
-          `${API_URL}/api/v1/fun_facts`
-        );
-
-        if (!response.ok) {
-          throw new Error("Unable to load fun facts");
-        }
-
-        const data = await response.json();
-
-        setFacts(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFunFacts();
-  }, []);
-
-  if (loading) {
-    return <p>Loading fun fact...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  if (facts.length === 0) {
-    return <p>No fun facts available.</p>;
-  }
+  const noFacts = !loading && !error && !currentFact;
 
   return (
     <section className="dashboard-fun-fact">
-      <p>
-        <strong>Did You Know?</strong>{" "}
-        {facts[0].body}
-      </p>
+      <strong className="fun-fact-label">
+        Did You Know?
+      </strong>
+
+      <div className="fun-fact-viewport">
+        {error && (
+          <p className="fun-fact-message">
+            Unable to load fun facts.
+          </p>
+        )}
+
+        {noFacts && (
+          <p className="fun-fact-message">
+            No fun facts available.
+          </p>
+        )}
+
+        {currentFact && (
+          <p
+            className={[
+              "fun-fact-text",
+              isInitialEntry ? "fun-fact-entering" : "",
+              isTransitioning ? "fun-fact-exiting" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {currentFact.body}
+          </p>
+        )}
+
+        {isTransitioning && nextFact && (
+          <p className="fun-fact-text fun-fact-next">
+            {nextFact.body}
+          </p>
+        )}
+      </div>
     </section>
   );
 }
