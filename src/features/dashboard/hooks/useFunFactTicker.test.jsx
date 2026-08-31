@@ -1,6 +1,14 @@
 import { act, renderHook } from "@testing-library/react";
-import useFunFactTicker from "./useFunFactTicker";
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 
+import useFunFactTicker from "./useFunFactTicker";
 describe("useFunFactTicker", () => {
   beforeEach(() => {
     vi.useFakeTimers();
@@ -13,7 +21,7 @@ describe("useFunFactTicker", () => {
 
   describe("happy path", () => {
     it("loads the first fun fact from the API", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: vi.fn().mockResolvedValue([
           {
@@ -44,7 +52,7 @@ describe("useFunFactTicker", () => {
     });
 
     it("rotates to the next fact after the display duration", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: vi.fn().mockResolvedValue([
           {
@@ -91,7 +99,7 @@ describe("useFunFactTicker", () => {
     });
 
     it("does not rotate when only one fact exists", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: vi.fn().mockResolvedValue([
           {
@@ -123,7 +131,7 @@ describe("useFunFactTicker", () => {
 
   describe("sad path", () => {
     it("returns no current fact when the API returns an empty array", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: vi.fn().mockResolvedValue([]),
       });
@@ -140,7 +148,7 @@ describe("useFunFactTicker", () => {
     });
 
     it("returns an error when the API request fails", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: false,
       });
 
