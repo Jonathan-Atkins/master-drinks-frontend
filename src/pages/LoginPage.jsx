@@ -94,7 +94,7 @@ function LoginPage() {
           <HandwrittenGreeting />
 
           <h1 className="animated-underline auto-underline">
-            The World&apos;s Most Comprehensive Social Cocktail Library
+            Discover, Create, and Share Cocktails & Mocktails
           </h1>
 
           <div className="wine-glass-outline">

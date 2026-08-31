@@ -31,19 +31,19 @@ function AboutMe({
             id="about-me-title"
             className="page-header animated-underline auto-underline"
           >
-            About Me
+            About BarBuddy
           </h1>
         </div>
 
         <div className="about-me-sections">
           <section className="about-me-section">
-            <h2>I. What Is Bar Buddy?</h2>
+            <h2>I. What Is BarBuddy?</h2>
 
             <p>
-              BarBuddy is a social drink library for
-              discovering, creating, saving, and sharing
-              everything from classic cocktails and
-              mocktails to original signature drinks.
+              BarBuddy is a social cocktail and mocktail
+              library for discovering, creating, saving,
+              and sharing everything from timeless
+              classics to original signature creations.
             </p>
           </section>
 
@@ -53,23 +53,27 @@ function AboutMe({
             <h2>II. Who Is It For?</h2>
 
             <p>
-              Home bartenders, professional bartenders,
-              and drink enthusiasts alike. Whether you
-              prefer cocktails or non-alcoholic creations,
-              there is a place for you here.
+              Anyone curious about what goes in the
+              glass. People mixing at home, professional
+              bartenders, hosts, sober-curious users,
+              non-drinkers, and anyone looking for
+              something new to make or order. Cocktails
+              and mocktails have an equal place here.
             </p>
           </section>
 
           <BarSpoonDivider />
 
           <section className="about-me-section">
-            <h2>III. Why Bar Buddy?</h2>
+            <h2>III. Why BarBuddy?</h2>
 
             <p>
-              Great drinks are everywhere, but many are
-              hard to find outside the places where they
-              were created. BarBuddy makes discovery
-              simple, interactive, and community-driven.
+              Great cocktails and mocktails are
+              everywhere, but many are difficult to
+              discover outside the places and communities
+              where they were created. BarBuddy makes
+              that discovery simple, interactive, and
+              community-driven.
             </p>
           </section>
 
@@ -79,12 +83,13 @@ function AboutMe({
             <h2>IV. The Goal</h2>
 
             <p>
-              Build the world&apos;s most extensive
-              community-driven drink library while
-              preserving cocktail culture and encouraging
-              creativity. Eventually, BarBuddy will use AI
-              and flavor profiles to create new drinks
-              based on what users are in the mood for.
+              Build a community-driven library where
+              cocktails and mocktails are equally easy to
+              discover, create, save, and share. As
+              BarBuddy grows, flavor profiles and AI can
+              help users discover or create drinks based
+              on their tastes, ingredients, and what they
+              are in the mood for.
             </p>
           </section>
         </div>
