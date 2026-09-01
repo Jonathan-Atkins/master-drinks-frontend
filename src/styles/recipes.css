@@ -11,7 +11,6 @@
   --recipe-alphabet-green: #7f9d65;
 }
 
-
 /* =========================
    Recipe Grids
 ========================= */
@@ -30,11 +29,7 @@
 .community-recipes-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(260px, 360px)
-    );
+  grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
 
   justify-content: center;
 
@@ -42,7 +37,6 @@
 
   width: 100%;
 }
-
 
 /* =========================
    Recipe Card
@@ -72,11 +66,7 @@
 
   color: #6b6375;
 
-  font-size: clamp(
-    24px,
-    3vw,
-    32px
-  );
+  font-size: clamp(24px, 3vw, 32px);
 
   line-height: 1.35;
 }
@@ -91,13 +81,8 @@
 .recipe-card h2 {
   color: #ffffff;
 
-  font-size: clamp(
-    30px,
-    4vw,
-    40px
-  );
+  font-size: clamp(30px, 4vw, 40px);
 }
-
 
 /* =========================
    Recipe Name
@@ -112,11 +97,7 @@
    */
   color: var(--recipe-name-color);
 
-  font-size: clamp(
-    28px,
-    3.5vw,
-    36px
-  );
+  font-size: clamp(28px, 3.5vw, 36px);
   margin: 0;
 }
 
@@ -144,7 +125,6 @@
   color: #ffffff;
 }
 
-
 /* =========================
    Instructions
 ========================= */
@@ -168,7 +148,6 @@
   color: #ffffff;
 }
 
-
 /* =========================
    Ingredients
 ========================= */
@@ -190,7 +169,6 @@
 .recipe-card-more {
   color: #ffffff;
 }
-
 
 /* =========================
    Save Button + Save Count
@@ -217,8 +195,7 @@
   opacity: 0.65;
 }
 
-.recipe-card
-  .recipe-card-owner-save-count {
+.recipe-card .recipe-card-owner-save-count {
   margin-top: 8px;
 
   color: hsl(0, 100%, 50%);
@@ -228,7 +205,6 @@
 
   opacity: 0.65;
 }
-
 
 /* =========================
    Owner Actions
@@ -247,11 +223,9 @@
   padding-top: 20px;
 }
 
-.recipe-card-actions
-  .animated-button {
+.recipe-card-actions .animated-button {
   width: auto;
 }
-
 
 /* =========================
    Community Filters
@@ -289,8 +263,7 @@
 
   padding: 10px 14px;
 
-  border: 1px solid
-    var(--form-border);
+  border: 1px solid var(--form-border);
   border-radius: 10px;
 
   background: var(--form-bg);
@@ -300,7 +273,6 @@
   font-family: var(--sans);
   font-size: 26px;
 }
-
 
 /* =========================
    Clear Filters
@@ -312,8 +284,7 @@
 
   padding: 10px 16px;
 
-  border: 1px solid
-    var(--form-border);
+  border: 1px solid var(--form-border);
   border-radius: 10px;
 
   background: transparent;
@@ -331,22 +302,10 @@
     opacity 180ms ease;
 }
 
-.community-recipe-clear:hover:not(
-    :disabled
-  ) {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.06
-  );
+.community-recipe-clear:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
 
-  border-color: rgba(
-    255,
-    255,
-    255,
-    0.35
-  );
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .community-recipe-clear:disabled {
@@ -354,7 +313,6 @@
 
   cursor: default;
 }
-
 
 /* =========================
    Category Groups
@@ -380,15 +338,10 @@
 
   color: #f4b6b2;
 
-  font-size: clamp(
-    36px,
-    8vw,
-    52px
-  );
+  font-size: clamp(36px, 8vw, 52px);
 
   text-align: center;
 }
-
 
 /* =========================
    Recipe Category Alphabet Navigation
@@ -410,16 +363,10 @@
 
   border-radius: 10px;
 
-  background: rgba(
-    10,
-    10,
-    10,
-    0.7
-  );
+  background: rgba(10, 10, 10, 0.7);
 
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter:
-    blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
   z-index: 30;
 
@@ -430,12 +377,7 @@
 }
 
 .recipe-alphabet-nav-scrubbing {
-  background: rgba(
-    10,
-    10,
-    10,
-    0.88
-  );
+  background: rgba(10, 10, 10, 0.88);
 }
 
 .recipe-alphabet-letter {
@@ -470,24 +412,17 @@
 
 .recipe-alphabet-letter:hover,
 .recipe-alphabet-letter:focus-visible {
-  color:
-    var(--recipe-alphabet-green);
+  color: var(--recipe-alphabet-green);
 }
 
 .recipe-alphabet-letter-active {
-  color:
-    var(--recipe-alphabet-green);
+  color: var(--recipe-alphabet-green);
 
   transform: scale(1.35);
 }
 
 .recipe-alphabet-letter:disabled {
-  color: rgba(
-    255,
-    255,
-    255,
-    0.2
-  );
+  color: rgba(255, 255, 255, 0.2);
 
   cursor: default;
 }
@@ -505,20 +440,13 @@
   width: 96px;
   height: 96px;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
   border-radius: 18px;
 
-  background: rgba(
-    20,
-    20,
-    20,
-    0.88
-  );
+  background: rgba(20, 20, 20, 0.88);
 
-  color:
-    var(--recipe-alphabet-green);
+  color: var(--recipe-alphabet-green);
 
   font-family: var(--sans);
   font-size: 60px;
@@ -529,10 +457,8 @@
   z-index: 40;
 
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter:
-    blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-
 
 /* =========================
    Mobile
@@ -571,7 +497,6 @@
   }
 }
 
-
 /* =========================
    Tablet / Desktop
 ========================= */
@@ -596,11 +521,7 @@
 
 @media (min-width: 768px) {
   .my-recipes-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .community-recipe-controls {
@@ -634,10 +555,6 @@
 
 @media (min-width: 1024px) {
   .my-recipes-grid {
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(0, 1fr)
-      );
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
