@@ -37,16 +37,14 @@
   background-color: transparent !important;
 }
 
-
 /* =========================
    Login About Link
 ========================= */
 
 .login-about-link {
-  position: absolute;
+  position: relative;
 
-  top: 20px;
-  right: 65px;
+  display: inline-block;
 
   padding: 6px 10px;
 
@@ -66,11 +64,24 @@
   transition: color 180ms ease;
 }
 
+.login-about-link::after {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin-top: 6px;
+
+  background: #a94f00;
+  border-radius: 999px;
+}
+
 .login-about-link:hover,
 .login-about-link:focus-visible {
   color: #ffffff;
 }
-
 
 /* =========================
    Auth Heading
@@ -94,7 +105,6 @@
   color: #a94f00;
   font-weight: 600;
 }
-
 
 /* =========================
    Auth Card
@@ -124,7 +134,6 @@
   border-radius: 20px;
 }
 
-
 /* =========================
    Auth Background Video
 ========================= */
@@ -140,7 +149,6 @@
 
   z-index: 0;
 }
-
 
 /* =========================
    Visual Settings Notice
@@ -225,7 +233,6 @@
   transform: scale(0.98);
 }
 
-
 /* =========================
    Glass Overlay
 ========================= */
@@ -243,7 +250,6 @@
 
   z-index: 1;
 }
-
 
 /* =========================
    Auth Content
@@ -281,8 +287,7 @@
 
   border-radius: 999px;
 
-  box-shadow:
-    0 0 6px rgba(230, 200, 117, 0.35);
+  box-shadow: 0 0 6px rgba(230, 200, 117, 0.35);
 }
 
 .login-page .auth-card-content {
@@ -296,18 +301,13 @@
 
   width: 100%;
 
-  padding:
-    clamp(48px, 10vw, 100px)
-    clamp(24px, 7vw, 58px)
+  padding: clamp(48px, 10vw, 100px) clamp(24px, 7vw, 58px)
     clamp(32px, 8vw, 52px);
 }
 
 .register-page .auth-card-content {
-  padding:
-    clamp(32px, 7vw, 52px)
-    clamp(24px, 6vw, 48px);
+  padding: clamp(32px, 7vw, 52px) clamp(24px, 6vw, 48px);
 }
-
 
 /* =========================
    Auth Form
@@ -337,7 +337,6 @@
   font-size: clamp(26px, 7vw, 35px);
 }
 
-
 /* =========================
    Auth Button
 ========================= */
@@ -347,7 +346,6 @@
 
   font-size: clamp(26px, 7vw, 35px);
 }
-
 
 /* =========================
    Auth Footer
@@ -389,7 +387,6 @@
 .auth-page .auth-footer a:hover::before {
   transform: scaleX(1);
 }
-
 
 /* =========================
    Account Created Notice
@@ -474,8 +471,6 @@
   }
 }
 
-
-
 /* =========================
    Mobile
 ========================= */
@@ -489,9 +484,7 @@
   .auth-page {
     justify-content: flex-start;
 
-    padding:
-      max(72px, env(safe-area-inset-top))
-      16px
+    padding: max(72px, env(safe-area-inset-top)) 16px
       max(24px, env(safe-area-inset-bottom));
   }
 
@@ -596,17 +589,13 @@
   }
 
   .login-page .auth-card-content {
-    padding:
-      34px
-      30px
-      38px;
+    padding: 34px 30px 38px;
   }
 
   .login-page .auth-card-title {
     margin-bottom: 34px;
   }
 }
-
 
 /* =========================
    Very Small Phones
