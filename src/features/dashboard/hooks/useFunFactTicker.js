@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
+
 import { API_URL } from "../../../config/api";
 
-const DISPLAY_DURATION_MS = 4700;
-const TRANSITION_DURATION_MS = 500;
+const ROTATION_INTERVAL_MS = 5200;
+const ANIMATION_DURATION_MS = 600;
 
 function useFunFactTicker() {
   const [facts, setFacts] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAnimating, setIsAnimating] =
+    useState(false);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const [isInitialEntry, setIsInitialEntry] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const shouldAnimate = facts.length > 1;
+
+  const safeActiveIndex =
+    facts.length > 0
+      ? activeIndex % facts.length
+      : 0;
+
+  const nextIndex =
+    facts.length > 0
+      ? (safeActiveIndex + 1) % facts.length
+      : 0;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -27,20 +39,20 @@ function useFunFactTicker() {
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load fun facts");
+          throw new Error(
+            "Unable to load fun facts"
+          );
         }
 
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-          throw new Error("Invalid fun fact response");
+          throw new Error(
+            "Invalid fun fact response"
+          );
         }
 
         setFacts(data);
-
-        if (data.length > 0) {
-          setIsInitialEntry(true);
-        }
       } catch (error) {
         if (error.name !== "AbortError") {
           setError(error.message);
@@ -60,57 +72,42 @@ function useFunFactTicker() {
   }, []);
 
   useEffect(() => {
-    if (!isInitialEntry) return;
+    if (!shouldAnimate) {
+      return undefined;
+    }
 
-    const timer = setTimeout(() => {
-      setIsInitialEntry(false);
-    }, TRANSITION_DURATION_MS);
+    let timeoutId;
 
-    return () => clearTimeout(timer);
-  }, [isInitialEntry]);
+    const intervalId = setInterval(() => {
+      setIsAnimating(true);
 
-  useEffect(() => {
-    if (facts.length <= 1) return;
-    if (isInitialEntry || isTransitioning) return;
+      timeoutId = setTimeout(() => {
+        setActiveIndex(
+          (currentIndex) =>
+            currentIndex + 1
+        );
 
-    const timer = setTimeout(() => {
-      setIsTransitioning(true);
-    }, DISPLAY_DURATION_MS);
+        setIsAnimating(false);
+      }, ANIMATION_DURATION_MS);
+    }, ROTATION_INTERVAL_MS);
 
-    return () => clearTimeout(timer);
-  }, [
-    facts.length,
-    currentIndex,
-    isInitialEntry,
-    isTransitioning,
-  ]);
-
-  useEffect(() => {
-    if (!isTransitioning) return;
-
-    const timer = setTimeout(() => {
-      setCurrentIndex((previousIndex) => {
-        return (previousIndex + 1) % facts.length;
-      });
-
-      setIsTransitioning(false);
-    }, TRANSITION_DURATION_MS);
-
-    return () => clearTimeout(timer);
-  }, [isTransitioning, facts.length]);
-
-  const nextIndex =
-    facts.length > 1
-      ? (currentIndex + 1) % facts.length
-      : currentIndex;
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [shouldAnimate]);
 
   return {
-    currentFact: facts[currentIndex] || null,
-    nextFact: facts[nextIndex] || null,
+    currentFact:
+      facts[safeActiveIndex] || null,
+
+    nextFact:
+      facts[nextIndex] || null,
+
     loading,
     error,
-    isInitialEntry,
-    isTransitioning,
+    shouldAnimate,
+    isAnimating,
   };
 }
 

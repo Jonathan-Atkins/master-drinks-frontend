@@ -1,16 +1,21 @@
 import useFunFactTicker from "../hooks/useFunFactTicker";
 
+import "./FunFactTicker.css";
+
 function FunFactTicker() {
   const {
     currentFact,
     nextFact,
     loading,
     error,
-    isInitialEntry,
-    isTransitioning,
+    shouldAnimate,
+    isAnimating,
   } = useFunFactTicker();
 
-  const noFacts = !loading && !error && !currentFact;
+  const noFacts =
+    !loading &&
+    !error &&
+    !currentFact;
 
   return (
     <section className="dashboard-fun-fact">
@@ -33,20 +38,25 @@ function FunFactTicker() {
 
         {currentFact && (
           <p
-            className={[
-              "fun-fact-text",
-              isInitialEntry ? "fun-fact-entering" : "",
-              isTransitioning ? "fun-fact-exiting" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
+            className={`fun-fact-text fun-fact-current ${
+              shouldAnimate &&
+              isAnimating
+                ? "fun-fact-exit"
+                : ""
+            }`}
           >
             {currentFact.body}
           </p>
         )}
 
-        {isTransitioning && nextFact && (
-          <p className="fun-fact-text fun-fact-next">
+        {shouldAnimate && nextFact && (
+          <p
+            className={`fun-fact-text fun-fact-next ${
+              isAnimating
+                ? "fun-fact-enter"
+                : ""
+            }`}
+          >
             {nextFact.body}
           </p>
         )}

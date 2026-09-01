@@ -31,10 +31,18 @@
 ========================= */
 
 .dashboard-fun-fact {
-  display: flex;
-  flex-direction: column;
+  --fun-fact-font-size:
+    clamp(28px, 3vw, 36px);
 
-  gap: 8px;
+  display: grid;
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  column-gap: 18px;
+  row-gap: 8px;
 
   width: 100%;
 }
@@ -42,18 +50,23 @@
 .fun-fact-label {
   flex-shrink: 0;
 
+  margin: 0;
+
   color: var(--nav-link-color);
 
-  font-size: clamp(28px, 3vw, 36px);
+  font-size: var(--fun-fact-font-size);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.1;
+
+  white-space: nowrap;
 }
 
 .fun-fact-viewport {
   position: relative;
 
+  min-width: 0;
   width: 100%;
-  height: 5.5em;
+  height: 3.5em;
 
   overflow: hidden;
 }
@@ -61,75 +74,73 @@
 .fun-fact-text,
 .fun-fact-message {
   position: absolute;
+
   inset: 0;
 
   margin: 0;
 
-  line-height: 1.4;
+  font-size: var(--fun-fact-font-size);
+  line-height: 1.1;
 
   overflow-wrap: anywhere;
-  font-size: 28px;
 }
 
 .fun-fact-text {
+  color: #fff459;
+
   will-change: transform;
 }
 
-.fun-fact-entering {
-  animation: fun-fact-slide-in 500ms ease-out forwards;
+.fun-fact-message {
+  color: #ffffff;
 }
 
-.fun-fact-exiting {
-  animation: fun-fact-slide-out 500ms ease-in forwards;
+
+/* =========================
+   Fun Fact Vertical Carousel
+========================= */
+
+.fun-fact-current {
+  transform: translateY(0);
 }
 
 .fun-fact-next {
-  transform: translateY(-110%);
-
-  animation: fun-fact-slide-in 500ms ease-out forwards;
+  transform: translateY(-100%);
 }
 
-@keyframes fun-fact-slide-in {
+.fun-fact-exit {
+  animation:
+    fun-fact-exit
+    750ms
+    ease-in-out
+    forwards;
+}
+
+.fun-fact-enter {
+  animation:
+    fun-fact-enter
+    750ms
+    ease-in-out
+    forwards;
+}
+
+@keyframes fun-fact-exit {
   from {
-    transform: translateY(-110%);
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fun-fact-enter {
+  from {
+    transform: translateY(-100%);
   }
 
   to {
     transform: translateY(0);
-  }
-}
-
-@keyframes fun-fact-slide-out {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(110%);
-  }
-}
-
-@media (min-width: 768px) {
-  .dashboard-fun-fact {
-    flex-direction: row;
-    align-items: flex-start;
-
-    gap: 16px;
-  }
-
-  .fun-fact-viewport {
-    flex: 1;
-
-    height: 4em;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fun-fact-entering,
-  .fun-fact-exiting,
-  .fun-fact-next {
-    animation: none;
-    transform: none;
   }
 }
 
@@ -140,6 +151,7 @@
 
 .dashboard-quick-actions {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
 
   gap: 16px;
@@ -208,6 +220,7 @@
 
 .dashboard-section-header {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
 
@@ -246,6 +259,7 @@
 
 .dashboard-recent-grid {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
 
   gap: 16px;
@@ -323,6 +337,7 @@
 
 .drink-grid {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr);
 
   gap: 38px;
@@ -402,6 +417,7 @@
 
 .drink-details div {
   display: flex;
+
   justify-content: space-between;
 
   gap: 16px;
@@ -430,6 +446,7 @@
 .drink-card-actions {
   display: flex;
   flex-direction: column;
+
   align-items: flex-end;
 
   gap: 16px;
@@ -454,6 +471,7 @@
   content: "Click For More!";
 
   position: absolute;
+
   top: 34%;
   left: 50%;
 
@@ -525,20 +543,21 @@
 ========================= */
 
 .loading-state {
-  width: 100%;
-  min-height: 50svh;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  text-align: center;
+  width: 100%;
+  min-height: 50svh;
 
   color: var(--text);
 
   font-family: "Amatic SC", sans-serif;
   font-size: clamp(36px, 8vw, 64px);
   line-height: 1.1;
+
+  text-align: center;
 }
 
 
@@ -547,31 +566,32 @@
 ========================= */
 
 .empty-drinks-state {
-  flex: 1;
-
-  width: 100%;
-  min-height: 60svh;
-
   display: flex;
+  flex: 1;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 28px;
 
-  margin: 0;
+  width: 100%;
+  min-height: 60svh;
 
-  text-align: center;
+  margin: 0;
 
   color: #ffffff;
 
-  font-size: clamp(
-    52px,
-    10vw,
-    78px
-  );
+  font-size:
+    clamp(
+      52px,
+      10vw,
+      78px
+    );
 
   line-height: 1.05;
+
+  text-align: center;
 }
 
 .empty-drinks-link {
@@ -581,8 +601,9 @@
 
   color: var(--rose-link-red);
 
-  text-decoration: none;
   font-weight: 700;
+
+  text-decoration: none;
 
   transition: color 220ms ease;
 }
@@ -647,6 +668,7 @@
 
   .dashboard-header {
     flex-direction: row;
+
     justify-content: space-between;
     align-items: center;
   }
@@ -667,6 +689,24 @@
    Mobile
 ========================= */
 
+@media (max-width: 767px) {
+  .dashboard-fun-fact {
+    grid-template-columns: minmax(0, 1fr);
+
+    row-gap: 10px;
+
+    text-align: center;
+  }
+
+  .fun-fact-label {
+    white-space: normal;
+  }
+
+  .fun-fact-viewport {
+    height: 4.6em;
+  }
+}
+
 @media (max-width: 480px) {
   .dashboard-page {
     gap: 28px;
@@ -674,6 +714,7 @@
 
   .dashboard-header {
     align-items: center;
+
     text-align: center;
   }
 
@@ -683,14 +724,6 @@
 
   .dashboard-header p {
     text-align: center;
-  }
-
-  .dashboard-fun-fact {
-    text-align: center;
-  }
-
-  .dashboard-fun-fact p {
-    font-size: 24px;
   }
 
   .dashboard-action-card {
@@ -715,5 +748,25 @@
 
   .dashboard-recent-card h3 {
     font-size: 28px;
+  }
+}
+
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .fun-fact-exit,
+  .fun-fact-enter {
+    animation: none;
+  }
+
+  .fun-fact-exit {
+    visibility: hidden;
+  }
+
+  .fun-fact-enter {
+    transform: translateY(0);
   }
 }

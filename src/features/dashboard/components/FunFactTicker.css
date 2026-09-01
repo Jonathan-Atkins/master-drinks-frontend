@@ -1,0 +1,167 @@
+.dashboard-fun-fact {
+  --fun-fact-font-size:
+    clamp(28px, 3vw, 36px);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.fun-fact-label {
+  flex-shrink: 0;
+
+  color: var(--nav-link-color);
+
+  font-size: var(--fun-fact-font-size);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fun-fact-viewport {
+  position: relative;
+
+  width: 100%;
+  height: 7rem;
+
+  overflow: hidden;
+}
+
+.fun-fact-text,
+.fun-fact-message {
+  position: absolute;
+  inset: 0;
+
+  margin: 0;
+
+  font-size: var(--fun-fact-font-size);
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+}
+
+.fun-fact-text {
+  color: #fff459;
+
+  will-change: transform;
+}
+
+.fun-fact-message {
+  color: #ffffff;
+}
+
+
+/* =========================
+   Vertical Carousel
+========================= */
+
+.fun-fact-current {
+  transform: translateY(0);
+}
+
+.fun-fact-next {
+  transform: translateY(-100%);
+}
+
+.fun-fact-exit {
+  animation:
+    fun-fact-exit
+    600ms
+    ease-in-out
+    forwards;
+}
+
+.fun-fact-enter {
+  animation:
+    fun-fact-enter
+    600ms
+    ease-in-out
+    forwards;
+}
+
+
+/*
+  Current fact moves DOWN
+  and exits below viewport.
+*/
+@keyframes fun-fact-exit {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+
+/*
+  Next fact starts ABOVE
+  and moves DOWN into viewport.
+*/
+@keyframes fun-fact-enter {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   Desktop
+========================= */
+
+@media (min-width: 768px) {
+  .dashboard-fun-fact {
+    flex-direction: row;
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  .fun-fact-viewport {
+    flex: 1;
+
+    height: 5.5rem;
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .dashboard-fun-fact {
+    text-align: center;
+  }
+
+  .fun-fact-viewport {
+    height: 7.5rem;
+  }
+}
+
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .fun-fact-exit,
+  .fun-fact-enter {
+    animation: none;
+  }
+
+  .fun-fact-exit {
+    visibility: hidden;
+  }
+
+  .fun-fact-enter {
+    transform: translateY(0);
+  }
+}
