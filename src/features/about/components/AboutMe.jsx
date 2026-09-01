@@ -43,7 +43,7 @@ function AboutMe({
               BarBuddy is a social cocktail and mocktail
               library for discovering, creating, saving,
               and sharing everything from timeless
-              classics to original signature creations.
+              classics to original signature cocktails.
             </p>
           </section>
 
@@ -55,9 +55,9 @@ function AboutMe({
             <p>
               Anyone curious about what goes in the
               glass. People mixing at home, professional
-              bartenders, hosts, sober-curious users,
-              non-drinkers, and anyone looking for
-              something new to make or order. Cocktails
+              bartenders, hosts & sober-curious users alike.
+              We encourage our patrons to explore and create 
+              something new & fun. Cocktails
               and mocktails have an equal place here.
             </p>
           </section>
@@ -69,11 +69,9 @@ function AboutMe({
 
             <p>
               Great cocktails and mocktails are
-              everywhere, but many are difficult to
-              discover outside the places and communities
-              where they were created. BarBuddy makes
-              that discovery simple, interactive, and
-              community-driven.
+              everywhere, but where do we track them? How do we discover & share them
+              outside the places and communities
+              where they were created. BarBuddy aims to bridge that gap as the World's most comprehensive community recipe book!
             </p>
           </section>
 
