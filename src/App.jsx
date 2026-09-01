@@ -1,4 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -7,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import DrinksPage from "./pages/DrinksPage";
 import AllRecipesPage from "./pages/AllRecipesPage";
 import RecipesPage from "./pages/RecipesPage";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 import Dashboard from "./pages/Dashboard";
 import DrinkMakerPage from "./pages/DrinkMakerPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
@@ -44,7 +48,9 @@ function App() {
         element={<AboutPage />}
       />
 
-      <Route element={<ProtectedLayout />}>
+      <Route
+        element={<ProtectedLayout />}
+      >
         <Route
           path="/dashboard"
           element={<Dashboard />}
@@ -57,7 +63,9 @@ function App() {
 
         <Route
           path="/community/:username"
-          element={<CommunityProfilePage />}
+          element={
+            <CommunityProfilePage />
+          }
         />
 
         <Route
@@ -68,6 +76,13 @@ function App() {
         <Route
           path="/recipes"
           element={<AllRecipesPage />}
+        />
+
+        <Route
+          path="/recipes/:recipeId"
+          element={
+            <RecipeDetailPage />
+          }
         />
 
         <Route
@@ -87,7 +102,9 @@ function App() {
 
         <Route
           path="/drinks/:drinkId/recipes/new"
-          element={<CreateRecipePage />}
+          element={
+            <CreateRecipePage />
+          }
         />
 
         <Route
@@ -97,22 +114,30 @@ function App() {
 
         <Route
           path="/recipes/:recipeId/edit"
-          element={<EditRecipePage />}
+          element={
+            <EditRecipePage />
+          }
         />
 
         <Route
           path="/drinks/:drinkId/recipes"
-          element={<DrinkRecipesPage />}
+          element={
+            <DrinkRecipesPage />
+          }
         />
 
         <Route
           path="/ingredients"
-          element={<IngredientsPage />}
+          element={
+            <IngredientsPage />
+          }
         />
 
         <Route
           path="/ingredients/new"
-          element={<NewIngredientPage />}
+          element={
+            <NewIngredientPage />
+          }
         />
       </Route>
     </Routes>

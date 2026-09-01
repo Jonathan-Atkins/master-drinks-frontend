@@ -32,6 +32,12 @@ function FunFactTicker() {
               : ""
           }`}
         >
+          {loading && (
+            <p className="fun-fact-message">
+              Finding fun facts...
+            </p>
+          )}
+
           {error && (
             <p className="fun-fact-message">
               Unable to load fun facts.

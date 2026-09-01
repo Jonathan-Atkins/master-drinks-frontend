@@ -31,11 +31,17 @@ function getCategoryLabel(recipe) {
     .join(" ");
 }
 
-function getRecipeLetter(recipe) {
-  return recipe.name
+function getCategoryLetter(category) {
+  return category
     .trim()
     .charAt(0)
     .toUpperCase();
+}
+
+function getCategoryId(category) {
+  return `recipe-category-${category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")}`;
 }
 
 function RecipesCollection() {
@@ -120,10 +126,8 @@ function RecipesCollection() {
 
         return {
           ...recipe,
-          saved_by_current_user:
-            saved,
-          user_recipe_id:
-            userRecipeId,
+          saved_by_current_user: saved,
+          user_recipe_id: userRecipeId,
           save_count: saveCount,
         };
       })
@@ -224,9 +228,7 @@ function RecipesCollection() {
             groups[category] = [];
           }
 
-          groups[category].push(
-            recipe
-          );
+          groups[category].push(recipe);
 
           return groups;
         },
@@ -237,34 +239,41 @@ function RecipesCollection() {
       sortBy,
     ]);
 
+  const sortedCategoryNames =
+    useMemo(() => {
+      return Object.keys(
+        groupedRecipes
+      ).sort((a, b) =>
+        a.localeCompare(b)
+      );
+    }, [groupedRecipes]);
+
   const availableLetters =
     useMemo(() => {
       return new Set(
-        sortedRecipes
-          .map(getRecipeLetter)
+        sortedCategoryNames
+          .map(getCategoryLetter)
           .filter((letter) =>
             /^[A-Z]$/.test(letter)
           )
       );
-    }, [sortedRecipes]);
+    }, [sortedCategoryNames]);
 
   const handleLetterJump = (
     letter
   ) => {
-    const recipe =
-      sortedRecipes.find(
-        (item) =>
-          getRecipeLetter(item) ===
+    const category =
+      sortedCategoryNames.find(
+        (name) =>
+          getCategoryLetter(name) ===
           letter
       );
 
-    if (!recipe) {
-      return;
-    }
+    if (!category) return;
 
     document
       .getElementById(
-        `recipe-card-${recipe.id}`
+        getCategoryId(category)
       )
       ?.scrollIntoView({
         behavior: "auto",
@@ -278,9 +287,7 @@ function RecipesCollection() {
     alcoholFilter !== "all";
 
   if (loading) {
-    return (
-      <p>Loading recipes...</p>
-    );
+    return <p>Loading recipes...</p>;
   }
 
   if (error) {
@@ -289,20 +296,20 @@ function RecipesCollection() {
 
   return (
     <section className="community-recipes-section">
-      {sortedRecipes.length > 0 && (
-        <RecipeAlphabetNav
-          availableLetters={
-            availableLetters
-          }
-          onLetterJump={
-            handleLetterJump
-          }
-        />
-      )}
+      {sortBy === "category" &&
+        sortedCategoryNames.length > 0 && (
+          <RecipeAlphabetNav
+            availableLetters={
+              availableLetters
+            }
+            onLetterJump={
+              handleLetterJump
+            }
+          />
+        )}
 
       <h2>
-        Recipes created by other
-        bartenders
+        Recipes created by other bartenders
       </h2>
 
       <div className="community-recipe-controls">
@@ -404,14 +411,10 @@ function RecipesCollection() {
       </div>
 
       {sortBy === "category" ? (
-        Object.keys(
-          groupedRecipes
-        )
-          .sort((a, b) =>
-            a.localeCompare(b)
-          )
-          .map((category) => (
+        sortedCategoryNames.map(
+          (category) => (
             <section
+              id={getCategoryId(category)}
               className="community-category-section"
               key={category}
             >
@@ -440,7 +443,8 @@ function RecipesCollection() {
                 ))}
               </div>
             </section>
-          ))
+          )
+        )
       ) : (
         <div className="community-recipes-grid">
           {sortedRecipes.map(

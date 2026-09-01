@@ -9,24 +9,18 @@ function RecipeAlphabetNav({
 }) {
   const navRef = useRef(null);
 
-  const [
-    activeLetter,
-    setActiveLetter,
-  ] = useState("");
+  const [activeLetter, setActiveLetter] =
+    useState("");
 
-  const [
-    isScrubbing,
-    setIsScrubbing,
-  ] = useState(false);
+  const [isScrubbing, setIsScrubbing] =
+    useState(false);
 
   const jumpToLetterFromPointer = (
     clientY
   ) => {
     const nav = navRef.current;
 
-    if (!nav) {
-      return;
-    }
+    if (!nav) return;
 
     const buttons =
       nav.querySelectorAll(
@@ -37,13 +31,11 @@ function RecipeAlphabetNav({
       const rect =
         button.getBoundingClientRect();
 
-      const isWithinLetter =
+      const withinLetter =
         clientY >= rect.top &&
         clientY <= rect.bottom;
 
-      if (!isWithinLetter) {
-        continue;
-      }
+      if (!withinLetter) continue;
 
       const letter =
         button.dataset.letter;
@@ -80,9 +72,7 @@ function RecipeAlphabetNav({
   const handlePointerMove = (
     event
   ) => {
-    if (!isScrubbing) {
-      return;
-    }
+    if (!isScrubbing) return;
 
     event.preventDefault();
 
@@ -142,7 +132,7 @@ function RecipeAlphabetNav({
             ? "recipe-alphabet-nav-scrubbing"
             : ""
         }`}
-        aria-label="Jump to recipe by letter"
+        aria-label="Jump to liquor category by letter"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
@@ -166,7 +156,7 @@ function RecipeAlphabetNav({
                   : ""
               }`}
               disabled={!available}
-              aria-label={`Jump to recipes beginning with ${letter}`}
+              aria-label={`Jump to liquor categories beginning with ${letter}`}
               onClick={() =>
                 handleClick(letter)
               }

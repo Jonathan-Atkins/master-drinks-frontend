@@ -33,14 +33,44 @@ function RecipeCard({
 }) {
   const navigate = useNavigate();
 
+  const handleOpenRecipe = () => {
+    navigate(
+      `/recipes/${recipe.id}`
+    );
+  };
+
+  const handleCardKeyDown = (
+    event
+  ) => {
+    if (
+      event.key !== "Enter" &&
+      event.key !== " "
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    handleOpenRecipe();
+  };
+
+  const stopCardNavigation = (
+    event
+  ) => {
+    event.stopPropagation();
+  };
+
   const handleEdit = () => {
-    navigate(`/recipes/${recipe.id}/edit`);
+    navigate(
+      `/recipes/${recipe.id}/edit`
+    );
   };
 
   const handleDelete = () => {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete ${recipe.name}?`
-    );
+    const confirmed =
+      window.confirm(
+        `Are you sure you want to delete ${recipe.name}?`
+      );
 
     if (!confirmed) {
       return;
@@ -63,8 +93,12 @@ function RecipeCard({
 
   return (
     <article
-      id={`recipe-card-${recipe.id}`}
-      className="recipe-card recipe-jump-target"
+      className="recipe-card"
+      role="link"
+      tabIndex={0}
+      aria-label={`View ${recipe.name} recipe`}
+      onClick={handleOpenRecipe}
+      onKeyDown={handleCardKeyDown}
     >
       <h2>
         {recipe.owned_by_current_user
@@ -78,7 +112,9 @@ function RecipeCard({
 
       <p>
         <strong>Drink:</strong>{" "}
-        <span>{recipe.drink.name}</span>
+        <span>
+          {recipe.drink.name}
+        </span>
       </p>
 
       <p>
@@ -87,7 +123,9 @@ function RecipeCard({
       </p>
 
       <div className="recipe-card-instructions-section">
-        <strong>Instructions:</strong>
+        <strong>
+          Instructions:
+        </strong>
 
         <p className="recipe-card-instructions">
           {recipe.instructions}
@@ -95,14 +133,21 @@ function RecipeCard({
       </div>
 
       <div className="recipe-card-ingredients">
-        <strong>Ingredients:</strong>
+        <strong>
+          Ingredients:
+        </strong>
 
         <div className="recipe-card-ingredient-list">
           {visibleIngredients.map(
-            (ingredient, index) => (
+            (
+              ingredient,
+              index
+            ) => (
               <p key={index}>
                 {ingredient.amount}{" "}
-                {ingredient.measurement_unit}{" "}
+                {
+                  ingredient.measurement_unit
+                }{" "}
                 {ingredient.name}
               </p>
             )
@@ -117,12 +162,26 @@ function RecipeCard({
       </div>
 
       {!recipe.owned_by_current_user && (
-        <div className="recipe-card-save-section">
+        <div
+          className="recipe-card-save-section"
+          onClick={
+            stopCardNavigation
+          }
+          onKeyDown={
+            stopCardNavigation
+          }
+        >
           <SaveRecipeButton
             recipeId={recipe.id}
-            saved={recipe.saved_by_current_user}
-            userRecipeId={recipe.user_recipe_id}
-            onToggle={(savedData) =>
+            saved={
+              recipe.saved_by_current_user
+            }
+            userRecipeId={
+              recipe.user_recipe_id
+            }
+            onToggle={(
+              savedData
+            ) =>
               onToggleSaved?.(
                 recipe.id,
                 savedData
@@ -143,7 +202,15 @@ function RecipeCard({
 
       {recipe.owned_by_current_user && (
         <>
-          <div className="recipe-card-actions">
+          <div
+            className="recipe-card-actions"
+            onClick={
+              stopCardNavigation
+            }
+            onKeyDown={
+              stopCardNavigation
+            }
+          >
             <AnimatedButton
               variant="edit"
               onClick={handleEdit}

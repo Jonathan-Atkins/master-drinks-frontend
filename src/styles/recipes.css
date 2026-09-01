@@ -105,9 +105,10 @@
 
 .recipe-card h3.recipe-card-name {
   /*
-   * RECIPE NAME COLOR
-   * Change --recipe-name-color
-   * at the TOP of this file.
+   * CHANGE RECIPE NAME COLOR
+   * AT THE TOP OF THIS FILE:
+   *
+   * --recipe-name-color
    */
   color: var(--recipe-name-color);
 
@@ -359,6 +360,13 @@
   width: 100%;
 
   margin-top: 48px;
+
+  /*
+   * Prevent fixed navigation from
+   * covering the category heading
+   * after an alphabet jump.
+   */
+  scroll-margin-top: 110px;
 }
 
 .community-category-heading {
@@ -379,7 +387,7 @@
 
 
 /* =========================
-   Recipe Alphabet Navigation
+   Recipe Category Alphabet Navigation
 ========================= */
 
 .recipe-alphabet-nav {
@@ -521,10 +529,6 @@
     blur(8px);
 }
 
-.recipe-jump-target {
-  scroll-margin-top: 110px;
-}
-
 
 /* =========================
    Mobile
@@ -558,7 +562,7 @@
     font-size: 52px;
   }
 
-  .recipe-jump-target {
+  .community-category-section {
     scroll-margin-top: 105px;
   }
 }
