@@ -1,14 +1,15 @@
 import CommunityCollection from "../features/community/CommunityCollection";
 
+import SquigglyUnderline from "../components/ui/SquigglyUnderline";
 import "../styles/community.css";
 
 function CommunityPage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header page-heading-underline">
+        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
           Community
-        </h1>
+        </SquigglyUnderline>
 
         <p className="page-header-description">
           Find other members of the BarBuddy community.

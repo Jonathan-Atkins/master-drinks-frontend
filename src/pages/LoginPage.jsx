@@ -11,6 +11,7 @@ import VisualSettingsNotice from "../features/auth/components/VisualSettingsNoti
 import useVisualSettingsNotice from "../features/auth/hooks/useVisualSettingsNotice";
 import AuthLayout from "../components/layout/AuthLayout";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
+import SquigglyUnderline from "../components/ui/SquigglyUnderline";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
 function LoginPage() {
@@ -106,9 +107,9 @@ function LoginPage() {
         >
           <HandwrittenGreeting />
 
-          <h1 className="page-heading-underline">
+          <SquigglyUnderline as="h1" className="page-heading-underline" color="green">
             Discover, Create, and Share Cocktails & Mocktails
-          </h1>
+          </SquigglyUnderline>
 
           <div className="wine-glass-outline">
             <section className="auth-card wine-glass-card">

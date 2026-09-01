@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import SquigglyUnderline from "../components/ui/SquigglyUnderline";
 import RecipeCard from "../features/recipes/components/RecipeCard";
 import { API_URL } from "../config/api";
 
@@ -59,7 +60,9 @@ function DrinkRecipesPage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header page-heading-underline">{drink.name} Recipes</h1>
+        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
+          {drink.name} Recipes
+        </SquigglyUnderline>
 
         <p className="page-header-description">
           Manage your recipes for this drink.

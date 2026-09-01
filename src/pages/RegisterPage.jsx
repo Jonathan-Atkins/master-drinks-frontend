@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 
 import AuthLayout from "../components/layout/AuthLayout";
+import SquigglyUnderline from "../components/ui/SquigglyUnderline";
 import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
 import AccountCreatedNotice from "../features/auth/components/AccountCreatedNotice";
 import JitterText from "../components/ui/JitterText";
@@ -97,9 +98,9 @@ function RegisterPage() {
 
       <AuthLayout>
         <main className="auth-page register-page">
-          <h1 className="page-heading-underline jittery">
+          <SquigglyUnderline as="h1" className="page-heading-underline jittery" color="green">
             <JitterText>Create Account</JitterText>
-          </h1>
+          </SquigglyUnderline>
 
           <section className="auth-card beer-glass-card">
             <AuthBackgroundVideo />

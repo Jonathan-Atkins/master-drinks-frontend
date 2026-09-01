@@ -8,6 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 
+import SquigglyUnderline from "../components/ui/SquigglyUnderline";
 import IngredientRows from "../features/recipes/components/IngredientRows";
 
 import { createEmptyIngredientRow } from "../features/ingredients/utils/ingredientUtils";
@@ -221,10 +222,9 @@ function CreateRecipePage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header page-heading-underline">
-          Create a Recipe for{" "}
-          {drink.name}
-        </h1>
+        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
+          Create a Recipe for {drink.name}
+        </SquigglyUnderline>
 
         <p className="page-header-description">
           Add a new recipe to

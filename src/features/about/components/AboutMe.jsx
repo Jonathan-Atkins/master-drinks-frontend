@@ -1,4 +1,5 @@
 import BarSpoonDivider from "../../../components/ui/BarSpoonDivider";
+import SquigglyUnderline from "../../../components/ui/SquigglyUnderline";
 
 function AboutMe({
   showBackToLogin = false,
@@ -27,12 +28,14 @@ function AboutMe({
     >
       <div className="about-me-content">
         <div className="about-me-heading">
-          <h1
+          <SquigglyUnderline
+            as="h1"
             id="about-me-title"
             className="page-header page-heading-underline"
+            color="green"
           >
             About BarBuddy
-          </h1>
+          </SquigglyUnderline>
         </div>
 
         <div className="about-me-sections">

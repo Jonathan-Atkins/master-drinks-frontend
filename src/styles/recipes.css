@@ -117,11 +117,15 @@
     3.5vw,
     36px
   );
+  margin: 0;
+}
 
-  text-decoration-line: underline;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
+.recipe-card h3.recipe-card-name .squiggle-heading__text {
+  display: inline-block;
+}
+
+.recipe-card h3.recipe-card-name .squiggle-heading__svg {
+  margin-top: 6px;
 }
 
 .recipe-card p {

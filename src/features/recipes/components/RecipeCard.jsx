@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import SquigglyUnderline from "../../../components/ui/SquigglyUnderline";
 import SaveRecipeButton from "../../../components/ui/SaveRecipeButton";
 import AnimatedButton from "../../../components/ui/AnimatedButton";
 
@@ -106,9 +107,9 @@ function RecipeCard({
           : `Created by: ${recipe.drink.username}`}
       </h2>
 
-      <h3 className="recipe-card-name">
+      <SquigglyUnderline as="h3" className="recipe-card-name squiggle-heading--red" color="red">
         {recipe.name}
-      </h3>
+      </SquigglyUnderline>
 
       <p>
         <strong>Drink:</strong>{" "}

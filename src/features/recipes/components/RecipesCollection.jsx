@@ -6,6 +6,7 @@ import {
 
 import { API_URL } from "../../../config/api";
 
+import SquigglyUnderline from "../../../components/ui/SquigglyUnderline";
 import RecipeAlphabetNav from "./RecipeAlphabetNav";
 import RecipeCard from "./RecipeCard";
 
@@ -418,14 +419,13 @@ function RecipesCollection() {
               className="community-category-section"
               key={category}
             >
-              <h2
-                className="
-                  community-category-heading
-                  page-heading-underline
-                "
+              <SquigglyUnderline
+                as="h2"
+                className="community-category-heading page-heading-underline"
+                color="green"
               >
                 {category}
-              </h2>
+              </SquigglyUnderline>
 
               <div className="community-recipes-grid">
                 {groupedRecipes[
