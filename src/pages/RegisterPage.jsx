@@ -97,7 +97,7 @@ function RegisterPage() {
 
       <AuthLayout>
         <main className="auth-page register-page">
-          <h1 className="animated-underline auto-underline jittery">
+          <h1 className="page-heading-underline jittery">
             <JitterText>Create Account</JitterText>
           </h1>
 

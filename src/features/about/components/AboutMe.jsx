@@ -29,7 +29,7 @@ function AboutMe({
         <div className="about-me-heading">
           <h1
             id="about-me-title"
-            className="page-header animated-underline auto-underline"
+            className="page-header page-heading-underline"
           >
             About BarBuddy
           </h1>

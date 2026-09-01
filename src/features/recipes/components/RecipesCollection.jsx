@@ -421,8 +421,7 @@ function RecipesCollection() {
               <h2
                 className="
                   community-category-heading
-                  animated-underline
-                  auto-underline
+                  page-heading-underline
                 "
               >
                 {category}

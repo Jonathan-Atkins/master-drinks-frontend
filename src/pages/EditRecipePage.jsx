@@ -108,7 +108,7 @@ function EditRecipePage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">Edit Recipe</h1>
+        <h1 className="page-header page-heading-underline">Edit Recipe</h1>
 
         <p className="page-header-description">
           Adjust this recipe and its ingredients.

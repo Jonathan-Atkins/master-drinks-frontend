@@ -6,7 +6,7 @@ function CommunityPage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">
+        <h1 className="page-header page-heading-underline">
           Community
         </h1>
 

@@ -6,7 +6,7 @@ function SettingsPage() {
   return (
     <main className="settings-page">
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">
+        <h1 className="page-header page-heading-underline">
           Settings
         </h1>
 

@@ -4,7 +4,7 @@ function NewIngredientPage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">
+        <h1 className="page-header page-heading-underline">
           Add Ingredient
         </h1>
 

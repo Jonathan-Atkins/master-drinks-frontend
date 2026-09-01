@@ -13,7 +13,7 @@ function Dashboard() {
   return (
     <main className="dashboard-page">
       <header className="page-header-section dashboard-header">
-        <h1 className="page-header animated-underline auto-underline">
+        <h1 className="page-header page-heading-underline">
           {user.username}&apos;s Dashboard
         </h1>
 

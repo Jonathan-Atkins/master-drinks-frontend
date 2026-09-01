@@ -59,7 +59,7 @@ function DrinkRecipesPage() {
   return (
     <main>
       <header className="page-header-section">
-        <h1 className="page-header animated-underline auto-underline">{drink.name} Recipes</h1>
+        <h1 className="page-header page-heading-underline">{drink.name} Recipes</h1>
 
         <p className="page-header-description">
           Manage your recipes for this drink.

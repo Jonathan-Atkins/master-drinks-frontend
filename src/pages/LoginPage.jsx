@@ -106,7 +106,7 @@ function LoginPage() {
         >
           <HandwrittenGreeting />
 
-          <h1 className="animated-underline auto-underline">
+          <h1 className="page-heading-underline">
             Discover, Create, and Share Cocktails & Mocktails
           </h1>
 
