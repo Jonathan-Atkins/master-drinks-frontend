@@ -1,13 +1,13 @@
 import RecipesCollection from "../features/recipes/components/RecipesCollection";
-import SquigglyUnderline from "../components/ui/SquigglyUnderline";
+import AnimatedUnderline from "../components/ui/AnimatedUnderline";
 
 function AllRecipesPage() {
   return (
     <main>
       <header className="page-header-section">
-        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
+        <AnimatedUnderline as="h1" className="page-header page-heading-underline" color="green">
           Community Recipes
-        </SquigglyUnderline>
+        </AnimatedUnderline>
 
         <p className="page-header-description">
           Explore recipes shared by the community.

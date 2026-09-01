@@ -1,4 +1,6 @@
 .about-me {
+  --about-accent: #f98057;
+
   width: 100%;
   min-height: 100svh;
 
@@ -27,6 +29,15 @@
 
 
 /* =========================
+   Login Tagline
+========================= */
+
+.login-page > h1 {
+  color: var(--about-accent, #f98057);
+}
+
+
+/* =========================
    About Heading
 ========================= */
 
@@ -47,6 +58,23 @@
   color: #ffffff;
 
   text-align: center;
+}
+
+.about-barbuddy-title {
+  display: inline-block;
+}
+
+.about-barbuddy-title::after {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin-top: 6px;
+
+  background: var(--about-accent, #f98057);
 }
 
 
@@ -90,7 +118,7 @@
 
   margin: 0 auto;
 
-  color: #f98057;
+  color: var(--about-accent, #f98057);
 
   font-size: clamp(32px, 2.5vw, 35px);
   font-weight: 700;
@@ -216,6 +244,8 @@
 
 @media (max-width: 480px) {
   .about-me {
+    --about-accent: #f77a50;
+
     align-items: flex-start;
 
     padding:
@@ -230,6 +260,5 @@
 
   .about-me-section p {
     max-width: 100%;
-    color: #f77a50;
   }
 }

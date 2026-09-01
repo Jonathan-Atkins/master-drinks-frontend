@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { API_URL } from "../config/api";
-import SquigglyUnderline from "../components/ui/SquigglyUnderline";
+import AnimatedUnderline from "../components/ui/AnimatedUnderline";
 import IngredientForm from "../features/ingredients/forms/IngredientForm";
 
 function EditIngredientPage() {
@@ -70,9 +70,9 @@ function EditIngredientPage() {
   return (
     <main>
       <header className="page-header-section">
-        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
+        <AnimatedUnderline as="h1" className="page-header page-heading-underline" color="green">
           Edit Ingredient
-        </SquigglyUnderline>
+        </AnimatedUnderline>
 
         <p className="page-header-description">
           Update this ingredient's type and flavor profile.

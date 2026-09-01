@@ -1,47 +1,78 @@
-.squiggle-heading {
+.animated-underline {
   display: inline-flex;
   flex-direction: column;
   align-items: stretch;
+
   width: fit-content;
   max-width: 100%;
 }
 
-.squiggle-heading__text {
+.animated-underline__text {
   display: block;
+
   margin: 0;
+
   line-height: 1.1;
 }
 
-.squiggle-heading__svg {
+.animated-underline__line {
   display: block;
-  width: 100%;
-  height: auto;
+
+  width: 0;
+  height: 1px;
+
   margin-top: 6px;
-  overflow: visible;
+
+  background: currentColor;
+
+  box-shadow: 0 0 10px currentColor;
+
+  opacity: 0.65;
+
+  transition:
+    width 0.5s ease;
+}
+
+.animated-underline--visible .animated-underline__line {
+  width: 100%;
 }
 
 .page-heading-underline {
   color: inherit;
 }
 
-.page-heading-underline .squiggle-heading__text {
+.page-heading-underline .animated-underline__text {
   margin-bottom: 0;
 }
 
-.page-heading-underline .squiggle-heading__svg path {
-  stroke: #68a040;
+.animated-underline--red .animated-underline__line {
+  color: #c61f4d;
+  background: #c61f4d;
+
+  box-shadow:
+    0 0 10px
+    rgba(198, 31, 77, 0.9);
 }
 
-.squiggle-heading--red .squiggle-heading__svg path {
-  stroke: #c61f4d;
-}
+.animated-underline--green .animated-underline__line {
+  color: #68a040;
+  background: #68a040;
 
-.squiggle-heading--green .squiggle-heading__svg path {
-  stroke: #68a040;
+  box-shadow:
+    0 0 10px
+    rgba(104, 160, 64, 0.9);
 }
 
 @media (max-width: 900px) {
-  .squiggle-heading__svg {
+  .animated-underline__line {
     margin-top: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-underline__line {
+    width: 100%;
+
+    transition: none;
   }
 }

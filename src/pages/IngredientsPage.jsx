@@ -1,13 +1,13 @@
 import IngredientsCollection from "../features/ingredients/components/IngredientsCollection";
-import SquigglyUnderline from "../components/ui/SquigglyUnderline";
+import AnimatedUnderline from "../components/ui/AnimatedUnderline";
 
 function IngredientsPage() {
   return (
     <main>
       <header className="page-header-section">
-        <SquigglyUnderline as="h1" className="page-header page-heading-underline" color="green">
+        <AnimatedUnderline as="h1" className="page-header page-heading-underline" color="green">
           Ingredients
-        </SquigglyUnderline>
+        </AnimatedUnderline>
 
         <p className="page-header-description">
           Search and manage the ingredients you use in recipes.

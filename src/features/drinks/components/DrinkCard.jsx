@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import SquigglyUnderline from "../../../components/ui/SquigglyUnderline";
+import AnimatedUnderline from "../../../components/ui/AnimatedUnderline";
 import AnimatedButton from "../../../components/ui/AnimatedButton";
 
 function DrinkCard({ drink, onDelete }) {
@@ -91,9 +91,9 @@ function DrinkCard({ drink, onDelete }) {
       role="button"
       tabIndex={0}
     >
-      <SquigglyUnderline as="h2" className="squiggle-heading--red" color="red">
+      <AnimatedUnderline as="h2" className="animated-underline--red" color="red">
         {drink.name}
-      </SquigglyUnderline>
+      </AnimatedUnderline>
 
       <p>
         <strong>Category:</strong>{" "}

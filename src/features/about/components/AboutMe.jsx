@@ -1,5 +1,4 @@
 import BarSpoonDivider from "../../../components/ui/BarSpoonDivider";
-import SquigglyUnderline from "../../../components/ui/SquigglyUnderline";
 
 function AboutMe({
   showBackToLogin = false,
@@ -28,14 +27,12 @@ function AboutMe({
     >
       <div className="about-me-content">
         <div className="about-me-heading">
-          <SquigglyUnderline
-            as="h1"
+          <h1
             id="about-me-title"
-            className="page-header page-heading-underline"
-            color="green"
+            className="page-header about-barbuddy-title"
           >
             About BarBuddy
-          </SquigglyUnderline>
+          </h1>
         </div>
 
         <div className="about-me-sections">
@@ -59,7 +56,7 @@ function AboutMe({
               Anyone curious about what goes in the
               glass. People mixing at home, professional
               bartenders, hosts & sober-curious users alike.
-              We encourage our patrons to explore and create 
+              We encourage our patrons to explore and create
               something new & fun. Cocktails
               and mocktails have an equal place here.
             </p>
@@ -74,7 +71,7 @@ function AboutMe({
               Great cocktails and mocktails are
               everywhere, but where do we track them? How do we discover & share them
               outside the places and communities
-              where they were created. BarBuddy aims to bridge that gap as the World's most comprehensive community recipe book!
+              where they were created. BarBuddy aims to bridge that gap as the World&apos;s most comprehensive community recipe book!
             </p>
           </section>
 

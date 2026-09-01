@@ -101,11 +101,11 @@
   margin: 0;
 }
 
-.recipe-card h3.recipe-card-name .squiggle-heading__text {
+.recipe-card h3.recipe-card-name .animated-underline__text {
   display: inline-block;
 }
 
-.recipe-card h3.recipe-card-name .squiggle-heading__svg {
+.recipe-card h3.recipe-card-name .animated-underline__svg {
   margin-top: 6px;
 }
 
