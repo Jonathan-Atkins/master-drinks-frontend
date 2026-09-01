@@ -1,7 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { API_URL } from "../../../config/api";
 
+import RecipeAlphabetNav from "./RecipeAlphabetNav";
 import RecipeCard from "./RecipeCard";
 
 function getCategoryLabel(recipe) {
@@ -24,6 +29,13 @@ function getCategoryLabel(recipe) {
         word.slice(1)
     )
     .join(" ");
+}
+
+function getRecipeLetter(recipe) {
+  return recipe.name
+    .trim()
+    .charAt(0)
+    .toUpperCase();
 }
 
 function RecipesCollection() {
@@ -145,22 +157,17 @@ function RecipesCollection() {
             getCategoryLabel(recipe);
 
           const matchesCategory =
-            categoryFilter ===
-              "all" ||
-            category ===
-              categoryFilter;
+            categoryFilter === "all" ||
+            category === categoryFilter;
 
           const matchesAlcohol =
-            alcoholFilter ===
-              "all" ||
+            alcoholFilter === "all" ||
             (alcoholFilter ===
               "alcoholic" &&
-              recipe.drink
-                .alcoholic) ||
+              recipe.drink.alcoholic) ||
             (alcoholFilter ===
               "non-alcoholic" &&
-              !recipe.drink
-                .alcoholic);
+              !recipe.drink.alcoholic);
 
           return (
             matchesCategory &&
@@ -230,6 +237,41 @@ function RecipesCollection() {
       sortBy,
     ]);
 
+  const availableLetters =
+    useMemo(() => {
+      return new Set(
+        sortedRecipes
+          .map(getRecipeLetter)
+          .filter((letter) =>
+            /^[A-Z]$/.test(letter)
+          )
+      );
+    }, [sortedRecipes]);
+
+  const handleLetterJump = (
+    letter
+  ) => {
+    const recipe =
+      sortedRecipes.find(
+        (item) =>
+          getRecipeLetter(item) ===
+          letter
+      );
+
+    if (!recipe) {
+      return;
+    }
+
+    document
+      .getElementById(
+        `recipe-card-${recipe.id}`
+      )
+      ?.scrollIntoView({
+        behavior: "auto",
+        block: "start",
+      });
+  };
+
   const filtersAreActive =
     sortBy !== "category" ||
     categoryFilter !== "all" ||
@@ -246,7 +288,18 @@ function RecipesCollection() {
   }
 
   return (
-    <section>
+    <section className="community-recipes-section">
+      {sortedRecipes.length > 0 && (
+        <RecipeAlphabetNav
+          availableLetters={
+            availableLetters
+          }
+          onLetterJump={
+            handleLetterJump
+          }
+        />
+      )}
+
       <h2>
         Recipes created by other
         bartenders

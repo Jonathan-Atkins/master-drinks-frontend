@@ -62,14 +62,19 @@ function RecipeCard({
     recipe.save_count || 0;
 
   return (
-    <article className="recipe-card">
+    <article
+      id={`recipe-card-${recipe.id}`}
+      className="recipe-card recipe-jump-target"
+    >
       <h2>
         {recipe.owned_by_current_user
           ? "This is Your Recipe"
           : `Created by: ${recipe.drink.username}`}
       </h2>
 
-      <h3>{recipe.name}</h3>
+      <h3 className="recipe-card-name">
+        {recipe.name}
+      </h3>
 
       <p>
         <strong>Drink:</strong>{" "}
