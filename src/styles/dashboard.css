@@ -764,58 +764,44 @@
 
 
 /* =========================
-   Hover Animation
+   Desktop Drink Card Animation
 ========================= */
 
-.drink-card:hover {
-  box-shadow:
-    0 0 40px 40px
-      rgba(
-        85,
-        0,
-        0,
-        0.82
-      )
-      inset,
-    var(--shadow);
+@media (hover: hover) and (pointer: fine) {
+  .drink-card:hover {
+    box-shadow:
+      0 0 40px 40px
+        rgba(85, 0, 0, 0.82)
+        inset,
+      var(--shadow);
+  }
+
+  .drink-card:hover::after {
+    opacity: 1;
+  }
+
+  .drink-card:hover > h2,
+  .drink-card:hover > p {
+    opacity: 0;
+  }
+
+  .drink-card-activating {
+    box-shadow:
+      0 0 40px 40px
+        rgba(85, 0, 0, 0.82)
+        inset,
+      var(--shadow);
+  }
+
+  .drink-card-activating::after {
+    opacity: 1;
+  }
+
+  .drink-card-activating > h2,
+  .drink-card-activating > p {
+    opacity: 0;
+  }
 }
-
-.drink-card:hover::after {
-  opacity: 1;
-}
-
-.drink-card:hover > h2,
-.drink-card:hover > p {
-  opacity: 0;
-}
-
-
-/* =========================
-   Click / Mobile Activation
-========================= */
-
-.drink-card-activating {
-  box-shadow:
-    0 0 40px 40px
-      rgba(
-        85,
-        0,
-        0,
-        0.82
-      )
-      inset,
-    var(--shadow);
-}
-
-.drink-card-activating::after {
-  opacity: 1;
-}
-
-.drink-card-activating > h2,
-.drink-card-activating > p {
-  opacity: 0;
-}
-
 
 /* =========================
    Loading State

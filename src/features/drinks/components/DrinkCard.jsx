@@ -10,6 +10,19 @@ function DrinkCard({ drink, onDelete }) {
     useState(false);
 
   const activateCard = () => {
+    const supportsHover =
+      window.matchMedia(
+        "(hover: hover) and (pointer: fine)"
+      ).matches;
+
+    if (!supportsHover) {
+      navigate(
+        `/drinks/${drink.id}/recipes`
+      );
+
+      return;
+    }
+
     if (isActivating) {
       return;
     }
@@ -17,14 +30,18 @@ function DrinkCard({ drink, onDelete }) {
     setIsActivating(true);
 
     window.setTimeout(() => {
-      navigate(`/drinks/${drink.id}/recipes`);
+      navigate(
+        `/drinks/${drink.id}/recipes`
+      );
     }, 300);
   };
 
   const handleEdit = (event) => {
     event.stopPropagation();
 
-    navigate(`/drinks/${drink.id}/edit`);
+    navigate(
+      `/drinks/${drink.id}/edit`
+    );
   };
 
   const handleAddRecipe = (event) => {
@@ -38,9 +55,10 @@ function DrinkCard({ drink, onDelete }) {
   const handleDelete = (event) => {
     event.stopPropagation();
 
-    const confirmed = window.confirm(
-      `Are you sure you want to delete ${drink.name}?`
-    );
+    const confirmed =
+      window.confirm(
+        `Are you sure you want to delete ${drink.name}?`
+      );
 
     if (!confirmed) {
       return;
@@ -77,13 +95,18 @@ function DrinkCard({ drink, onDelete }) {
       <p>
         <strong>Category:</strong>{" "}
         {drink.categories
-          ?.map((category) => category.name)
+          ?.map(
+            (category) =>
+              category.name
+          )
           .join(", ")}
       </p>
 
       <p>
         <strong>Alcoholic:</strong>{" "}
-        {drink.alcoholic ? "Yes" : "No"}
+        {drink.alcoholic
+          ? "Yes"
+          : "No"}
       </p>
 
       <p>
