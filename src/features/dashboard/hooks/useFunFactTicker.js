@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 
 import { API_URL } from "../../../config/api";
 
-const ROTATION_INTERVAL_MS = 5200;
-const ANIMATION_DURATION_MS = 600;
+const ROTATION_INTERVAL_MS = 8000;
+const ANIMATION_DURATION_MS = 750;
 
 function useFunFactTicker() {
   const [facts, setFacts] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] =
+    useState(false);
+
+  const [isExpanded, setIsExpanded] =
     useState(false);
 
   const [loading, setLoading] = useState(true);
@@ -72,7 +75,7 @@ function useFunFactTicker() {
   }, []);
 
   useEffect(() => {
-    if (!shouldAnimate) {
+    if (!shouldAnimate || isExpanded) {
       return undefined;
     }
 
@@ -95,7 +98,17 @@ function useFunFactTicker() {
       clearInterval(intervalId);
       clearTimeout(timeoutId);
     };
-  }, [shouldAnimate]);
+  }, [shouldAnimate, isExpanded]);
+
+  const expandCurrentFact = () => {
+    setIsAnimating(false);
+    setIsExpanded(true);
+  };
+
+  const collapseCurrentFact = () => {
+    setIsAnimating(false);
+    setIsExpanded(false);
+  };
 
   return {
     currentFact:
@@ -108,6 +121,9 @@ function useFunFactTicker() {
     error,
     shouldAnimate,
     isAnimating,
+    isExpanded,
+    expandCurrentFact,
+    collapseCurrentFact,
   };
 }
 
