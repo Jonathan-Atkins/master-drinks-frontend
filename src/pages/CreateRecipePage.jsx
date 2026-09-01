@@ -220,9 +220,13 @@ function CreateRecipePage() {
   }
 
   return (
-    <main>
+    <main className="create-recipe-page">
       <header className="page-header-section">
-        <AnimatedUnderline as="h1" className="page-header page-heading-underline" color="green">
+        <AnimatedUnderline
+          as="h1"
+          className="page-header page-heading-underline"
+          color="green"
+        >
           Create a Recipe for {drink.name}
         </AnimatedUnderline>
 
@@ -242,7 +246,7 @@ function CreateRecipePage() {
       )}
 
       <form
-        className="auth-form"
+        className="auth-form create-recipe-form"
         onSubmit={handleSubmit}
       >
         <div className="form-field">
