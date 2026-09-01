@@ -141,32 +141,88 @@
   z-index: 0;
 }
 
-.video-playback-notice {
-  position: absolute;
 
-  top: 12px;
-  left: 50%;
+/* =========================
+   Visual Settings Notice
+========================= */
 
-  width: calc(100% - 32px);
+.visual-settings-dialog {
+  width: min(calc(100% - 32px), 420px);
 
-  margin: 0;
-  padding: 8px 10px;
+  padding: 24px;
 
-  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 6px;
-
-  background: rgba(0, 0, 0, 0.72);
+  background: #111111;
   color: #ffffff;
 
-  font-size: 18px;
-  line-height: 1.2;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
   text-align: center;
+}
 
-  z-index: 3;
+.visual-settings-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.82);
 
-  pointer-events: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.visual-settings-dialog h2 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-family: "Amatic SC", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.visual-settings-dialog p {
+  margin: 0 0 24px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.visual-settings-button {
+  min-width: 140px;
+
+  padding: 10px 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.visual-settings-button:hover {
+  opacity: 0.88;
+}
+
+.visual-settings-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.visual-settings-button:active {
+  transform: scale(0.98);
 }
 
 
@@ -371,8 +427,27 @@
     line-height: 1.05;
   }
 
-  .video-playback-notice {
-    display: none;
+  .visual-settings-dialog {
+    width: calc(100% - 32px);
+
+    padding: 22px 18px;
+
+    border-radius: 14px;
+  }
+
+  .visual-settings-dialog h2 {
+    font-size: 34px;
+  }
+
+  .visual-settings-dialog p {
+    font-size: 16px;
+  }
+
+  .visual-settings-button {
+    width: 100%;
+    min-height: 44px;
+
+    font-size: 18px;
   }
 
   .login-page .auth-card {
@@ -461,6 +536,16 @@
     right: 8px;
 
     font-size: 24px;
+  }
+
+  .visual-settings-dialog {
+    width: calc(100% - 16px);
+
+    padding: 20px 14px;
+  }
+
+  .visual-settings-dialog h2 {
+    font-size: 30px;
   }
 
   .login-page .auth-card-content,

@@ -7,6 +7,8 @@ import { AuthContext } from "../context/AuthContext";
 
 import AboutMe from "../features/about/components/AboutMe";
 import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
+import VisualSettingsNotice from "../features/auth/components/VisualSettingsNotice";
+import useVisualSettingsNotice from "../features/auth/hooks/useVisualSettingsNotice";
 import AuthLayout from "../components/layout/AuthLayout";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
@@ -16,6 +18,12 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  const {
+    showNotice,
+    setPlaybackBlocked,
+    acknowledgeNotice,
+  } = useVisualSettingsNotice();
 
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -73,6 +81,11 @@ function LoginPage() {
 
   return (
     <>
+      <VisualSettingsNotice
+        open={showNotice}
+        onAcknowledge={acknowledgeNotice}
+      />
+
       {createPortal(
         <button
           className="login-about-link"
@@ -99,13 +112,18 @@ function LoginPage() {
 
           <div className="wine-glass-outline">
             <section className="auth-card wine-glass-card">
-              <AuthBackgroundVideo />
+              <AuthBackgroundVideo
+                onPlaybackBlockedChange={
+                  setPlaybackBlocked
+                }
+              />
 
               <div className="auth-card-content">
                 <h2 className="auth-card-title">
                   Log In
                 </h2>
-                {error && (                  
+
+                {error && (
                   <p
                     className="form-error"
                     role="alert"
