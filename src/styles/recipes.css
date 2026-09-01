@@ -356,10 +356,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+
+  width: 30px;
+  height: min(72svh, 620px);
+  max-height: calc(100svh - 180px);
 
   transform: translateY(-50%);
 
-  padding: 4px 2px;
+  padding: 6px 2px;
 
   border-radius: 10px;
 
@@ -385,11 +390,11 @@
   align-items: center;
   justify-content: center;
 
+  flex: 1 1 0;
+
   width: 30px;
   min-width: 30px;
-
-  height: 24px;
-  min-height: 24px;
+  min-height: 0;
 
   padding: 0;
 
@@ -472,15 +477,17 @@
   .recipe-alphabet-nav {
     right: 1px;
 
-    padding: 2px 1px;
+    width: 24px;
+    height: min(72svh, 560px);
+    max-height: calc(100svh - 170px);
+
+    padding: 5px 1px;
   }
 
   .recipe-alphabet-letter {
     width: 23px;
     min-width: 23px;
-
-    height: 20px;
-    min-height: 20px;
+    min-height: 0;
 
     font-size: 15px;
   }
@@ -505,15 +512,17 @@
   .recipe-alphabet-nav {
     right: 10px;
 
+    width: 42px;
+    height: min(74svh, 640px);
+    max-height: calc(100svh - 160px);
+
     padding: 8px 5px;
   }
 
   .recipe-alphabet-letter {
     width: 32px;
     min-width: 32px;
-
-    height: 25px;
-    min-height: 25px;
+    min-height: 0;
 
     font-size: 19px;
   }
