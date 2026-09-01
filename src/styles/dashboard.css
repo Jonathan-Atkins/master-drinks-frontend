@@ -69,6 +69,7 @@
 
   min-width: 0;
   width: 100%;
+  
 }
 
 
@@ -104,13 +105,9 @@
 }
 
 .fun-fact-text {
-  color: #fff459;
+  color: #76f57c;
+  font-weight: 500;
 }
-
-.fun-fact-message {
-  color: #ffffff;
-}
-
 
 /* =========================
    Collapsed Fact
