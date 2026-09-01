@@ -1,28 +1,57 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+
 import IngredientRows from "../features/recipes/components/IngredientRows";
+
 import { createEmptyIngredientRow } from "../features/ingredients/utils/ingredientUtils";
+
 import { API_URL } from "../config/api";
-
-
 
 function CreateRecipePage() {
   const { drinkId } = useParams();
+
   const navigate = useNavigate();
 
+  const [drink, setDrink] =
+    useState(null);
 
-  const [drink, setDrink] = useState(null);
-  const [name, setName] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [publiclyVisible, setPubliclyVisible] = useState(true);
+  const [name, setName] =
+    useState("");
 
-  const [ingredientRows, setIngredientRows] = useState([
+  const [
+    instructions,
+    setInstructions,
+  ] = useState("");
+
+  const [
+    publiclyVisible,
+    setPubliclyVisible,
+  ] = useState(true);
+
+  const [
+    ingredientRows,
+    setIngredientRows,
+  ] = useState([
     createEmptyIngredientRow(),
   ]);
 
-  const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading] =
+    useState(true);
+
+  const [
+    submitting,
+    setSubmitting,
+  ] = useState(false);
+
+  const [error, setError] =
+    useState("");
 
   useEffect(() => {
     const fetchDrink = async () => {
@@ -35,13 +64,19 @@ function CreateRecipePage() {
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load drink.");
+          throw new Error(
+            "Unable to load drink."
+          );
         }
 
-        const data = await response.json();
+        const data =
+          await response.json();
+
         setDrink(data);
       } catch (requestError) {
-        setError(requestError.message);
+        setError(
+          requestError.message
+        );
       } finally {
         setLoading(false);
       }
@@ -50,122 +85,166 @@ function CreateRecipePage() {
     fetchDrink();
   }, [drinkId]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (
+    event
+  ) => {
     event.preventDefault();
 
     setError("");
     setSubmitting(true);
 
-    const incompleteRow = ingredientRows.some(
-      (row) =>
-        !row.ingredient_id ||
-        !row.amount ||
-        !row.measurement_unit
-    );
+    const incompleteRow =
+      ingredientRows.some(
+        (row) =>
+          !row.ingredient_id ||
+          !row.amount ||
+          !row.measurement_unit
+      );
 
     if (incompleteRow) {
       setError(
         "Select an ingredient, amount, and measurement for every row."
       );
+
       setSubmitting(false);
+
       return;
     }
 
     try {
-      const recipeResponse = await fetch(
-        `${API_URL}/api/v1/drinks/${drinkId}/recipes`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            name,
-            instructions,
-            publicly_visible: publiclyVisible,
-          }),
-        }
-      );
+      const recipeResponse =
+        await fetch(
+          `${API_URL}/api/v1/drinks/${drinkId}/recipes`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+            credentials:
+              "include",
+            body: JSON.stringify({
+              name,
+              instructions,
+              publicly_visible:
+                publiclyVisible,
+            }),
+          }
+        );
 
-      const recipeData = await recipeResponse.json();
+      const recipeData =
+        await recipeResponse.json();
 
       if (!recipeResponse.ok) {
         throw new Error(
-          recipeData.errors?.join(", ") ||
+          recipeData.errors?.join(
+            ", "
+          ) ||
             recipeData.error ||
             "Recipe could not be created."
         );
       }
 
       await Promise.all(
-        ingredientRows.map(async (ingredientRow) => {
-          const response = await fetch(
-            `${API_URL}/api/v1/recipes/${recipeData.id}/recipe_ingredients`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              credentials: "include",
-              body: JSON.stringify({
-                ingredient_id: ingredientRow.ingredient_id,
-                amount: ingredientRow.amount,
-                measurement_unit:
-                  ingredientRow.measurement_unit,
-              }),
+        ingredientRows.map(
+          async (
+            ingredientRow
+          ) => {
+            const response =
+              await fetch(
+                `${API_URL}/api/v1/recipes/${recipeData.id}/recipe_ingredients`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type":
+                      "application/json",
+                  },
+                  credentials:
+                    "include",
+                  body: JSON.stringify(
+                    {
+                      ingredient_id:
+                        ingredientRow.ingredient_id,
+                      amount:
+                        ingredientRow.amount,
+                      measurement_unit:
+                        ingredientRow.measurement_unit,
+                    }
+                  ),
+                }
+              );
+
+            const data =
+              await response.json();
+
+            if (!response.ok) {
+              throw new Error(
+                data.errors?.join(
+                  ", "
+                ) ||
+                  data.error ||
+                  "An ingredient could not be added."
+              );
             }
-          );
 
-          const data = await response.json();
-
-          if (!response.ok) {
-            throw new Error(
-              data.errors?.join(", ") ||
-                data.error ||
-                "An ingredient could not be added."
-            );
+            return data;
           }
-
-          return data;
-        })
+        )
       );
 
-      navigate(`/drinks/${drinkId}/recipes`);
+      navigate("/my-recipes");
     } catch (requestError) {
-      setError(requestError.message);
+      setError(
+        requestError.message
+      );
     } finally {
       setSubmitting(false);
     }
   };
 
   if (loading) {
-    return <p>Loading recipe form...</p>;
+    return (
+      <p>
+        Loading recipe form...
+      </p>
+    );
   }
 
   if (error && !drink) {
-    return <p role="alert">{error}</p>;
+    return (
+      <p role="alert">
+        {error}
+      </p>
+    );
   }
 
   return (
     <main>
       <header className="page-header-section">
         <h1 className="page-header animated-underline auto-underline">
-          Create a Recipe for {drink.name}
+          Create a Recipe for{" "}
+          {drink.name}
         </h1>
 
         <p className="page-header-description">
-          Add a new recipe to this drink.
+          Add a new recipe to
+          this drink.
         </p>
       </header>
 
       {error && (
-        <p className="form-error" role="alert">
+        <p
+          className="form-error"
+          role="alert"
+        >
           {error}
         </p>
       )}
 
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form
+        className="auth-form"
+        onSubmit={handleSubmit}
+      >
         <div className="form-field">
           <label htmlFor="recipe-name">
             Recipe name
@@ -176,7 +255,9 @@ function CreateRecipePage() {
             type="text"
             value={name}
             onChange={(event) =>
-              setName(event.target.value)
+              setName(
+                event.target.value
+              )
             }
             required
           />
@@ -191,15 +272,21 @@ function CreateRecipePage() {
             id="recipe-instructions"
             value={instructions}
             onChange={(event) =>
-              setInstructions(event.target.value)
+              setInstructions(
+                event.target.value
+              )
             }
             required
           />
         </div>
 
         <IngredientRows
-          ingredientRows={ingredientRows}
-          setIngredientRows={setIngredientRows}
+          ingredientRows={
+            ingredientRows
+          }
+          setIngredientRows={
+            setIngredientRows
+          }
           setError={setError}
         />
 
@@ -207,10 +294,13 @@ function CreateRecipePage() {
           <label>
             <input
               type="checkbox"
-              checked={publiclyVisible}
+              checked={
+                publiclyVisible
+              }
               onChange={(event) =>
                 setPubliclyVisible(
-                  event.target.checked
+                  event.target
+                    .checked
                 )
               }
             />

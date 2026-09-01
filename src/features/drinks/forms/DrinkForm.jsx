@@ -39,6 +39,7 @@ function DrinkForm({ drink = null }) {
   );
 
   const [error, setError] = useState("");
+
   const [submitting, setSubmitting] =
     useState(false);
 
@@ -181,7 +182,8 @@ function DrinkForm({ drink = null }) {
         ),
       });
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!response.ok) {
         throw new Error(
@@ -191,7 +193,14 @@ function DrinkForm({ drink = null }) {
         );
       }
 
-      navigate("/dashboard");
+      if (isEditing) {
+        navigate("/dashboard");
+        return;
+      }
+
+      navigate(
+        `/drinks/${data.id}/recipes/new`
+      );
     } catch (error) {
       setError(error.message);
     } finally {
