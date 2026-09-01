@@ -1,15 +1,280 @@
-.empty-recipes-state {
-  flex: 1;
+/* =========================
+   User Recipes Layout
+========================= */
 
-  width: 100%;
-  min-height: 60svh;
-
+.user-recipes-content {
   display: flex;
   flex-direction: column;
+
+  gap: 48px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   Drinks Needing Recipes
+========================= */
+
+.drinks-needing-recipes {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  width: 100%;
+}
+
+.drinks-needing-recipes-header {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  width: 100%;
+
+  text-align: left;
+}
+
+.drinks-needing-recipes-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    34px,
+    10vw,
+    46px
+  );
+
+  line-height: 1.05;
+}
+
+.drinks-needing-recipes-header p {
+  margin: 0;
+
+  color: rgba(
+    255,
+    255,
+    255,
+    0.72
+  );
+
+  font-size: clamp(
+    20px,
+    6vw,
+    26px
+  );
+
+  line-height: 1.25;
+}
+
+.drinks-needing-recipes-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+  gap: 16px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   Unfinished Drink Card
+========================= */
+
+.drink-needing-recipe-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 20px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 14px;
+
+  background:
+    var(--card-bg);
+
+  box-shadow:
+    var(--shadow);
+}
+
+.drink-needing-recipe-card h3 {
+  margin: 0;
+
+  color:
+    var(--rose-red);
+
+  font-size: clamp(
+    32px,
+    9vw,
+    42px
+  );
+
+  line-height: 1.05;
+}
+
+.drink-needing-recipe-details {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.drink-needing-recipe-details p {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    20px,
+    5.5vw,
+    25px
+  );
+
+  line-height: 1.3;
+}
+
+.drink-needing-recipe-details strong {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  );
+}
+
+
+/* =========================
+   Actions
+========================= */
+
+.drink-needing-recipe-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+.drink-needing-recipe-primary,
+.drink-needing-recipe-secondary {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  font-size: 22px;
+
+  text-align: center;
+  text-decoration: none;
+}
+
+.drink-needing-recipe-primary {
+  border:
+    1px solid
+    var(--rose-red);
+
+  background:
+    var(--rose-red);
+
+  color: #ffffff;
+}
+
+.drink-needing-recipe-secondary {
+  border:
+    1px solid
+    var(--border);
+
+  background:
+    transparent;
+
+  color: #ffffff;
+}
+
+.drink-needing-recipe-primary:focus-visible,
+.drink-needing-recipe-secondary:focus-visible {
+  outline:
+    2px solid
+    #ffffff;
+
+  outline-offset: 3px;
+}
+
+
+/* =========================
+   Existing Recipes
+========================= */
+
+.user-recipes-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+.user-recipes-heading {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    34px,
+    10vw,
+    46px
+  );
+
+  line-height: 1.05;
+}
+
+.my-recipes-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+  gap: 16px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   No Drinks State
+========================= */
+
+.empty-recipes-state {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 8px;
+
+  width: 100%;
+  min-height: 60svh;
 
   margin: 0;
 
@@ -17,14 +282,15 @@
 }
 
 .empty-recipes-message {
-  width: 100%;
-
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 12px;
+
+  width: 100%;
 }
 
 .empty-recipes-line {
@@ -53,48 +319,79 @@
 .empty-recipes-link {
   display: inline-flex;
 
-  color: var(--rose-link-red);
+  color:
+    var(--rose-red);
 
   text-decoration: none;
 
-  transition: color 220ms ease;
-}
-
-.empty-recipes-link .jitter-text,
-.empty-recipes-link .jitter-text-character {
-  color: inherit;
+  transition:
+    color 220ms ease;
 }
 
 .empty-recipes-link:hover {
-  color: var(--rose-link-hover);
+  color:
+    var(--rose-red-hover);
 }
 
 .empty-recipes-link:focus-visible {
-  outline: 2px solid var(--rose-link-red);
+  outline:
+    2px solid
+    var(--rose-red);
+
   outline-offset: 4px;
 
   border-radius: 4px;
 }
 
-.empty-recipes-rotate-line {
-  width: 100%;
 
-  margin: 0;
+/* =========================
+   Tablet / Desktop
+========================= */
 
-  color: #ffffff;
+@media (min-width: 640px) {
+  .drink-needing-recipe-actions {
+    flex-direction: row;
+  }
 
-  font-size: clamp(
-    52px,
-    10vw,
-    78px
-  );
-
-  line-height: 1.05;
-
-  text-align: center;
+  .drink-needing-recipe-primary,
+  .drink-needing-recipe-secondary {
+    width: auto;
+    min-width: 150px;
+  }
 }
 
+@media (min-width: 768px) {
+  .drinks-needing-recipes-grid,
+  .my-recipes-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (min-width: 1024px) {
+  .drinks-needing-recipes-grid,
+  .my-recipes-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+
+/* =========================
+   Small Mobile
+========================= */
+
 @media (max-width: 480px) {
+  .user-recipes-content {
+    gap: 40px;
+  }
+
   .empty-recipes-state {
     gap: 6px;
 
@@ -106,8 +403,7 @@
     max-width: 100%;
   }
 
-  .empty-recipes-line,
-  .empty-recipes-rotate-line {
+  .empty-recipes-line {
     font-size: clamp(
       48px,
       12vw,
