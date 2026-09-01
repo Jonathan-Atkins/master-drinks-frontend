@@ -5,6 +5,7 @@ import { API_URL } from "../config/api";
 
 import AuthLayout from "../components/layout/AuthLayout";
 import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
+import AccountCreatedNotice from "../features/auth/components/AccountCreatedNotice";
 import JitterText from "../components/ui/JitterText";
 
 function RegisterPage() {
@@ -18,6 +19,7 @@ function RegisterPage() {
   const [error, setError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [accountCreated, setAccountCreated] = useState(false);
 
   const navigate = useNavigate();
 
@@ -51,7 +53,7 @@ function RegisterPage() {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/login");
+        setAccountCreated(true);
         return;
       }
 
@@ -81,159 +83,171 @@ function RegisterPage() {
     }
   };
 
+  const handleAccountCreated = () => {
+    setAccountCreated(false);
+    navigate("/login");
+  };
+
   return (
-    <AuthLayout>
-      <main className="auth-page register-page">
-        <h1 className="animated-underline auto-underline jittery">
-          <JitterText>Create Account</JitterText>
-        </h1>
+    <>
+      <AccountCreatedNotice
+        open={accountCreated}
+        onAcknowledge={handleAccountCreated}
+      />
 
-        <section className="auth-card beer-glass-card">
-          <AuthBackgroundVideo />
+      <AuthLayout>
+        <main className="auth-page register-page">
+          <h1 className="animated-underline auto-underline jittery">
+            <JitterText>Create Account</JitterText>
+          </h1>
 
-          <div className="auth-card-content">
-            {error && (
-              <p
-                className="form-error"
-                role="alert"
+          <section className="auth-card beer-glass-card">
+            <AuthBackgroundVideo />
+
+            <div className="auth-card-content">
+              {error && (
+                <p
+                  className="form-error"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
+
+              <form
+                className="auth-form"
+                onSubmit={handleSubmit}
               >
-                {error}
-              </p>
-            )}
+                <div className="form-field">
+                  <label htmlFor="name">
+                    Name
+                  </label>
 
-            <form
-              className="auth-form"
-              onSubmit={handleSubmit}
-            >
-              <div className="form-field">
-                <label htmlFor="name">
-                  Name
-                </label>
+                  <input
+                    id="name"
+                    type="text"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(event) =>
+                      setName(event.target.value)
+                    }
+                    required
+                  />
+                </div>
 
-                <input
-                  id="name"
-                  type="text"
-                  autoComplete="name"
-                  value={name}
-                  onChange={(event) =>
-                    setName(event.target.value)
-                  }
-                  required
-                />
-              </div>
+                <div className="form-field">
+                  <label htmlFor="username">
+                    Username
+                  </label>
 
-              <div className="form-field">
-                <label htmlFor="username">
-                  Username
-                </label>
+                  <input
+                    id="username"
+                    type="text"
+                    autoComplete="username"
+                    value={username}
+                    onChange={(event) => {
+                      setUsername(
+                        event.target.value
+                      );
+                      setUsernameError("");
+                    }}
+                    aria-invalid={Boolean(
+                      usernameError
+                    )}
+                    aria-describedby={
+                      usernameError
+                        ? "username-error"
+                        : undefined
+                    }
+                    required
+                  />
 
-                <input
-                  id="username"
-                  type="text"
-                  autoComplete="username"
-                  value={username}
-                  onChange={(event) => {
-                    setUsername(
-                      event.target.value
-                    );
-                    setUsernameError("");
-                  }}
-                  aria-invalid={Boolean(
-                    usernameError
+                  {usernameError && (
+                    <p
+                      id="username-error"
+                      className="field-error"
+                      role="alert"
+                    >
+                      {usernameError}
+                    </p>
                   )}
-                  aria-describedby={
-                    usernameError
-                      ? "username-error"
-                      : undefined
-                  }
-                  required
-                />
+                </div>
 
-                {usernameError && (
-                  <p
-                    id="username-error"
-                    className="field-error"
-                    role="alert"
-                  >
-                    {usernameError}
-                  </p>
-                )}
-              </div>
+                <div className="form-field">
+                  <label htmlFor="email">
+                    Email
+                  </label>
 
-              <div className="form-field">
-                <label htmlFor="email">
-                  Email
-                </label>
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(event) =>
+                      setEmail(event.target.value)
+                    }
+                    required
+                  />
+                </div>
 
-                <input
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(event) =>
-                    setEmail(event.target.value)
-                  }
-                  required
-                />
-              </div>
+                <div className="form-field">
+                  <label htmlFor="password">
+                    Password
+                  </label>
 
-              <div className="form-field">
-                <label htmlFor="password">
-                  Password
-                </label>
+                  <input
+                    id="password"
+                    type="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(event) =>
+                      setPassword(event.target.value)
+                    }
+                    required
+                  />
+                </div>
 
-                <input
-                  id="password"
-                  type="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={(event) =>
-                    setPassword(event.target.value)
-                  }
-                  required
-                />
-              </div>
+                <div className="form-field">
+                  <label htmlFor="passwordConfirmation">
+                    Password Confirmation
+                  </label>
 
-              <div className="form-field">
-                <label htmlFor="passwordConfirmation">
-                  Password Confirmation
-                </label>
+                  <input
+                    id="passwordConfirmation"
+                    type="password"
+                    autoComplete="new-password"
+                    value={passwordConfirmation}
+                    onChange={(event) =>
+                      setPasswordConfirmation(
+                        event.target.value
+                      )
+                    }
+                    required
+                  />
+                </div>
 
-                <input
-                  id="passwordConfirmation"
-                  type="password"
-                  autoComplete="new-password"
-                  value={passwordConfirmation}
-                  onChange={(event) =>
-                    setPasswordConfirmation(
-                      event.target.value
-                    )
-                  }
-                  required
-                />
-              </div>
+                <button
+                  className="primary-button"
+                  type="submit"
+                  disabled={submitting}
+                >
+                  {submitting
+                    ? "Building!..."
+                    : "Create Recipe Book"}
+                </button>
+              </form>
 
-              <button
-                className="primary-button"
-                type="submit"
-                disabled={submitting}
-              >
-                {submitting
-                  ? "Building!..."
-                  : "Create Recipe Book"}
-              </button>
-            </form>
-
-            <p className="auth-footer">
-              Already have an account?{" "}
-              <Link to="/login">
-                Log in
-              </Link>
-            </p>
-          </div>
-        </section>
-      </main>
-    </AuthLayout>
+              <p className="auth-footer">
+                Already have an account?{" "}
+                <Link to="/login">
+                  Log in
+                </Link>
+              </p>
+            </div>
+          </section>
+        </main>
+      </AuthLayout>
+    </>
   );
 }
 
