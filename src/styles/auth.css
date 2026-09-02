@@ -216,6 +216,7 @@
     rgba(0, 0, 0, 0.82);
 
   backdrop-filter: blur(4px);
+
   -webkit-backdrop-filter:
     blur(4px);
 }
@@ -303,6 +304,7 @@
     rgba(0, 0, 0, 0.2);
 
   backdrop-filter: blur(1px);
+
   -webkit-backdrop-filter:
     blur(1px);
 
@@ -335,7 +337,8 @@
   text-align: center;
 }
 
-.login-page .auth-card-title::after {
+.login-page
+  .auth-card-title::after {
   content: "";
 
   position: absolute;
@@ -358,7 +361,8 @@
     rgba(230, 200, 117, 0.35);
 }
 
-.login-page .auth-card-content {
+.login-page
+  .auth-card-content {
   padding-top: 16px;
 }
 
@@ -387,7 +391,8 @@
     );
 }
 
-.register-page .auth-card-content {
+.register-page
+  .auth-card-content {
   padding:
     clamp(
       32px,
@@ -417,7 +422,9 @@
     );
 }
 
-.auth-page .form-field label {
+.auth-page
+  .form-field
+  label {
   width: fit-content;
 
   padding: 2px 6px;
@@ -466,7 +473,8 @@
   input:not(
     [type="checkbox"]
   ) {
-  font-family: sans-serif;
+  font-family:
+    sans-serif;
 
   text-transform: none;
 
@@ -484,7 +492,8 @@
   width: 100%;
 }
 
-.password-input-wrapper input {
+.password-input-wrapper
+  input {
   width: 100%;
 
   padding-right: 72px;
@@ -516,7 +525,8 @@
 
   color: #ffffff;
 
-  font-family: sans-serif;
+  font-family:
+    sans-serif;
 
   font-size: 14px;
   font-weight: 700;
@@ -543,7 +553,8 @@
    Auth Button
 ========================= */
 
-.auth-page .primary-button {
+.auth-page
+  .primary-button {
   width: 100%;
 
   font-size:
@@ -559,7 +570,8 @@
    Auth Footer
 ========================= */
 
-.auth-page .auth-footer {
+.auth-page
+  .auth-footer {
   margin-top: 20px;
 
   font-size:
@@ -572,7 +584,9 @@
   text-align: center;
 }
 
-.auth-page .auth-footer a {
+.auth-page
+  .auth-footer
+  a {
   position: relative;
 
   text-decoration: none;
@@ -595,6 +609,7 @@
     currentColor;
 
   transform: scaleX(0);
+
   transform-origin: left;
 
   transition:
@@ -644,6 +659,7 @@
     rgba(0, 0, 0, 0.82);
 
   backdrop-filter: blur(4px);
+
   -webkit-backdrop-filter:
     blur(4px);
 }
@@ -672,6 +688,7 @@
   padding: 10px 20px;
 
   border: 0;
+
   border-radius: 8px;
 
   background: #ffffff;
@@ -762,12 +779,14 @@
     font-size: 18px;
   }
 
-  .login-page .auth-card {
+  .login-page
+    .auth-card {
     width: 82vw;
     max-width: 330px;
   }
 
-  .login-page .auth-form {
+  .login-page
+    .auth-form {
     width: 100%;
   }
 
@@ -783,7 +802,14 @@
 
     padding: 6px 10px;
 
-    font-size: 20px;
+    font-size:
+      var(
+        --mobile-input-font-size,
+        20px
+      );
+
+    transition:
+      font-size 120ms ease;
   }
 
   .login-page
@@ -807,7 +833,14 @@
       6px
       10px;
 
-    font-size: 20px;
+    font-size:
+      var(
+        --mobile-input-font-size,
+        20px
+      );
+
+    transition:
+      font-size 120ms ease;
   }
 
   .login-page

@@ -21,22 +21,51 @@ import AuthLayout from "../components/layout/AuthLayout";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
+
+function getMobileInputFontSize(
+  value,
+  fieldType
+) {
+  const length = value.length;
+
+  if (fieldType === "password") {
+    if (length <= 12) return "20px";
+    if (length <= 16) return "17px";
+    if (length <= 20) return "14px";
+    if (length <= 24) return "12px";
+
+    return "10px";
+  }
+
+  if (length <= 18) return "20px";
+  if (length <= 24) return "17px";
+  if (length <= 30) return "14px";
+  if (length <= 36) return "12px";
+
+  return "10px";
+}
+
+
 function LoginPage() {
   const [
     identifier,
     setIdentifier,
   ] = useState("");
 
-  const [password, setPassword] =
-    useState("");
+  const [
+    password,
+    setPassword,
+  ] = useState("");
 
   const [
     showPassword,
     setShowPassword,
   ] = useState(false);
 
-  const [error, setError] =
-    useState("");
+  const [
+    error,
+    setError,
+  ] = useState("");
 
   const [
     submitting,
@@ -54,6 +83,7 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
+
   const handleSubmit = async (
     event
   ) => {
@@ -67,14 +97,18 @@ function LoginPage() {
         `${API_URL}/api/v1/login`,
         {
           method: "POST",
+
           headers: {
             "Content-Type":
               "application/json",
           },
+
           credentials: "include",
+
           body: JSON.stringify({
             identifier:
               identifier.trim(),
+
             password,
           }),
         }
@@ -105,6 +139,7 @@ function LoginPage() {
     }
   };
 
+
   const scrollToAbout = () => {
     document
       .getElementById("about-me")
@@ -113,6 +148,7 @@ function LoginPage() {
         block: "start",
       });
   };
+
 
   return (
     <>
@@ -190,6 +226,13 @@ function LoginPage() {
                       autoCapitalize="none"
                       spellCheck="false"
                       value={identifier}
+                      style={{
+                        "--mobile-input-font-size":
+                          getMobileInputFontSize(
+                            identifier,
+                            "identifier"
+                          ),
+                      }}
                       onChange={(
                         event
                       ) =>
@@ -220,6 +263,13 @@ function LoginPage() {
                         autoCapitalize="none"
                         spellCheck="false"
                         value={password}
+                        style={{
+                          "--mobile-input-font-size":
+                            getMobileInputFontSize(
+                              password,
+                              "password"
+                            ),
+                        }}
                         onChange={(
                           event
                         ) =>
