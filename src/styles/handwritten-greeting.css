@@ -35,19 +35,86 @@
 
   opacity: 1;
 
+  transform-box: fill-box;
+  transform-origin: center;
+
   filter:
     drop-shadow(
       0 0 2px
       rgba(255, 255, 255, 0.18)
     );
+
+  --jitter-duration: 3s;
 }
 
 
 /* =========================
-   Writing Phase
+   Individual Letter Timing
 ========================= */
 
-.bar-buddy-svg.is-writing .bar-buddy-letter {
+.bar-buddy-letter:nth-child(1) {
+  --jitter-duration: 2.2s;
+}
+
+.bar-buddy-letter:nth-child(2) {
+  --jitter-duration: 3.2s;
+}
+
+.bar-buddy-letter:nth-child(3) {
+  --jitter-duration: 2.7s;
+}
+
+.bar-buddy-letter:nth-child(4) {
+  --jitter-duration: 3.5s;
+}
+
+.bar-buddy-letter:nth-child(5) {
+  --jitter-duration: 3.0s;
+}
+
+.bar-buddy-letter:nth-child(6) {
+  --jitter-duration: 2.3s;
+}
+
+.bar-buddy-letter:nth-child(7) {
+  --jitter-duration: 3.6s;
+}
+
+.bar-buddy-letter:nth-child(8) {
+  --jitter-duration: 3.0s;
+}
+
+.bar-buddy-letter:nth-child(9) {
+  --jitter-duration: 2.6s;
+}
+
+.bar-buddy-letter:nth-child(10) {
+  --jitter-duration: 3.4s;
+}
+
+.bar-buddy-letter:nth-child(11) {
+  --jitter-duration: 2.4s;
+}
+
+.bar-buddy-letter:nth-child(12) {
+  --jitter-duration: 3.7s;
+}
+
+.bar-buddy-letter:nth-child(13) {
+  --jitter-duration: 3.1s;
+}
+
+.bar-buddy-letter:nth-child(14) {
+  --jitter-duration: 2.73s;
+}
+
+
+/* =========================
+   Write + Jitter
+========================= */
+
+.bar-buddy-svg.is-writing
+  .bar-buddy-letter {
   animation:
     bar-buddy-draw
       0.22s
@@ -61,31 +128,15 @@
       forwards
       calc(
         var(--write-delay) + 0.16s
+      ),
+
+    bar-buddy-jitter
+      var(--jitter-duration)
+      ease-in-out
+      infinite
+      calc(
+        var(--write-delay) + 0.22s
       );
-}
-
-
-/* =========================
-   Erasing Phase
-========================= */
-
-.bar-buddy-svg.is-erasing .bar-buddy-letter {
-  fill: #ffffff;
-
-  stroke-dashoffset: 0;
-
-  animation:
-    bar-buddy-fill-out
-      0.05s
-      ease-in
-      forwards
-      var(--erase-delay),
-
-    bar-buddy-undraw
-      0.13s
-      ease-in
-      forwards
-      var(--erase-delay);
 }
 
 
@@ -113,29 +164,6 @@
 
 
 /* =========================
-   Erasing Animation
-========================= */
-
-@keyframes bar-buddy-undraw {
-  0% {
-    stroke-dashoffset: 0;
-
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 0.85;
-  }
-
-  100% {
-    stroke-dashoffset: 1;
-
-    opacity: 0;
-  }
-}
-
-
-/* =========================
    Fill Animation
 ========================= */
 
@@ -149,13 +177,77 @@
   }
 }
 
-@keyframes bar-buddy-fill-out {
-  0% {
-    fill: #ffffff;
+
+/* =========================
+   Subtle Independent Jitter
+========================= */
+
+@keyframes bar-buddy-jitter {
+  0%,
+  38%,
+  54%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
   }
 
-  100% {
-    fill: transparent;
+  42% {
+    translate:
+      -0.15px
+      0.1px;
+
+    rotate: -0.07deg;
+  }
+
+  45% {
+    translate:
+      0.15px
+      -0.1px;
+
+    rotate: 0.07deg;
+  }
+
+  48% {
+    translate:
+      -0.08px
+      0.05px;
+
+    rotate: -0.04deg;
+  }
+
+  51% {
+    translate:
+      0.08px
+      0;
+
+    rotate: 0.03deg;
+  }
+}
+
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .bar-buddy-svg.is-writing
+    .bar-buddy-letter {
+    animation:
+      bar-buddy-draw
+        0.22s
+        ease-out
+        forwards
+        var(--write-delay),
+
+      bar-buddy-fill-in
+        0.06s
+        ease-out
+        forwards
+        calc(
+          var(--write-delay) + 0.16s
+        );
   }
 }
 
@@ -166,9 +258,13 @@
 
 @media (max-width: 480px) {
   .bar-buddy-greeting {
-    width: min(82vw, 360px);
+    width:
+      min(
+        94vw,
+        440px
+      );
 
-    margin: 12px 0 12px;
+    margin: 16px 0 4px;
   }
 
   .bar-buddy-letter {

@@ -1,6 +1,14 @@
-import { useContext, useState } from "react";
+import {
+  useContext,
+  useState,
+} from "react";
+
 import { createPortal } from "react-dom";
-import { Link, useNavigate } from "react-router-dom";
+
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
 
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/AuthContext";
@@ -14,10 +22,26 @@ import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [
+    identifier,
+    setIdentifier,
+  ] = useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+  const [
+    showPassword,
+    setShowPassword,
+  ] = useState(false);
+
+  const [error, setError] =
+    useState("");
+
+  const [
+    submitting,
+    setSubmitting,
+  ] = useState(false);
 
   const {
     showNotice,
@@ -25,10 +49,14 @@ function LoginPage() {
     acknowledgeNotice,
   } = useVisualSettingsNotice();
 
-  const { setUser } = useContext(AuthContext);
+  const { setUser } =
+    useContext(AuthContext);
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (
+    event
+  ) => {
     event.preventDefault();
 
     setError("");
@@ -40,21 +68,26 @@ function LoginPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
           credentials: "include",
           body: JSON.stringify({
-            email,
+            identifier:
+              identifier.trim(),
             password,
           }),
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (response.ok) {
         setUser(data.user);
+
         navigate("/dashboard");
+
         return;
       }
 
@@ -64,7 +97,9 @@ function LoginPage() {
           "Login failed. Please try again."
       );
     } catch {
-      setError("The server could not be reached.");
+      setError(
+        "The server could not be reached."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -83,7 +118,9 @@ function LoginPage() {
     <>
       <VisualSettingsNotice
         open={showNotice}
-        onAcknowledge={acknowledgeNotice}
+        onAcknowledge={
+          acknowledgeNotice
+        }
       />
 
       {createPortal(
@@ -107,7 +144,9 @@ function LoginPage() {
           <HandwrittenGreeting />
 
           <h1>
-            Discover, Create, and Share Cocktails & Mocktails
+            Discover, Create, and
+            Share Cocktails &
+            Mocktails
           </h1>
 
           <div className="wine-glass-outline">
@@ -134,20 +173,30 @@ function LoginPage() {
 
                 <form
                   className="auth-form"
-                  onSubmit={handleSubmit}
+                  onSubmit={
+                    handleSubmit
+                  }
                 >
                   <div className="form-field">
-                    <label htmlFor="email">
-                      Email
+                    <label htmlFor="identifier">
+                      Username or Email
                     </label>
 
                     <input
-                      id="email"
-                      type="email"
-                      autoComplete="email"
-                      value={email}
-                      onChange={(event) =>
-                        setEmail(event.target.value)
+                      id="identifier"
+                      className="auth-readable-input"
+                      type="text"
+                      autoComplete="username"
+                      autoCapitalize="none"
+                      spellCheck="false"
+                      value={identifier}
+                      onChange={(
+                        event
+                      ) =>
+                        setIdentifier(
+                          event.target
+                            .value
+                        )
                       }
                       required
                     />
@@ -158,22 +207,63 @@ function LoginPage() {
                       Password
                     </label>
 
-                    <input
-                      id="password"
-                      type="password"
-                      autoComplete="current-password"
-                      value={password}
-                      onChange={(event) =>
-                        setPassword(event.target.value)
-                      }
-                      required
-                    />
+                    <div className="password-input-wrapper">
+                      <input
+                        id="password"
+                        className="auth-readable-input"
+                        type={
+                          showPassword
+                            ? "text"
+                            : "password"
+                        }
+                        autoComplete="current-password"
+                        autoCapitalize="none"
+                        spellCheck="false"
+                        value={password}
+                        onChange={(
+                          event
+                        ) =>
+                          setPassword(
+                            event.target
+                              .value
+                          )
+                        }
+                        required
+                      />
+
+                      <button
+                        className="password-toggle"
+                        type="button"
+                        onClick={() =>
+                          setShowPassword(
+                            (
+                              current
+                            ) =>
+                              !current
+                          )
+                        }
+                        aria-pressed={
+                          showPassword
+                        }
+                        aria-label={
+                          showPassword
+                            ? "Hide password"
+                            : "Show password"
+                        }
+                      >
+                        {showPassword
+                          ? "Hide"
+                          : "Show"}
+                      </button>
+                    </div>
                   </div>
 
                   <button
                     className="primary-button"
                     type="submit"
-                    disabled={submitting}
+                    disabled={
+                      submitting
+                    }
                   >
                     {submitting
                       ? "Logging in..."
@@ -182,7 +272,8 @@ function LoginPage() {
                 </form>
 
                 <p className="auth-footer">
-                  Don&apos;t have an account?{" "}
+                  Don&apos;t have an
+                  account?{" "}
                   <Link to="/register">
                     Create one
                   </Link>
