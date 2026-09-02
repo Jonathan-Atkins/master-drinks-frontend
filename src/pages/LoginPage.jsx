@@ -16,34 +16,12 @@ import { AuthContext } from "../context/AuthContext";
 import AboutMe from "../features/about/components/AboutMe";
 import AuthBackgroundVideo from "../features/auth/components/AuthBackgroundVideo";
 import VisualSettingsNotice from "../features/auth/components/VisualSettingsNotice";
+import useMobileLoginInputSizing from "../features/auth/hooks/useMobileLoginInputSizing";
 import useVisualSettingsNotice from "../features/auth/hooks/useVisualSettingsNotice";
+
 import AuthLayout from "../components/layout/AuthLayout";
 import HandwrittenGreeting from "../components/ui/HandwrittenGreeting";
 import WineGlassClipPath from "../components/ui/WineGlassClipPath";
-
-
-function getMobileInputFontSize(
-  value,
-  fieldType
-) {
-  const length = value.length;
-
-  if (fieldType === "password") {
-    if (length <= 12) return "20px";
-    if (length <= 16) return "17px";
-    if (length <= 20) return "14px";
-    if (length <= 24) return "12px";
-
-    return "10px";
-  }
-
-  if (length <= 18) return "20px";
-  if (length <= 24) return "17px";
-  if (length <= 30) return "14px";
-  if (length <= 36) return "12px";
-
-  return "10px";
-}
 
 
 function LoginPage() {
@@ -72,11 +50,24 @@ function LoginPage() {
     setSubmitting,
   ] = useState(false);
 
+
   const {
     showNotice,
     setPlaybackBlocked,
     acknowledgeNotice,
   } = useVisualSettingsNotice();
+
+
+  const {
+    formRef,
+    identifierInputRef,
+    inputStyles,
+  } = useMobileLoginInputSizing({
+    identifier,
+    password,
+    showPassword,
+  });
+
 
   const { setUser } =
     useContext(AuthContext);
@@ -208,7 +199,9 @@ function LoginPage() {
                 )}
 
                 <form
+                  ref={formRef}
                   className="auth-form"
+                  style={inputStyles}
                   onSubmit={
                     handleSubmit
                   }
@@ -219,6 +212,9 @@ function LoginPage() {
                     </label>
 
                     <input
+                      ref={
+                        identifierInputRef
+                      }
                       id="identifier"
                       className="auth-readable-input"
                       type="text"
@@ -226,13 +222,6 @@ function LoginPage() {
                       autoCapitalize="none"
                       spellCheck="false"
                       value={identifier}
-                      style={{
-                        "--mobile-input-font-size":
-                          getMobileInputFontSize(
-                            identifier,
-                            "identifier"
-                          ),
-                      }}
                       onChange={(
                         event
                       ) =>
@@ -263,13 +252,6 @@ function LoginPage() {
                         autoCapitalize="none"
                         spellCheck="false"
                         value={password}
-                        style={{
-                          "--mobile-input-font-size":
-                            getMobileInputFontSize(
-                              password,
-                              "password"
-                            ),
-                        }}
                         onChange={(
                           event
                         ) =>
