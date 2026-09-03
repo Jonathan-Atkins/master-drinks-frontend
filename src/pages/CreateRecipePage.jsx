@@ -9,9 +9,13 @@ import {
 } from "react-router-dom";
 
 import AnimatedUnderline from "../components/ui/AnimatedUnderline";
+
 import IngredientRows from "../features/recipes/components/IngredientRows";
 
-import { createEmptyIngredientRow } from "../features/ingredients/utils/ingredientUtils";
+import {
+  createEmptyIngredientRow,
+  createIngredientRowFromIngredient,
+} from "../features/ingredients/utils/ingredientUtils";
 
 import { API_URL } from "../config/api";
 
@@ -74,6 +78,63 @@ function CreateRecipePage() {
           await response.json();
 
         setDrink(data);
+
+        setName(
+          data.next_recipe_name ||
+            data.name ||
+            ""
+        );
+
+        const isFirstRecipe =
+          data.recipe_count === 0;
+
+        if (!isFirstRecipe) {
+          setIngredientRows([
+            createEmptyIngredientRow(),
+          ]);
+
+          return;
+        }
+
+        const categoryIngredients =
+          (data.categories || [])
+            .map(
+              (category) =>
+                category.ingredient
+            )
+            .filter(Boolean);
+
+        const uniqueIngredients =
+          Array.from(
+            new Map(
+              categoryIngredients.map(
+                (ingredient) => [
+                  ingredient.id,
+                  ingredient,
+                ]
+              )
+            ).values()
+          );
+
+        if (
+          uniqueIngredients.length ===
+          0
+        ) {
+          setIngredientRows([
+            createEmptyIngredientRow(),
+          ]);
+
+          return;
+        }
+
+        setIngredientRows(
+          uniqueIngredients.map(
+            (ingredient) =>
+              createIngredientRowFromIngredient(
+                ingredient
+              )
+          )
+        );
       } catch (requestError) {
         setError(
           requestError.message
@@ -92,6 +153,7 @@ function CreateRecipePage() {
     event.preventDefault();
 
     setError("");
+
     setSubmitting(true);
 
     const incompleteRow =
@@ -227,7 +289,8 @@ function CreateRecipePage() {
           className="page-header page-heading-underline"
           color="green"
         >
-          Create a Recipe for {drink.name}
+          Create a Recipe for{" "}
+          {drink.name}
         </AnimatedUnderline>
 
         <p className="page-header-description">

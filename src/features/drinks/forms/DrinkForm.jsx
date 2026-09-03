@@ -49,10 +49,18 @@ function DrinkForm({ drink = null }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const controller =
+      new AbortController();
+
     const fetchCategories = async () => {
+      setCategoriesLoading(true);
+
       try {
         const response = await fetch(
-          `${API_URL}/api/v1/categories`
+          `${API_URL}/api/v1/categories?alcoholic=${alcoholic}`,
+          {
+            signal: controller.signal,
+          }
         );
 
         const data = await response.json();
@@ -65,15 +73,49 @@ function DrinkForm({ drink = null }) {
         }
 
         setCategories(data);
+
+        const allowedCategorySlugs =
+          new Set(
+            data.map(
+              (category) => category.slug
+            )
+          );
+
+        setSelectedCategories(
+          (currentCategories) => {
+            const validCategories =
+              currentCategories.filter(
+                (categorySlug) =>
+                  categorySlug &&
+                  allowedCategorySlugs.has(
+                    categorySlug
+                  )
+              );
+
+            return validCategories.length
+              ? validCategories
+              : [""];
+          }
+        );
       } catch (error) {
+        if (error.name === "AbortError") {
+          return;
+        }
+
         setError(error.message);
       } finally {
-        setCategoriesLoading(false);
+        if (!controller.signal.aborted) {
+          setCategoriesLoading(false);
+        }
       }
     };
 
     fetchCategories();
-  }, []);
+
+    return () => {
+      controller.abort();
+    };
+  }, [alcoholic]);
 
   const handleCategoryChange = (
     index,
@@ -138,6 +180,13 @@ function DrinkForm({ drink = null }) {
             categoryIndex !== index
         )
     );
+  };
+
+  const handleAlcoholicChange = (
+    event
+  ) => {
+    setError("");
+    setAlcoholic(event.target.checked);
   };
 
   const handleSubmit = async (event) => {
@@ -239,6 +288,20 @@ function DrinkForm({ drink = null }) {
       </div>
 
       <div className="form-field">
+        <label>
+          <input
+            type="checkbox"
+            checked={alcoholic}
+            onChange={
+              handleAlcoholicChange
+            }
+          />
+
+          Alcoholic
+        </label>
+      </div>
+
+      <div className="form-field">
         <label>Categories</label>
 
         {selectedCategories.map(
@@ -334,22 +397,6 @@ function DrinkForm({ drink = null }) {
         >
           Add Category
         </button>
-      </div>
-
-      <div className="form-field">
-        <label>
-          <input
-            type="checkbox"
-            checked={alcoholic}
-            onChange={(event) =>
-              setAlcoholic(
-                event.target.checked
-              )
-            }
-          />
-
-          Alcoholic
-        </label>
       </div>
 
       <div className="form-field">
