@@ -1,4 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
 import {
   NavLink,
   useLocation,
@@ -46,31 +51,47 @@ const navItems = [
 function NavBar() {
   const location = useLocation();
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [direction, setDirection] = useState("right");
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
+  const [direction, setDirection] =
+    useState("right");
 
   const previousIndex = useRef(0);
 
-  const activeIndex = navItems.findIndex(
-    (item) => item.path === location.pathname
-  );
+  const activeIndex =
+    navItems.findIndex(
+      (item) =>
+        item.path ===
+        location.pathname
+    );
 
   useEffect(() => {
     if (activeIndex === -1) {
       return;
     }
 
-    if (activeIndex < previousIndex.current) {
+    if (
+      activeIndex <
+      previousIndex.current
+    ) {
       setDirection("left");
-    } else if (activeIndex > previousIndex.current) {
+    } else if (
+      activeIndex >
+      previousIndex.current
+    ) {
       setDirection("right");
     }
 
-    previousIndex.current = activeIndex;
+    previousIndex.current =
+      activeIndex;
   }, [activeIndex]);
 
   const handleMenuToggle = () => {
-    setMenuOpen((currentMenuState) => !currentMenuState);
+    setMenuOpen(
+      (currentMenuState) =>
+        !currentMenuState
+    );
   };
 
   return (
@@ -86,43 +107,70 @@ function NavBar() {
               ? "Close navigation menu"
               : "Open navigation menu"
           }
-          onClick={handleMenuToggle}
+          onClick={
+            handleMenuToggle
+          }
         >
-          Menu
+          <span className="nav-menu-label">
+            Menu
+          </span>
+
+          <span
+            className={`nav-menu-icon ${
+              menuOpen
+                ? "open"
+                : ""
+            }`}
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </button>
 
         <div
           id="main-navigation-menu"
           className={`nav-menu ${
-            menuOpen ? "nav-menu-open" : ""
+            menuOpen
+              ? "nav-menu-open"
+              : ""
           }`}
         >
           <div className="nav-links">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setMenuOpen(false);
-                }}
-                className={({ isActive }) =>
-                  `nav-link ${
-                    isActive
-                      ? "nav-link-active"
-                      : ""
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+            {navItems.map(
+              (item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => {
+                    setMenuOpen(
+                      false
+                    );
+                  }}
+                  className={({
+                    isActive,
+                  }) =>
+                    `nav-link ${
+                      isActive
+                        ? "nav-link-active"
+                        : ""
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              )
+            )}
 
             {activeIndex !== -1 && (
               <div
                 className={`nav-snake ${direction}`}
                 style={{
-                  "--active-index": activeIndex,
-                  "--nav-count": navItems.length,
+                  "--active-index":
+                    activeIndex,
+                  "--nav-count":
+                    navItems.length,
                 }}
                 aria-hidden="true"
               >

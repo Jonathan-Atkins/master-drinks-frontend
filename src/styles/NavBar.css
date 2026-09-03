@@ -4,28 +4,45 @@
 
   width: 100%;
 
-  background: rgba(5, 5, 5, 0.72);
+  background:
+    rgba(5, 5, 5, 0.72);
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter:
+    blur(14px);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter:
+    blur(14px);
 
-  font-family: "Amatic SC", sans-serif;
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  font-family:
+    "Amatic SC",
+    sans-serif;
 
   z-index: 1000;
 }
 
 .nav-inner {
-  width: min(100%, 1600px);
+  width:
+    min(
+      100%,
+      1600px
+    );
 
   margin: 0 auto;
+
   padding: 0 20px;
 }
 
 .nav-menu {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
   align-items: center;
 
   min-height: 84px;
@@ -37,7 +54,13 @@
   position: relative;
 
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(
+      8,
+      minmax(0, 1fr)
+    );
+
   align-items: center;
 
   width: 100%;
@@ -48,6 +71,7 @@
   position: relative;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -56,7 +80,10 @@
 
   padding: 10px 4px;
 
-  color: var(--nav-link-color);
+  color:
+    var(
+      --nav-link-color
+    );
 
   font-size: 22px;
   font-weight: 700;
@@ -72,30 +99,48 @@
 }
 
 .nav-link:hover {
-  color: var(--nav-link-hover-color);
+  color:
+    var(
+      --nav-link-hover-color
+    );
 
-  transform: translateY(-1px);
+  transform:
+    translateY(-1px);
 }
 
 .nav-link-active {
-  color: var(--nav-link-active-color);
+  color:
+    var(
+      --nav-link-active-color
+    );
 }
 
 .nav-snake {
   position: absolute;
+
   left: 0;
   bottom: 4px;
 
-  width: calc(100% / var(--nav-count));
+  width:
+    calc(
+      100% /
+      var(--nav-count)
+    );
+
   height: 18px;
 
   pointer-events: none;
 
-  transform: translateX(
-    calc(var(--active-index) * 100%)
-  );
+  transform:
+    translateX(
+      calc(
+        var(--active-index) *
+        100%
+      )
+    );
 
-  transition: transform 500ms ease;
+  transition:
+    transform 500ms ease;
 }
 
 .nav-snake svg {
@@ -108,13 +153,20 @@
 .nav-snake path {
   fill: none;
 
-  stroke: var(--nav-link-active-color);
+  stroke:
+    var(
+      --nav-link-active-color
+    );
+
   stroke-width: 2;
   stroke-linecap: round;
 
-  vector-effect: non-scaling-stroke;
+  vector-effect:
+    non-scaling-stroke;
 
-  transition: stroke-dashoffset 500ms ease;
+  transition:
+    stroke-dashoffset
+    500ms ease;
 }
 
 .nav-snake.right path,
@@ -125,6 +177,7 @@
 
 .nav-sign-out {
   display: flex;
+
   align-items: center;
   justify-content: flex-end;
 }
@@ -134,17 +187,40 @@
 
   padding: 8px 14px;
 
-  border: 1px solid rgba(114, 47, 55, 0.7);
+  border:
+    1px solid
+    rgba(
+      114,
+      47,
+      55,
+      0.7
+    );
+
   border-radius: 8px;
 
-  background: rgba(0, 0, 0, 0.18);
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
 
-  color: var(--nav-link-color);
+  color:
+    var(
+      --nav-link-color
+    );
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter:
+    blur(8px);
 
-  font-family: "Amatic SC", sans-serif;
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  font-family:
+    "Amatic SC",
+    sans-serif;
+
   font-size: 22px;
   font-weight: 700;
 
@@ -158,17 +234,160 @@
     background 220ms ease;
 }
 
-.nav-sign-out button:hover {
-  color: var(--nav-link-active-color);
+.nav-sign-out
+  button:hover {
+  color:
+    var(
+      --nav-link-active-color
+    );
 
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.35
+    );
 
-  background: rgba(255, 255, 255, 0.05);
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
 }
+
+
+/* =========================
+   Mobile Menu Button
+========================= */
 
 .nav-menu-button {
   display: none;
 }
+
+.nav-menu-label {
+  display: block;
+}
+
+
+/* =========================
+   Hamburger / Down Arrow
+========================= */
+
+.nav-menu-icon {
+  position: relative;
+
+  display: inline-block;
+
+  width: 28px;
+  height: 24px;
+
+  flex: 0 0 auto;
+}
+
+.nav-menu-icon span {
+  position: absolute;
+
+  display: block;
+
+  width: 100%;
+  height: 3px;
+
+  left: 0;
+
+  border-radius: 2px;
+
+  background:
+    currentColor;
+
+  transform-origin: center;
+
+  transition:
+    top 300ms
+      cubic-bezier(
+        0.8,
+        0.5,
+        0.2,
+        1.4
+      ),
+    left 300ms
+      cubic-bezier(
+        0.8,
+        0.5,
+        0.2,
+        1.4
+      ),
+    width 300ms
+      cubic-bezier(
+        0.8,
+        0.5,
+        0.2,
+        1.4
+      ),
+    transform 300ms
+      cubic-bezier(
+        0.8,
+        0.5,
+        0.2,
+        1.4
+      );
+}
+
+.nav-menu-icon
+  span:nth-child(1) {
+  top: 1px;
+}
+
+.nav-menu-icon
+  span:nth-child(2) {
+  top: 10px;
+}
+
+.nav-menu-icon
+  span:nth-child(3) {
+  top: 19px;
+}
+
+
+/* =========================
+   Open Down Arrow
+========================= */
+
+.nav-menu-icon.open
+  span:nth-child(1) {
+  width: 24px;
+
+  top: 9px;
+  left: 2px;
+
+  transform:
+    rotate(90deg);
+}
+
+.nav-menu-icon.open
+  span:nth-child(2) {
+  width: 16px;
+
+  top: 17px;
+  left: 1px;
+
+  transform:
+    rotate(45deg);
+}
+
+.nav-menu-icon.open
+  span:nth-child(3) {
+  width: 16px;
+
+  top: 17px;
+  left: 12px;
+
+  transform:
+    rotate(-45deg);
+}
+
 
 /* =========================
    Menu Underline Animation
@@ -176,28 +395,37 @@
 
 @keyframes menu-underline {
   0% {
-    transform: scaleX(0);
+    transform:
+      scaleX(0);
   }
 
   30% {
-    transform: scaleX(1);
+    transform:
+      scaleX(1);
   }
 
   60% {
-    transform: scaleX(1);
+    transform:
+      scaleX(1);
   }
 
   85%,
   100% {
-    transform: scaleX(0);
+    transform:
+      scaleX(0);
   }
 }
+
 
 /* =========================
    Medium Desktop
 ========================= */
 
-@media (max-width: 1200px) and (min-width: 901px) {
+@media
+  (max-width: 1200px)
+  and
+  (min-width: 901px) {
+
   .nav-inner {
     padding: 0 12px;
   }
@@ -219,6 +447,7 @@
   }
 }
 
+
 /* =========================
    Mobile / Tablet
 ========================= */
@@ -231,23 +460,41 @@
   .nav-menu-button {
     position: relative;
 
-    display: block;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
 
     width: fit-content;
     min-height: 64px;
 
     margin: 0 auto;
-    padding: 8px 12px 18px;
+
+    padding:
+      8px
+      12px
+      18px;
 
     border: 0;
 
-    background: transparent;
+    background:
+      transparent;
 
-    color: var(--nav-link-active-color);
+    color:
+      var(
+        --nav-link-active-color
+      );
 
-    font-family: "Amatic SC", sans-serif;
+    font-family:
+      "Amatic SC",
+      sans-serif;
+
     font-size: 40px;
     font-weight: 700;
+
+    line-height: 1;
 
     text-align: center;
 
@@ -258,6 +505,7 @@
     content: "";
 
     position: absolute;
+
     left: 10%;
     bottom: 8px;
 
@@ -268,8 +516,11 @@
 
     background: #536e38;
 
-    transform: scaleX(0);
-    transform-origin: center;
+    transform:
+      scaleX(0);
+
+    transform-origin:
+      center;
 
     animation:
       menu-underline
@@ -284,7 +535,8 @@
 
     min-height: 0;
 
-    padding-bottom: 20px;
+    padding-bottom:
+      20px;
   }
 
   .nav-menu-open {
@@ -293,16 +545,20 @@
 
   .nav-links {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     width: 100%;
   }
 
   .nav-link {
-    justify-content: center;
+    justify-content:
+      center;
 
     width: 100%;
+
     min-height: 52px;
 
     padding: 10px 8px;
@@ -310,6 +566,7 @@
     font-size: 28px;
 
     text-align: center;
+
     white-space: normal;
   }
 
@@ -326,7 +583,8 @@
 
     margin-top: 12px;
 
-    justify-content: center;
+    justify-content:
+      center;
   }
 
   .nav-sign-out button {
@@ -338,6 +596,7 @@
   }
 }
 
+
 /* =========================
    Small Mobile
 ========================= */
@@ -348,7 +607,29 @@
   }
 
   .nav-menu-button {
+    gap: 8px;
+
     font-size: 40px;
+  }
+
+  .nav-menu-icon {
+    width: 25px;
+    height: 22px;
+  }
+
+  .nav-menu-icon
+    span:nth-child(1) {
+    top: 1px;
+  }
+
+  .nav-menu-icon
+    span:nth-child(2) {
+    top: 9px;
+  }
+
+  .nav-menu-icon
+    span:nth-child(3) {
+    top: 17px;
   }
 
   .nav-link,
