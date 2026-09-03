@@ -117,8 +117,7 @@ function CreateRecipePage() {
           );
 
         if (
-          uniqueIngredients.length ===
-          0
+          uniqueIngredients.length === 0
         ) {
           setIngredientRows([
             createEmptyIngredientRow(),
@@ -224,16 +223,14 @@ function CreateRecipePage() {
                   },
                   credentials:
                     "include",
-                  body: JSON.stringify(
-                    {
-                      ingredient_id:
-                        ingredientRow.ingredient_id,
-                      amount:
-                        ingredientRow.amount,
-                      measurement_unit:
-                        ingredientRow.measurement_unit,
-                    }
-                  ),
+                  body: JSON.stringify({
+                    ingredient_id:
+                      ingredientRow.ingredient_id,
+                    amount:
+                      ingredientRow.amount,
+                    measurement_unit:
+                      ingredientRow.measurement_unit,
+                  }),
                 }
               );
 
@@ -366,8 +363,7 @@ function CreateRecipePage() {
               }
               onChange={(event) =>
                 setPubliclyVisible(
-                  event.target
-                    .checked
+                  event.target.checked
                 )
               }
             />

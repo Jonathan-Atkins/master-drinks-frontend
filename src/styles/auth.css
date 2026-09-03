@@ -479,7 +479,9 @@
     [type="checkbox"]
   ) {
   font-family:
-    sans-serif;
+    "Times New Roman",
+    Times,
+    serif;
 
   text-transform: none;
 
