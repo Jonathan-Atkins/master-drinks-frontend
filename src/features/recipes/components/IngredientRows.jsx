@@ -1,4 +1,7 @@
-import { useEffect, useRef } from "react";
+import {
+  useEffect,
+  useRef,
+} from "react";
 
 import { API_URL } from "../../../config/api";
 
@@ -25,14 +28,15 @@ function IngredientRows({
   const searchTimers = useRef({});
 
   useEffect(() => {
-    const timers = searchTimers.current;
+    const timers =
+      searchTimers.current;
 
     return () => {
-      Object.values(timers).forEach(
-        (timer) => {
-          clearTimeout(timer);
-        }
-      );
+      Object.values(
+        timers
+      ).forEach((timer) => {
+        clearTimeout(timer);
+      });
     };
   }, []);
 
@@ -91,7 +95,9 @@ function IngredientRows({
         searching: false,
       });
 
-      setError(requestError.message);
+      setError(
+        requestError.message
+      );
     }
   };
 
@@ -113,7 +119,9 @@ function IngredientRows({
     const trimmedValue =
       value.trim();
 
-    if (trimmedValue.length < 2) {
+    if (
+      trimmedValue.length < 2
+    ) {
       return;
     }
 
@@ -131,10 +139,12 @@ function IngredientRows({
     ingredient
   ) => {
     updateIngredientRow(index, {
-      ingredient_id: ingredient.id,
+      ingredient_id:
+        ingredient.id,
       ingredient_name:
         ingredient.name,
-      search_term: ingredient.name,
+      search_term:
+        ingredient.name,
       matches: [],
     });
   };
@@ -166,7 +176,8 @@ function IngredientRows({
             "Content-Type":
               "application/json",
           },
-          credentials: "include",
+          credentials:
+            "include",
           body: JSON.stringify({
             name: ingredientName,
           }),
@@ -178,23 +189,34 @@ function IngredientRows({
 
       if (!response.ok) {
         throw new Error(
-          data.errors?.join(", ") ||
+          data.errors?.join(
+            ", "
+          ) ||
             data.error ||
             "Ingredient could not be created."
         );
       }
 
-      updateIngredientRow(index, {
-        ingredient_id: data.id,
-        ingredient_name: data.name,
-        search_term: data.name,
-        matches: [],
-        creating: false,
-      });
+      updateIngredientRow(
+        index,
+        {
+          ingredient_id:
+            data.id,
+          ingredient_name:
+            data.name,
+          search_term:
+            data.name,
+          matches: [],
+          creating: false,
+        }
+      );
     } catch (requestError) {
-      updateIngredientRow(index, {
-        creating: false,
-      });
+      updateIngredientRow(
+        index,
+        {
+          creating: false,
+        }
+      );
 
       setError(
         requestError.message
@@ -254,195 +276,223 @@ function IngredientRows({
   };
 
   return (
-    <section>
+    <section className="recipe-ingredients-section">
       <h2>Ingredients</h2>
 
-      {ingredientRows.map(
-        (ingredientRow, index) => (
-          <div
-            className="ingredient-row"
-            key={index}
-          >
-            <div className="form-field ingredient-search">
-              <label
-                htmlFor={`ingredient-${index}`}
-              >
-                Ingredient
-              </label>
+      <div className="recipe-ingredient-groups">
+        {ingredientRows.map(
+          (
+            ingredientRow,
+            index
+          ) => (
+            <div
+              className="recipe-ingredient-group"
+              key={index}
+            >
+              <div className="ingredient-row">
+                <div className="form-field ingredient-search">
+                  <label
+                    htmlFor={`ingredient-${index}`}
+                  >
+                    Ingredient
+                  </label>
 
-              <input
-                id={`ingredient-${index}`}
-                type="text"
-                value={
-                  ingredientRow.search_term
-                }
-                placeholder="Search ingredients"
-                autoComplete="off"
-                onChange={(event) =>
-                  handleIngredientSearchChange(
-                    index,
-                    event.target.value
-                  )
-                }
-                required
-              />
-
-              {ingredientRow.searching && (
-                <p>Searching...</p>
-              )}
-
-              {ingredientRow.matches
-                .length > 0 && (
-                <ul className="ingredient-results">
-                  {ingredientRow.matches.map(
-                    (ingredient) => (
-                      <li
-                        key={
-                          ingredient.id
-                        }
-                      >
-                        <button
-                          type="button"
-                          onClick={() =>
-                            selectIngredient(
-                              index,
-                              ingredient
-                            )
-                          }
-                        >
-                          {
-                            ingredient.name
-                          }
-                        </button>
-                      </li>
-                    )
-                  )}
-                </ul>
-              )}
-
-              {ingredientRow.search_term
-                .trim().length >= 2 &&
-                !ingredientRow.searching &&
-                !ingredientRow.ingredient_id &&
-                !hasExactMatch(
-                  ingredientRow
-                ) && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      createIngredient(
-                        index
+                  <input
+                    id={`ingredient-${index}`}
+                    type="text"
+                    value={
+                      ingredientRow.search_term
+                    }
+                    placeholder="Search ingredients"
+                    autoComplete="off"
+                    onChange={(
+                      event
+                    ) =>
+                      handleIngredientSearchChange(
+                        index,
+                        event.target
+                          .value
                       )
                     }
-                    disabled={
-                      ingredientRow.creating
-                    }
-                  >
-                    {ingredientRow.creating
-                      ? "Creating ingredient..."
-                      : `Create "${ingredientRow.search_term.trim()}"`}
-                  </button>
-                )}
+                    required
+                  />
 
-              {ingredientRow.ingredient_id && (
-                <p>
-                  Selected:{" "}
-                  {
-                    ingredientRow.ingredient_name
+                  {ingredientRow.searching && (
+                    <p>
+                      Searching...
+                    </p>
+                  )}
+
+                  {ingredientRow
+                    .matches.length >
+                    0 && (
+                    <ul className="ingredient-results">
+                      {ingredientRow.matches.map(
+                        (
+                          ingredient
+                        ) => (
+                          <li
+                            key={
+                              ingredient.id
+                            }
+                          >
+                            <button
+                              type="button"
+                              onClick={() =>
+                                selectIngredient(
+                                  index,
+                                  ingredient
+                                )
+                              }
+                            >
+                              {
+                                ingredient.name
+                              }
+                            </button>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  )}
+
+                  {ingredientRow.search_term
+                    .trim().length >=
+                    2 &&
+                    !ingredientRow.searching &&
+                    !ingredientRow.ingredient_id &&
+                    !hasExactMatch(
+                      ingredientRow
+                    ) && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          createIngredient(
+                            index
+                          )
+                        }
+                        disabled={
+                          ingredientRow.creating
+                        }
+                      >
+                        {ingredientRow.creating
+                          ? "Creating ingredient..."
+                          : `Create "${ingredientRow.search_term.trim()}"`}
+                      </button>
+                    )}
+
+                  {ingredientRow.ingredient_id && (
+                    <p className="ingredient-selected">
+                      Selected:{" "}
+                      {
+                        ingredientRow.ingredient_name
+                      }
+                    </p>
+                  )}
+                </div>
+
+                <div className="form-field">
+                  <label
+                    htmlFor={`amount-${index}`}
+                  >
+                    Amount
+                  </label>
+
+                  <input
+                    id={`amount-${index}`}
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value={
+                      ingredientRow.amount
+                    }
+                    onChange={(
+                      event
+                    ) =>
+                      updateIngredientRow(
+                        index,
+                        {
+                          amount:
+                            event
+                              .target
+                              .value,
+                        }
+                      )
+                    }
+                    required
+                  />
+                </div>
+
+                <div className="form-field">
+                  <label
+                    htmlFor={`unit-${index}`}
+                  >
+                    Measurement
+                  </label>
+
+                  <select
+                    id={`unit-${index}`}
+                    value={
+                      ingredientRow.measurement_unit
+                    }
+                    onChange={(
+                      event
+                    ) =>
+                      updateIngredientRow(
+                        index,
+                        {
+                          measurement_unit:
+                            event
+                              .target
+                              .value,
+                        }
+                      )
+                    }
+                    required
+                  >
+                    <option value="">
+                      Select a unit
+                    </option>
+
+                    {measurementUnits.map(
+                      (unit) => (
+                        <option
+                          key={
+                            unit
+                          }
+                          value={
+                            unit
+                          }
+                        >
+                          {unit}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
+              </div>
+
+              {(ingredientRows.length >
+                1 ||
+                ingredientRow.ingredient_id) && (
+                <button
+                  className="recipe-ingredient-remove"
+                  type="button"
+                  onClick={() =>
+                    removeIngredientRow(
+                      index
+                    )
                   }
-                </p>
+                >
+                  Remove
+                </button>
               )}
             </div>
-
-            <div className="form-field">
-              <label
-                htmlFor={`amount-${index}`}
-              >
-                Amount
-              </label>
-
-              <input
-                id={`amount-${index}`}
-                type="number"
-                min="0"
-                step="0.01"
-                value={
-                  ingredientRow.amount
-                }
-                onChange={(event) =>
-                  updateIngredientRow(
-                    index,
-                    {
-                      amount:
-                        event.target
-                          .value,
-                    }
-                  )
-                }
-                required
-              />
-            </div>
-
-            <div className="form-field">
-              <label
-                htmlFor={`unit-${index}`}
-              >
-                Measurement
-              </label>
-
-              <select
-                id={`unit-${index}`}
-                value={
-                  ingredientRow.measurement_unit
-                }
-                onChange={(event) =>
-                  updateIngredientRow(
-                    index,
-                    {
-                      measurement_unit:
-                        event.target
-                          .value,
-                    }
-                  )
-                }
-                required
-              >
-                <option value="">
-                  Select a unit
-                </option>
-
-                {measurementUnits.map(
-                  (unit) => (
-                    <option
-                      key={unit}
-                      value={unit}
-                    >
-                      {unit}
-                    </option>
-                  )
-                )}
-              </select>
-            </div>
-
-            {(ingredientRows.length >
-              1 ||
-              ingredientRow.ingredient_id) && (
-              <button
-                type="button"
-                onClick={() =>
-                  removeIngredientRow(
-                    index
-                  )
-                }
-              >
-                Remove
-              </button>
-            )}
-          </div>
-        )
-      )}
+          )
+        )}
+      </div>
 
       <button
+        className="recipe-add-ingredient"
         type="button"
         onClick={addIngredientRow}
       >

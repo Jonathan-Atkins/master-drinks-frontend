@@ -17,11 +17,7 @@
 
   font-family: var(--sans);
 
-  font-size: clamp(
-    22px,
-    3vw,
-    28px
-  );
+  font-size: clamp(22px, 3vw, 28px);
 
   font-weight: 700;
 }
@@ -46,11 +42,7 @@
 
   font-family: var(--sans);
 
-  font-size: clamp(
-    20px,
-    2.5vw,
-    22px
-  );
+  font-size: 28px;
 
   line-height: 1.4;
 
@@ -91,12 +83,9 @@
 .form-field textarea:focus {
   outline: none;
 
-  border-color:
-    rgba(170, 181, 196, 0.9);
+  border-color: rgba(170, 181, 196, 0.9);
 
-  box-shadow:
-    0 0 0 3px
-    rgba(161, 171, 184, 0.2);
+  box-shadow: 0 0 0 3px rgba(161, 171, 184, 0.2);
 
   background: #171a1d;
 }
@@ -108,7 +97,6 @@
 
   opacity: 0.6;
 }
-
 
 /* =========================
    Form Errors
@@ -148,7 +136,6 @@
   text-align: left;
 }
 
-
 /* =========================
    Shared Form Layout
 ========================= */
@@ -166,36 +153,26 @@
   gap: 20px;
 }
 
-
 /* =========================
    Drink Form Typography
 ========================= */
 
-.drink-form
-  .form-field
-  input:not([type="checkbox"]),
-.drink-form
-  .form-field
-  select {
+.drink-form .form-field input:not([type="checkbox"]),
+.drink-form .form-field select {
   font-size: 28px;
 }
-
 
 /* =========================
    Drink Form Label Underlines
 ========================= */
 
-.drink-form
-  .form-field
-  > label:not(:has(input[type="checkbox"])) {
+.drink-form .form-field > label:not(:has(input[type="checkbox"])) {
   width: fit-content;
 
   padding-bottom: 3px;
 
-  border-bottom:
-    2px solid currentColor;
+  border-bottom: 2px solid currentColor;
 }
-
 
 /* =========================
    Shared Select Rows
@@ -215,17 +192,13 @@
   width: 100%;
 }
 
-
 /* =========================
    Drink Category Row Spacing
 ========================= */
 
-.drink-form
-  .form-select-row
-  + .form-select-row {
+.drink-form .form-select-row + .form-select-row {
   margin-top: 15px;
 }
-
 
 /* =========================
    Shared Primary Form Button
@@ -255,7 +228,6 @@
 
   opacity: 0.6;
 }
-
 
 /* =========================
    Shared Secondary Button
@@ -294,8 +266,7 @@
 .form-secondary-button:focus-visible {
   border-color: var(--accent-border);
 
-  background:
-    rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .form-secondary-button:disabled {
@@ -303,7 +274,6 @@
 
   opacity: 0.6;
 }
-
 
 /* =========================
    Shared Form Actions
@@ -325,14 +295,11 @@
   width: fit-content;
 }
 
-
 /* =========================
    Checkbox Labels
 ========================= */
 
-.form-field label:has(
-  input[type="checkbox"]
-) {
+.form-field label:has(input[type="checkbox"]) {
   display: inline-flex;
 
   align-items: center;
@@ -343,7 +310,6 @@
 
   cursor: pointer;
 }
-
 
 /* =========================
    Responsive
