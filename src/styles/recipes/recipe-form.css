@@ -1,0 +1,183 @@
+/* =========================
+   Create Recipe Form
+========================= */
+
+.create-recipe-form {
+  width: 100%;
+
+  display: grid;
+
+  gap: 24px;
+}
+
+/* =========================
+   Create Recipe Typography
+========================= */
+
+.create-recipe-form input:not([type="checkbox"]),
+.create-recipe-form select,
+.create-recipe-form textarea {
+  font-size: 28px;
+}
+
+/* =========================
+   Recipe Field Underlines
+========================= */
+
+.create-recipe-form > .form-field > label:not(:has(input[type="checkbox"])) {
+  width: fit-content;
+
+  padding-bottom: 3px;
+
+  border-bottom: 2px solid currentColor;
+}
+
+/* =========================
+   Recipe Ingredients Section
+========================= */
+
+.recipe-ingredients-section {
+  width: 100%;
+
+  margin-top: 4px;
+}
+
+.recipe-ingredients-section > h2 {
+  width: fit-content;
+
+  margin: 0 0 15px;
+
+  padding-bottom: 3px;
+
+  border-bottom: 2px solid currentColor;
+
+  color: var(--text-h);
+
+  font-size: clamp(22px, 3vw, 28px);
+}
+
+/* =========================
+   Ingredient Groups
+========================= */
+
+.recipe-ingredient-groups {
+  display: grid;
+
+  gap: 15px;
+
+  width: 100%;
+}
+
+.recipe-ingredient-group {
+  display: grid;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+/* =========================
+   Ingredient Box
+========================= */
+
+.ingredient-row {
+  display: grid;
+
+  gap: 16px;
+
+  width: 100%;
+
+  padding: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  border-radius: 10px;
+}
+
+/* =========================
+   Ingredient Fields
+========================= */
+
+.recipe-ingredients-section .form-field input:not([type="checkbox"]),
+.recipe-ingredients-section .form-field select {
+  font-size: 28px;
+}
+
+.ingredient-search {
+  min-width: 0;
+}
+
+/* =========================
+   Ingredient Search Results
+========================= */
+
+.ingredient-results {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  list-style: none;
+}
+
+.ingredient-results button {
+  width: 100%;
+
+  min-height: 44px;
+
+  padding: 12px;
+
+  text-align: left;
+}
+
+.ingredient-selected {
+  margin: 0;
+}
+
+/* =========================
+   Ingredient Remove
+========================= */
+
+.recipe-ingredient-remove {
+  width: fit-content;
+
+  min-height: 44px;
+
+  padding: 8px 18px;
+
+  border: 1px solid var(--form-border);
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: var(--form-text);
+
+  font-family: var(--sans);
+
+  font-size: 24px;
+
+  cursor: pointer;
+}
+
+/* =========================
+   Add Ingredient
+========================= */
+
+.recipe-add-ingredient {
+  width: fit-content;
+
+  min-height: 44px;
+
+  margin-top: 15px;
+
+  padding: 8px 18px;
+
+  font-size: 26px;
+}

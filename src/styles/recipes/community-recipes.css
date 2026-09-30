@@ -1,0 +1,154 @@
+/* =========================
+   Community Filters
+========================= */
+
+.community-recipe-controls {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+  width: 100%;
+
+  margin: 24px 0 32px;
+}
+
+.community-recipe-filter {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.community-recipe-filter label {
+  color: #ffd86b;
+
+  font-size: 28px;
+}
+
+.community-recipe-filter select {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 10px 14px;
+
+  border: 1px solid var(--form-border);
+
+  border-radius: 10px;
+
+  background: var(--form-bg);
+
+  color: var(--form-text);
+
+  font-family: var(--sans);
+
+  font-size: 26px;
+}
+
+/* =========================
+   Clear Filters
+========================= */
+
+.community-recipe-clear {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 10px 16px;
+
+  border: 1px solid var(--form-border);
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family: var(--sans);
+
+  font-size: 26px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.community-recipe-clear:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.community-recipe-clear:disabled {
+  opacity: 0.4;
+
+  cursor: default;
+}
+
+/* =========================
+   Category Groups
+========================= */
+
+.community-category-section {
+  width: 100%;
+
+  margin-top: 48px;
+}
+
+.community-category-heading {
+  width: fit-content;
+
+  margin: 0 auto 28px;
+
+  color: #f4b6b2;
+
+  font-size: clamp(36px, 8vw, 52px);
+
+  text-align: center;
+}
+
+/* =========================
+   Responsive Community Controls
+========================= */
+
+@media (min-width: 768px) {
+  .community-recipe-controls {
+    flex-direction: row;
+
+    align-items: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 16px;
+  }
+
+  .community-recipe-filter {
+    width: auto;
+
+    min-width: 190px;
+  }
+
+  .community-recipe-filter select {
+    width: auto;
+
+    min-width: 190px;
+  }
+
+  .community-recipe-clear {
+    width: auto;
+  }
+
+  .community-category-heading {
+    margin-left: 0;
+
+    text-align: left;
+  }
+}

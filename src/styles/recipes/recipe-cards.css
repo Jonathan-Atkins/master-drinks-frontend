@@ -1,0 +1,223 @@
+/* =========================
+   Recipe Grids
+========================= */
+
+.my-recipes-grid {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 38px;
+}
+
+.community-recipes-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+
+  justify-content: center;
+
+  gap: 32px;
+
+  width: 100%;
+}
+
+/* =========================
+   Recipe Card
+========================= */
+
+.recipe-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+
+  min-width: 0;
+  height: 100%;
+
+  padding: 20px;
+
+  overflow: hidden;
+
+  overflow-wrap: anywhere;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  background: var(--card-bg);
+
+  box-shadow: var(--shadow);
+
+  color: #6b6375;
+
+  font-size: clamp(24px, 3vw, 32px);
+
+  line-height: 1.35;
+}
+
+.community-recipes-grid .recipe-card {
+  width: 100%;
+
+  max-width: 360px;
+
+  justify-self: center;
+}
+
+.recipe-card h2,
+.recipe-card h3 {
+  color: #ffffff;
+}
+
+.recipe-card h2 {
+  font-size: clamp(30px, 4vw, 40px);
+}
+
+.recipe-card h3 {
+  font-size: clamp(28px, 3.5vw, 36px);
+}
+
+.recipe-card p {
+  color: #ffffff;
+}
+
+.recipe-card strong {
+  color: #f4b6b2;
+}
+
+.recipe-card p strong {
+  color: #f4b6b2;
+}
+
+.recipe-card span {
+  color: #ffffff;
+}
+
+/* =========================
+   Instructions
+========================= */
+
+.recipe-card-instructions-section {
+  color: #f4b6b2;
+}
+
+.recipe-card-instructions {
+  display: -webkit-box;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 3;
+
+  line-clamp: 3;
+
+  color: #ffffff;
+}
+
+/* =========================
+   Ingredients
+========================= */
+
+.recipe-card-ingredients {
+  color: #f4b6b2;
+}
+
+.recipe-card-ingredient-list {
+  overflow: hidden;
+}
+
+.recipe-card-ingredient-list p {
+  margin: 0;
+
+  color: #ffffff;
+}
+
+.recipe-card-more {
+  color: #ffffff;
+}
+
+/* =========================
+   Save Button + Save Count
+========================= */
+
+.recipe-card-save-section {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  margin-top: 20px;
+}
+
+.recipe-card .recipe-card-save-count {
+  margin-top: 0;
+
+  color: hsl(0, 100%, 50%);
+
+  font-size: 40px;
+
+  line-height: 1;
+
+  opacity: 0.65;
+}
+
+.recipe-card .recipe-card-owner-save-count {
+  margin-top: 8px;
+
+  color: hsl(0, 100%, 50%);
+
+  font-size: 40px;
+
+  line-height: 1;
+
+  opacity: 0.65;
+}
+
+/* =========================
+   Owner Actions
+========================= */
+
+.recipe-card-actions {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 16px;
+
+  width: 100%;
+
+  margin-top: auto;
+
+  padding-top: 20px;
+}
+
+.recipe-card-actions .animated-button {
+  width: auto;
+}
+
+/* =========================
+   Responsive Recipe Grids
+========================= */
+
+@media (min-width: 768px) {
+  .my-recipes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .my-recipes-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

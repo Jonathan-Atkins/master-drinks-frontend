@@ -1,0 +1,156 @@
+/* =========================
+   Mobile Alphabet Index
+   iPhone Contacts Style
+========================= */
+
+/*
+ * Hidden by default.
+ * The alphabet index is mobile-only.
+ */
+.recipe-alphabet-nav,
+.recipe-alphabet-preview {
+  display: none;
+}
+
+/* =========================
+   Mobile Only
+========================= */
+
+@media (max-width: 700px) {
+  .recipe-alphabet-nav {
+    position: fixed;
+
+    top: 50%;
+    right: max(3px, env(safe-area-inset-right));
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 32px;
+    height: min(72svh, 560px);
+
+    padding: 3px 0;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+
+    touch-action: none;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* =========================
+     Individual Letters
+  ========================= */
+
+  .recipe-alphabet-letter {
+    display: flex;
+    flex: 1 1 0;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    min-width: 32px;
+    min-height: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #0a84ff;
+
+    font-family: var(--sans);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+      opacity 100ms ease,
+      transform 100ms ease;
+  }
+
+  /* =========================
+     Unavailable Letters
+  ========================= */
+
+  .recipe-alphabet-letter:disabled {
+    color: rgba(255, 255, 255, 0.12);
+
+    opacity: 1;
+
+    cursor: default;
+  }
+
+  /* =========================
+     Active Letter
+  ========================= */
+
+  .recipe-alphabet-letter-active {
+    transform: scale(1.25);
+  }
+
+  /* =========================
+     Letter Preview
+     Appears while tapping /
+     dragging through index
+  ========================= */
+
+  .recipe-alphabet-preview {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    z-index: 110;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 84px;
+    height: 84px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 18px;
+
+    background: rgba(20, 20, 20, 0.9);
+
+    color: #ffffff;
+
+    font-family: var(--sans);
+
+    font-size: 52px;
+    font-weight: 700;
+
+    pointer-events: none;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* =========================
+     Scroll Target Offset
+  ========================= */
+
+  .community-category-section {
+    scroll-margin-top: 100px;
+  }
+}
