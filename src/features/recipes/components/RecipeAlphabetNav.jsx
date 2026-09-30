@@ -132,7 +132,7 @@ function RecipeAlphabetNav({
             ? "recipe-alphabet-nav-scrubbing"
             : ""
         }`}
-        aria-label="Jump to liquor category by letter"
+        aria-label="Jump to recipe category by letter"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
@@ -156,7 +156,7 @@ function RecipeAlphabetNav({
                   : ""
               }`}
               disabled={!available}
-              aria-label={`Jump to liquor categories beginning with ${letter}`}
+              aria-label={`Jump to recipe categories beginning with ${letter}`}
               onClick={() =>
                 handleClick(letter)
               }
